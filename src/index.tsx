@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
-import { Counter } from "./Counter";
-import "./index.scss";
+import { App } from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <div className='app'>
-    <Counter />
-  </div>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
