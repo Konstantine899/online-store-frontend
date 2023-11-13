@@ -1,3 +1,5 @@
-import { someFn } from "./test";
+import { createRoot } from "react-dom/client";
+import { Counter } from "./Counter";
 
-someFn();
+const root = createRoot(document.getElementById("root"));
+root.render(<Counter />);
