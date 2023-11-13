@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { MainPageAsync as MainPage } from "./components/pages/MainPage/MainPage.async";
-import { AboutPageAsync as AboutPage } from "./components/pages/AboutPage/AboutPage.async";
+import { MainPageAsync as MainPage } from "./pages/MainPage/MainPage.async";
+import { AboutPageAsync as AboutPage } from "./pages/AboutPage/AboutPage.async";
 import {Suspense} from "react";
 
 export const App = () => {
