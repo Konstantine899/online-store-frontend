@@ -6,5 +6,6 @@ export function buildDevServer({ port }: BuildOptions): DevServerConfiguration {
     port,
     open: true,
     historyApiFallback: true, // для single page application proxy index.html
+    hot: true,
   };
 }
