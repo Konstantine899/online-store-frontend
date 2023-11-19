@@ -8,16 +8,13 @@
   height: var(--sidebar-height);
   background-color: #481173;
 }
-a {
-  color: white
-}
+
 .Navbar a {
   padding: 0 0 0 10px;
 }
 
 
-
-.publicLink{
+.publicLink {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
