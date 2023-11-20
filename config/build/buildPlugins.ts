@@ -1,31 +1,16 @@
 import webpack from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import { BuildOptions } from "./types/config";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import { buildMiniCssExtractPlugin } from "./plugins/buildMiniCssExtractPlugin";
+import { buildHtmlWebpackPlugin } from "./plugins/buildHtmlWebpackPlugin";
+import { buildForkTsCheckerWebpackPlugin } from "./plugins/buildForkTsCheckerWebpackPlugin";
 
-export function buildPlugins({
-  paths,
-  isDev,
-}: BuildOptions): webpack.ProgressPlugin[] {
+export function buildPlugins(options: BuildOptions): webpack.ProgressPlugin[] {
+  const { isDev } = options;
   const plugins = [
     new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({
-      template: paths.html,
-    }),
-    new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash:8].css",
-      chunkFilename: "css/[name].[contenthash:8].css",
-    }),
-    new ForkTsCheckerWebpackPlugin({
-      typescript: {
-        diagnosticOptions: {
-          semantic: true,
-          syntactic: true,
-        },
-        mode: "write-references",
-      },
-    }),
+    buildHtmlWebpackPlugin(options),
+    buildMiniCssExtractPlugin(),
+    buildForkTsCheckerWebpackPlugin(),
   ];
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
