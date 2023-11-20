@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { classNames } from "../../../shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Navbar.module.scss";
-import { publicRoutePath } from "../../../app/providers/router/config/publicRouterConfig";
-import { AppLink } from "../../../shared/ui/AppLink/AppLink";
+import { publicRoutePath } from "@/app/providers/router/config/publicRouterConfig";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
 
 interface NavbarProps {
   className?: string;

@@ -1,5 +1,5 @@
 import { RouteProps } from "react-router-dom";
-import { MainPageAsync as MainPage } from "../../../../pages/MainPage/MainPage.async";
+import { MainPageAsync as MainPage } from "@/pages/MainPage/MainPage.async";
 
 export enum publicRouter {
   MAIN = "main",
