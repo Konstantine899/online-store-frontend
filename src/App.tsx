@@ -1,5 +1,5 @@
-import { AppRouter } from "app/providers/router/ui/AppRouter";
-import { Navbar } from "widgets/Navbar/ui/Navbar";
+import { AppRouter } from "@/app/providers/router/ui/AppRouter";
+import { Navbar } from "@/widgets/Navbar/ui/Navbar";
 import "./app/styles/index.scss";
 
 export const App = () => {
