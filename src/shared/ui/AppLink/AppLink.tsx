@@ -13,7 +13,7 @@ export const AppLink = (props: AppLinkProps) => {
 
   return (
     <Link
-      className={classNames(cls.AppLink, {}, [])}
+      className={classNames(cls.AppLink, {}, [className])}
       to={to}
       {...otherProps}
     >
