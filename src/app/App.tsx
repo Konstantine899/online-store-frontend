@@ -1,6 +1,6 @@
-import { AppRouter } from "@/app/providers/router/ui/AppRouter";
-import { Navbar } from "@/widgets/Navbar/ui/Navbar";
-import "./app/styles/index.scss";
+import { AppRouter } from '@/app/providers/router/ui/AppRouter';
+import { Navbar } from '@/widgets/Navbar/ui/Navbar';
+import './styles/index.scss';
 
 export const App = () => {
   const isAuth = true;

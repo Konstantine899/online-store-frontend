@@ -1,7 +1,7 @@
-import { Link, LinkProps } from "react-router-dom";
-import { ReactNode } from "react";
-import { classNames } from "../../lib/classNames/classNames";
-import cls from "./AppLink.module.scss";
+import { Link, LinkProps } from 'react-router-dom';
+import { ReactNode } from 'react';
+import { classNames } from '../../lib/classNames/classNames';
+import cls from './AppLink.module.scss';
 
 interface AppLinkProps extends LinkProps {
   className?: string;

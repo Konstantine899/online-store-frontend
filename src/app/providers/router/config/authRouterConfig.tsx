@@ -1,26 +1,26 @@
-import { RouteProps } from "react-router-dom";
+import { RouteProps } from 'react-router-dom';
 
 export enum authRouter {
-  REFRESH = "refresh",
-  CHECK = "check",
-  LOGOUT = "logout",
-  USER_GET_ORDER_LIST = "user_get_order_list",
-  USER_GET_ORDER = "user_get_order",
-  USER_CREATE_ORDER = "user_create_order",
-  USER_MAKE_PAYMENT = "user_make_payment",
-  CREATE_RATING = "create_rating",
+  REFRESH = 'refresh',
+  CHECK = 'check',
+  LOGOUT = 'logout',
+  USER_GET_ORDER_LIST = 'user_get_order_list',
+  USER_GET_ORDER = 'user_get_order',
+  USER_CREATE_ORDER = 'user_create_order',
+  USER_MAKE_PAYMENT = 'user_make_payment',
+  CREATE_RATING = 'create_rating',
 }
 
 export const authRoutePath: Record<authRouter, string> = {
-  [authRouter.REFRESH]: "/auth/refresh",
-  [authRouter.CHECK]: "/auth/check",
-  [authRouter.LOGOUT]: "/auth/logout",
-  [authRouter.USER_GET_ORDER_LIST]: "/order/user/get-all-order",
-  [authRouter.USER_GET_ORDER]: "/order/user/get-order/:orderId([0-9]+)",
-  [authRouter.USER_CREATE_ORDER]: "/order/user/create-order",
-  [authRouter.USER_MAKE_PAYMENT]: "/payment/user/make-payment",
+  [authRouter.REFRESH]: '/auth/refresh',
+  [authRouter.CHECK]: '/auth/check',
+  [authRouter.LOGOUT]: '/auth/logout',
+  [authRouter.USER_GET_ORDER_LIST]: '/order/user/get-all-order',
+  [authRouter.USER_GET_ORDER]: '/order/user/get-order/:orderId([0-9]+)',
+  [authRouter.USER_CREATE_ORDER]: '/order/user/create-order',
+  [authRouter.USER_MAKE_PAYMENT]: '/payment/user/make-payment',
   [authRouter.CREATE_RATING]:
-    "/rating/product/:productId([0-9]+)/rating/:rating([1-5])",
+    '/rating/product/:productId([0-9]+)/rating/:rating([1-5])',
 };
 
 export const authRouterConfig: Record<authRouter, RouteProps> = {
