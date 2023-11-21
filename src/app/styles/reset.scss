@@ -1,17 +1,17 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; // говорит браузеру учитывать любые границы и внутренние отступы в значениях, которые вы указываете в ширине и высоте элемента.
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; // говорит браузеру учитывать любые границы и внутренние отступы в значениях, которые вы указываете в ширине и высоте элемента.
 }
 
 input,
 button,
 select,
 textarea {
-  margin: 0;
-  font: inherit;
+    margin: 0;
+    font: inherit;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
