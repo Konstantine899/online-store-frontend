@@ -14,7 +14,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
   "rules": {
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
@@ -22,7 +25,11 @@
     "react/jsx-filename-extension": [
       2,
       {
-        "extensions": [".js", ".jsx", ".tsx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
       }
     ],
     "import/no-unresolved": "off",
