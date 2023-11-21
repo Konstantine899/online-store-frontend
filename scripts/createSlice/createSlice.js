@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const resolveRoot = require('./helpers/resolveRoot');
-const createUIDir = require('./dir/createUIDir');
-const createReactComponent = require('./files/createReactComponent');
+const createStructureUIDir = require('./structures/createStructureUIDir');
+const createStructureModelDir = require('./structures/createStructureModelDir');
 
 module.exports = async (layer, slice) => {
   try {
@@ -9,6 +9,6 @@ module.exports = async (layer, slice) => {
   } catch (error) {
     console.log(`не удалось создать директорию для slice: ${slice}`);
   }
-  await createUIDir(layer, slice);
-  await createReactComponent(layer, slice);
+  await createStructureUIDir(layer, slice);
+  await createStructureModelDir(layer, slice);
 };
