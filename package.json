@@ -11,7 +11,9 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "prettier": "npx prettier --write **/*.{ts,tsx,json}"
+    "prettier": "npx prettier --write **/*.{ts,tsx,json}",
+    "storybook": "storybook dev -p 6006 -c ./config/storybook",
+    "build-storybook": "storybook build -c ./config/storybook --output-dir ./stories"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,14 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-interactions": "^7.5.3",
+    "@storybook/addon-links": "^7.5.3",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.5.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3",
+    "@storybook/testing-library": "^0.2.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
@@ -37,6 +47,7 @@
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-storybook": "^0.6.15",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.5.3",
@@ -44,6 +55,7 @@
     "prettier": "3.1.0",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
+    "storybook": "^7.5.3",
     "style-loader": "^3.3.3",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
@@ -59,6 +71,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.18.0"
+    "react-router-dom": "^6.18.0",
+    "storybook-addon-react-router-v6": "^2.0.10"
   }
 }
