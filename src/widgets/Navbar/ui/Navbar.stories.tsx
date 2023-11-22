@@ -6,6 +6,7 @@ import {
 import { Navbar } from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
+  title: 'widgets/Navbar',
   component: Navbar,
 };
 
