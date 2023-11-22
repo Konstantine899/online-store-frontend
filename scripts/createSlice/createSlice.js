@@ -9,6 +9,10 @@ module.exports = async (layer, slice) => {
   } catch (error) {
     console.log(`не удалось создать директорию для slice: ${slice}`);
   }
-  await createStructureUIDir(layer, slice);
-  await createStructureModelDir(layer, slice);
+  if (layer !== 'widgets') {
+    await createStructureUIDir(layer, slice);
+    await createStructureModelDir(layer, slice);
+  } else {
+    await createStructureUIDir(layer, slice);
+  }
 };
