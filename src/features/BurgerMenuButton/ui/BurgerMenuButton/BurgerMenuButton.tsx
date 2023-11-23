@@ -11,7 +11,7 @@ export const BurgerMenuButton = memo((props: BurgerMenuButtonProps) => {
 
   return (
     <div className={classNames(cls.BurgerMenuButton, {}, [className])}>
-      sdsdd
+      <span />
     </div>
   );
 });
