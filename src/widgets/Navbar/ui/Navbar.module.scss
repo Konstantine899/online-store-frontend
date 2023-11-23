@@ -1,5 +1,9 @@
 .Navbar {
     display: flex;
+}
+
+.Navbar_content {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -7,20 +11,34 @@
     width: var(--sidebar-width);
     height: var(--sidebar-height);
     background-color: #481173;
+    padding: 0 30px;
 }
 
-.Navbar a {
-    padding: 0 0 0 10px;
+.Navbar_content_left_a {
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
-
-.publicLink {
+.Navbar_content_left {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
-.publicLink a {
-    padding: 0 10px 0 0;
+
+.Navbar_content_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;
 }
+
+.Navbar_content_right > a:first-child {
+    padding: 0 20px 0 0;
+}
+
+
