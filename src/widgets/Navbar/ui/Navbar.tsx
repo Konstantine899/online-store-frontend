@@ -4,6 +4,10 @@ import cls from './Navbar.module.scss';
 import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import { BurgerMenuButton } from '@/features/BurgerMenuButton';
+import { Icon } from '@/shared/ui/Icon';
+import UserIcon from '@/shared/assets/icons/registration.svg';
+import LoginIcon from '@/shared/assets/icons/login.svg';
+import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
 
 interface NavbarProps {
   className?: string;
@@ -25,8 +29,20 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
         <div className={cls.Navbar_content_right}>
-          <AppLink to={publicRoutePath.auth}>Войти</AppLink>
-          <AppLink to={publicRoutePath.sign_up}>Регистрация</AppLink>
+          <AppLink className={cls.login} to={publicRoutePath.auth}>
+            <Icon className={cls.LoginIcon} Svg={LoginIcon} />
+            Войти
+          </AppLink>
+
+          <AppLink className={cls.registration} to={publicRoutePath.sign_up}>
+            <Icon className={cls.UserIcon} Svg={UserIcon} />
+            Регистрация
+          </AppLink>
+
+          <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
+            <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
+            Корзина
+          </AppLink>
         </div>
       </div>
     </nav>
