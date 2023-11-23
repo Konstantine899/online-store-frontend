@@ -3,7 +3,7 @@ const firsCharToUpperCase = require('../helpers/firstCharToUpperCase');
 module.exports = function (sliceName) {
   const typeName = `${firsCharToUpperCase(sliceName)}Schema`;
   return `
-  import { createSlice, PayloadAction } from 'reduxjs/toolkit';
+  import { createSlice, PayloadAction } from '@reduxjs/toolkit';
   import { ${typeName} } from '../types/${sliceName}Schema';
   
   const initialState: ${typeName} = {};
