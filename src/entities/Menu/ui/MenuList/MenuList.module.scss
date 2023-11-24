@@ -1,0 +1,33 @@
+.MenuList {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+};
+
+.menuContent{
+    display: block;
+    position: relative;
+    width: 30vw;
+    height: 100vh;
+    background-color: white;
+    outline: 1px solid red;
+    padding: 20px 24px 20px 30px;
+
+}
+
+
+
+.blur{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 30vw;
+    backdrop-filter: blur(2px);
+}
+
+
+

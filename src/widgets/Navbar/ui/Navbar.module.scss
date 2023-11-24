@@ -8,8 +8,8 @@
     justify-content: space-between;
     align-items: center;
     outline: 1px solid red;
-    width: var(--sidebar-width);
-    height: var(--sidebar-height);
+    width: var(--navbar-width);
+    height: var(--navbar-height);
     background-color: #481173;
     padding: 0 30px;
 }
@@ -58,6 +58,7 @@
     flex-direction: column;
     align-items: center
 }
+
 
 
 

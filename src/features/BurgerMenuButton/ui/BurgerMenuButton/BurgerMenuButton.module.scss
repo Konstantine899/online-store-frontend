@@ -3,9 +3,14 @@
     width: 50px;
     position: relative;
     margin-right: 20px;
-    border: 1px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
     padding: 0 14px;
+
+    &:hover{
+        border: 2px solid #fff;
+        cursor: pointer;
+    }
 }
 
 .BurgerMenuButton::before {
