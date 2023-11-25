@@ -13,8 +13,7 @@
     position: relative;
     width: 30vw;
     height: 100vh;
-    background-color: white;
-    outline: 1px solid red;
+    background-color: var(--primary-color);
     padding: 20px 24px 20px 30px;
 
 }
@@ -26,6 +25,8 @@
     width: 100vw;
     height: 100vh;
     left: 30vw;
+    background-color: #242424;
+    opacity: .3!important;
     backdrop-filter: blur(2px);
 }
 

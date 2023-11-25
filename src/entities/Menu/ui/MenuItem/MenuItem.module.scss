@@ -1,35 +1,27 @@
 .MenuItem {
     position: relative;
     width: 100%;
-    color: black;
+    color: var(--inverted-primary-color);
     padding: 3px 5px 3px 30px;
     font-size: 20px;
     list-style: none;
 
     &:hover {
         cursor: pointer;
-        background-color: #cb11ab;
+        background-color: var(--menu-item-background-hover);
         border-radius: 8px;
-        color: #fff;
+        color: var(--primary-color);
     }
 
     &:hover svg{
-        fill: #fff;
+        fill: var(--primary-color);
     }
 }
 
 
 
 
-.SmartphoneIcon,
-.ImacIcon,
-.FridgeIcon{
-    position: absolute;
-    left: 3px;
-    width: 20px;
-    height: 24px;
-    fill: black;
-}
+
 
 
 

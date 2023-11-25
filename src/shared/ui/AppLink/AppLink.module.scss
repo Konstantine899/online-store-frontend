@@ -1,8 +1,8 @@
 .AppLink {
-    color: var(--primary-color);
+    color: var(--primary-color-hover);
 
     &:hover {
-        color: white;
+        color: var(--primary-color);
     }
 }
 
