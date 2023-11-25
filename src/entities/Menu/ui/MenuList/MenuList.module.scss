@@ -11,7 +11,7 @@
 .menuContent{
     display: block;
     position: relative;
-    width: 30vw;
+    width: 400px;
     height: 100vh;
     background-color: var(--primary-color);
     padding: 20px 24px 20px 30px;
@@ -24,11 +24,42 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    left: 30vw;
+    left: 400px;
+    backdrop-filter: blur(2px);
     background-color: #242424;
     opacity: .3!important;
-    backdrop-filter: blur(2px);
 }
+
+.close{
+    position: absolute;
+    top: 20px;
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    cursor: pointer;
+    left: calc(400px + 9px);
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.close::before, .close::after{
+    position: absolute;
+    content: ' ';
+    top: 0;
+    height: 34px;
+    width: 2px;
+    background-color: #fff;
+}
+
+.close::before{
+    transform: rotate(45deg);
+}
+
+.close::after{
+    transform: rotate(-45deg);
+}
+
 
 
 

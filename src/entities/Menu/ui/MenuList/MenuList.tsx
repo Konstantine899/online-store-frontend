@@ -28,6 +28,7 @@ export const MenuList = memo((props: MenuProps) => {
   return (
     <div className={classNames(cls.MenuList, {}, [className])}>
       <div className={cls.blur} />
+      <button className={cls.close}>Закрыть меню</button>
       <div className={cls.menuContent}>
         <ul>
           {categories?.map((item) => <MenuItem key={item.id} item={item} />)}
