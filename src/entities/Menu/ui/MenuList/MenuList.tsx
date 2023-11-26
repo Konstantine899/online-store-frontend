@@ -3,6 +3,7 @@ import { memo } from 'react';
 import cls from './MenuList.module.scss';
 import { MenuItem } from '@/entities/Menu/ui/MenuItem/MenuItem';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { Overlay } from '@/shared/ui/Overlay';
 
 interface MenuProps {
   className?: string;
@@ -28,7 +29,7 @@ export const MenuList = memo((props: MenuProps) => {
 
   return (
     <div className={classNames(cls.MenuList, {}, [className])}>
-      <div className={cls.blur} />
+      <Overlay />
       <Button
         className={cls.close}
         size={ButtonSize.L}

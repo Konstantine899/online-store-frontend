@@ -14,20 +14,11 @@
     height: 100vh;
     background-color: var(--primary-color);
     padding: 20px 24px 20px 30px;
-
 }
 
 
 
-.blur{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    left: 400px;
-    backdrop-filter: blur(2px);
-    background-color: #242424;
-    opacity: .3!important;
-}
+
 
 .close{
     position: absolute;
