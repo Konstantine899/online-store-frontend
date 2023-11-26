@@ -1,0 +1,58 @@
+.Button {
+    cursor: pointer;
+}
+
+.square.size_m{
+    width: 16px;
+    height: 16px;
+}
+
+.square.size_l{
+    width: 24px;
+    height: 24px;
+}
+
+.square.size_xl{
+    width: 32px;
+    height: 32px;
+}
+
+
+
+.clear{
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+}
+
+.clear.size_m{
+    font-size: 16px;
+}
+
+.clear.size_l{
+    font-size: 24px;
+}
+
+.clear.size_xl{
+    font-size: 32px;
+}
+
+.buttonFontSizeZero.size_m{
+    font-size: 0;
+}
+
+.buttonFontSizeZero.size_l{
+    font-size: 0;
+}
+
+.buttonFontSizeZero.size_xl{
+    font-size: 0;
+}
+
+.outline {
+    border: 1px solid var(--primary-color-hover);
+    color: var(--primary-color);
+    background: none;
+}

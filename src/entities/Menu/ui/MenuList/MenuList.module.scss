@@ -5,7 +5,6 @@
     top: 0;
     left: 0;
     z-index: 1;
-
 };
 
 .menuContent{
@@ -33,23 +32,16 @@
 .close{
     position: absolute;
     top: 20px;
-    width: 34px;
-    height: 34px;
-    font-size: 0;
-    cursor: pointer;
     left: calc(400px + 9px);
-    background-color: transparent;
-    color: white;
-    border: none;
 }
 
 .close::before, .close::after{
     position: absolute;
     content: ' ';
     top: 0;
-    height: 34px;
+    height: 32px;
     width: 2px;
-    background-color: #fff;
+    background-color: var(--primary-color);
 }
 
 .close::before{
