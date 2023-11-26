@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import cls from './Button.module.scss';
 
 export enum ButtonSize {
+  S = 'size_s',
   M = 'size_m',
   L = 'size_l',
   XL = 'size_xl',
