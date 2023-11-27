@@ -1,14 +1,14 @@
 
   import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-  import { MenuSchema } from '../types/MenuSchema';
+  import { CategorySchema } from '../types/CategorySchema';
   
-  const initialState: MenuSchema = {};
+  const initialState: CategorySchema = {};
   
-  export const MenuSlice = createSlice({
-    name: 'Menu',
+  export const CategorySlice = createSlice({
+    name: 'Category',
     initialState,
     reducers: {
-        template: (state: MenuSchema, action: PayloadAction<string>) => {
+        template: (state: CategorySchema, action: PayloadAction<string>) => {
            
         },
     },
@@ -28,5 +28,5 @@
     // },
 });
 
-export const { actions: MenuActions } = MenuSlice;
-export const { reducer: MenuReducer } = MenuSlice;
+export const { actions: CategoryActions } = CategorySlice;
+export const { reducer: CategoryReducer } = CategorySlice;

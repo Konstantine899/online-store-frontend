@@ -1,4 +1,4 @@
-.MenuItem {
+.CategoryItem {
     position: relative;
     width: 100%;
     color: var(--inverted-primary-color);
@@ -16,14 +16,4 @@
     &:hover svg{
         fill: var(--primary-color);
     }
-}
-
-
-
-
-
-
-
-
-
-
+};

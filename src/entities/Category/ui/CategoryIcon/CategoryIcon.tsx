@@ -1,21 +1,21 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './MenuItemIcon.module.scss';
+import cls from './CategoryIcon.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import SmartphoneIcon from '@/shared/assets/icons/smartphone.svg';
 import ImacIcon from '@/shared/assets/icons/imac.svg';
 import FridgeIcon from '@/shared/assets/icons/fridge.svg';
 
-interface MenuItemIconProps {
+interface CategoryIconProps {
   className?: string;
-  itemName: string;
+  itemName?: string;
 }
 
-export const MenuItemIcon = memo((props: MenuItemIconProps) => {
+export const CategoryIcon = memo((props: CategoryIconProps) => {
   const { className, itemName } = props;
 
   return (
-    <div className={classNames(cls.MenuItemIcon, {}, [className])}>
+    <div className={classNames(cls.CategoryItemIcon, {}, [className])}>
       {itemName === 'Смартфоны' && (
         <Icon className={cls.SmartphoneIcon} Svg={SmartphoneIcon} />
       )}

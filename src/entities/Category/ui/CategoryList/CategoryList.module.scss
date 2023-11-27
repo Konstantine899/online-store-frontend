@@ -1,4 +1,4 @@
-.MenuList {
+.CategoryList {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -7,7 +7,7 @@
     z-index: -1;
     opacity: 0; // isOpen = false
     pointer-events: none; // игнорирую все события
-};
+}
 
 .opened{
     z-index: 1;
@@ -59,7 +59,3 @@
 .close::after{
     transform: rotate(-45deg);
 }
-
-
-
-
