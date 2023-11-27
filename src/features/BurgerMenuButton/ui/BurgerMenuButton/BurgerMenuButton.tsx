@@ -4,13 +4,17 @@ import cls from './BurgerMenuButton.module.scss';
 
 interface BurgerMenuButtonProps {
   className?: string;
+  onToggle?: () => void;
 }
 
 export const BurgerMenuButton = memo((props: BurgerMenuButtonProps) => {
-  const { className } = props;
+  const { className, onToggle } = props;
 
   return (
-    <div className={classNames(cls.BurgerMenuButton, {}, [className])}>
+    <div
+      onClick={onToggle}
+      className={classNames(cls.BurgerMenuButton, {}, [className])}
+    >
       <span />
     </div>
   );

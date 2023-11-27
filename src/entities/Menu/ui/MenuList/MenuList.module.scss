@@ -3,9 +3,26 @@
     width: 100vw;
     height: 100vh;
     top: 0;
-    left: 0;
-    z-index: 1;
+    left: -400px;
+    z-index: -1;
+    opacity: 0; // isOpen = false
+    pointer-events: none; // игнорирую все события
 };
+
+.opened{
+    z-index: 1;
+    opacity: 1; // isOpen = true
+    pointer-events: auto; // Можно использовать любые события
+    transform: translateX(400px);
+    transition: 0.5s; /* длительность анимации */
+}
+
+.closed{
+    z-index: -1;
+    opacity: 0; // isOpen = false
+    pointer-events: none; // игнорирую все события
+    transition: 1s; /* длительность анимации */
+}
 
 .menuContent{
     display: block;
