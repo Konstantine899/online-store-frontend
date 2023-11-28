@@ -2,8 +2,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './CategoryList.module.scss';
 import { Overlay } from '@/shared/ui/Overlay';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { CategoryItem } from '../CategoryItem/CategoryItem';
+import { ButtonClose } from '@/features/ButtonClose';
 
 const categories = [
   {
@@ -42,16 +42,9 @@ export const CategoryList = memo((props: CategoryListProps) => {
       )}
     >
       <Overlay onClose={onClose} />
-      <Button
-        className={cls.buttonClose}
-        size={ButtonSize.L}
-        theme={ButtonTheme.CLEAR}
-        square
-        buttonFontSizeZero
-        onClick={onClose}
-      >
+      <ButtonClose className={cls.BurgerMenuButtonClose} onClose={onClose}>
         Закрыть меню
-      </Button>
+      </ButtonClose>
       <div className={cls.menuContent}>
         <ul>
           {categories?.map((item) => (

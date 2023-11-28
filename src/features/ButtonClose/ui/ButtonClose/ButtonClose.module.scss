@@ -1,0 +1,17 @@
+
+.ButtonClose::before, .ButtonClose::after{
+    position: absolute;
+    content: ' ';
+    top: 0;
+    height: 32px;
+    width: 2px;
+    background-color: var(--primary-color);
+}
+
+.ButtonClose::before{
+    transform: rotate(45deg);
+}
+
+.ButtonClose::after{
+    transform: rotate(-45deg);
+}

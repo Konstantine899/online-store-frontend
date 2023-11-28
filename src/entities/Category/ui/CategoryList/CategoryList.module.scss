@@ -9,6 +9,12 @@
     pointer-events: none; // игнорирую все события
 }
 
+.BurgerMenuButtonClose{
+    position: absolute;
+    top: 20px;
+    left: calc(400px + 9px);
+}
+
 .opened{
     z-index: 1;
     opacity: 1; // isOpen = true
@@ -33,25 +39,5 @@
     padding: 20px 24px 20px 30px;
 }
 
-.buttonClose{
-    position: absolute;
-    top: 20px;
-    left: calc(400px + 9px);
-}
 
-.buttonClose::before, .buttonClose::after{
-    position: absolute;
-    content: ' ';
-    top: 0;
-    height: 32px;
-    width: 2px;
-    background-color: var(--primary-color);
-}
 
-.buttonClose::before{
-    transform: rotate(45deg);
-}
-
-.buttonClose::after{
-    transform: rotate(-45deg);
-}
