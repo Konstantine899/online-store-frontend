@@ -9,6 +9,7 @@ import {
   useCallback,
 } from 'react';
 import cls from './Modal.module.scss';
+import { Portal } from '@/shared/ui/Portal';
 
 interface ModalProps {
   className?: string;
@@ -66,15 +67,17 @@ export const Modal = memo((props: ModalProps) => {
   }, [isClosing, isOpen, onKeyDown]);
 
   return (
-    <div className={classNames(cls.Modal, mods, [className])}>
-      <div onClick={closeModal} className={cls.overlay}>
-        <div
-          onClick={stoppingEventBubbling}
-          className={classNames(cls.content, modsChildren, [])}
-        >
-          {children}
+    <Portal>
+      <div className={classNames(cls.Modal, mods, [className])}>
+        <div onClick={closeModal} className={cls.overlay}>
+          <div
+            onClick={stoppingEventBubbling}
+            className={classNames(cls.content, modsChildren, [])}
+          >
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </Portal>
   );
 });

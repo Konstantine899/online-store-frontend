@@ -1,3 +1,17 @@
 @import "./reset";
 @import "./variables/global";
 @import "./themes/normal";
+
+
+body{
+    font-size: var(--font-m);
+    color: var(--inverted-primary-color);
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.content-page {
+    display: flex;
+}
