@@ -6,6 +6,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useCallback,
 } from 'react';
 import cls from './Modal.module.scss';
 
@@ -21,7 +22,7 @@ export const Modal = memo((props: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     if (onClose) {
       setIsClosing(true);
       timerRef.current = setTimeout(() => {
@@ -29,7 +30,7 @@ export const Modal = memo((props: ModalProps) => {
         setIsClosing(false);
       }, 300);
     }
-  };
+  }, [onClose]);
   const stoppingEventBubbling = (event: MouseEvent): void => {
     event.stopPropagation();
   };
@@ -43,11 +44,14 @@ export const Modal = memo((props: ModalProps) => {
     [cls.contentOpened]: isOpen,
   };
 
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
-  };
+  const onKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    },
+    [closeModal],
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -59,7 +63,7 @@ export const Modal = memo((props: ModalProps) => {
         window.removeEventListener('keydown', onKeyDown);
       };
     }
-  }, [isOpen]);
+  }, [isClosing, isOpen, onKeyDown]);
 
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
