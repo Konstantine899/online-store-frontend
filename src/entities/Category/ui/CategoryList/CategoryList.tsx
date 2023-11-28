@@ -43,7 +43,7 @@ export const CategoryList = memo((props: CategoryListProps) => {
     >
       <Overlay onClose={onClose} />
       <Button
-        className={cls.close}
+        className={cls.buttonClose}
         size={ButtonSize.L}
         theme={ButtonTheme.CLEAR}
         square
