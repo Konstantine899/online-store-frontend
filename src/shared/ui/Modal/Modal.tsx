@@ -43,11 +43,23 @@ export const Modal = memo((props: ModalProps) => {
     [cls.contentOpened]: isOpen,
   };
 
-  useEffect(() => {
-    if (isClosing) {
-      return () => clearTimeout(timerRef.current);
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      closeModal();
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+    if (isClosing) {
+      return () => {
+        clearTimeout(timerRef.current);
+        window.removeEventListener('keydown', onKeyDown);
+      };
+    }
+  }, [isOpen]);
 
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
