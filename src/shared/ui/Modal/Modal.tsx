@@ -1,5 +1,12 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, ReactNode, MouseEvent } from 'react';
+import {
+  memo,
+  ReactNode,
+  MouseEvent,
+  useState,
+  useRef,
+  useEffect,
+} from 'react';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -11,10 +18,16 @@ interface ModalProps {
 
 export const Modal = memo((props: ModalProps) => {
   const { className, isOpen, onClose, children } = props;
+  const [isClosing, setIsClosing] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const closeModal = () => {
     if (onClose) {
-      onClose();
+      setIsClosing(true);
+      timerRef.current = setTimeout(() => {
+        onClose();
+        setIsClosing(false);
+      }, 300);
     }
   };
   const stoppingEventBubbling = (event: MouseEvent): void => {
@@ -23,11 +36,18 @@ export const Modal = memo((props: ModalProps) => {
 
   const mods: Record<string, boolean> = {
     [cls.opened]: isOpen,
+    [cls.isClosing]: isClosing,
   };
 
   const modsChildren: Record<string, boolean> = {
     [cls.contentOpened]: isOpen,
   };
+
+  useEffect(() => {
+    if (isClosing) {
+      return () => clearTimeout(timerRef.current);
+    }
+  }, []);
 
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
