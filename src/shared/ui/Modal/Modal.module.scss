@@ -25,4 +25,10 @@
     padding: 20px;
     border-radius: 8px;
     background-color: var(--bg-color);
+    transition: .3s transform;
+    transform: scale(.5);
+}
+
+.contentOpened{
+    transform: scale(1);
 }
