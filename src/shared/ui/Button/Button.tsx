@@ -37,7 +37,6 @@ export const Button = memo((props: ButtonProps) => {
     buttonFontSizeZero,
     ...otherProps
   } = props;
-
   return (
     <button
       type="button"

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
 import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
+import { LoginModal } from '@/features/Auth/ui/LoginModal/LoginModal';
 
 interface NavbarProps {
   className?: string;
@@ -15,6 +16,16 @@ interface NavbarProps {
 
 export const Navbar = memo((props: NavbarProps) => {
   const { className } = props;
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const onShowModal = useCallback(() => {
+    setIsOpenModal(true);
+  }, []);
+
+  const onCloseModal = useCallback(() => {
+    setIsOpenModal(false);
+  }, []);
 
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
@@ -29,7 +40,11 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
         <div className={cls.Navbar_content_right}>
-          <AppLink className={cls.login} to={publicRoutePath.auth}>
+          <AppLink
+            className={cls.login}
+            to={publicRoutePath.auth}
+            onClick={onShowModal}
+          >
             <Icon className={cls.LoginIcon} Svg={LoginIcon} />
             Войти
           </AppLink>
@@ -45,6 +60,7 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
       </div>
+      <LoginModal isOpen={isOpenModal} onClose={onCloseModal} />
     </nav>
   );
 });
