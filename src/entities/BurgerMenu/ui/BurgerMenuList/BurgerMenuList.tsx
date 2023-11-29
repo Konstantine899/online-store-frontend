@@ -1,8 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './CategoryList.module.scss';
+import cls from './BurgerMenuList.module.scss';
 import { Overlay } from '@/shared/ui/Overlay';
-import { CategoryItem } from '../CategoryItem/CategoryItem';
+import { BurgerMenuItem } from '../BurgerMenuItem/BurgerMenuItem';
 import { ButtonClose } from '@/features/ButtonClose';
 
 const categories = [
@@ -27,13 +27,13 @@ interface CategoryListProps {
   onClose?: () => void;
 }
 
-export const CategoryList = memo((props: CategoryListProps) => {
+export const BurgerMenuList = memo((props: CategoryListProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
   return (
     <div
       className={classNames(
-        cls.CategoryList,
+        cls.BurgerMenuList,
         {
           [cls.opened]: isOpen,
           [cls.closed]: isClose,
@@ -45,10 +45,10 @@ export const CategoryList = memo((props: CategoryListProps) => {
       <ButtonClose className={cls.BurgerMenuButtonClose} onClose={onClose}>
         Закрыть меню
       </ButtonClose>
-      <div className={cls.menuContent}>
+      <div className={cls.burgerMenuContent}>
         <ul>
           {categories?.map((item) => (
-            <CategoryItem key={item.id} item={item} />
+            <BurgerMenuItem key={item.id} item={item} />
           ))}
         </ul>
       </div>

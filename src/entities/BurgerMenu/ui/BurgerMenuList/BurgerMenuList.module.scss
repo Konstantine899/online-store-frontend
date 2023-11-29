@@ -1,4 +1,4 @@
-.CategoryList {
+.BurgerMenuList {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -30,7 +30,7 @@
     transition: 1s; /* длительность анимации */
 }
 
-.menuContent{
+.burgerMenuContent{
     display: block;
     position: relative;
     width: 400px;

@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
 import cls from './BurgerMenuButton.module.scss';
-import { CategoryList } from '@/entities/Category';
+import { BurgerMenuList } from '@/entities/BurgerMenu';
 
 interface BurgerMenuButtonProps {
   className?: string;
@@ -31,7 +31,7 @@ export const BurgerMenuButton = memo((props: BurgerMenuButtonProps) => {
       >
         <span />
       </div>
-      <CategoryList isOpen={isOpen} onClose={onClose} isClose={isClose} />
+      <BurgerMenuList isOpen={isOpen} onClose={onClose} isClose={isClose} />
     </>
   );
 });
