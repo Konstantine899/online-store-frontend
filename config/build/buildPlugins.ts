@@ -8,6 +8,9 @@ import {buildNodePolyfillPlugin} from "./plugins/buildNodePolyfillPlugin";
 export function buildPlugins(options: BuildOptions): webpack.ProgressPlugin[] {
     const {isDev} = options;
     const plugins = [
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+        }),
         new webpack.ProgressPlugin(),
         buildHtmlWebpackPlugin(options),
         buildMiniCssExtractPlugin(),
