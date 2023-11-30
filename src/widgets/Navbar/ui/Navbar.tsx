@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { LoginModal } from '@/features/Auth/ui/LoginModal/LoginModal';
+import { LoginModal, RegistrationModal } from '@/features/Auth';
 
 interface NavbarProps {
   className?: string;
@@ -17,14 +17,23 @@ interface NavbarProps {
 export const Navbar = memo((props: NavbarProps) => {
   const { className } = props;
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
+  const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
-  const onShowModal = useCallback(() => {
-    setIsOpenModal(true);
+  const onShowLoginModal = useCallback(() => {
+    setIsOpenLoginModal(true);
   }, []);
 
-  const onCloseModal = useCallback(() => {
-    setIsOpenModal(false);
+  const onCloseLoginModal = useCallback(() => {
+    setIsOpenLoginModal(false);
+  }, []);
+
+  const onShowRegistrationModal = useCallback(() => {
+    setIsOpenRegistrationModal(true);
+  }, []);
+
+  const onCloseRegistartionModal = useCallback(() => {
+    setIsOpenRegistrationModal(false);
   }, []);
 
   return (
@@ -43,13 +52,17 @@ export const Navbar = memo((props: NavbarProps) => {
           <AppLink
             className={cls.login}
             to={publicRoutePath.auth}
-            onClick={onShowModal}
+            onClick={onShowLoginModal}
           >
             <Icon className={cls.LoginIcon} Svg={LoginIcon} />
             Войти
           </AppLink>
 
-          <AppLink className={cls.registration} to={publicRoutePath.sign_up}>
+          <AppLink
+            className={cls.registration}
+            to={publicRoutePath.sign_up}
+            onClick={onShowRegistrationModal}
+          >
             <Icon className={cls.UserIcon} Svg={UserIcon} />
             Регистрация
           </AppLink>
@@ -60,7 +73,11 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
       </div>
-      <LoginModal isOpen={isOpenModal} onClose={onCloseModal} />
+      <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
+      <RegistrationModal
+        isOpen={isOpenRegistrationModal}
+        onClose={onCloseRegistartionModal}
+      />
     </nav>
   );
 });

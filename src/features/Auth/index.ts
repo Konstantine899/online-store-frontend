@@ -1,2 +1,3 @@
 export type { AuthSchema } from './model/types/AuthSchema';
-export { LoginForm } from './ui/LoginForm/LoginForm';
+export { LoginModal } from './ui/LoginModal/LoginModal';
+export { RegistrationModal } from './ui/RegistrationModal/RegistrationModal';
