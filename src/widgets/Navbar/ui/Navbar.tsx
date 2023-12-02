@@ -9,6 +9,7 @@ import UserIcon from '@/shared/assets/icons/registration.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
 import { LoginModal, RegistrationModal } from '@/features/Auth';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   className?: string;
@@ -20,21 +21,25 @@ export const Navbar = memo((props: NavbarProps) => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
+  const navigate = useNavigate();
+
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
   }, []);
 
   const onCloseLoginModal = useCallback(() => {
     setIsOpenLoginModal(false);
-  }, []);
+    navigate(publicRoutePath.main);
+  }, [navigate]);
 
   const onShowRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(true);
   }, []);
 
-  const onCloseRegistartionModal = useCallback(() => {
+  const onCloseRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(false);
-  }, []);
+    navigate(publicRoutePath.main);
+  }, [navigate]);
 
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
@@ -71,12 +76,13 @@ export const Navbar = memo((props: NavbarProps) => {
             <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
             Корзина
           </AppLink>
+          {!isOpenLoginModal}
         </div>
       </div>
       <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
       <RegistrationModal
         isOpen={isOpenRegistrationModal}
-        onClose={onCloseRegistartionModal}
+        onClose={onCloseRegistrationModal}
       />
     </nav>
   );

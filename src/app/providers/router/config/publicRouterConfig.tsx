@@ -1,5 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import { MainPageAsync as MainPage } from '@/pages/MainPage/MainPage.async';
+import { LoginModal, RegistrationModal } from '@/features/Auth';
 
 export enum publicRouter {
   MAIN = 'main',
@@ -64,8 +65,11 @@ export const publicRoutePath: Record<publicRouter, string> = {
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: { path: publicRoutePath.main, element: <MainPage /> },
-  [publicRouter.SIGN_UP]: { path: publicRoutePath.sign_up },
-  [publicRouter.AUTH]: { path: publicRoutePath.auth },
+  [publicRouter.SIGN_UP]: {
+    path: publicRoutePath.sign_up,
+    element: <RegistrationModal />,
+  },
+  [publicRouter.AUTH]: { path: publicRoutePath.auth, element: <LoginModal /> },
   [publicRouter.GET_LIST_ALL_BRANDS]: {
     path: publicRoutePath.get_list_all_brands,
   },
