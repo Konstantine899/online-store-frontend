@@ -8,7 +8,8 @@ import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { LoginModal, RegistrationModal } from '@/features/Auth';
+import { LoginModal } from '@/features/Auth';
+import { RegistrationModal } from '@/features/Registration';
 import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
