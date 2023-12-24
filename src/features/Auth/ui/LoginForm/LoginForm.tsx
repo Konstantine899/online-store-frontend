@@ -21,9 +21,6 @@ export const LoginForm = memo((props: LoginFormProps) => {
     setPassword(value);
   };
 
-  console.log(email);
-  console.log(password);
-
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
       <Input
