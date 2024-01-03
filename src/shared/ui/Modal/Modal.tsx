@@ -1,12 +1,12 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   memo,
-  ReactNode,
   MouseEvent,
-  useState,
-  useRef,
-  useEffect,
+  ReactNode,
   useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 import cls from './Modal.module.scss';
 import { Portal } from '@/shared/ui/Portal';
@@ -16,12 +16,20 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 export const Modal = memo((props: ModalProps) => {
-  const { className, isOpen, onClose, children } = props;
+  const { className, isOpen, onClose, lazy, children } = props;
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const closeModal = useCallback(() => {
     if (onClose) {
@@ -66,6 +74,9 @@ export const Modal = memo((props: ModalProps) => {
     }
   }, [isClosing, isOpen, onKeyDown]);
 
+  if (lazy && !isMounted) {
+    return null;
+  }
   return (
     <Portal>
       <div className={classNames(cls.Modal, mods, [className])}>
