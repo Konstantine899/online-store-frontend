@@ -3,9 +3,11 @@ import { memo, useCallback } from 'react';
 import cls from './RegistrationForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { getRegistrationState } from '@/features/Registration/model/selectors/getRegistrationState';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { registrationByEmail } from '@/features/Registration/model/services/registrationByEmail';
 
 interface RegistrationFormProps {
   className?: string;
@@ -14,7 +16,7 @@ interface RegistrationFormProps {
 export const RegistrationForm = memo((props: RegistrationFormProps) => {
   const { className } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { email, password, error, isLoading } =
     useSelector(getRegistrationState);
 
@@ -32,8 +34,13 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
     [dispatch],
   );
 
+  const onRegistrationClick = useCallback(() => {
+    dispatch(registrationByEmail({ email, password }));
+  }, [dispatch, email, password]);
+
   return (
     <div className={classNames(cls.RegistrationForm, {}, [className])}>
+      {error && <label>{error}</label>}
       <Input
         type="text"
         className={cls.input}
@@ -46,7 +53,9 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
         value={password}
         onChange={onChangePassword}
       />
-      <Button className={cls.Btn}>Регистрация</Button>
+      <Button className={cls.Btn} onClick={onRegistrationClick}>
+        Регистрация
+      </Button>
     </div>
   );
 });

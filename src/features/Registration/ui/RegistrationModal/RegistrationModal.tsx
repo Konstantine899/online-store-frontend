@@ -12,7 +12,6 @@ interface RegistrationModalProps {
 
 export const RegistrationModal = memo((props: RegistrationModalProps) => {
   const { className, onClose, isOpen } = props;
-
   return (
     <Modal
       className={classNames(cls.RegistrationModal, {}, [className])}
