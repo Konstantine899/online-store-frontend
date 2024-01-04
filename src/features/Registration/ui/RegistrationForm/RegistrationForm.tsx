@@ -11,10 +11,11 @@ import { registrationByEmail } from '@/features/Registration/model/services/regi
 
 interface RegistrationFormProps {
   className?: string;
+  onClose?: () => void;
 }
 
 export const RegistrationForm = memo((props: RegistrationFormProps) => {
-  const { className } = props;
+  const { className, onClose } = props;
 
   const dispatch = useAppDispatch();
   const { email, password, error, isLoading } =
@@ -34,9 +35,14 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
     [dispatch],
   );
 
-  const onRegistrationClick = useCallback(() => {
-    dispatch(registrationByEmail({ email, password }));
-  }, [dispatch, email, password]);
+  const onRegistrationClick = useCallback(async () => {
+    const result = await dispatch(registrationByEmail({ email, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onChangeEmail('');
+      onChangePassword('');
+      onClose?.();
+    }
+  }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
   return (
     <div className={classNames(cls.RegistrationForm, {}, [className])}>

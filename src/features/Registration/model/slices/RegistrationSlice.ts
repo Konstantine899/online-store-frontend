@@ -30,9 +30,9 @@ export const RegistrationSlice = createSlice({
       })
       .addCase(registrationByEmail.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = undefined;
         state.assessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
-        state.error = undefined;
       })
       .addCase(registrationByEmail.rejected, (state, action) => {
         state.isLoading = false;

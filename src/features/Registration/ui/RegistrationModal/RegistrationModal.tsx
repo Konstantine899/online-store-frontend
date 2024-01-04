@@ -19,7 +19,7 @@ export const RegistrationModal = memo((props: RegistrationModalProps) => {
       onClose={onClose}
       lazy
     >
-      <RegistrationForm />
+      <RegistrationForm onClose={onClose} />
     </Modal>
   );
 });
