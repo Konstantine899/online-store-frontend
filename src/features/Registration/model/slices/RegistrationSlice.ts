@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RegistrationSchema } from '../types/RegistrationSchema';
-import { registrationByEmail } from '@/features/Registration/model/services/registrationByEmail';
+import { registrationByEmail } from '../services/registrationByEmail';
 
 const initialState: RegistrationSchema = {
   email: '',
@@ -20,6 +20,12 @@ export const RegistrationSlice = createSlice({
     },
     setPassword: (state: RegistrationSchema, action: PayloadAction<string>) => {
       state.password = action.payload;
+    },
+    resetValidationErrors: (
+      state: RegistrationSchema,
+      action: PayloadAction<undefined>,
+    ) => {
+      state.error = action.payload;
     },
   },
   extraReducers: (builder) => {

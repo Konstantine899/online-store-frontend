@@ -11,6 +11,8 @@ import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
 import { LoginModal } from '@/features/Auth';
 import { RegistrationModal } from '@/features/Registration';
 import { useNavigate } from 'react-router-dom';
+import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 
 interface NavbarProps {
   className?: string;
@@ -23,6 +25,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
@@ -38,9 +41,12 @@ export const Navbar = memo((props: NavbarProps) => {
   }, []);
 
   const onCloseRegistrationModal = useCallback(() => {
+    dispatch(RegistrationActions.resetValidationErrors(undefined));
+    dispatch(RegistrationActions.setEmail(''));
+    dispatch(RegistrationActions.setPassword(''));
     setIsOpenRegistrationModal(false);
     navigate(publicRoutePath.main);
-  }, [navigate]);
+  }, [dispatch, navigate]);
 
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>

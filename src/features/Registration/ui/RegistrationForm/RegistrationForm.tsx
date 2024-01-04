@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { getRegistrationState } from '@/features/Registration/model/selectors/getRegistrationState';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { registrationByEmail } from '@/features/Registration/model/services/registrationByEmail';
+import { registrationByEmail } from '../../model/services/registrationByEmail';
 
 interface RegistrationFormProps {
   className?: string;
@@ -46,7 +46,7 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
 
   const emailValidationErrors =
     error instanceof Array &&
-    error[0].messages.map((message: string) => (
+    error[0]?.messages.map((message: string) => (
       <label key={message} className={cls.label}>
         {message}.
       </label>
@@ -54,7 +54,7 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
 
   const passwordValidationErrors =
     error instanceof Array &&
-    error[1].messages.map((message: string) => (
+    error[1]?.messages.map((message: string) => (
       <label key={message} className={cls.label}>
         {message}.
       </label>
