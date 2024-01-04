@@ -59,7 +59,11 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
         value={password}
         onChange={onChangePassword}
       />
-      <Button className={cls.Btn} onClick={onRegistrationClick}>
+      <Button
+        className={cls.Btn}
+        onClick={onRegistrationClick}
+        disabled={isLoading}
+      >
         Регистрация
       </Button>
     </div>
