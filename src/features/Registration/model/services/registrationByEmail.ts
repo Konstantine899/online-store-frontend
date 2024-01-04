@@ -7,10 +7,17 @@ interface RegistrationByEmailProps {
   password: string;
 }
 
+export interface MessagesError {
+  status: number;
+  property: string;
+  messages: string[];
+  value: string;
+}
+
 export const registrationByEmail = createAsyncThunk<
   User,
   RegistrationByEmailProps,
-  { rejectValue: string }
+  { rejectValue: string | MessagesError[] }
 >('Registration', async ({ email, password }, thunkAPI) => {
   try {
     const response = await axios.post(
@@ -22,6 +29,7 @@ export const registrationByEmail = createAsyncThunk<
     }
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+    const messages: MessagesError[] = error.response.data;
+    return thunkAPI.rejectWithValue(error.response.data.message || messages);
   }
 });

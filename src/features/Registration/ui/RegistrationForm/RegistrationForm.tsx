@@ -44,15 +44,37 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
     }
   }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
+  const emailValidationErrors =
+    error instanceof Array &&
+    error[0].messages.map((message: string) => (
+      <label key={message} className={cls.label}>
+        {message}.
+      </label>
+    ));
+
+  const passwordValidationErrors =
+    error instanceof Array &&
+    error[1].messages.map((message: string) => (
+      <label key={message} className={cls.label}>
+        {message}.
+      </label>
+    ));
+
   return (
     <div className={classNames(cls.RegistrationForm, {}, [className])}>
-      {error && <label>{error}</label>}
+      {typeof error === 'string' && (
+        <label className={cls.label}>{error}</label>
+      )}
+      {emailValidationErrors}
       <Input
         type="text"
         className={cls.input}
         value={email}
         onChange={onChangeEmail}
       />
+
+      {passwordValidationErrors}
+
       <Input
         type="text"
         className={cls.input}
