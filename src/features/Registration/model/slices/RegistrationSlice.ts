@@ -5,8 +5,6 @@ import { registrationByEmail } from '../services/registrationByEmail';
 const initialState: RegistrationSchema = {
   email: '',
   password: '',
-  assessToken: '',
-  refreshToken: '',
   error: '',
   isLoading: false,
 };
@@ -34,11 +32,9 @@ export const RegistrationSlice = createSlice({
         state.isLoading = true;
         state.error = undefined;
       })
-      .addCase(registrationByEmail.fulfilled, (state, action) => {
+      .addCase(registrationByEmail.fulfilled, (state) => {
         state.isLoading = false;
         state.error = undefined;
-        state.assessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(registrationByEmail.rejected, (state, action) => {
         state.isLoading = false;
