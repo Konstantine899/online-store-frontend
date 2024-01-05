@@ -13,6 +13,7 @@ import { RegistrationModal } from '@/features/Registration';
 import { useNavigate } from 'react-router-dom';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { AuthActions } from '@/features/Auth/model/slices/AuthSlice';
 
 interface NavbarProps {
   className?: string;
@@ -32,9 +33,12 @@ export const Navbar = memo((props: NavbarProps) => {
   }, []);
 
   const onCloseLoginModal = useCallback(() => {
+    dispatch(AuthActions.resetValidationErrors(undefined));
+    dispatch(AuthActions.setEmail(''));
+    dispatch(AuthActions.setPassword(''));
     setIsOpenLoginModal(false);
     navigate(publicRoutePath.main);
-  }, [navigate]);
+  }, [dispatch, navigate]);
 
   const onShowRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(true);

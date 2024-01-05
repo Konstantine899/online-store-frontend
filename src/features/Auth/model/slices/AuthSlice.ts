@@ -19,6 +19,12 @@ export const AuthSlice = createSlice({
     setPassword: (state: AuthSchema, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
+    resetValidationErrors: (
+      state: AuthSchema,
+      action: PayloadAction<undefined>,
+    ) => {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder

@@ -42,14 +42,41 @@ export const LoginForm = memo((props: LoginFormProps) => {
     }
   }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
+  const emailValidationErrors =
+    error instanceof Array &&
+    error.map((item) => {
+      if (item.property === 'email') {
+        return item.messages.map((message, index) => (
+          <label key={index}>{message}.</label>
+        ));
+      }
+    });
+
+  const passwordValidationErrors =
+    error instanceof Array &&
+    error.map((item) => {
+      if (item.property === 'password') {
+        return item.messages.map((message, index) => (
+          <label key={index}>{message}.</label>
+        ));
+      }
+    });
+
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
+      {typeof error === 'string' && (
+        <label className={cls.label}>{error}</label>
+      )}
+      {emailValidationErrors}
       <Input
         type="text"
         className={cls.input}
         value={email}
         onChange={onChangeEmail}
       />
+
+      {passwordValidationErrors}
+
       <Input
         type="text"
         className={cls.input}
