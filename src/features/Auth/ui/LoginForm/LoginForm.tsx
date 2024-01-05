@@ -8,6 +8,8 @@ import { AuthActions } from '@/features/Auth/model/slices/AuthSlice';
 import { getAuthState } from '@/features/Auth/model/selectors/getAuthState';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { authByEmail } from '@/features/Auth/model/services/authByEmail';
+import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
+import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
 
 interface LoginFormProps {
   className?: string;
@@ -42,25 +44,9 @@ export const LoginForm = memo((props: LoginFormProps) => {
     }
   }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
-  const emailValidationErrors =
-    error instanceof Array &&
-    error.map((item) => {
-      if (item.property === 'email') {
-        return item.messages.map((message, index) => (
-          <label key={index}>{message}.</label>
-        ));
-      }
-    });
+  const emailValidationErrors = getEmailValidationErrors(error);
 
-  const passwordValidationErrors =
-    error instanceof Array &&
-    error.map((item) => {
-      if (item.property === 'password') {
-        return item.messages.map((message, index) => (
-          <label key={index}>{message}.</label>
-        ));
-      }
-    });
+  const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>

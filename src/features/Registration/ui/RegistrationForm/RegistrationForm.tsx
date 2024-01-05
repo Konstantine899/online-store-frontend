@@ -8,6 +8,8 @@ import { RegistrationActions } from '@/features/Registration/model/slices/Regist
 import { getRegistrationState } from '@/features/Registration/model/selectors/getRegistrationState';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
+import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
+import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
 
 interface RegistrationFormProps {
   className?: string;
@@ -44,25 +46,9 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
     }
   }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
-  const emailValidationErrors =
-    error instanceof Array &&
-    error.map((item) => {
-      if (item.property === 'email') {
-        return item.messages.map((message, index) => (
-          <label key={index}>{message}.</label>
-        ));
-      }
-    });
+  const emailValidationErrors = getEmailValidationErrors(error);
 
-  const passwordValidationErrors =
-    error instanceof Array &&
-    error.map((item) => {
-      if (item.property === 'password') {
-        return item.messages.map((message, index) => (
-          <label key={index}>{message}.</label>
-        ));
-      }
-    });
+  const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
     <div className={classNames(cls.RegistrationForm, {}, [className])}>
