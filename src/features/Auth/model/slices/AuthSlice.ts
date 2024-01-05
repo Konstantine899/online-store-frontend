@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthSchema } from '../types/AuthSchema';
+import { authByEmail } from '@/features/Auth/model/services/authByEmail';
 
 const initialState: AuthSchema = {
   email: '',
@@ -19,20 +20,21 @@ export const AuthSlice = createSlice({
       state.password = action.payload;
     },
   },
-  // extraReducers: (builder) => {
-  //     builder
-  //         .addCase(, (state) => {
-  //             state.error = undefined;
-  //             state.isLoading = true;
-  //         })
-  //         .addCase(, (state) => {
-  //             state.isLoading = false;
-  //         })
-  //         .addCase(, (state, action) => {
-  //             state.isLoading = false;
-  //             state.error = action.payload;
-  //         });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(authByEmail.pending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+      })
+      .addCase(authByEmail.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = undefined;
+      })
+      .addCase(authByEmail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { actions: AuthActions } = AuthSlice;

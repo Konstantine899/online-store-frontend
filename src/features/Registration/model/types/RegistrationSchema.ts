@@ -1,8 +1,8 @@
-import { MessagesError } from '@/features/Registration/model/services/registrationByEmail';
+import { RegistrationValidationErrors } from '@/features/Registration/model/services/registrationByEmail';
 
 export interface RegistrationSchema {
   email: string;
   password: string;
-  error: string | MessagesError[];
+  error: string | RegistrationValidationErrors[];
   isLoading: boolean;
 }

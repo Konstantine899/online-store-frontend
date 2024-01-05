@@ -20,7 +20,7 @@ export const LoginModal = memo((props: LoginModalProps) => {
       onClose={onClose}
       lazy
     >
-      <LoginForm />
+      <LoginForm onClose={onClose} />
     </Modal>
   );
 });

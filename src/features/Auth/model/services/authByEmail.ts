@@ -7,31 +7,34 @@ import {
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
 
-interface RegistrationByEmailProps {
+interface authByEmailProps {
   email: string;
   password: string;
 }
 
-export interface RegistrationValidationErrors {
+export interface AuthValidationErrors {
   status: number;
   property: string;
   messages: string[];
   value: string;
 }
 
-export const registrationByEmail = createAsyncThunk<
+export const authByEmail = createAsyncThunk<
   User,
-  RegistrationByEmailProps,
-  { rejectValue: string | RegistrationValidationErrors[] }
->('Registration', async ({ email, password }, thunkAPI) => {
+  authByEmailProps,
+  {
+    rejectValue: string | AuthValidationErrors[];
+  }
+>('Authenticate', async ({ email, password }, thunkAPI) => {
   try {
     const response = await axios.post(
-      'http://localhost:5000/online-store/auth/registration',
+      'http://localhost:5000/online-store/auth/login',
       { email, password },
     );
     if (!response.data) {
       throw new Error();
     }
+
     localStorage.setItem(TOKEN_TYPE_KEY, JSON.stringify(response.data['type']));
     localStorage.setItem(
       ACCESS_TOKEN_KEY,
@@ -41,11 +44,12 @@ export const registrationByEmail = createAsyncThunk<
       REFRESH_TOKEN_KEY,
       JSON.stringify(response.data['refreshToken']),
     );
+
     // Полученные данные о пользователе сохраняю в state
     thunkAPI.dispatch(UserActions.setAuthData(response.data));
     return response.data;
   } catch (error) {
-    const messages: RegistrationValidationErrors[] = error.response.data;
+    const messages: AuthValidationErrors[] = error.response.data;
     return thunkAPI.rejectWithValue(error.response.data.message || messages);
   }
 });
