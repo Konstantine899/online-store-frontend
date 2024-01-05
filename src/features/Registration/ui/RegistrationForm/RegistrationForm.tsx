@@ -46,19 +46,23 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
 
   const emailValidationErrors =
     error instanceof Array &&
-    error[0]?.messages.map((message: string) => (
-      <label key={message} className={cls.label}>
-        {message}.
-      </label>
-    ));
+    error.map((item) => {
+      if (item.property === 'email') {
+        return item.messages.map((message, index) => (
+          <label key={index}>{message}.</label>
+        ));
+      }
+    });
 
   const passwordValidationErrors =
     error instanceof Array &&
-    error[1]?.messages.map((message: string) => (
-      <label key={message} className={cls.label}>
-        {message}.
-      </label>
-    ));
+    error.map((item) => {
+      if (item.property === 'password') {
+        return item.messages.map((message, index) => (
+          <label key={index}>{message}.</label>
+        ));
+      }
+    });
 
   return (
     <div className={classNames(cls.RegistrationForm, {}, [className])}>
