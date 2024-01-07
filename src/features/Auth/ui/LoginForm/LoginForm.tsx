@@ -50,7 +50,7 @@ export const LoginForm = memo((props: LoginFormProps) => {
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
-      {typeof error === 'string' && (
+      {error === 'Не корректный email' && (
         <label className={cls.label}>{error}</label>
       )}
       {emailValidationErrors}
@@ -61,6 +61,9 @@ export const LoginForm = memo((props: LoginFormProps) => {
         onChange={onChangeEmail}
       />
 
+      {error === 'Не корректный пароль' && (
+        <label className={cls.label}>{error}</label>
+      )}
       {passwordValidationErrors}
 
       <Input
