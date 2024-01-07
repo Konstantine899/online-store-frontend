@@ -25,9 +25,9 @@ export const setUserData = (
     throw new Error();
   }
 
-  localStorage.setItem(TOKEN_TYPE_KEY, JSON.stringify(data['type']));
-  localStorage.setItem(ACCESS_TOKEN_KEY, JSON.stringify(data['accessToken']));
-  localStorage.setItem(REFRESH_TOKEN_KEY, JSON.stringify(data['refreshToken']));
+  localStorage.setItem(TOKEN_TYPE_KEY, JSON.stringify(data.type));
+  localStorage.setItem(ACCESS_TOKEN_KEY, JSON.stringify(data.accessToken));
+  localStorage.setItem(REFRESH_TOKEN_KEY, JSON.stringify(data.refreshToken));
 
   // Полученные данные о пользователе сохраняю в state
   thunkAPI.dispatch(UserActions.setAuthData(data));

@@ -21,7 +21,7 @@ export const loginByEmail = createAsyncThunk<
   {
     rejectValue: string | LoginValidationErrors[];
   }
->('Authenticate', async ({ email, password }, thunkAPI) => {
+>('LoginSlice', async ({ email, password }, thunkAPI) => {
   try {
     const response = await axios.post(
       'http://localhost:5000/online-store/auth/login',
