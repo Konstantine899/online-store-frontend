@@ -1,4 +1,4 @@
-import { RegistrationValidationErrors } from '@/features/Registration/model/services/registrationByEmail';
+import { RegistrationValidationErrors } from '../services/registrationByEmail';
 
 export interface RegistrationSchema {
   email: string;

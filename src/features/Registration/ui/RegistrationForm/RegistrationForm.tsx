@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
-import { getRegistrationState } from '@/features/Registration/model/selectors/getRegistrationState';
+import { getRegistrationState } from '../../model/selectors/getRegistrationState';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';

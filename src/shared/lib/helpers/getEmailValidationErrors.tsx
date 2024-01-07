@@ -1,5 +1,5 @@
 import { LoginValidationErrors } from '@/features/Login';
-import { RegistrationValidationErrors } from '@/features/Registration/model/services/registrationByEmail';
+import { RegistrationValidationErrors } from '@/features/Registration';
 
 type EmailValidationProps =
   | string
