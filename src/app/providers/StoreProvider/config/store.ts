@@ -3,13 +3,13 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { ReducersMapObject } from 'redux';
 import { UserReducer } from '@/entities/User';
 import { RegistrationReducer } from '@/features/Registration/model/slices/RegistrationSlice';
-import { AuthReducer } from '@/features/Auth/model/slices/AuthSlice';
+import { LoginReducer } from '@/features/Login';
 
 export function createReduxStore(initialState: StateSchema) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     user: UserReducer,
     registrationForm: RegistrationReducer,
-    loginForm: AuthReducer,
+    loginForm: LoginReducer,
   };
   return configureStore<StateSchema>({
     reducer: rootReducer,
@@ -18,4 +18,4 @@ export function createReduxStore(initialState: StateSchema) {
   });
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']; 
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

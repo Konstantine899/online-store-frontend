@@ -1,6 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import { MainPageAsync as MainPage } from '@/pages/MainPage/MainPage.async';
-import { LoginModal } from '@/features/Auth';
+import { LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 
 export enum publicRouter {

@@ -8,12 +8,11 @@ import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { LoginModal } from '@/features/Auth';
+import { LoginModal, LoginActions } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 import { useNavigate } from 'react-router-dom';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { AuthActions } from '@/features/Auth/model/slices/AuthSlice';
 
 interface NavbarProps {
   className?: string;
@@ -33,9 +32,9 @@ export const Navbar = memo((props: NavbarProps) => {
   }, []);
 
   const onCloseLoginModal = useCallback(() => {
-    dispatch(AuthActions.resetValidationErrors(undefined));
-    dispatch(AuthActions.setEmail(''));
-    dispatch(AuthActions.setPassword(''));
+    dispatch(LoginActions.resetValidationErrors(undefined));
+    dispatch(LoginActions.setEmail(''));
+    dispatch(LoginActions.setPassword(''));
     setIsOpenLoginModal(false);
     navigate(publicRoutePath.main);
   }, [dispatch, navigate]);

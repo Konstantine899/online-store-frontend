@@ -1,9 +1,9 @@
-import { AuthValidationErrors } from '@/features/Auth/model/services/authByEmail';
+import { LoginValidationErrors } from '@/features/Login';
 import { RegistrationValidationErrors } from '@/features/Registration/model/services/registrationByEmail';
 
 type EmailValidationProps =
   | string
-  | AuthValidationErrors[]
+  | LoginValidationErrors[]
   | RegistrationValidationErrors[];
 
 export const getEmailValidationErrors = (error: EmailValidationProps) => {

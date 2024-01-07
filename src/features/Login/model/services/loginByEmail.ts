@@ -3,23 +3,23 @@ import { User } from '@/entities/User';
 import axios from 'axios';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 
-interface authByEmailProps {
+interface loginByEmailProps {
   email: string;
   password: string;
 }
 
-export interface AuthValidationErrors {
+export interface LoginValidationErrors {
   status: number;
   property: string;
   messages: string[];
   value: string;
 }
 
-export const authByEmail = createAsyncThunk<
+export const loginByEmail = createAsyncThunk<
   User,
-  authByEmailProps,
+  loginByEmailProps,
   {
-    rejectValue: string | AuthValidationErrors[];
+    rejectValue: string | LoginValidationErrors[];
   }
 >('Authenticate', async ({ email, password }, thunkAPI) => {
   try {
@@ -29,7 +29,7 @@ export const authByEmail = createAsyncThunk<
     );
     return setUserData(response.data, thunkAPI);
   } catch (error) {
-    const messages: AuthValidationErrors[] = error.response.data;
+    const messages: LoginValidationErrors[] = error.response.data;
     return thunkAPI.rejectWithValue(error.response.data.message || messages);
   }
 });

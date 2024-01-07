@@ -5,13 +5,13 @@ import {
 } from '@/shared/consts/localstorage';
 import { User, UserActions } from '@/entities/User';
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
-import { AuthValidationErrors } from '@/features/Auth/model/services/authByEmail';
+import { LoginValidationErrors } from '@/features/Login';
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 
 export const setUserData = (
   data: User,
   thunkAPI: GetThunkAPI<{
-    rejectValue: string | AuthValidationErrors[];
+    rejectValue: string | LoginValidationErrors[];
     state?: unknown;
     dispatch?: Dispatch<AnyAction>;
     extra?: unknown;
