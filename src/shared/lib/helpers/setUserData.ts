@@ -3,12 +3,14 @@ import {
   REFRESH_TOKEN_KEY,
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
-import { Auth, UserActions } from '@/entities/User';
+import { UserActions } from '@/entities/User';
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { LoginValidationErrors } from '@/features/Login';
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
 import { User } from '@/entities/User/model/types/UserSchema';
+import { Auth } from '@/features/Auth';
+import { AuthActions } from '@/features/Auth';
 
 export const setUserData = (
   data: Auth,
@@ -33,7 +35,7 @@ export const setUserData = (
   const decoded = jwtDecode<User>(data.accessToken);
 
   // Полученные данные о пользователе сохраняю в state
-  thunkAPI.dispatch(UserActions.setAuthData(data));
+  thunkAPI.dispatch(AuthActions.setAuthData(data));
   thunkAPI.dispatch(UserActions.setUserData(decoded));
   return data;
 };

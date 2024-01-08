@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Auth } from '@/entities/User';
 import axios from 'axios';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
+import { Auth } from '@/features/Auth';
 
 interface RegistrationByEmailProps {
   email: string;

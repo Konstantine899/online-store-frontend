@@ -4,9 +4,11 @@ import { ReducersMapObject } from 'redux';
 import { UserReducer } from '@/entities/User';
 import { RegistrationReducer } from '@/features/Registration/model/slices/RegistrationSlice';
 import { LoginReducer } from '@/features/Login';
+import { AuthReducer } from '@/features/Auth';
 
 export function createReduxStore(initialState: StateSchema) {
   const rootReducer: ReducersMapObject<StateSchema> = {
+    auth: AuthReducer,
     user: UserReducer,
     registrationForm: RegistrationReducer,
     loginForm: LoginReducer,

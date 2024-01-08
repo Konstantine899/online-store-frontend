@@ -1,2 +1,2 @@
-export type { UserSchema, Auth } from './model/types/UserSchema';
+export type { UserSchema } from './model/types/UserSchema';
 export { UserActions, UserReducer } from './model/slices/UserSlice';

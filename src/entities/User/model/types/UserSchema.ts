@@ -1,9 +1,3 @@
-export interface Auth {
-  type: string;
-  accessToken: string;
-  refreshToken: string;
-}
-
 export interface Role {
   id: number;
   role: string;
@@ -19,6 +13,5 @@ export interface User {
 }
 
 export interface UserSchema {
-  authData?: Auth;
   userData?: User;
 }
