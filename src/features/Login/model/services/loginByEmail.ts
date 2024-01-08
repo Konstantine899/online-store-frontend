@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { User } from '@/entities/User';
+import { Auth } from '@/entities/User';
 import axios from 'axios';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 
@@ -16,7 +16,7 @@ export interface LoginValidationErrors {
 }
 
 export const loginByEmail = createAsyncThunk<
-  User,
+  Auth,
   loginByEmailProps,
   {
     rejectValue: string | LoginValidationErrors[];
