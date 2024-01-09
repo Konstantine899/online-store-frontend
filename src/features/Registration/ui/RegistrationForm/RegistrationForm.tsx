@@ -11,12 +11,12 @@ import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
 
-interface RegistrationFormProps {
+export interface RegistrationFormProps {
   className?: string;
   onClose?: () => void;
 }
 
-export const RegistrationForm = memo((props: RegistrationFormProps) => {
+const RegistrationForm = memo((props: RegistrationFormProps) => {
   const { className, onClose } = props;
 
   const dispatch = useAppDispatch();
@@ -81,3 +81,5 @@ export const RegistrationForm = memo((props: RegistrationFormProps) => {
     </div>
   );
 });
+
+export default RegistrationForm;

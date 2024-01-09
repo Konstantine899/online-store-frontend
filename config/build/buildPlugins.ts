@@ -1,4 +1,5 @@
 import webpack from "webpack";
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 import {BuildOptions} from "./types/config";
 import {buildMiniCssExtractPlugin} from "./plugins/buildMiniCssExtractPlugin";
 import {buildHtmlWebpackPlugin} from "./plugins/buildHtmlWebpackPlugin";
@@ -15,8 +16,9 @@ export function buildPlugins(options: BuildOptions): webpack.ProgressPlugin[] {
         buildHtmlWebpackPlugin(options),
         buildMiniCssExtractPlugin(),
         buildForkTsCheckerWebpackPlugin(),
-        buildNodePolyfillPlugin()
+        buildNodePolyfillPlugin(),
     ];
+    plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}));
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
     }

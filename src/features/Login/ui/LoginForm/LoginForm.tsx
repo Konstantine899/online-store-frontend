@@ -9,12 +9,12 @@ import { loginByEmail, getLoginState, LoginActions } from '@/features/Login';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
   onClose?: () => void;
 }
 
-export const LoginForm = memo((props: LoginFormProps) => {
+const LoginForm = memo((props: LoginFormProps) => {
   const { className, onClose } = props;
   const dispatch = useAppDispatch();
   const { email, password, error, isLoading } = useSelector(getLoginState);
@@ -76,3 +76,5 @@ export const LoginForm = memo((props: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;

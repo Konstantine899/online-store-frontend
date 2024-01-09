@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RegistrationForm } from './RegistrationForm';
+import { RegistrationFormAsync as RegistrationForm } from './RegistrationForm.async';
 
 const meta: Meta<typeof RegistrationForm> = {
   title: 'entities/RegistrationForm',
@@ -13,4 +13,3 @@ export const Primary: Story = {
   args: {},
   render: () => <RegistrationForm />,
 };
-  

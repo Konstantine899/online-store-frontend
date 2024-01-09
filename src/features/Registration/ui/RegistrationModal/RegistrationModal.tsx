@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './RegistrationModal.module.scss';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
+import { RegistrationFormAsync as RegistrationForm } from '../RegistrationForm/RegistrationForm.async';
 
 interface RegistrationModalProps {
   className?: string;

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LoginForm } from './LoginForm';
+import { LoginFormAsync as LoginForm } from './LoginForm.async';
 
 const meta: Meta<typeof LoginForm> = {
   title: 'entities/LoginForm',
