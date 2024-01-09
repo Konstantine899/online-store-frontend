@@ -22,6 +22,12 @@ export const AuthSlice = createSlice({
 
       state.authData = { type, accessToken, refreshToken };
     },
+    removeAuthData: (state) => {
+      localStorage.removeItem(TOKEN_TYPE_KEY);
+      localStorage.removeItem(ACCESS_TOKEN_KEY);
+      localStorage.removeItem(REFRESH_TOKEN_KEY);
+      state.authData = null;
+    },
   },
   // extraReducers: (builder) => {
   //     builder

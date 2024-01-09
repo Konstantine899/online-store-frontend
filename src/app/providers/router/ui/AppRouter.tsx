@@ -3,14 +3,12 @@ import { Suspense } from 'react';
 import { publicRouterConfig } from '../config/publicRouterConfig';
 import { authRouterConfig } from '../config/authRouterConfig';
 import { adminRouterConfig } from '../config/adminRouterConfig';
+import { useSelector } from 'react-redux';
+import { getAdminRole, getUserRole } from '@/entities/User';
 
-interface AppRouterProps {
-  isAuth: boolean;
-  isAdmin: boolean;
-}
-
-export const AppRouter = (props: AppRouterProps) => {
-  const { isAuth, isAdmin } = props;
+export const AppRouter = () => {
+  const isAuth = useSelector(getUserRole);
+  const isAdmin = useSelector(getAdminRole);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
@@ -18,11 +16,11 @@ export const AppRouter = (props: AppRouterProps) => {
         {Object.values(publicRouterConfig).map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
         ))}
-        {isAuth &&
+        {!!isAuth &&
           Object.values(authRouterConfig).map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
-        {isAdmin &&
+        {!!isAdmin &&
           Object.values(adminRouterConfig).map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}

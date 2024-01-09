@@ -6,13 +6,17 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { BurgerMenuButton } from '@/features/BurgerMenuButton';
 import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
+import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { LoginModal, LoginActions } from '@/features/Login';
+import { LoginActions, LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 import { useNavigate } from 'react-router-dom';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { getUserRole, UserActions } from '@/entities/User';
+import { AuthActions } from '@/features/Auth';
 
 interface NavbarProps {
   className?: string;
@@ -26,6 +30,8 @@ export const Navbar = memo((props: NavbarProps) => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const isAuth = useSelector(getUserRole);
 
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
@@ -51,6 +57,11 @@ export const Navbar = memo((props: NavbarProps) => {
     navigate(publicRoutePath.main);
   }, [dispatch, navigate]);
 
+  const onLogout = () => {
+    dispatch(UserActions.removeUserData());
+    dispatch(AuthActions.removeAuthData());
+  };
+
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.Navbar_content}>
@@ -64,23 +75,36 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
         <div className={cls.Navbar_content_right}>
-          <AppLink
-            className={cls.login}
-            to={publicRoutePath.auth}
-            onClick={onShowLoginModal}
-          >
-            <Icon className={cls.LoginIcon} Svg={LoginIcon} />
-            Войти
-          </AppLink>
+          {isAuth ? (
+            <AppLink
+              className={cls.logout}
+              to={publicRoutePath.main}
+              onClick={onLogout}
+            >
+              <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
+              Выйти
+            </AppLink>
+          ) : (
+            <>
+              <AppLink
+                className={cls.login}
+                to={publicRoutePath.auth}
+                onClick={onShowLoginModal}
+              >
+                <Icon className={cls.LoginIcon} Svg={LoginIcon} />
+                Войти
+              </AppLink>
 
-          <AppLink
-            className={cls.registration}
-            to={publicRoutePath.sign_up}
-            onClick={onShowRegistrationModal}
-          >
-            <Icon className={cls.UserIcon} Svg={UserIcon} />
-            Регистрация
-          </AppLink>
+              <AppLink
+                className={cls.registration}
+                to={publicRoutePath.sign_up}
+                onClick={onShowRegistrationModal}
+              >
+                <Icon className={cls.UserIcon} Svg={UserIcon} />
+                Регистрация
+              </AppLink>
+            </>
+          )}
 
           <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
             <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />

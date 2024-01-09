@@ -19,6 +19,9 @@ export const UserSlice = createSlice({
         state.userData = jwtDecode<User>(accessToken);
       }
     },
+    removeUserData: (state) => {
+      state.userData = null;
+    },
   },
   // extraReducers: (builder) => {
   //     builder

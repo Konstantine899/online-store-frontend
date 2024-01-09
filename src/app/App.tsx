@@ -8,9 +8,6 @@ import { UserActions } from '@/entities/User';
 import { AuthActions } from '@/features/Auth';
 
 export const App = () => {
-  const isAuth = true;
-  const isAdmin = true;
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,7 +20,7 @@ export const App = () => {
       <Suspense fallback="">
         <Navbar />
         <div className="content_page">
-          <AppRouter isAdmin={isAdmin} isAuth={isAuth} />
+          <AppRouter />
         </div>
       </Suspense>
     </div>
