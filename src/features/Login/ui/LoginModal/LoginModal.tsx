@@ -12,7 +12,6 @@ export interface LoginModalProps {
 
 export const LoginModal = memo((props: LoginModalProps) => {
   const { className, onClose, isOpen } = props;
-
   return (
     <Modal
       className={classNames(cls.LoginModal, {}, [className])}

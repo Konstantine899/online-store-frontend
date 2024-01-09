@@ -1,13 +1,21 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import cls from './LoginForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { loginByEmail, getLoginState, LoginActions } from '@/features/Login';
+import { LoginActions, loginByEmail } from '@/features/Login';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
+import { ReduxStoreWithManager } from '@/app/providers/StoreProvider/config/StateSchema';
+import { LoginReducer } from '../../model/slices/LoginSlice';
+import {
+  getLoginEmail,
+  getLoginError,
+  getLoginIsLoading,
+  getLoginPassword,
+} from '@/features/Login/model/selectors/getLoginState';
 
 export interface LoginFormProps {
   className?: string;
@@ -16,8 +24,22 @@ export interface LoginFormProps {
 
 const LoginForm = memo((props: LoginFormProps) => {
   const { className, onClose } = props;
+
+  const store = useStore() as ReduxStoreWithManager;
   const dispatch = useAppDispatch();
-  const { email, password, error, isLoading } = useSelector(getLoginState);
+  const email = useSelector(getLoginEmail);
+  const password = useSelector(getLoginPassword);
+  const isLoading = useSelector(getLoginIsLoading);
+  const error = useSelector(getLoginError);
+
+  useEffect(() => {
+    store.reducerManager.add('loginForm', LoginReducer);
+    dispatch({ type: 'mounting modal window login' });
+    return () => {
+      store.reducerManager.remove('loginForm');
+      dispatch({ type: 'unmounting modal window login' });
+    };
+  }, [dispatch, store.reducerManager]);
 
   const onChangeEmail = useCallback(
     (value: string) => {
@@ -70,7 +92,7 @@ const LoginForm = memo((props: LoginFormProps) => {
         value={password}
         onChange={onChangePassword}
       />
-      <Button className={cls.Btn} onClick={onAuthClick}>
+      <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
         Войти
       </Button>
     </div>

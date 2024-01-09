@@ -110,14 +110,17 @@ export const Navbar = memo((props: NavbarProps) => {
             <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
             Корзина
           </AppLink>
-          {!isOpenLoginModal}
         </div>
       </div>
-      <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
-      <RegistrationModal
-        isOpen={isOpenRegistrationModal}
-        onClose={onCloseRegistrationModal}
-      />
+      {isOpenLoginModal && (
+        <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
+      )}
+      {isOpenRegistrationModal && (
+        <RegistrationModal
+          isOpen={isOpenRegistrationModal}
+          onClose={onCloseRegistrationModal}
+        />
+      )}
     </nav>
   );
 });

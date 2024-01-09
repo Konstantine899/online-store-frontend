@@ -1,15 +1,24 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import cls from './RegistrationForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
-import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
-import { getRegistrationState } from '../../model/selectors/getRegistrationState';
+import { useSelector, useStore } from 'react-redux';
+import {
+  RegistrationActions,
+  RegistrationReducer,
+} from '@/features/Registration/model/slices/RegistrationSlice';
+import {
+  getRegistrationEmail,
+  getRegistrationError,
+  getRegistrationIsLoading,
+  getRegistrationPassword,
+} from '../../model/selectors/getRegistrationState';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
+import { ReduxStoreWithManager } from '@/app/providers/StoreProvider/config/StateSchema';
 
 export interface RegistrationFormProps {
   className?: string;
@@ -19,9 +28,21 @@ export interface RegistrationFormProps {
 const RegistrationForm = memo((props: RegistrationFormProps) => {
   const { className, onClose } = props;
 
+  const store = useStore() as ReduxStoreWithManager;
   const dispatch = useAppDispatch();
-  const { email, password, error, isLoading } =
-    useSelector(getRegistrationState);
+  const email = useSelector(getRegistrationEmail);
+  const password = useSelector(getRegistrationPassword);
+  const isLoading = useSelector(getRegistrationIsLoading);
+  const error = useSelector(getRegistrationError);
+
+  useEffect(() => {
+    store.reducerManager.add('registrationForm', RegistrationReducer);
+    dispatch({ type: 'mounting modal window registration' });
+    return () => {
+      store.reducerManager.remove('registrationForm');
+      dispatch({ type: 'unmounting modal window registration' });
+    };
+  }, [dispatch, store.reducerManager]);
 
   const onChangeEmail = useCallback(
     (value: string) => {
