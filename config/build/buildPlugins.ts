@@ -7,10 +7,11 @@ import {buildForkTsCheckerWebpackPlugin} from "./plugins/buildForkTsCheckerWebpa
 import {buildNodePolyfillPlugin} from "./plugins/buildNodePolyfillPlugin";
 
 export function buildPlugins(options: BuildOptions): webpack.ProgressPlugin[] {
-    const {isDev} = options;
+    const {isDev, apiUrl} = options;
     const plugins = [
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
+            __API_URL__: JSON.stringify(apiUrl),
         }),
         new webpack.ProgressPlugin(),
         buildHtmlWebpackPlugin(options),
