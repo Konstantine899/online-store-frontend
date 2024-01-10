@@ -1,9 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import cls from './RegistrationForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   RegistrationActions,
   RegistrationReducer,
@@ -18,7 +18,14 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
-import { ReduxStoreWithManager } from '@/app/providers/StoreProvider/config/StateSchema';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
+const initialAsyncReducersRegistrationForm: ReducersList = {
+  registrationForm: RegistrationReducer,
+};
 
 export interface RegistrationFormProps {
   className?: string;
@@ -28,21 +35,11 @@ export interface RegistrationFormProps {
 const RegistrationForm = memo((props: RegistrationFormProps) => {
   const { className, onClose } = props;
 
-  const store = useStore() as ReduxStoreWithManager;
   const dispatch = useAppDispatch();
   const email = useSelector(getRegistrationEmail);
   const password = useSelector(getRegistrationPassword);
   const isLoading = useSelector(getRegistrationIsLoading);
   const error = useSelector(getRegistrationError);
-
-  useEffect(() => {
-    store.reducerManager.add('registrationForm', RegistrationReducer);
-    dispatch({ type: 'mounting modal window registration' });
-    return () => {
-      store.reducerManager.remove('registrationForm');
-      dispatch({ type: 'unmounting modal window registration' });
-    };
-  }, [dispatch, store.reducerManager]);
 
   const onChangeEmail = useCallback(
     (value: string) => {
@@ -72,34 +69,39 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
   const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
-    <div className={classNames(cls.RegistrationForm, {}, [className])}>
-      {typeof error === 'string' && (
-        <label className={cls.label}>{error}</label>
-      )}
-      {emailValidationErrors}
-      <Input
-        type="text"
-        className={cls.input}
-        value={email}
-        onChange={onChangeEmail}
-      />
+    <DynamicModuleLoader
+      reducers={initialAsyncReducersRegistrationForm}
+      removeAfterUnmount
+    >
+      <div className={classNames(cls.RegistrationForm, {}, [className])}>
+        {typeof error === 'string' && (
+          <label className={cls.label}>{error}</label>
+        )}
+        {emailValidationErrors}
+        <Input
+          type="text"
+          className={cls.input}
+          value={email}
+          onChange={onChangeEmail}
+        />
 
-      {passwordValidationErrors}
+        {passwordValidationErrors}
 
-      <Input
-        type="text"
-        className={cls.input}
-        value={password}
-        onChange={onChangePassword}
-      />
-      <Button
-        className={cls.Btn}
-        onClick={onRegistrationClick}
-        disabled={isLoading}
-      >
-        Регистрация
-      </Button>
-    </div>
+        <Input
+          type="text"
+          className={cls.input}
+          value={password}
+          onChange={onChangePassword}
+        />
+        <Button
+          className={cls.Btn}
+          onClick={onRegistrationClick}
+          disabled={isLoading}
+        >
+          Регистрация
+        </Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });
 

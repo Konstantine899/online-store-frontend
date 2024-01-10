@@ -1,14 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import cls from './LoginForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { LoginActions, loginByEmail } from '@/features/Login';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
-import { ReduxStoreWithManager } from '@/app/providers/StoreProvider/config/StateSchema';
 import { LoginReducer } from '../../model/slices/LoginSlice';
 import {
   getLoginEmail,
@@ -16,6 +15,12 @@ import {
   getLoginIsLoading,
   getLoginPassword,
 } from '@/features/Login/model/selectors/getLoginState';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
+const initialAsyncReducersLoginForm: ReducersList = { loginForm: LoginReducer };
 
 export interface LoginFormProps {
   className?: string;
@@ -25,21 +30,11 @@ export interface LoginFormProps {
 const LoginForm = memo((props: LoginFormProps) => {
   const { className, onClose } = props;
 
-  const store = useStore() as ReduxStoreWithManager;
   const dispatch = useAppDispatch();
   const email = useSelector(getLoginEmail);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginIsLoading);
   const error = useSelector(getLoginError);
-
-  useEffect(() => {
-    store.reducerManager.add('loginForm', LoginReducer);
-    dispatch({ type: 'mounting modal window login' });
-    return () => {
-      store.reducerManager.remove('loginForm');
-      dispatch({ type: 'unmounting modal window login' });
-    };
-  }, [dispatch, store.reducerManager]);
 
   const onChangeEmail = useCallback(
     (value: string) => {
@@ -69,33 +64,38 @@ const LoginForm = memo((props: LoginFormProps) => {
   const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
-    <div className={classNames(cls.LoginForm, {}, [className])}>
-      {error === 'Не корректный email' && (
-        <label className={cls.label}>{error}</label>
-      )}
-      {emailValidationErrors}
-      <Input
-        type="text"
-        className={cls.input}
-        value={email}
-        onChange={onChangeEmail}
-      />
+    <DynamicModuleLoader
+      reducers={initialAsyncReducersLoginForm}
+      removeAfterUnmount
+    >
+      <div className={classNames(cls.LoginForm, {}, [className])}>
+        {error === 'Не корректный email' && (
+          <label className={cls.label}>{error}</label>
+        )}
+        {emailValidationErrors}
+        <Input
+          type="text"
+          className={cls.input}
+          value={email}
+          onChange={onChangeEmail}
+        />
 
-      {error === 'Не корректный пароль' && (
-        <label className={cls.label}>{error}</label>
-      )}
-      {passwordValidationErrors}
+        {error === 'Не корректный пароль' && (
+          <label className={cls.label}>{error}</label>
+        )}
+        {passwordValidationErrors}
 
-      <Input
-        type="text"
-        className={cls.input}
-        value={password}
-        onChange={onChangePassword}
-      />
-      <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
-        Войти
-      </Button>
-    </div>
+        <Input
+          type="text"
+          className={cls.input}
+          value={password}
+          onChange={onChangePassword}
+        />
+        <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
+          Войти
+        </Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });
 

@@ -5,8 +5,12 @@ import { UserReducer } from '@/entities/User';
 import { AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialState: StateSchema) {
+export function createReduxStore(
+  initialState: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>,
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers, // обязательно разворачиваю asyncReducers до основных
     auth: AuthReducer,
     user: UserReducer,
   };
