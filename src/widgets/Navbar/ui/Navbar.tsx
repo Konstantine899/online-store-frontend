@@ -11,7 +11,6 @@ import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
 import { LoginActions, LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
-import { useNavigate } from 'react-router-dom';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -28,7 +27,6 @@ export const Navbar = memo((props: NavbarProps) => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
   const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const isAuth = useSelector(getUserRole);
@@ -42,8 +40,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(LoginActions.setEmail(''));
     dispatch(LoginActions.setPassword(''));
     setIsOpenLoginModal(false);
-    navigate(publicRoutePath.main);
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const onShowRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(true);
@@ -54,8 +51,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(RegistrationActions.setEmail(''));
     dispatch(RegistrationActions.setPassword(''));
     setIsOpenRegistrationModal(false);
-    navigate(publicRoutePath.main);
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const onLogout = () => {
     dispatch(UserActions.removeUserData());

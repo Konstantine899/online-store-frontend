@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 import { Auth } from '@/features/Auth';
-import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema';
+import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
+import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 
 interface loginByEmailProps {
   email: string;
@@ -18,14 +19,12 @@ export interface LoginValidationErrors {
 export const loginByEmail = createAsyncThunk<
   Auth,
   loginByEmailProps,
-  {
-    rejectValue: string | LoginValidationErrors[];
-    extra: ThunkExtraArg;
-  }
+  ThunkAPIConfig<string | LoginValidationErrors[]>
 >('LoginSlice', async ({ email, password }, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI;
   try {
     const response = await extra.api.post('/auth/login', { email, password });
+    extra.navigate(publicRoutePath.main);
     return setUserData(response.data, thunkAPI);
   } catch (error) {
     const messages: LoginValidationErrors[] = error.response.data;

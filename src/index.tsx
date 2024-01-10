@@ -5,9 +5,9 @@ import { StoreProvider } from '@/app/providers/StoreProvider';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <StoreProvider>
-    <BrowserRouter basename={'/online-store'}>
+  <BrowserRouter basename={'/online-store'}>
+    <StoreProvider>
       <App />
-    </BrowserRouter>
-  </StoreProvider>,
+    </StoreProvider>
+  </BrowserRouter>,
 );

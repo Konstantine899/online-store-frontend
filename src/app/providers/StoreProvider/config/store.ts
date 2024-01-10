@@ -5,10 +5,13 @@ import { UserReducer } from '@/entities/User';
 import { AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
+import { To } from '@remix-run/router';
+import { NavigateOptions } from 'react-router/dist/lib/context';
 
 export function createReduxStore(
   initialState: StateSchema,
   asyncReducers?: ReducersMapObject<StateSchema>,
+  navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers, // обязательно разворачиваю asyncReducers до основных
@@ -23,7 +26,9 @@ export function createReduxStore(
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ thunk: { extraArgument: { api: $api } } }),
+      getDefaultMiddleware({
+        thunk: { extraArgument: { api: $api, navigate } },
+      }),
   });
 
   // @ts-ignore
