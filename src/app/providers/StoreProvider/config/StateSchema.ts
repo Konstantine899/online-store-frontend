@@ -9,6 +9,7 @@ import {
   Reducer,
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
+import { AxiosInstance } from 'axios';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -30,4 +31,9 @@ export interface ReducerManager {
 // тип для reducerManager
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
   reducerManager: ReducerManager;
+}
+
+// Типизация extra аргумента
+export interface ThunkExtraArg {
+  api: AxiosInstance;
 }

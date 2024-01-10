@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 import { Auth } from '@/features/Auth';
+import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema';
 
 interface RegistrationByEmailProps {
   email: string;
@@ -18,16 +18,17 @@ export interface RegistrationValidationErrors {
 export const registrationByEmail = createAsyncThunk<
   Auth,
   RegistrationByEmailProps,
-  { rejectValue: string | RegistrationValidationErrors[] }
+  { rejectValue: string | RegistrationValidationErrors[]; extra: ThunkExtraArg }
 >('Registration', async ({ email, password }, thunkAPI) => {
+  const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await axios.post(
+    const response = await extra.api.post(
       'http://localhost:5000/online-store/auth/registration',
       { email, password },
     );
     return setUserData(response.data, thunkAPI);
   } catch (error) {
     const messages: RegistrationValidationErrors[] = error.response.data;
-    return thunkAPI.rejectWithValue(error.response.data.message || messages);
+    return rejectWithValue(error.response.data.message || messages);
   }
 });

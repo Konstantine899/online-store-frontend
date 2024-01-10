@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 import { Auth } from '@/features/Auth';
+import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema';
 
 interface loginByEmailProps {
   email: string;
@@ -20,16 +20,15 @@ export const loginByEmail = createAsyncThunk<
   loginByEmailProps,
   {
     rejectValue: string | LoginValidationErrors[];
+    extra: ThunkExtraArg;
   }
 >('LoginSlice', async ({ email, password }, thunkAPI) => {
+  const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await axios.post(
-      'http://localhost:5000/online-store/auth/login',
-      { email, password },
-    );
+    const response = await extra.api.post('/auth/login', { email, password });
     return setUserData(response.data, thunkAPI);
   } catch (error) {
     const messages: LoginValidationErrors[] = error.response.data;
-    return thunkAPI.rejectWithValue(error.response.data.message || messages);
+    return rejectWithValue(error.response.data.message || messages);
   }
 });
