@@ -10,8 +10,6 @@ import {
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
-import { To } from '@remix-run/router';
-import { NavigateOptions } from 'react-router/dist/lib/context';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -38,11 +36,11 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 // Типизация extra аргумента
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 // Типизация thunkAPI
 export interface ThunkAPIConfig<T> {
   rejectValue: T;
   extra: ThunkExtraArg;
+  state: StateSchema;
 }

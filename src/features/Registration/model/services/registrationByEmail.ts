@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setUserData } from '@/shared/lib/helpers/setUserData';
 import { Auth } from '@/features/Auth';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 
 interface RegistrationByEmailProps {
   email: string;
@@ -27,7 +26,6 @@ export const registrationByEmail = createAsyncThunk<
       'http://localhost:5000/online-store/auth/registration',
       { email, password },
     );
-    extra.navigate(publicRoutePath.main);
     return setUserData(response.data, thunkAPI);
   } catch (error) {
     const messages: RegistrationValidationErrors[] = error.response.data;

@@ -16,6 +16,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { getUserRole, UserActions } from '@/entities/User';
 import { AuthActions } from '@/features/Auth';
+import { useNavigate } from 'react-router';
 
 interface NavbarProps {
   className?: string;
@@ -28,6 +29,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const isAuth = useSelector(getUserRole);
 
@@ -40,7 +42,8 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(LoginActions.setEmail(''));
     dispatch(LoginActions.setPassword(''));
     setIsOpenLoginModal(false);
-  }, [dispatch]);
+    navigate(publicRoutePath.main);
+  }, [dispatch, navigate]);
 
   const onShowRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(true);
@@ -51,7 +54,8 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(RegistrationActions.setEmail(''));
     dispatch(RegistrationActions.setPassword(''));
     setIsOpenRegistrationModal(false);
-  }, [dispatch]);
+    navigate(publicRoutePath.main);
+  }, [dispatch, navigate]);
 
   const onLogout = () => {
     dispatch(UserActions.removeUserData());
