@@ -14,7 +14,7 @@ import { RegistrationModal } from '@/features/Registration';
 import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getUserRole, UserActions } from '@/entities/User';
+import { getUserState, UserActions } from '@/entities/User';
 import { AuthActions } from '@/features/Auth';
 import { useNavigate } from 'react-router';
 
@@ -31,7 +31,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const isAuth = useSelector(getUserRole);
+  const authData = useSelector(getUserState);
 
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
@@ -62,6 +62,38 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(AuthActions.removeAuthData());
   };
 
+  if (authData) {
+    return (
+      <nav className={classNames(cls.Navbar, {}, [className])}>
+        <div className={cls.Navbar_content}>
+          <div className={cls.Navbar_content_left}>
+            <BurgerMenuButton />
+            <AppLink
+              className={cls.Navbar_content_left_a}
+              to={publicRoutePath.main}
+            >
+              Магазин
+            </AppLink>
+          </div>
+          <div className={cls.Navbar_content_right}>
+            <AppLink
+              className={cls.logout}
+              to={publicRoutePath.main}
+              onClick={onLogout}
+            >
+              <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
+              Выйти
+            </AppLink>
+            <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
+              <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
+              Корзина
+            </AppLink>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.Navbar_content}>
@@ -75,36 +107,23 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
         <div className={cls.Navbar_content_right}>
-          {isAuth ? (
-            <AppLink
-              className={cls.logout}
-              to={publicRoutePath.main}
-              onClick={onLogout}
-            >
-              <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
-              Выйти
-            </AppLink>
-          ) : (
-            <>
-              <AppLink
-                className={cls.login}
-                to={publicRoutePath.auth}
-                onClick={onShowLoginModal}
-              >
-                <Icon className={cls.LoginIcon} Svg={LoginIcon} />
-                Войти
-              </AppLink>
+          <AppLink
+            className={cls.login}
+            to={publicRoutePath.auth}
+            onClick={onShowLoginModal}
+          >
+            <Icon className={cls.LoginIcon} Svg={LoginIcon} />
+            Войти
+          </AppLink>
 
-              <AppLink
-                className={cls.registration}
-                to={publicRoutePath.sign_up}
-                onClick={onShowRegistrationModal}
-              >
-                <Icon className={cls.UserIcon} Svg={UserIcon} />
-                Регистрация
-              </AppLink>
-            </>
-          )}
+          <AppLink
+            className={cls.registration}
+            to={publicRoutePath.sign_up}
+            onClick={onShowRegistrationModal}
+          >
+            <Icon className={cls.UserIcon} Svg={UserIcon} />
+            Регистрация
+          </AppLink>
 
           <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
             <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
