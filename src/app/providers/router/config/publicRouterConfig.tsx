@@ -34,36 +34,29 @@ export const publicRoutePath: Record<publicRouter, string> = {
   [publicRouter.SIGN_UP]: '/auth/registration',
   [publicRouter.AUTH]: '/auth/login',
   [publicRouter.GET_LIST_ALL_BRANDS]: '/brand/brands',
-  [publicRouter.GET_BRAND]: '/brand/one/:id([0-9]+)',
+  [publicRouter.GET_BRAND]: '/brand/one/',
   [publicRouter.GET_CART]: '/cart/get-cart',
-  [publicRouter.APPEND_TO_CART]:
-    '/cart/product/:productId([0-9]+)/append/:quantity([0-9]+)',
-  [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]:
-    '/cart/product/:productId([0-9]+)/increment/:quantity([0-9]+)',
-  [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]:
-    '/cart/product/:productId([0-9]+)/decrement/:quantity([0-9]+)',
-  [publicRouter.REMOVE_PRODUCT_FROM_CART]:
-    '/cart/product/:productId([0-9]+)/remove',
+  [publicRouter.APPEND_TO_CART]: '/cart/product/',
+  [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]: '/cart/product/',
+  [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]: '/cart/product/',
+  [publicRouter.REMOVE_PRODUCT_FROM_CART]: '/cart/product/',
   [publicRouter.CLEAR_CART]: '/cart/clear',
   [publicRouter.GET_LIST_ALL_CATEGORIES]: '/category/categories',
-  [publicRouter.GET_CATEGORY]: '/category/one/:id([0-9]+)',
+  [publicRouter.GET_CATEGORY]: '/category/one/',
   [publicRouter.GUEST_CREATE_ORDER]: '/order/guest/create-order',
   [publicRouter.GUEST_MAKE_PAYMENT]: '/payment/guest/make-payment',
-  [publicRouter.GET_PRODUCT_PROPERTY]:
-    '/product-property/product_id/:productId([0-9]+)/get-property/:id([0-9]+)',
-  [publicRouter.GET_LIST_PRODUCT_PROPERTY]:
-    '/product-property/product_id/:productId([0-9]+)/properties',
-  [publicRouter.GET_PRODUCT]: '/product/one/:id([0-9]+)',
+  [publicRouter.GET_PRODUCT_PROPERTY]: '/product-property/product_id/',
+  [publicRouter.GET_LIST_PRODUCT_PROPERTY]: '/product-property/product_id/',
+  [publicRouter.GET_PRODUCT]: '/product/one/',
   [publicRouter.GET_LIST_PRODUCT]: '/product/all',
-  [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]:
-    '/product/all/brandId/:brandId([0-9]+)',
-  [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]:
-    '/product/all/categoryId/:categoryId([0-9]+)',
+  [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: '/product/all/brandId/',
+  [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: '/product/all/categoryId/',
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]:
-    '/product/all/brandId/:brandId([0-9]+)/categoryId/:categoryId([0-9]+)',
-  [publicRouter.GET_RATING]: '/rating/product/:productId([0-9]+)',
+    '/product/all/brandId/',
+  [publicRouter.GET_RATING]: '/rating/product/',
 };
 
+/* В publicRouterConfig добавляем динамические параметры пути */
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
     path: publicRoutePath.main,
@@ -77,23 +70,27 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.GET_LIST_ALL_BRANDS]: {
     path: publicRoutePath.get_list_all_brands,
   },
-  [publicRouter.GET_BRAND]: { path: publicRoutePath.get_brand },
+  [publicRouter.GET_BRAND]: { path: `${publicRoutePath.get_brand}:id([0-9]+)` },
   [publicRouter.GET_CART]: { path: publicRoutePath.get_cart },
-  [publicRouter.APPEND_TO_CART]: { path: publicRoutePath.append_to_cart },
+  [publicRouter.APPEND_TO_CART]: {
+    path: `${publicRoutePath.append_to_cart}:productId([0-9]+)/append/:quantity([0-9]+)`,
+  },
   [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: publicRoutePath.increase_in_the_quantity_in_the_cart,
+    path: `${publicRoutePath.increase_in_the_quantity_in_the_cart}:productId([0-9]+)/increment/:quantity([0-9]+)`,
   },
   [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: publicRoutePath.decrease_in_the_quantity_in_the_cart,
+    path: `${publicRoutePath.decrease_in_the_quantity_in_the_cart}:productId([0-9]+)/decrement/:quantity([0-9]+)`,
   },
   [publicRouter.REMOVE_PRODUCT_FROM_CART]: {
-    path: publicRoutePath.remove_product_from_cart,
+    path: `${publicRoutePath.remove_product_from_cart}:productId([0-9]+)/remove`,
   },
   [publicRouter.CLEAR_CART]: { path: publicRoutePath.clear_cart },
   [publicRouter.GET_LIST_ALL_CATEGORIES]: {
     path: publicRoutePath.get_list_all_categories,
   },
-  [publicRouter.GET_CATEGORY]: { path: publicRoutePath.get_category },
+  [publicRouter.GET_CATEGORY]: {
+    path: `${publicRoutePath.get_category}:id([0-9]+)`,
+  },
   [publicRouter.GUEST_CREATE_ORDER]: {
     path: publicRoutePath.guest_create_order,
   },
@@ -101,21 +98,25 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     path: publicRoutePath.guest_make_payment,
   },
   [publicRouter.GET_PRODUCT_PROPERTY]: {
-    path: publicRoutePath.get_product_property,
+    path: `${publicRoutePath.get_product_property}:productId([0-9]+)/get-property/:id([0-9]+)`,
   },
   [publicRouter.GET_LIST_PRODUCT_PROPERTY]: {
-    path: publicRoutePath.get_list_product_property,
+    path: `${publicRoutePath.get_list_product_property}:productId([0-9]+)/properties`,
   },
-  [publicRouter.GET_PRODUCT]: { path: publicRoutePath.get_product },
+  [publicRouter.GET_PRODUCT]: {
+    path: `${publicRoutePath.get_product}:id([0-9]+)`,
+  },
   [publicRouter.GET_LIST_PRODUCT]: { path: publicRoutePath.get_list_product },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
-    path: publicRoutePath.get_list_product_by_brand_id,
+    path: `${publicRoutePath.get_list_product_by_brand_id}:brandId([0-9]+)`,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
-    path: publicRoutePath.get_list_product_by_category_id,
+    path: `${publicRoutePath.get_list_product_by_category_id}:categoryId([0-9]+)`,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
-    path: publicRoutePath.get_list_product_by_brand_id_and_category_id,
+    path: `${publicRoutePath.get_list_product_by_brand_id_and_category_id}:brandId([0-9]+)/categoryId/:categoryId([0-9]+)`,
   },
-  [publicRouter.GET_RATING]: { path: publicRoutePath.get_rating },
+  [publicRouter.GET_RATING]: {
+    path: `${publicRoutePath.get_rating}:productId([0-9]+)`,
+  },
 };
