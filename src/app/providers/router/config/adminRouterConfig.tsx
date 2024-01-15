@@ -63,46 +63,46 @@ export const adminRoutePath: Record<adminRouter, string> = {
 export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.CREATE_BRAND]: { path: adminRoutePath.create_brand },
   [adminRouter.UPDATE_BRAND]: {
-    path: `${adminRoutePath.update_brand}:id([0-9]+)`,
+    path: `${adminRoutePath.update_brand}:id`,
   },
   [adminRouter.REMOVE_BRAND]: {
-    path: `${adminRoutePath.remove_brand}:id([0-9]+)`,
+    path: `${adminRoutePath.remove_brand}:id`,
   },
   [adminRouter.CREATE_CATEGORY]: { path: adminRoutePath.create_category },
   [adminRouter.UPDATE_CATEGORY]: {
-    path: `${adminRoutePath.update_category}:id([0-9]+)`,
+    path: `${adminRoutePath.update_category}:id`,
   },
   [adminRouter.REMOVE_CATEGORY]: {
-    path: `${adminRoutePath.remove_category}:id([0-9]+)`,
+    path: `${adminRoutePath.remove_category}:id`,
   },
   [adminRouter.ADMIN_GET_ALL_ORDER]: {
     path: adminRoutePath.admin_get_all_order,
   },
   [adminRouter.ADMIN_GET_ALL_ORDER_USER]: {
-    path: `${adminRoutePath.admin_get_all_order_user}:userId([0-9]+)`,
+    path: `${adminRoutePath.admin_get_all_order_user}:userId`,
   },
   [adminRouter.ADMIN_GET_ORDER]: {
-    path: `${adminRoutePath.admin_get_order}:orderId([0-9]+)`,
+    path: `${adminRoutePath.admin_get_order}:orderId`,
   },
   [adminRouter.ADMIN_CREATE_ORDER]: { path: adminRoutePath.admin_create_order },
   [adminRouter.ADMIN_REMOVE_ORDER]: {
-    path: `${adminRoutePath.admin_remove_order}:orderId([0-9]+)`,
+    path: `${adminRoutePath.admin_remove_order}:orderId`,
   },
   [adminRouter.CREATE_PRODUCT_PROPERTY]: {
-    path: `${adminRoutePath.create_product_property}:productId([0-9]+)/create`,
+    path: `${adminRoutePath.create_product_property}:productId/create`,
   },
   [adminRouter.UPDATE_PRODUCT_PROPERTY]: {
-    path: `${adminRoutePath.update_product_property}:productId([0-9]+)/update_property/:id([0-9]+)`,
+    path: `${adminRoutePath.update_product_property}:productId/update_property/:id`,
   },
   [adminRouter.REMOVE_PRODUCT_PROPERTY]: {
-    path: `${adminRoutePath.remove_product_property}:productId([0-9]+)/remove-product-property/:id([0-9]+)`,
+    path: `${adminRoutePath.remove_product_property}:productId/remove-product-property/:id`,
   },
   [adminRouter.CREATE_PRODUCT]: { path: adminRoutePath.create_product },
   [adminRouter.UPDATE_PRODUCT]: {
-    path: `${adminRoutePath.update_product}:id([0-9]+)`,
+    path: `${adminRoutePath.update_product}:id`,
   },
   [adminRouter.REMOVE_PRODUCT]: {
-    path: `${adminRoutePath.remove_product}:id([0-9]+)`,
+    path: `${adminRoutePath.remove_product}:id`,
   },
   [adminRouter.CREATE_ROLE]: { path: adminRoutePath.create_role },
   [adminRouter.GET_ROLE]: { path: `${adminRoutePath.get_role}:role` },
