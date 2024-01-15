@@ -7,6 +7,8 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 import { Icon } from '@/shared/ui/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
+import { Card } from '@/shared/ui/Card';
+import { CardTheme } from '@/shared/ui/Card/Card';
 
 interface Product {
   id: number;
@@ -110,7 +112,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     <Suspense fallback={<h1>Loading...</h1>}>
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
         {products.map((product) => (
-          <div key={product.id} className={cls.Card}>
+          <Card key={product.id} theme={CardTheme.OUTLINED}>
             <div className={cls.CardTop}>
               <AppLink
                 to={publicRoutePath.get_product}
@@ -147,7 +149,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
                 Добавить в корзину
               </Button>
             </div>
-          </div>
+          </Card>
         ))}
       </Page>
     </Suspense>

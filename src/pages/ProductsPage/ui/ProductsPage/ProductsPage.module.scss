@@ -5,21 +5,7 @@
     gap: 20px 10px;
 }
 
-.Card {
-    display: flex;
-    flex-direction: column;
-    width: 225px;
-    min-height: 350px;
-    max-height: 400px;
-    box-shadow: 1px 2px 4px rgb(0 0 0 / 10%);
-    border-radius: 8px;
-    position: relative;
 
-
-    &:hover {
-        box-shadow: 4px 8px 16px rgb(72 17 115 / 50%);
-    }
-}
 
 .CardTop {
     flex: 0 0 220px;
