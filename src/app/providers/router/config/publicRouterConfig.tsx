@@ -70,26 +70,27 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.GET_LIST_ALL_BRANDS]: {
     path: publicRoutePath.get_list_all_brands,
   },
-  [publicRouter.GET_BRAND]: { path: `${publicRoutePath.get_brand}:id([0-9]+)` },
+  [publicRouter.GET_BRAND]: { path: `${publicRoutePath.get_brand}:id` },
   [publicRouter.GET_CART]: { path: publicRoutePath.get_cart },
   [publicRouter.APPEND_TO_CART]: {
-    path: `${publicRoutePath.append_to_cart}:productId([0-9]+)/append/:quantity([0-9]+)`,
+    path: `${publicRoutePath.append_to_cart}:productId/append/:quantity`,
   },
   [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: `${publicRoutePath.increase_in_the_quantity_in_the_cart}:productId([0-9]+)/increment/:quantity([0-9]+)`,
+    path: `${publicRoutePath.increase_in_the_quantity_in_the_cart}:productId/increment/:quantity`,
   },
   [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: `${publicRoutePath.decrease_in_the_quantity_in_the_cart}:productId([0-9]+)/decrement/:quantity([0-9]+)`,
+    path: `${publicRoutePath.decrease_in_the_quantity_in_the_cart}:productId/decrement/:quantity`,
   },
   [publicRouter.REMOVE_PRODUCT_FROM_CART]: {
-    path: `${publicRoutePath.remove_product_from_cart}:productId([0-9]+)/remove`,
+    path: `${publicRoutePath.remove_product_from_cart}:productId/remove`,
   },
   [publicRouter.CLEAR_CART]: { path: publicRoutePath.clear_cart },
   [publicRouter.GET_LIST_ALL_CATEGORIES]: {
     path: publicRoutePath.get_list_all_categories,
   },
   [publicRouter.GET_CATEGORY]: {
-    path: `${publicRoutePath.get_category}:id([0-9]+)`,
+    path: `${publicRoutePath.get_category}:id`,
+    element: <ProductsPage />,
   },
   [publicRouter.GUEST_CREATE_ORDER]: {
     path: publicRoutePath.guest_create_order,
@@ -98,25 +99,25 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     path: publicRoutePath.guest_make_payment,
   },
   [publicRouter.GET_PRODUCT_PROPERTY]: {
-    path: `${publicRoutePath.get_product_property}:productId([0-9]+)/get-property/:id([0-9]+)`,
+    path: `${publicRoutePath.get_product_property}:productId/get-property/:id`,
   },
   [publicRouter.GET_LIST_PRODUCT_PROPERTY]: {
-    path: `${publicRoutePath.get_list_product_property}:productId([0-9]+)/properties`,
+    path: `${publicRoutePath.get_list_product_property}:productId/properties`,
   },
   [publicRouter.GET_PRODUCT]: {
-    path: `${publicRoutePath.get_product}:id([0-9]+)`,
+    path: `${publicRoutePath.get_product}:id`,
   },
   [publicRouter.GET_LIST_PRODUCT]: { path: publicRoutePath.get_list_product },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
-    path: `${publicRoutePath.get_list_product_by_brand_id}:brandId([0-9]+)`,
+    path: `${publicRoutePath.get_list_product_by_brand_id}:brandId`,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
-    path: `${publicRoutePath.get_list_product_by_category_id}:categoryId([0-9]+)`,
+    path: `${publicRoutePath.get_list_product_by_category_id}:categoryId`,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
-    path: `${publicRoutePath.get_list_product_by_brand_id_and_category_id}:brandId([0-9]+)/categoryId/:categoryId([0-9]+)`,
+    path: `${publicRoutePath.get_list_product_by_brand_id_and_category_id}:brandId/categoryId/:categoryId`,
   },
   [publicRouter.GET_RATING]: {
-    path: `${publicRoutePath.get_rating}:productId([0-9]+)`,
+    path: `${publicRoutePath.get_rating}:productId`,
   },
 };
