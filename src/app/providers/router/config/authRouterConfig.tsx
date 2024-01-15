@@ -28,11 +28,11 @@ export const authRouterConfig: Record<authRouter, RouteProps> = {
   [authRouter.LOGOUT]: { path: authRoutePath.logout },
   [authRouter.USER_GET_ORDER_LIST]: { path: authRoutePath.user_get_order_list },
   [authRouter.USER_GET_ORDER]: {
-    path: `${authRoutePath.user_get_order}:orderId([0-9]+)`,
+    path: `${authRoutePath.user_get_order}:orderId`,
   },
   [authRouter.USER_CREATE_ORDER]: { path: authRoutePath.user_create_order },
   [authRouter.USER_MAKE_PAYMENT]: { path: authRoutePath.user_make_payment },
   [authRouter.CREATE_RATING]: {
-    path: `${authRoutePath.create_rating}:productId([0-9]+)/rating/:rating([1-5])`,
+    path: `${authRoutePath.create_rating}:productId/rating/:rating`,
   },
 };
