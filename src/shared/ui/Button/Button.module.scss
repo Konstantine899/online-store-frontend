@@ -54,12 +54,46 @@
     font-size: var(--font-size-zero);
 }
 
-.outline {
-    border: 1px solid var(--primary-color-hover);
-    color: var(--primary-color);
-    background: none;
+
+/* Размеры шрифта */
+
+.size_s{
+    font: var(--font-s);
 }
+
+.size_m{
+    font: var(--font-m);
+}
+
+.size_l{
+    font: var(--font-l);
+}
+
+.size_xl{
+    font: var(--font-xl);
+}
+
+.outline {
+    border: 1px solid var(--button-inline-primary-color);
+    color: var(--inverted-primary-color);
+    background: none;
+    margin-top: auto;
+    padding: 10px;
+
+    &:hover{
+        cursor: pointer;
+        color: var(--primary-color);
+        background-color: var(--button-inline-inverted-primary-color);
+        border: 1px solid var(--button-inline-inverted-primary-color);
+
+    }
+}
+
 
 .disabled {
     opacity: .5;
+}
+
+.fullWidth {
+    width: 100%;
 }
