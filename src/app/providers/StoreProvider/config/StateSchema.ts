@@ -10,16 +10,19 @@ import {
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
+import { ProductsPageSchema } from '@/pages/ProductsPage';
 
 export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
+  productsListPage?: ProductsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
-const keyFromState: StateSchemaKey = 'registrationForm' || 'loginForm';
+const keyFromState: StateSchemaKey =
+  'registrationForm' || 'loginForm' || 'productsListPage';
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;

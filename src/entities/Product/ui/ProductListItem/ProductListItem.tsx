@@ -17,7 +17,7 @@ interface ProductListItemProps {
 
 export const ProductListItem = memo((props: ProductListItemProps) => {
   const { className, product } = props;
-
+  console.log(product.image);
   return (
     <div className={classNames(cls.ProductListItem, {}, [className])}>
       <Card key={product.id} theme={CardTheme.OUTLINED}>

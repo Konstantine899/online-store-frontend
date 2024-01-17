@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, Suspense } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { ProductListPage } from '../ProductListPage/ProductListPage';
+import { ProductsListPage } from '../ProductsListPage/ProductsListPage';
 
 interface ProductsPageProps {
   className?: string;
@@ -14,7 +14,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
-        <ProductListPage />
+        <ProductsListPage />
       </Page>
     </Suspense>
   );
