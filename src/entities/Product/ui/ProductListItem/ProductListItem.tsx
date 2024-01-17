@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { ProductSchema } from '@/entities/Product';
+import { KitImage } from '@/shared/ui/KitImage/KitImage';
 
 interface ProductListItemProps {
   className?: string;
@@ -22,7 +23,17 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
       <Card key={product.id} theme={CardTheme.OUTLINED}>
         <div className={cls.CardTop}>
           <AppLink to={publicRoutePath.get_product} className={cls.CardImage}>
-            <img src={product.image} alt={product.name} />
+            <KitImage
+              src={product.image}
+              alt={product.name}
+              spareImage={
+                <img
+                  src={
+                    'https://sh31-maxachkala-r82.gosweb.gosuslugi.ru/netcat_files/8/140/nofoto_3.jpeg'
+                  }
+                />
+              }
+            />
           </AppLink>
         </div>
         <div className={cls.CardBottom}>

@@ -76,8 +76,7 @@ const products: ProductSchema[] = [
     price: 199,
     rating: 5,
     voted: 1,
-    image:
-      'https://cdn21vek.by/img/galleries/8448/541/preview_b/sparkgo20233gb64gbtcnbf7n64enbk_tecno_654b43c4d0bfe.jpeg',
+    image: '',
     category_id: 1,
     brand_id: 1,
   },
