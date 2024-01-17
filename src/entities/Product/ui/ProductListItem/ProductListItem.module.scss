@@ -33,14 +33,14 @@
     padding: 10px;
 }
 
-.CardPriceCommon{
+.CardPriceCommon {
     font-weight: 400;
     font-size: 1rem;
     color: var(--inverted-primary-color);
     margin-bottom: 10px;
 }
 
-.CardPriceCommon::after{
+.CardPriceCommon::after {
     content: "₽";
     margin-left: 4px;
     position: relative;
@@ -54,29 +54,9 @@
     line-height: 150%;
     color: var(--title-primary-color);
 
-    &:hover{
+    &:hover {
         color: var(--title-inverted-primary-color)
     }
 }
 
-.CardRating{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font: var(--font-m);
-}
 
-.RatingWrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5px
-}
-
-.StarIcon{
-    fill: #481173;
-    width: var(--font-size-m);
-    height: var(--font-size-m);
-}
