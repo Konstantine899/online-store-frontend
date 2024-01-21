@@ -109,7 +109,7 @@ export const Navbar = memo((props: NavbarProps) => {
         <div className={cls.Navbar_content_right}>
           <AppLink
             className={cls.login}
-            to={publicRoutePath.auth}
+            to={publicRoutePath.main}
             onClick={onShowLoginModal}
           >
             <Icon className={cls.LoginIcon} Svg={LoginIcon} />
@@ -118,7 +118,7 @@ export const Navbar = memo((props: NavbarProps) => {
 
           <AppLink
             className={cls.registration}
-            to={publicRoutePath.sign_up}
+            to={publicRoutePath.main}
             onClick={onShowRegistrationModal}
           >
             <Icon className={cls.UserIcon} Svg={UserIcon} />

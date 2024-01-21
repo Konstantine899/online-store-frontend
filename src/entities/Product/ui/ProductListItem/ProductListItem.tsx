@@ -15,7 +15,6 @@ interface ProductListItemProps {
 
 export const ProductListItem = memo((props: ProductListItemProps) => {
   const { className, product } = props;
-  console.log(product.image);
   return (
     <div className={classNames(cls.ProductListItem, {}, [className])}>
       <Card key={product.id} theme={CardTheme.OUTLINED}>
@@ -25,7 +24,10 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
               src={`${__API_URL__}/static/${product.image}`}
               alt={product.name}
               spareImage={
-                <img src={`${__API_URL__}/static/not_found_image.jpeg`} />
+                <img
+                  src={`${__API_URL__}/static/not_found_image.jpeg`}
+                  alt={'not_found_image'}
+                />
               }
             />
           </AppLink>
