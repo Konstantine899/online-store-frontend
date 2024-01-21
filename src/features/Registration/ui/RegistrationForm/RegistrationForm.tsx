@@ -22,6 +22,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { PasswordInput } from '@/features/PasswordInput';
 
 const initialAsyncReducersRegistrationForm: ReducersList = {
   registrationForm: RegistrationReducer,
@@ -88,12 +89,9 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
 
         {passwordValidationErrors}
 
-        <Input
-          type="text"
-          className={cls.input}
-          value={password}
-          onChange={onChangePassword}
-          placeholder={'Пароль'}
+        <PasswordInput
+          password={password}
+          onChangePassword={onChangePassword}
         />
         <Button
           className={cls.Btn}

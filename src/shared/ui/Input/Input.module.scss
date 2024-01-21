@@ -1,10 +1,22 @@
 .InputWrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    border: 1px solid black;
 }
 
 .input{
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    font: var(--font-m);
     width: 100%;
+}
+
+.inputSvg{
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
 }
 
 

@@ -20,6 +20,8 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
+import { PasswordInput } from '@/features/PasswordInput';
+
 const initialAsyncReducersLoginForm: ReducersList = { loginForm: LoginReducer };
 
 export interface LoginFormProps {
@@ -86,12 +88,9 @@ const LoginForm = memo((props: LoginFormProps) => {
         )}
         {passwordValidationErrors}
 
-        <Input
-          type="text"
-          className={cls.input}
-          value={password}
-          onChange={onChangePassword}
-          placeholder={'Пароль'}
+        <PasswordInput
+          password={password}
+          onChangePassword={onChangePassword}
         />
         <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
           Войти
