@@ -83,6 +83,7 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
           className={cls.input}
           value={email}
           onChange={onChangeEmail}
+          placeholder={'Email'}
         />
 
         {passwordValidationErrors}
@@ -92,6 +93,7 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
           className={cls.input}
           value={password}
           onChange={onChangePassword}
+          placeholder={'Пароль'}
         />
         <Button
           className={cls.Btn}

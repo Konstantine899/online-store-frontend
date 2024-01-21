@@ -78,6 +78,7 @@ const LoginForm = memo((props: LoginFormProps) => {
           className={cls.input}
           value={email}
           onChange={onChangeEmail}
+          placeholder={'Email'}
         />
 
         {error === 'Не корректный пароль' && (
@@ -90,6 +91,7 @@ const LoginForm = memo((props: LoginFormProps) => {
           className={cls.input}
           value={password}
           onChange={onChangePassword}
+          placeholder={'Пароль'}
         />
         <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
           Войти
