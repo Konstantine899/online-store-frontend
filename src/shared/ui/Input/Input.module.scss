@@ -1,8 +1,12 @@
 .InputWrapper {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #757575;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px dashed #e5e5e5;
+
 }
+
 
 .label {
     color: #757575;
@@ -15,6 +19,13 @@
     transition: 0.2s ease all;
 }
 
+.inputSvg {
+    fill: #757575;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
 .input {
     font: var(--font-m);
     padding: 10px 10px 10px 5px;
@@ -22,20 +33,29 @@
     border: none;
     width: 100%;
     outline: none;
+    height: 40px;
+    color: #481173;
 
-    &:focus ~ .label, &:valid ~ label{
-        top:-20px;
-        font-size:14px;
+
+
+    &:focus ~ .label, &:valid ~ label {
+        top: -30px;
+        font-size: 14px;
         font-weight: bold;
-        color:#cb11ab;
+        color: #481173;
     }
+
+    &:focus{
+        border-bottom: 1px solid #481173;
+    }
+
+    &:focus ~ .inputSvg{
+        fill: #481173;
+        border-bottom: 1px solid #481173;
+    }
+
 }
 
-.inputSvg {
-    fill: #757575;
-    cursor: pointer;
-    height: 32px;
-    width: 32px;
-}
+
 
 

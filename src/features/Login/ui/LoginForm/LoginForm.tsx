@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import cls from './LoginForm.module.scss';
-import { Button } from '@/shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -71,12 +71,14 @@ const LoginForm = memo((props: LoginFormProps) => {
       removeAfterUnmount
     >
       <div className={classNames(cls.LoginForm, {}, [className])}>
-        <div className={cls.group}>
-          {error === 'Не корректный email' && (
-            <label className={cls.errorLabel}>{error}</label>
-          )}
-          {emailValidationErrors}
+        {error === 'Не корректный email' && (
+          <label className={cls.errorLabel}>{error}</label>
+        )}
+        {emailValidationErrors && (
+          <label className={cls.errorLabel}>{emailValidationErrors}</label>
+        )}
 
+        <div className={cls.group}>
           <Input
             type="text"
             label={'Email'}
@@ -88,11 +90,14 @@ const LoginForm = memo((props: LoginFormProps) => {
           />
         </div>
 
+        {error === 'Не корректный пароль' && (
+          <label className={cls.errorLabel}>{error}</label>
+        )}
+        {passwordValidationErrors && (
+          <label className={cls.errorLabel}>{passwordValidationErrors}</label>
+        )}
+
         <div className={cls.group}>
-          {error === 'Не корректный пароль' && (
-            <label className={cls.errorLabel}>{error}</label>
-          )}
-          {passwordValidationErrors}
           <PasswordInput
             label={'Пароль'}
             htmlFor={'Password'}
@@ -100,7 +105,12 @@ const LoginForm = memo((props: LoginFormProps) => {
             onChangePassword={onChangePassword}
           />
         </div>
-        <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
+        <Button
+          className={cls.Btn}
+          onClick={onAuthClick}
+          theme={ButtonTheme.OUTLINE}
+          disabled={isLoading}
+        >
           Войти
         </Button>
       </div>

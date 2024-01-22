@@ -34,6 +34,7 @@ export const Input = memo((props: InputProps) => {
     type = 'text',
     ...otherProps
   } = props;
+
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
   };
