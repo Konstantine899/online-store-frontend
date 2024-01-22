@@ -71,27 +71,35 @@ const LoginForm = memo((props: LoginFormProps) => {
       removeAfterUnmount
     >
       <div className={classNames(cls.LoginForm, {}, [className])}>
-        {error === 'Не корректный email' && (
-          <label className={cls.label}>{error}</label>
-        )}
-        {emailValidationErrors}
-        <Input
-          type="text"
-          className={cls.input}
-          value={email}
-          onChange={onChangeEmail}
-          placeholder={'Email'}
-        />
+        <div className={cls.group}>
+          {error === 'Не корректный email' && (
+            <label className={cls.errorLabel}>{error}</label>
+          )}
+          {emailValidationErrors}
 
-        {error === 'Не корректный пароль' && (
-          <label className={cls.label}>{error}</label>
-        )}
-        {passwordValidationErrors}
+          <Input
+            type="text"
+            label={'Email'}
+            htmlFor={'Email'}
+            className={cls.input}
+            value={email}
+            required
+            onChange={onChangeEmail}
+          />
+        </div>
 
-        <PasswordInput
-          password={password}
-          onChangePassword={onChangePassword}
-        />
+        <div className={cls.group}>
+          {error === 'Не корректный пароль' && (
+            <label className={cls.errorLabel}>{error}</label>
+          )}
+          {passwordValidationErrors}
+          <PasswordInput
+            label={'Пароль'}
+            htmlFor={'Password'}
+            password={password}
+            onChangePassword={onChangePassword}
+          />
+        </div>
         <Button className={cls.Btn} onClick={onAuthClick} disabled={isLoading}>
           Войти
         </Button>

@@ -4,12 +4,14 @@ import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
 import EyeOpen from '@/shared/assets/icons/eye-open.svg';
 
 interface PasswordInputProps {
+  label?: string;
+  htmlFor?: string;
   password?: string;
   onChangePassword?: (value: string) => void;
 }
 
 export const PasswordInput = memo((props: PasswordInputProps) => {
-  const { password, onChangePassword } = props;
+  const { password, onChangePassword, htmlFor, label } = props;
   const [isViewPassword, setIsViewPassword] = useState(false);
 
   const onViewPassword = () => {
@@ -20,9 +22,11 @@ export const PasswordInput = memo((props: PasswordInputProps) => {
   return (
     <Input
       type={isViewPassword ? 'text' : 'password'}
+      label={label}
+      htmlFor={htmlFor}
       value={password}
+      required
       onChange={onChangePassword}
-      placeholder={'Пароль'}
       Svg={eyeSvgIcon}
       onViewPassword={onViewPassword}
     />

@@ -1,19 +1,38 @@
 .InputWrapper {
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
+    border-bottom: 1px solid #757575;
 }
 
-.input{
-    display: flex;
-    align-items: center;
-    border: none;
-    outline: none;
+.label {
+    color: #757575;
+    font: var(--font-l);
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+.input {
     font: var(--font-m);
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
     width: 100%;
+    outline: none;
+
+    &:focus ~ .label, &:valid ~ label{
+        top:-20px;
+        font-size:14px;
+        font-weight: bold;
+        color:#cb11ab;
+    }
 }
 
-.inputSvg{
+.inputSvg {
+    fill: #757575;
     cursor: pointer;
     height: 32px;
     width: 32px;

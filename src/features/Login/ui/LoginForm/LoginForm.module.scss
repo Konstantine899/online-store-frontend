@@ -1,11 +1,13 @@
 .LoginForm {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 400px;
 }
 
-.input {
-    margin: 10px 0;
+.group {
+    position: relative;
+    margin-bottom: 45px;
 }
 
 .Btn {
