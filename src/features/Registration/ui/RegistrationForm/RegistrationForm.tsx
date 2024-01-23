@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import cls from './RegistrationForm.module.scss';
-import { Button } from '@/shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import {
@@ -76,26 +76,39 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
     >
       <div className={classNames(cls.RegistrationForm, {}, [className])}>
         {typeof error === 'string' && (
-          <label className={cls.label}>{error}</label>
+          <label className={cls.errorLabel}>{error}</label>
         )}
-        {emailValidationErrors}
-        <Input
-          type="text"
-          className={cls.input}
-          value={email}
-          onChange={onChangeEmail}
-          placeholder={'Email'}
-        />
+        {emailValidationErrors && (
+          <label className={cls.errorLabel}>{emailValidationErrors}</label>
+        )}
+        <div className={cls.group}>
+          <Input
+            type="text"
+            className={cls.input}
+            value={email}
+            onChange={onChangeEmail}
+            label={'email'}
+            htmlFor={'email'}
+            required
+          />
+        </div>
 
-        {passwordValidationErrors}
+        {passwordValidationErrors && (
+          <label className={cls.errorLabel}>{passwordValidationErrors}</label>
+        )}
 
-        <PasswordInput
-          password={password}
-          onChangePassword={onChangePassword}
-        />
+        <div className={cls.group}>
+          <PasswordInput
+            label={'пароль'}
+            htmlFor={'пароль'}
+            password={password}
+            onChangePassword={onChangePassword}
+          />
+        </div>
         <Button
           className={cls.Btn}
           onClick={onRegistrationClick}
+          theme={ButtonTheme.OUTLINE}
           disabled={isLoading}
         >
           Регистрация

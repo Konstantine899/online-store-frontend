@@ -1,7 +1,14 @@
 .RegistrationForm {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 400px;
+    padding: 20px 40px;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 40px;
 }
 
 .input {
@@ -11,4 +18,10 @@
 .Btn {
     margin-top: 15px;
     margin-left: auto;
+}
+
+.errorLabel{
+    font: var(--font-m);
+    color: #cb11ab;
+    margin-bottom: 30px;
 }
