@@ -110,7 +110,10 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.GET_PRODUCT]: {
     path: `${publicRoutePath.get_product}:id`,
   },
-  [publicRouter.GET_LIST_PRODUCT]: { path: publicRoutePath.get_list_product },
+  [publicRouter.GET_LIST_PRODUCT]: {
+    path: publicRoutePath.get_list_product,
+    element: <ProductsPage />,
+  },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
     path: `${publicRoutePath.get_list_product_by_brand_id}:brandId`,
   },

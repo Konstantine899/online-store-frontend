@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { getUserState, UserActions } from '@/entities/User';
 import { AuthActions } from '@/features/Auth';
 import { useNavigate } from 'react-router';
+import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 
 interface NavbarProps {
   className?: string;
@@ -70,6 +71,7 @@ export const Navbar = memo((props: NavbarProps) => {
             <BurgerMenuButton />
             <AppLink
               className={cls.Navbar_content_left_a}
+              theme={AppLinkTheme.SECONDARY}
               to={publicRoutePath.main}
             >
               Магазин
@@ -78,6 +80,7 @@ export const Navbar = memo((props: NavbarProps) => {
           <div className={cls.Navbar_content_right}>
             <AppLink
               className={cls.logout}
+              theme={AppLinkTheme.SECONDARY}
               to={publicRoutePath.main}
               onClick={onLogout}
             >

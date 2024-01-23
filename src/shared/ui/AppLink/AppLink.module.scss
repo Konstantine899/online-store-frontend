@@ -1,5 +1,17 @@
 .AppLink {
     color: var(--primary-color-hover);
+}
+
+.primary{
+    color: var(--link-primary-color);
+
+    &:hover{
+        color: var(--link-inverted-primary-color);
+    }
+}
+
+.secondary{
+    color: var(--primary-color-hover);
 
     &:hover {
         color: var(--primary-color);
