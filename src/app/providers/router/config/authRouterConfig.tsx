@@ -1,4 +1,5 @@
 import { RouteProps } from 'react-router-dom';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export enum authRouter {
   REFRESH = 'refresh',
@@ -9,6 +10,7 @@ export enum authRouter {
   USER_CREATE_ORDER = 'user_create_order',
   USER_MAKE_PAYMENT = 'user_make_payment',
   CREATE_RATING = 'create_rating',
+  NOT_FOUND = 'not_found',
 }
 
 export const authRoutePath: Record<authRouter, string> = {
@@ -20,6 +22,7 @@ export const authRoutePath: Record<authRouter, string> = {
   [authRouter.USER_CREATE_ORDER]: '/order/user/create-order',
   [authRouter.USER_MAKE_PAYMENT]: '/payment/user/make-payment',
   [authRouter.CREATE_RATING]: '/rating/product/',
+  [authRouter.NOT_FOUND]: '*',
 };
 
 export const authRouterConfig: Record<authRouter, RouteProps> = {
@@ -34,5 +37,9 @@ export const authRouterConfig: Record<authRouter, RouteProps> = {
   [authRouter.USER_MAKE_PAYMENT]: { path: authRoutePath.user_make_payment },
   [authRouter.CREATE_RATING]: {
     path: `${authRoutePath.create_rating}:productId/rating/:rating`,
+  },
+  [authRouter.NOT_FOUND]: {
+    path: authRoutePath.not_found,
+    element: <NotFoundPage />,
   },
 };

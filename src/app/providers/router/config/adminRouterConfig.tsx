@@ -1,4 +1,5 @@
 import { RouteProps } from 'react-router-dom';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export enum adminRouter {
   CREATE_BRAND = 'create_brand',
@@ -28,6 +29,7 @@ export enum adminRouter {
   REMOVE_USER = 'remove_user',
   ADD_USER_ROLE = 'add_user_role',
   REMOVE_USER_ROLE = 'remove_user_role',
+  NOT_FOUND = 'not_found',
 }
 
 export const adminRoutePath: Record<adminRouter, string> = {
@@ -58,6 +60,7 @@ export const adminRoutePath: Record<adminRouter, string> = {
   [adminRouter.REMOVE_USER]: '/user/delete/',
   [adminRouter.ADD_USER_ROLE]: '/user/role/add',
   [adminRouter.REMOVE_USER_ROLE]: '/user/role/delete',
+  [adminRouter.NOT_FOUND]: '*',
 };
 
 export const adminRouterConfig: Record<adminRouter, RouteProps> = {
@@ -114,4 +117,8 @@ export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.REMOVE_USER]: { path: `${adminRoutePath.remove_user}:id` },
   [adminRouter.ADD_USER_ROLE]: { path: adminRoutePath.add_user_role },
   [adminRouter.REMOVE_USER_ROLE]: { path: adminRoutePath.remove_user_role },
+  [adminRouter.NOT_FOUND]: {
+    path: adminRoutePath.not_found,
+    element: <NotFoundPage />,
+  },
 };

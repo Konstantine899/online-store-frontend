@@ -2,6 +2,7 @@ import { RouteProps } from 'react-router-dom';
 import { LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 import { ProductsPage } from '@/pages/ProductsPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export enum publicRouter {
   MAIN = 'main',
@@ -27,6 +28,7 @@ export enum publicRouter {
   GET_LIST_PRODUCT_BY_CATEGORY_ID = 'get_list_product_by_category_id',
   GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID = 'get_list_product_by_brand_id_and_category_id',
   GET_RATING = 'get_rating',
+  NOT_FOUND = 'not_found',
 }
 
 export const publicRoutePath: Record<publicRouter, string> = {
@@ -54,6 +56,7 @@ export const publicRoutePath: Record<publicRouter, string> = {
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]:
     '/product/all/brandId/',
   [publicRouter.GET_RATING]: '/rating/product/',
+  [publicRouter.NOT_FOUND]: '*',
 };
 
 /* В publicRouterConfig добавляем динамические параметры пути */
@@ -119,5 +122,9 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_RATING]: {
     path: `${publicRoutePath.get_rating}:productId`,
+  },
+  [publicRouter.NOT_FOUND]: {
+    path: publicRoutePath.not_found,
+    element: <NotFoundPage />,
   },
 };
