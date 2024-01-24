@@ -5,12 +5,12 @@ import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink';
 import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ProductSchema } from '@/entities/Product';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
+import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
 
 interface ProductListItemProps {
   className?: string;
-  product?: ProductSchema;
+  product?: Product;
 }
 
 export const ProductListItem = memo((props: ProductListItemProps) => {

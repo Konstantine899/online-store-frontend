@@ -1,12 +1,12 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductList.module.scss';
-import { ProductSchema } from '@/entities/Product';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
+import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
 
 interface ProductProps {
   className?: string;
-  products?: ProductSchema[];
+  products?: Product[];
 }
 
 export const ProductList = memo((props: ProductProps) => {
