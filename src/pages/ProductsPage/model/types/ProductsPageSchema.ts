@@ -17,14 +17,10 @@ export interface Product {
   brand_id: number;
 }
 
-export interface ProductsList {
+export interface ProductsPageSchema {
   metaData: ProductsListMetaData;
   count: number;
   rows: Product[];
-}
-
-export interface ProductsPageSchema {
-  productsList?: ProductsList;
   isLoading?: boolean;
   error?: string;
 }

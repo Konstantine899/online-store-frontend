@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ProductsList } from '../../types/ProductsPageSchema';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
+import { ProductsPageSchema } from '@/pages/ProductsPage';
 
 export const fetchProductsListPage = createAsyncThunk<
-  ProductsList,
+  ProductsPageSchema,
   void,
   ThunkAPIConfig<string>
 >('FetchProductsListPage', async (_, thunkAPI) => {

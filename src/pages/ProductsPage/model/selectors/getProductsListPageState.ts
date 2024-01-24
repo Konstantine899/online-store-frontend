@@ -1,11 +1,11 @@
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
-import { ProductsList } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
+import { ProductsPageSchema } from '@/pages/ProductsPage';
 
 export const getProductsListPageState = (state: StateSchema) =>
-  state?.productsListPage?.productsList ?? null;
+  state?.productsListPage ?? null;
 
 export const getProductsState = createSelector(
   getProductsListPageState,
-  (state: ProductsList) => state?.rows ?? [],
+  (state: ProductsPageSchema) => state?.rows ?? [],
 );
