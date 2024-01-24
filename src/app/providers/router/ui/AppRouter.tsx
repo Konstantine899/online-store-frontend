@@ -5,12 +5,13 @@ import { authRouterConfig } from '../config/authRouterConfig';
 import { adminRouterConfig } from '../config/adminRouterConfig';
 import { useSelector } from 'react-redux';
 import { getAdminRole, getUserRole } from '@/entities/User';
+import { PageLoader } from '@/widgets/PageLoader';
 
 export const AppRouter = () => {
   const isAuth = useSelector(getUserRole);
   const isAdmin = useSelector(getAdminRole);
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route />
         {Object.values(publicRouterConfig).map(({ path, element }) => (
