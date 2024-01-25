@@ -3,10 +3,10 @@ import { memo } from 'react';
 import cls from './ProductListItem.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink';
-import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
+import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 
 interface ProductListItemProps {
   className?: string;
@@ -19,7 +19,10 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
     <div className={classNames(cls.ProductListItem, {}, [className])}>
       <Card key={product.id} theme={CardTheme.OUTLINED}>
         <div className={cls.CardTop}>
-          <AppLink to={publicRoutePath.get_product} className={cls.CardImage}>
+          <AppLink
+            to={getRouteProduct(`${product.id}`)}
+            className={cls.CardImage}
+          >
             <KitImage
               src={`${__API_URL__}/static/${product.image}`}
               alt={product.name}
@@ -36,7 +39,10 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
           <div className={cls.CardPrice}>
             <div className={cls.CardPriceCommon}>{product.price}</div>
           </div>
-          <AppLink to={publicRoutePath.get_product} className={cls.CardTitle}>
+          <AppLink
+            to={getRouteProduct(`${product.id}`)}
+            className={cls.CardTitle}
+          >
             {product.name}
           </AppLink>
           <Button

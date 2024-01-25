@@ -3,131 +3,99 @@ import { LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 import { ProductsPage } from '@/pages/ProductsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import {
+  getRouteAllBrands,
+  getRouteAppendToCart,
+  getRouteAuth,
+  getRouteBrand,
+  getRouteCart,
+  getRouteCategory,
+  getRouteClearCart,
+  getRouteDecreaseInTheQuantityInTheCart,
+  getRouteGuestCreateOrder,
+  getRouteGuestMakePayment,
+  getRouteIncreaseInTheQuantityInTheCart,
+  getRouteListAllCategories,
+  getRouteListProductProperty,
+  getRouteListProducts,
+  getRouteListProductsByBrand,
+  getRouteListProductsByBrandAndByCategory,
+  getRouteListProductsByCategory,
+  getRouteMain,
+  getRouteProduct,
+  getRouteRating,
+  getRouteRemoveProductFromCart,
+  getRouterProductProperty,
+  getRouteSingUp,
+  publicRouter,
+} from '@/shared/consts/router/publicRouter';
 
-export enum publicRouter {
-  MAIN = 'main',
-  SIGN_UP = 'sign_up',
-  AUTH = 'auth',
-  GET_LIST_ALL_BRANDS = 'get_list_all_brands',
-  GET_BRAND = 'get_brand',
-  GET_CART = 'get_cart',
-  APPEND_TO_CART = 'append_to_cart',
-  INCREASE_IN_THE_QUANTITY_IN_THE_CART = 'increase_in_the_quantity_in_the_cart',
-  DECREASE_IN_THE_QUANTITY_IN_THE_CART = 'decrease_in_the_quantity_in_the_cart',
-  REMOVE_PRODUCT_FROM_CART = 'remove_product_from_cart',
-  CLEAR_CART = 'clear_cart',
-  GET_LIST_ALL_CATEGORIES = 'get_list_all_categories',
-  GET_CATEGORY = 'get_category',
-  GUEST_CREATE_ORDER = 'guest_create_order',
-  GUEST_MAKE_PAYMENT = 'guest_make_payment',
-  GET_PRODUCT_PROPERTY = 'get_product_property',
-  GET_LIST_PRODUCT_PROPERTY = 'get_list_product_property',
-  GET_PRODUCT = 'get_product',
-  GET_LIST_PRODUCT = 'get_list_product',
-  GET_LIST_PRODUCT_BY_BRAND_ID = 'get_list_product_by_brand_id',
-  GET_LIST_PRODUCT_BY_CATEGORY_ID = 'get_list_product_by_category_id',
-  GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID = 'get_list_product_by_brand_id_and_category_id',
-  GET_RATING = 'get_rating',
-  NOT_FOUND = 'not_found',
-}
-
-export const publicRoutePath: Record<publicRouter, string> = {
-  [publicRouter.MAIN]: '/',
-  [publicRouter.SIGN_UP]: '/auth/registration',
-  [publicRouter.AUTH]: '/auth/login',
-  [publicRouter.GET_LIST_ALL_BRANDS]: '/brand/brands',
-  [publicRouter.GET_BRAND]: '/brand/one/',
-  [publicRouter.GET_CART]: '/cart/get-cart',
-  [publicRouter.APPEND_TO_CART]: '/cart/product/',
-  [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]: '/cart/product/',
-  [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]: '/cart/product/',
-  [publicRouter.REMOVE_PRODUCT_FROM_CART]: '/cart/product/',
-  [publicRouter.CLEAR_CART]: '/cart/clear',
-  [publicRouter.GET_LIST_ALL_CATEGORIES]: '/category/categories',
-  [publicRouter.GET_CATEGORY]: '/category/one/',
-  [publicRouter.GUEST_CREATE_ORDER]: '/order/guest/create-order',
-  [publicRouter.GUEST_MAKE_PAYMENT]: '/payment/guest/make-payment',
-  [publicRouter.GET_PRODUCT_PROPERTY]: '/product-property/product_id/',
-  [publicRouter.GET_LIST_PRODUCT_PROPERTY]: '/product-property/product_id/',
-  [publicRouter.GET_PRODUCT]: '/product/one/',
-  [publicRouter.GET_LIST_PRODUCT]: '/product/all',
-  [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: '/product/all/brandId/',
-  [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: '/product/all/categoryId/',
-  [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]:
-    '/product/all/brandId/',
-  [publicRouter.GET_RATING]: '/rating/product/',
-  [publicRouter.NOT_FOUND]: '*',
-};
-
-/* В publicRouterConfig добавляем динамические параметры пути */
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
-    path: publicRoutePath.main,
+    path: getRouteMain(),
     element: <ProductsPage />,
   },
   [publicRouter.SIGN_UP]: {
-    path: publicRoutePath.sign_up,
+    path: getRouteSingUp(),
     element: <RegistrationModal />,
   },
-  [publicRouter.AUTH]: { path: publicRoutePath.auth, element: <LoginModal /> },
-  [publicRouter.GET_LIST_ALL_BRANDS]: {
-    path: publicRoutePath.get_list_all_brands,
-  },
-  [publicRouter.GET_BRAND]: { path: `${publicRoutePath.get_brand}:id` },
-  [publicRouter.GET_CART]: { path: publicRoutePath.get_cart },
+  [publicRouter.AUTH]: { path: getRouteAuth(), element: <LoginModal /> },
+  [publicRouter.GET_LIST_ALL_BRANDS]: { path: getRouteAllBrands() },
+  [publicRouter.GET_BRAND]: { path: getRouteBrand(':id') },
+  [publicRouter.GET_CART]: { path: getRouteCart() },
   [publicRouter.APPEND_TO_CART]: {
-    path: `${publicRoutePath.append_to_cart}:productId/append/:quantity`,
+    path: getRouteAppendToCart(':productId', ':quantity'),
   },
   [publicRouter.INCREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: `${publicRoutePath.increase_in_the_quantity_in_the_cart}:productId/increment/:quantity`,
+    path: getRouteIncreaseInTheQuantityInTheCart(':productId', ':quantity'),
   },
   [publicRouter.DECREASE_IN_THE_QUANTITY_IN_THE_CART]: {
-    path: `${publicRoutePath.decrease_in_the_quantity_in_the_cart}:productId/decrement/:quantity`,
+    path: getRouteDecreaseInTheQuantityInTheCart(':productId', ':quantity'),
   },
   [publicRouter.REMOVE_PRODUCT_FROM_CART]: {
-    path: `${publicRoutePath.remove_product_from_cart}:productId/remove`,
+    path: getRouteRemoveProductFromCart(':productId'),
   },
-  [publicRouter.CLEAR_CART]: { path: publicRoutePath.clear_cart },
+  [publicRouter.CLEAR_CART]: { path: getRouteClearCart() },
   [publicRouter.GET_LIST_ALL_CATEGORIES]: {
-    path: publicRoutePath.get_list_all_categories,
+    path: getRouteListAllCategories(),
   },
   [publicRouter.GET_CATEGORY]: {
-    path: `${publicRoutePath.get_category}:id`,
+    path: getRouteCategory(':id'),
     element: <ProductsPage />,
   },
   [publicRouter.GUEST_CREATE_ORDER]: {
-    path: publicRoutePath.guest_create_order,
+    path: getRouteGuestCreateOrder(),
   },
   [publicRouter.GUEST_MAKE_PAYMENT]: {
-    path: publicRoutePath.guest_make_payment,
+    path: getRouteGuestMakePayment(),
   },
   [publicRouter.GET_PRODUCT_PROPERTY]: {
-    path: `${publicRoutePath.get_product_property}:productId/get-property/:id`,
+    path: getRouterProductProperty(':productId', ':id'),
   },
   [publicRouter.GET_LIST_PRODUCT_PROPERTY]: {
-    path: `${publicRoutePath.get_list_product_property}:productId/properties`,
+    path: getRouteListProductProperty(':productId'),
   },
   [publicRouter.GET_PRODUCT]: {
-    path: `${publicRoutePath.get_product}:id`,
+    path: getRouteProduct(':id'),
   },
   [publicRouter.GET_LIST_PRODUCT]: {
-    path: publicRoutePath.get_list_product,
+    path: getRouteListProducts(),
     element: <ProductsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
-    path: `${publicRoutePath.get_list_product_by_brand_id}:brandId`,
+    path: getRouteListProductsByBrand(':brandId'),
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
-    path: `${publicRoutePath.get_list_product_by_category_id}:categoryId`,
+    path: getRouteListProductsByCategory(':categoryId'),
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
-    path: `${publicRoutePath.get_list_product_by_brand_id_and_category_id}:brandId/categoryId/:categoryId`,
+    path: getRouteListProductsByBrandAndByCategory(':brandId', ':categoryId'),
   },
   [publicRouter.GET_RATING]: {
-    path: `${publicRoutePath.get_rating}:productId`,
+    path: getRouteRating(':productId'),
   },
   [publicRouter.NOT_FOUND]: {
-    path: publicRoutePath.not_found,
+    path: '*',
     element: <NotFoundPage />,
   },
 };

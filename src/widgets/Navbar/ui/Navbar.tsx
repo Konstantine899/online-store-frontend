@@ -1,7 +1,6 @@
 import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
-import { publicRoutePath } from '@/app/providers/router/config/publicRouterConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import { BurgerMenuButton } from '@/features/BurgerMenuButton';
 import { Icon } from '@/shared/ui/Icon';
@@ -18,6 +17,10 @@ import { getUserState, UserActions } from '@/entities/User';
 import { AuthActions } from '@/features/Auth';
 import { useNavigate } from 'react-router';
 import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import {
+  getRouteCart,
+  getRouteMain,
+} from '@/shared/consts/router/publicRouter';
 
 interface NavbarProps {
   className?: string;
@@ -43,7 +46,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(LoginActions.setEmail(''));
     dispatch(LoginActions.setPassword(''));
     setIsOpenLoginModal(false);
-    navigate(publicRoutePath.main);
+    navigate(getRouteMain());
   }, [dispatch, navigate]);
 
   const onShowRegistrationModal = useCallback(() => {
@@ -55,7 +58,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(RegistrationActions.setEmail(''));
     dispatch(RegistrationActions.setPassword(''));
     setIsOpenRegistrationModal(false);
-    navigate(publicRoutePath.main);
+    navigate(getRouteMain());
   }, [dispatch, navigate]);
 
   const onLogout = () => {
@@ -72,7 +75,7 @@ export const Navbar = memo((props: NavbarProps) => {
             <AppLink
               className={cls.Navbar_content_left_a}
               theme={AppLinkTheme.SECONDARY}
-              to={publicRoutePath.main}
+              to={getRouteMain()}
             >
               Магазин
             </AppLink>
@@ -81,13 +84,13 @@ export const Navbar = memo((props: NavbarProps) => {
             <AppLink
               className={cls.logout}
               theme={AppLinkTheme.SECONDARY}
-              to={publicRoutePath.main}
+              to={getRouteMain()}
               onClick={onLogout}
             >
               <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
               Выйти
             </AppLink>
-            <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
+            <AppLink className={cls.registration} to={getRouteCart()}>
               <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
               Корзина
             </AppLink>
@@ -102,17 +105,14 @@ export const Navbar = memo((props: NavbarProps) => {
       <div className={cls.Navbar_content}>
         <div className={cls.Navbar_content_left}>
           <BurgerMenuButton />
-          <AppLink
-            className={cls.Navbar_content_left_a}
-            to={publicRoutePath.main}
-          >
+          <AppLink className={cls.Navbar_content_left_a} to={getRouteMain()}>
             Магазин
           </AppLink>
         </div>
         <div className={cls.Navbar_content_right}>
           <AppLink
             className={cls.login}
-            to={publicRoutePath.main}
+            to={getRouteMain()}
             onClick={onShowLoginModal}
           >
             <Icon className={cls.LoginIcon} Svg={LoginIcon} />
@@ -121,14 +121,14 @@ export const Navbar = memo((props: NavbarProps) => {
 
           <AppLink
             className={cls.registration}
-            to={publicRoutePath.main}
+            to={getRouteMain()}
             onClick={onShowRegistrationModal}
           >
             <Icon className={cls.UserIcon} Svg={UserIcon} />
             Регистрация
           </AppLink>
 
-          <AppLink className={cls.registration} to={publicRoutePath.get_cart}>
+          <AppLink className={cls.registration} to={getRouteCart()}>
             <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
             Корзина
           </AppLink>
