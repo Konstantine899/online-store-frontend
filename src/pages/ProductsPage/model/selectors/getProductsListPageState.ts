@@ -9,3 +9,6 @@ export const getProductsState = createSelector(
   getProductsListPageState,
   (state: ProductsPageSchema) => state?.rows ?? [],
 );
+
+export const isLoadingProducts = (state: StateSchema) =>
+  state?.productsListPage?.isLoading ?? false;

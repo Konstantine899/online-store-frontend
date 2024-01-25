@@ -3,5 +3,20 @@
     flex-flow: row wrap;
     justify-content: flex-start;
     gap: 20px 10px;
-};
+}
+
+.ProductListError{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: calc(100vh - var(--navbar-height));
+    width: 100vw;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    color: red;
+    outline: 1px solid black;
+}
 

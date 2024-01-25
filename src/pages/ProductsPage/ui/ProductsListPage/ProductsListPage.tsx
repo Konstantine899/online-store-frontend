@@ -10,7 +10,10 @@ import { ProductsPageReducer } from '@/pages/ProductsPage/model/slices/ProductsP
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
 import { useSelector } from 'react-redux';
-import { getProductsState } from '@/pages/ProductsPage/model/selectors/getProductsListPageState';
+import {
+  getProductsState,
+  isLoadingProducts,
+} from '@/pages/ProductsPage/model/selectors/getProductsListPageState';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsListPage: ProductsPageReducer,
@@ -30,11 +33,12 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   }, [dispatch]);
 
   const products = useSelector(getProductsState);
+  const isLoading = useSelector(isLoadingProducts);
 
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
       <div className={classNames(cls.ArticleListPage, {}, [className])}>
-        <ProductList products={products} />
+        <ProductList products={products} isLoading={isLoading} />
       </div>
     </DynamicModuleLoader>
   );

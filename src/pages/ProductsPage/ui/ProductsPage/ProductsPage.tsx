@@ -12,7 +12,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
 
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={''}>
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
         <ProductsListPage />
       </Page>
