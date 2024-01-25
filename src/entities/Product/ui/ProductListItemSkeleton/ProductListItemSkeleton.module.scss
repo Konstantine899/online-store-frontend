@@ -1,0 +1,36 @@
+.ProductListItemSkeleton {
+    display: flex;
+    gap: 8px;
+    border-radius: 8px;
+}
+
+.cardWrapper{
+    display: flex;
+    overflow: hidden;
+}
+
+.cardTop{
+    height: 220px;
+    width: 100%;
+}
+
+.cardBottom{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .cardBottomPrice{
+        height: 32px;
+        width: 100%;
+    }
+
+    .cardBottomTitle{
+        height: 32px;
+        width: 100%;
+    }
+
+    .cardBottomBtn{
+        height: 50px;
+        width: 100%;
+    }
+}
