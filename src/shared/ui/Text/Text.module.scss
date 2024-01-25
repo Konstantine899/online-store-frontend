@@ -1,0 +1,77 @@
+/* styles for theme primary */
+
+.primary {
+    .title {
+        color: var(--theme-primary-color)
+    }
+
+    .text {
+        color: var(--theme-primary-color);
+    }
+}
+
+/* styles for theme inverted */
+
+.inverted {
+    .title {
+        color: var(--theme-inverted-color)
+    }
+
+    .text {
+        color: var(--theme-inverted-color);
+    }
+}
+
+/* styles for theme error */
+
+.error {
+    .title {
+        color: var(--theme-error-color)
+    }
+
+    .text {
+        color: var(--theme-error-color);
+    }
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.size_s {
+    .title {
+        font: var(--font-m);
+    }
+
+    .text{
+        font: var(--font-s);
+    }
+}
+
+.size_m {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text{
+        font: var(--font-m);
+    }
+}
+
+.size_l {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text{
+        font: var(--font-l);
+    }
+}
