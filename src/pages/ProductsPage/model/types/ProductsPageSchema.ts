@@ -4,6 +4,7 @@ export interface ProductsListMetaData {
   currentPage: number;
   nextPage: number;
   previousPage: number;
+  limit?: number;
 }
 
 export interface Product {

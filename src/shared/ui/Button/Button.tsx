@@ -12,6 +12,7 @@ export enum ButtonSize {
 export enum ButtonTheme {
   CLEAR = 'clear',
   OUTLINE = 'outline',
+  ROUND = 'round',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

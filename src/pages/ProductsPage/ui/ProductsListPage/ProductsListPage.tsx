@@ -6,14 +6,17 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ProductsPageReducer } from '@/pages/ProductsPage/model/slices/ProductsPageSlice';
+import {
+  ProductsPageActions,
+  ProductsPageReducer,
+} from '../../model/slices/ProductsPageSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
+import { fetchProductsListPage } from '../../model/services/fetchProductsListPage/fetchProductsListPage';
 import { useSelector } from 'react-redux';
 import {
   getProductsState,
   isLoadingProducts,
-} from '@/pages/ProductsPage/model/selectors/getProductsListPageState';
+} from '../../model/selectors/getProductsListPageState';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsListPage: ProductsPageReducer,
@@ -29,6 +32,7 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(ProductsPageActions.setLimit(1));
     dispatch(fetchProductsListPage());
   }, [dispatch]);
 

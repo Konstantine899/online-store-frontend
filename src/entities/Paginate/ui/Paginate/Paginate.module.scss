@@ -1,0 +1,29 @@
+.Paginate {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+};
+
+.Btn {
+    outline: none;
+    border: none;
+}
+
+.currentPageBtn {
+    outline: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    background-color: var(--button-round-hover-primary-background-color);
+    border: 1px solid var(--button-round-hover-primary-background-color);
+}
+
+.firstPageBtn, .lastPageBtn {
+    border: 1px solid var(--button-round-inverted-primary-background-color);
+    background-color: var(--button-round-inverted-primary-background-color) ;
+    color: white;
+}
+
+.previosPageBtn, .nextPageBtn{
+    background-color: var(--button-round-previos-and-next-primary-background-color);
+    color: white;
+}

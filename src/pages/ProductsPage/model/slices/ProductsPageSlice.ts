@@ -1,16 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsPageSchema } from '../types/ProductsPageSchema';
-import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
+import { fetchProductsListPage } from '../services/fetchProductsListPage/fetchProductsListPage';
 
 const initialState: ProductsPageSchema = {
   rows: [],
   count: 0,
   metaData: {
     previousPage: 0,
-    currentPage: 0,
+    currentPage: 1,
     lastPage: 0,
     nextPage: 0,
     totalCount: 0,
+    limit: 0,
   },
   isLoading: false,
   error: '',
@@ -19,7 +20,14 @@ const initialState: ProductsPageSchema = {
 export const ProductsPageSlice = createSlice({
   name: 'ProductsPage',
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state, action: PayloadAction<number>) => {
+      state.metaData.currentPage = action.payload;
+    },
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.metaData.limit = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductsListPage.pending, (state) => {
