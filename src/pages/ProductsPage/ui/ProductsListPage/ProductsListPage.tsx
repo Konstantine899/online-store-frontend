@@ -17,6 +17,7 @@ import {
   getProductsState,
   isLoadingProducts,
 } from '../../model/selectors/getProductsListPageState';
+import { useSearchParams } from 'react-router-dom';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsListPage: ProductsPageReducer,
@@ -30,11 +31,15 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
+  const [URLSearchParams] = useSearchParams();
+  const limit = Number(URLSearchParams.get('limit'));
+  const page = Number(URLSearchParams.get('page'));
 
   useEffect(() => {
-    dispatch(ProductsPageActions.setLimit(5));
+    dispatch(ProductsPageActions.setPage(page || 1));
+    dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(fetchProductsListPage());
-  }, [dispatch]);
+  }, [dispatch, limit, page]);
 
   const products = useSelector(getProductsState);
   const isLoading = useSelector(isLoadingProducts);
