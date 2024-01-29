@@ -6,6 +6,8 @@ import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
 import { Text } from '@/shared/ui/Text';
 import { TextSize } from '@/shared/ui/Text/Text';
 import { ProductListItemSkeleton } from '@/entities/Product/ui/ProductListItemSkeleton/ProductListItemSkeleton';
+import { getLimit } from '@/entities/Paginate/model/selectors/getPaginateState';
+import { useSelector } from 'react-redux';
 
 interface ProductProps {
   className?: string;
@@ -13,13 +15,14 @@ interface ProductProps {
   isLoading?: boolean;
 }
 
-const getSkeletons = () =>
-  new Array(12)
+const getSkeletons = (quantity: number) =>
+  new Array(quantity)
     .fill(0)
     .map((_, index) => <ProductListItemSkeleton key={index} />);
 
 export const ProductList = memo((props: ProductProps) => {
   const { className, products, isLoading } = props;
+  const limit = useSelector(getLimit);
 
   if (!isLoading && !products.length) {
     return (
@@ -37,7 +40,7 @@ export const ProductList = memo((props: ProductProps) => {
       {products.map((product) => (
         <ProductListItem key={product.id} product={product} />
       ))}
-      {isLoading && getSkeletons()}
+      {isLoading && getSkeletons(limit)}
     </div>
   );
 });

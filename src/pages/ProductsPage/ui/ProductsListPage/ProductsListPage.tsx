@@ -32,7 +32,7 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(ProductsPageActions.setLimit(1));
+    dispatch(ProductsPageActions.setLimit(5));
     dispatch(fetchProductsListPage());
   }, [dispatch]);
 
