@@ -11,10 +11,12 @@ import {
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsPageSchema } from '@/pages/ProductsPage';
+import { FiltersSchema } from '@/features/Filters';
 
 export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
+  filter: FiltersSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   productsListPage?: ProductsPageSchema;

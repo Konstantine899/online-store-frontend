@@ -5,6 +5,7 @@ import { UserReducer } from '@/entities/User';
 import { AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
+import { FiltersReducer } from '@/features/Filters/model/slices/FiltersSlice';
 
 export function createReduxStore(
   initialState: StateSchema,
@@ -14,6 +15,7 @@ export function createReduxStore(
     ...asyncReducers, // обязательно разворачиваю asyncReducers до основных
     auth: AuthReducer,
     user: UserReducer,
+    filter: FiltersReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

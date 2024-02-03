@@ -6,9 +6,21 @@
 
 }
 
-.standard{
+.outlined {
+    .input {
+        width: 100%;
+        font: var(--font-l);
+        color: #757575;
+        font-weight: 400;
+        border: none;
+        outline: none;
+        padding: 10px 30px;
+    }
+}
+
+.standard {
     .label {
-        color:var( --input-standard-primary-color);
+        color: var(--input-standard-primary-color);
         font: var(--font-l);
         font-weight: normal;
         position: absolute;
@@ -19,11 +31,11 @@
     }
 
     .inputSvg {
-        fill: var( --input-standard-primary-color);
+        fill: var(--input-standard-primary-color);
         cursor: pointer;
         height: 40px;
         width: 40px;
-        border-bottom: 1px dashed var( --input-standard-primary-color);
+        border-bottom: 1px dashed var(--input-standard-primary-color);
     }
 
     .input {
@@ -35,9 +47,7 @@
         outline: none;
         height: 40px;
         color: var(--input-standard-inverted-primary-color);
-        border-bottom: 1px dashed var( --input-standard-primary-color);
-
-
+        border-bottom: 1px dashed var(--input-standard-primary-color);
 
 
         &:focus ~ .label, &:valid ~ label {
@@ -47,17 +57,19 @@
             color: var(--input-standard-inverted-primary-color);
         }
 
-        &:focus{
+        &:focus {
             border-bottom: 1px solid var(--input-standard-inverted-primary-color);
         }
 
-        &:focus ~ .inputSvg{
+        &:focus ~ .inputSvg {
             fill: #481173;
-            border-bottom: 1px solid var(--input-standard-inverted-primary-color)   ;
+            border-bottom: 1px solid var(--input-standard-inverted-primary-color);
         }
 
     }
 }
+
+
 
 
 

@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { ProductsPageSchema } from '@/pages/ProductsPage';
+import { ProductsPageSchema } from '../../types/ProductsPageSchema';
 
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import {
   getCurrentPage,
   getLimit,
 } from '@/entities/Paginate/model/selectors/getPaginateState';
+import { getSearchSelector } from '@/features/Filters/model/selectors/getFilters';
 
 export const fetchProductsListPage = createAsyncThunk<
   ProductsPageSchema,
@@ -17,9 +18,10 @@ export const fetchProductsListPage = createAsyncThunk<
   try {
     const limit = getLimit(getState());
     const page = getCurrentPage(getState());
-    addQueryParams({ page: `${page}`, limit: `${limit}` });
+    const search = getSearchSelector(getState());
+    addQueryParams({ search: `${search}`, page: `${page}`, limit: `${limit}` });
     const response = await extra.api.get('/product/all', {
-      params: { page, limit },
+      params: { search, page, limit },
     });
     if (!response.data) {
       throw new Error();

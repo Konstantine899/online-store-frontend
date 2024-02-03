@@ -21,6 +21,7 @@ import {
   getRouteCart,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
+import { Search } from '@/features/Filters';
 
 interface NavbarProps {
   className?: string;
@@ -80,6 +81,9 @@ export const Navbar = memo((props: NavbarProps) => {
               Магазин
             </AppLink>
           </div>
+          <div className={cls.Navbar_content_center}>
+            <Search />
+          </div>
           <div className={cls.Navbar_content_right}>
             <AppLink
               className={cls.logout}
@@ -108,6 +112,9 @@ export const Navbar = memo((props: NavbarProps) => {
           <AppLink className={cls.Navbar_content_left_a} to={getRouteMain()}>
             Магазин
           </AppLink>
+        </div>
+        <div className={cls.Navbar_content_center}>
+          <Search />
         </div>
         <div className={cls.Navbar_content_right}>
           <AppLink
