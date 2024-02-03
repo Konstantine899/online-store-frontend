@@ -3,58 +3,63 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px dashed #e5e5e5;
 
 }
 
-
-.label {
-    color: #757575;
-    font: var(--font-l);
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-}
-
-.inputSvg {
-    fill: #757575;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-}
-
-.input {
-    font: var(--font-m);
-    padding: 10px 10px 10px 5px;
-    display: block;
-    border: none;
-    width: 100%;
-    outline: none;
-    height: 40px;
-    color: #481173;
-
-
-
-    &:focus ~ .label, &:valid ~ label {
-        top: -30px;
-        font-size: 14px;
-        font-weight: bold;
-        color: #481173;
+.standard{
+    .label {
+        color:var( --input-standard-primary-color);
+        font: var(--font-l);
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all;
     }
 
-    &:focus{
-        border-bottom: 1px solid #481173;
+    .inputSvg {
+        fill: var( --input-standard-primary-color);
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        border-bottom: 1px dashed var( --input-standard-primary-color);
     }
 
-    &:focus ~ .inputSvg{
-        fill: #481173;
-        border-bottom: 1px solid #481173;
-    }
+    .input {
+        font: var(--font-m);
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        width: 100%;
+        outline: none;
+        height: 40px;
+        color: var(--input-standard-inverted-primary-color);
+        border-bottom: 1px dashed var( --input-standard-primary-color);
 
+
+
+
+        &:focus ~ .label, &:valid ~ label {
+            top: -30px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--input-standard-inverted-primary-color);
+        }
+
+        &:focus{
+            border-bottom: 1px solid var(--input-standard-inverted-primary-color);
+        }
+
+        &:focus ~ .inputSvg{
+            fill: #481173;
+            border-bottom: 1px solid var(--input-standard-inverted-primary-color)   ;
+        }
+
+    }
 }
+
+
 
 
 

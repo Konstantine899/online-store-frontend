@@ -3,6 +3,11 @@ import React, { ChangeEvent, InputHTMLAttributes, memo } from 'react';
 import cls from './Input.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 
+export enum InputTheme {
+  OUTLINED = 'outlined',
+  STANDARD = 'standard',
+}
+
 type HtmlInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'onChange' | 'value' | 'readOnly' | 'htmlFor'
@@ -15,6 +20,7 @@ interface InputProps extends HtmlInputProps {
   label?: string;
   fullWidth?: boolean;
   required?: boolean;
+  theme?: InputTheme;
   Svg?: React.FC<React.SVGProps<SVGElement>>;
   onChange?: (value: string) => void;
   onViewPassword?: () => void;
@@ -32,6 +38,7 @@ export const Input = memo((props: InputProps) => {
     required,
     onViewPassword,
     type = 'text',
+    theme,
     ...otherProps
   } = props;
 
@@ -40,7 +47,7 @@ export const Input = memo((props: InputProps) => {
   };
 
   return (
-    <div className={classNames(cls.InputWrapper, {}, [className])}>
+    <div className={classNames(cls.InputWrapper, {}, [className, cls[theme]])}>
       <input
         id={htmlFor}
         className={cls.input}

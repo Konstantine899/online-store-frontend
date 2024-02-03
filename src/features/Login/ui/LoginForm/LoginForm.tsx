@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import cls from './LoginForm.module.scss';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input/Input';
+import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { LoginActions, loginByEmail } from '@/features/Login';
@@ -83,10 +83,11 @@ const LoginForm = memo((props: LoginFormProps) => {
             type="text"
             label={'Email'}
             htmlFor={'Email'}
-            className={cls.input}
+            className={cls.loginInput}
             value={email}
             required
             onChange={onChangeEmail}
+            theme={InputTheme.STANDARD}
           />
         </div>
 

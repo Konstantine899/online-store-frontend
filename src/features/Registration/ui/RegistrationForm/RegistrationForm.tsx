@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import cls from './RegistrationForm.module.scss';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input/Input';
+import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import {
   RegistrationActions,
@@ -90,6 +90,7 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
             label={'email'}
             htmlFor={'email'}
             required
+            theme={InputTheme.STANDARD}
           />
         </div>
 

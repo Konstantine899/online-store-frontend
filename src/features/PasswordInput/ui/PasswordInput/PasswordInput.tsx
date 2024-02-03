@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { Input } from '@/shared/ui/Input/Input';
+import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
 import EyeOpen from '@/shared/assets/icons/eye-open.svg';
 
@@ -29,6 +29,7 @@ export const PasswordInput = memo((props: PasswordInputProps) => {
       onChange={onChangePassword}
       Svg={eyeSvgIcon}
       onViewPassword={onViewPassword}
+      theme={InputTheme.STANDARD}
     />
   );
 });
