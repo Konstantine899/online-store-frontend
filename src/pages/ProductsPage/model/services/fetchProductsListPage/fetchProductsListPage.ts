@@ -7,7 +7,10 @@ import {
   getCurrentPage,
   getLimit,
 } from '@/entities/Paginate/model/selectors/getPaginateState';
-import { getSearchSelector } from '@/features/Filters/model/selectors/getFilters';
+import {
+  getSearchSelector,
+  getSortOrderSelector,
+} from '@/features/Filters/model/selectors/getFilters';
 
 export const fetchProductsListPage = createAsyncThunk<
   ProductsPageSchema,
@@ -19,9 +22,15 @@ export const fetchProductsListPage = createAsyncThunk<
     const limit = getLimit(getState());
     const page = getCurrentPage(getState());
     const search = getSearchSelector(getState());
-    addQueryParams({ search: `${search}`, page: `${page}`, limit: `${limit}` });
+    const sort = getSortOrderSelector(getState());
+    addQueryParams({
+      search: `${search}`,
+      page: `${page}`,
+      limit: `${limit}`,
+      sort: `${sort}`,
+    });
     const response = await extra.api.get('/product/all', {
-      params: { search, page, limit },
+      params: { search, page, limit, sort },
     });
     if (!response.data) {
       throw new Error();

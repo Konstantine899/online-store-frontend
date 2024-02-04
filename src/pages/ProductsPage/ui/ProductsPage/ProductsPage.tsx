@@ -4,6 +4,7 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { ProductsListPage } from '../ProductsListPage/ProductsListPage';
 import { ProductsListPaginate } from '../ProductsListPaginate/ProductsListPaginate';
+import { ProductsListSorting } from '@/pages/ProductsPage/ui/ProductsListSorting/ProductsListSorting';
 
 interface ProductsPageProps {
   className?: string;
@@ -15,6 +16,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   return (
     <Suspense fallback={''}>
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
+        <ProductsListSorting />
         <ProductsListPage />
         <ProductsListPaginate />
       </Page>
