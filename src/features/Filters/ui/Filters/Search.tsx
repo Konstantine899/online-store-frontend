@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { getSearchSelector } from '../../model/selectors/getFilters';
 import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
 import { ProductsPageActions } from '@/pages/ProductsPage/model/slices/ProductsPageSlice';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
 interface SearchProps {
   className?: string;
@@ -19,20 +20,26 @@ export const Search = memo((props: SearchProps) => {
   const dispatch = useAppDispatch();
   const search = useSelector(getSearchSelector);
 
+  const fetchProducts = useCallback(() => {
+    dispatch(fetchProductsListPage());
+  }, [dispatch]);
+
+  const debounceFetchProductsListPage = useDebounce(fetchProducts, 1000);
+
   const onSearch = useCallback(
     (search: string) => {
       dispatch(FiltersActions.setSearch(search));
       dispatch(ProductsPageActions.setPage(1));
-      dispatch(fetchProductsListPage());
+      debounceFetchProductsListPage();
     },
-    [dispatch],
+    [debounceFetchProductsListPage, dispatch],
   );
 
   const onBlur = useCallback(() => {
     dispatch(FiltersActions.setSearch(''));
-    dispatch(fetchProductsListPage());
     dispatch(ProductsPageActions.setPage(1));
-  }, [dispatch]);
+    debounceFetchProductsListPage();
+  }, [debounceFetchProductsListPage, dispatch]);
 
   return (
     <div className={classNames(cls.SearchWrapper, {}, [className])}>
