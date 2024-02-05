@@ -2,6 +2,22 @@
     display: flex;
 }
 
+.ProductCard{
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    min-height: 350px;
+    max-height: 400px;
+    position: relative;
+    padding: 10px 0;
+
+
+
+    &:hover {
+        box-shadow: 4px 8px 16px rgb(72 17 115 / 50%);
+    }
+}
+
 .CardTop {
     flex: 0 0 220px;
     position: relative;

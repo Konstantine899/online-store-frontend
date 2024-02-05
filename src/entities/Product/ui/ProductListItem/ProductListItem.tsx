@@ -17,7 +17,11 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
   const { className, product } = props;
   return (
     <div className={classNames(cls.ProductListItem, {}, [className])}>
-      <Card key={product.id} theme={CardTheme.OUTLINED}>
+      <Card
+        key={product.id}
+        theme={CardTheme.OUTLINED}
+        className={cls.ProductCard}
+      >
         <div className={cls.CardTop}>
           <AppLink
             to={getRouteProduct(`${product.id}`)}
