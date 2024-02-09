@@ -2,8 +2,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ProductsPageActions } from '@/pages/ProductsPage/model/slices/ProductsPageSlice';
-import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
+import { ProductsPageActions } from '@/entities/Product/model/slices/ProductsSlice';
+import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -32,7 +32,7 @@ export const Paginate = memo((props: PaginateProps) => {
   const onPageChange = (pageNumber: number) => () => {
     if (isNaN(pageNumber)) return;
     dispatch(ProductsPageActions.setPage(pageNumber));
-    dispatch(fetchProductsListPage());
+    dispatch(FetchProducts());
   };
 
   const paginationRange = usePaginate({

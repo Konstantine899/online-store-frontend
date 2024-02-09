@@ -6,9 +6,9 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { FiltersActions } from '../../model/slices/FiltersSlice';
 import { useSelector } from 'react-redux';
 import { getSearchSelector } from '../../model/selectors/getFilters';
-import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
-import { ProductsPageActions } from '@/pages/ProductsPage/model/slices/ProductsPageSlice';
+import { ProductsPageActions } from '@/entities/Product/model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 
 interface SearchProps {
   className?: string;
@@ -20,11 +20,11 @@ export const Search = memo((props: SearchProps) => {
   const dispatch = useAppDispatch();
   const search = useSelector(getSearchSelector);
 
-  const fetchProducts = useCallback(() => {
-    dispatch(fetchProductsListPage());
+  const getProducts = useCallback(() => {
+    dispatch(FetchProducts());
   }, [dispatch]);
 
-  const debounceFetchProductsListPage = useDebounce(fetchProducts, 1000);
+  const debounceFetchProductsListPage = useDebounce(getProducts, 1000);
 
   const onSearch = useCallback(
     (search: string) => {

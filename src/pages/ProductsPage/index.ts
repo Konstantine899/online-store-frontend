@@ -1,2 +1,2 @@
 export { ProductsPageAsync as ProductsPage } from './ui/ProductsPage/ProductsPage.async';
-export type { ProductsPageSchema } from './model/types/ProductsPageSchema';
+export type { ProductsSchema } from '../../entities/Product/model/types/ProductsSchema';

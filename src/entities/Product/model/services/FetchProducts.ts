@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { ProductsPageSchema } from '../../types/ProductsPageSchema';
+import { ProductsSchema } from '../types/ProductsSchema';
 
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import {
@@ -12,11 +12,11 @@ import {
   getSortOrderSelector,
 } from '@/features/Filters/model/selectors/getFilters';
 
-export const fetchProductsListPage = createAsyncThunk<
-  ProductsPageSchema,
+export const FetchProducts = createAsyncThunk<
+  ProductsSchema,
   void,
   ThunkAPIConfig<string>
->('FetchProductsListPage', async (_, thunkAPI) => {
+>('FetchProducts', async (_, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
     const limit = getLimit(getState());
@@ -29,7 +29,7 @@ export const fetchProductsListPage = createAsyncThunk<
       limit: `${limit}`,
       sort: `${sort}`,
     });
-    const response = await extra.api.get('/product/all', {
+    const response = await extra.api.get<ProductsSchema>('/product/all', {
       params: { search, page, limit, sort },
     });
     if (!response.data) {

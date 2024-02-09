@@ -5,7 +5,7 @@ import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
-import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
+import { Product } from '@/entities/Product/model/types/ProductsSchema';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 
 interface ProductListItemProps {

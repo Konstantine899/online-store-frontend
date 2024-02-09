@@ -4,8 +4,8 @@ import cls from './SortingOrder.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
 import { Sort } from '@/shared/types/sort';
-import { fetchProductsListPage } from '@/pages/ProductsPage/model/services/fetchProductsListPage/fetchProductsListPage';
-import { ProductsPageActions } from '@/pages/ProductsPage/model/slices/ProductsPageSlice';
+import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
+import { ProductsPageActions } from '@/entities/Product/model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useSelector } from 'react-redux';
 import { getSortOrderSelector } from '@/features/Filters/model/selectors/getFilters';
@@ -30,7 +30,7 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    dispatch(fetchProductsListPage());
+    dispatch(FetchProducts());
   }, [dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);

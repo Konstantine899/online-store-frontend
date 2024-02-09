@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductsPageSchema } from '../types/ProductsPageSchema';
-import { fetchProductsListPage } from '../services/fetchProductsListPage/fetchProductsListPage';
+import { ProductsSchema } from '../types/ProductsSchema';
+import { FetchProducts } from '../services/FetchProducts';
 
-const initialState: ProductsPageSchema = {
+const initialState: ProductsSchema = {
   rows: [],
   count: 0,
   metaData: {
@@ -17,8 +17,8 @@ const initialState: ProductsPageSchema = {
   error: '',
 };
 
-export const ProductsPageSlice = createSlice({
-  name: 'ProductsPage',
+export const ProductsSlice = createSlice({
+  name: 'ProductsSlice',
   initialState,
   reducers: {
     setPage: (state, action: PayloadAction<number>) => {
@@ -30,19 +30,19 @@ export const ProductsPageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProductsListPage.pending, (state) => {
+      .addCase(FetchProducts.pending, (state) => {
         state.isLoading = true;
         state.error = '';
         state.rows = null;
       })
-      .addCase(fetchProductsListPage.fulfilled, (state, action) => {
+      .addCase(FetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = '';
         state.rows = action.payload.rows;
         state.count = action.payload.count;
         state.metaData = action.payload.metaData;
       })
-      .addCase(fetchProductsListPage.rejected, (state, action) => {
+      .addCase(FetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.rows = null;
@@ -50,5 +50,5 @@ export const ProductsPageSlice = createSlice({
   },
 });
 
-export const { actions: ProductsPageActions } = ProductsPageSlice;
-export const { reducer: ProductsPageReducer } = ProductsPageSlice;
+export const { actions: ProductsPageActions } = ProductsSlice;
+export const { reducer: ProductsPageReducer } = ProductsSlice;

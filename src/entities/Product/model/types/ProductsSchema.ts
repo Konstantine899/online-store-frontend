@@ -18,7 +18,7 @@ export interface Product {
   brand_id: number;
 }
 
-export interface ProductsPageSchema {
+export interface ProductsSchema {
   metaData: ProductsListMetaData;
   count: number;
   rows: Product[];

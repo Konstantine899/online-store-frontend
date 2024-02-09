@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { Product } from '@/pages/ProductsPage/model/types/ProductsPageSchema';
+import { Product } from '@/entities/Product/model/types/ProductsSchema';
 import { Text } from '@/shared/ui/Text';
 import { TextSize } from '@/shared/ui/Text/Text';
 import { ProductListItemSkeleton } from '@/entities/Product/ui/ProductListItemSkeleton/ProductListItemSkeleton';

@@ -9,14 +9,14 @@ import {
 import {
   ProductsPageActions,
   ProductsPageReducer,
-} from '../../model/slices/ProductsPageSlice';
+} from '@/entities/Product/model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchProductsListPage } from '../../model/services/fetchProductsListPage/fetchProductsListPage';
+import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 import { useSelector } from 'react-redux';
 import {
-  getProductsState,
-  isLoadingProducts,
-} from '../../model/selectors/getProductsListPageState';
+  getProductsListSelector,
+  getProductsListIsLoadingSelector,
+} from '@/entities/Product/model/selectors/getProductsSelector';
 import { useSearchParams } from 'react-router-dom';
 import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
 import { Sort } from '@/shared/types/sort';
@@ -44,11 +44,11 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(FiltersActions.setSearch(search));
     dispatch(FiltersActions.setSortingOrder(sort as Sort));
-    dispatch(fetchProductsListPage());
+    dispatch(FetchProducts());
   }, [dispatch, limit, page, search, sort]);
 
-  const products = useSelector(getProductsState);
-  const isLoading = useSelector(isLoadingProducts);
+  const products = useSelector(getProductsListSelector);
+  const isLoading = useSelector(getProductsListIsLoadingSelector);
 
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>

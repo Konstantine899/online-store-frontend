@@ -10,7 +10,7 @@ import {
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
-import { ProductsPageSchema } from '@/pages/ProductsPage';
+import { ProductsSchema } from '@/pages/ProductsPage';
 import { FiltersSchema } from '@/features/Filters';
 
 export interface StateSchema {
@@ -19,7 +19,7 @@ export interface StateSchema {
   filter: FiltersSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
-  productsListPage?: ProductsPageSchema;
+  productsListPage?: ProductsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
