@@ -4,7 +4,7 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { ProductsListPage } from '../ProductsListPage/ProductsListPage';
 import { ProductsListPaginate } from '../ProductsListPaginate/ProductsListPaginate';
-import { ProductsListSorting } from '@/pages/ProductsPage/ui/ProductsListSorting/ProductsListSorting';
+import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
 
 interface ProductsPageProps {
   className?: string;

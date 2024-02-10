@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
 import { FetchProducts } from '../services/FetchProducts';
+import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -46,7 +47,28 @@ export const ProductsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         state.rows = null;
-      });
+      })
+      .addCase(FetchProductsByBrand.pending, (state: ProductsSchema) => {
+        state.isLoading = true;
+        state.error = '';
+      })
+      .addCase(
+        FetchProductsByBrand.fulfilled,
+        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
+          state.isLoading = false;
+          state.error = '';
+          state.rows = action.payload.rows;
+          state.count = action.payload.count;
+          state.metaData = action.payload.metaData;
+        },
+      )
+      .addCase(
+        FetchProductsByBrand.rejected,
+        (state: ProductsSchema, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      );
   },
 });
 

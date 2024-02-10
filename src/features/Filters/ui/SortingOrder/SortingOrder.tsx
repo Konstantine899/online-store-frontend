@@ -1,15 +1,13 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback, useMemo } from 'react';
-import cls from './SortingOrder.module.scss';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
-import { Sort } from '@/shared/types/sort';
-import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
-import { ProductsPageActions } from '@/entities/Product/model/slices/ProductsSlice';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useSelector } from 'react-redux';
-import { getSortOrderSelector } from '@/features/Filters/model/selectors/getFilters';
+import cls from './SortingOrder.module.scss';
+import { FiltersActions, getSortOrderSelector } from '@/features/Filters';
+import { FetchProducts, ProductsPageActions } from '@/entities/Product';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { Select, SelectOptions } from '@/shared/ui/Select/Select';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { Sort } from '@/shared/types/sort';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface SortingOrderProps {
   className?: string;

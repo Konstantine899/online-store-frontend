@@ -1,11 +1,11 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductListItem.module.scss';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { Product } from '@/entities/Product';
 import { AppLink } from '@/shared/ui/AppLink';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
-import { Product } from '@/entities/Product/model/types/ProductsSchema';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 
 interface ProductListItemProps {

@@ -1,15 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { ProductsSchema } from '../types/ProductsSchema';
-import { addQueryParams } from '@/shared/url/addQueryParams';
+import { ProductsSchema } from '@/entities/Product';
 import { getCurrentPage, getLimit } from '@/entities/Paginate';
 import { getSearchSelector, getSortOrderSelector } from '@/features/Filters';
+import { addQueryParams } from '@/shared/url/addQueryParams';
 
-export const FetchProducts = createAsyncThunk<
+interface FetchProductsByBrandProps {
+  brandId: number;
+}
+
+export const FetchProductsByBrand = createAsyncThunk<
   ProductsSchema,
-  void,
+  FetchProductsByBrandProps,
   ThunkAPIConfig<string>
->('FetchProducts', async (_, thunkAPI) => {
+>('FetchProductsByBrand', async ({ brandId }, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
     const limit = getLimit(getState());
@@ -22,14 +26,22 @@ export const FetchProducts = createAsyncThunk<
       limit: `${limit}`,
       sort: `${sort}`,
     });
-    const response = await extra.api.get<ProductsSchema>('/product/all', {
-      params: { search, page, limit, sort },
-    });
+    const response = await extra.api.get<ProductsSchema>(
+      `/product/all/brandId/${brandId}`,
+      {
+        params: {
+          limit,
+          page,
+          search,
+          sort,
+        },
+      },
+    );
     if (!response.data) {
       throw new Error();
     }
     return response.data;
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(error.response.data);
   }
 });

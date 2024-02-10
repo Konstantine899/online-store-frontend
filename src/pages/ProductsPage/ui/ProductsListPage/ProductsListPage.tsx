@@ -14,15 +14,15 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 import { useSelector } from 'react-redux';
 import {
-  getProductsListSelector,
   getProductsListIsLoadingSelector,
+  getProductsListSelector,
 } from '@/entities/Product/model/selectors/getProductsSelector';
 import { useSearchParams } from 'react-router-dom';
 import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
 import { Sort } from '@/shared/types/sort';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
-  productsListPage: ProductsPageReducer,
+  productsList: ProductsPageReducer,
 };
 
 interface ArticleListPageProps {

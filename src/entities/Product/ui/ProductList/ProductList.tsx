@@ -2,11 +2,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { Product } from '@/entities/Product/model/types/ProductsSchema';
+import { Product } from '../../model/types/ProductsSchema';
 import { Text } from '@/shared/ui/Text';
 import { TextSize } from '@/shared/ui/Text/Text';
-import { ProductListItemSkeleton } from '@/entities/Product/ui/ProductListItemSkeleton/ProductListItemSkeleton';
-import { getLimit } from '@/entities/Paginate/model/selectors/getPaginateState';
+import { ProductListItemSkeleton } from '@/entities/Product';
+import { getLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 
 interface ProductProps {

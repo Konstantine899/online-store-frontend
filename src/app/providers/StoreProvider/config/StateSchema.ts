@@ -12,6 +12,8 @@ import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsSchema } from '@/pages/ProductsPage';
 import { FiltersSchema } from '@/features/Filters';
+import { BrandSchema } from '@/entities/Brand';
+import { IBrand } from '@/entities/Brand/model/types/BrandSchema';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -19,12 +21,14 @@ export interface StateSchema {
   filter: FiltersSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
-  productsListPage?: ProductsSchema;
+  productsList?: ProductsSchema;
+  allBrands?: BrandSchema;
+  brand?: IBrand;
 }
 
 export type StateSchemaKey = keyof StateSchema;
 const keyFromState: StateSchemaKey =
-  'registrationForm' || 'loginForm' || 'productsListPage';
+  'registrationForm' || 'loginForm' || 'productsList' || 'brand' || 'allBrands';
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;

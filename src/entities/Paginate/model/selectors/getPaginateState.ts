@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { ProductsSchema } from '@/pages/ProductsPage';
-import { getProductsSelector } from '@/entities/Product/model/selectors/getProductsSelector';
+import { getProductsSelector } from '@/entities/Product';
 
 export const getCurrentPage = createSelector(
   getProductsSelector,
