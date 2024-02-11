@@ -2,12 +2,17 @@ import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './SortingOrder.module.scss';
 import { FiltersActions, getSortOrderSelector } from '@/features/Filters';
-import { FetchProducts, ProductsPageActions } from '@/entities/Product';
+import {
+  FetchProducts,
+  FetchProductsByBrand,
+  ProductsPageActions,
+} from '@/entities/Product';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { Select, SelectOptions } from '@/shared/ui/Select/Select';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Sort } from '@/shared/types/sort';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { getBrandSelector } from '@/entities/Brand';
 
 interface SortingOrderProps {
   className?: string;
@@ -18,6 +23,7 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getSortOrderSelector);
+  const brandId = useSelector(getBrandSelector);
 
   const selectOptions = useMemo<SelectOptions<Sort>[]>(
     () => [
@@ -28,8 +34,9 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
+    if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
     dispatch(FetchProducts());
-  }, [dispatch]);
+  }, [brandId, dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
