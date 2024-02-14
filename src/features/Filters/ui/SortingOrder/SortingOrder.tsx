@@ -8,7 +8,7 @@ import {
   ProductsPageActions,
 } from '@/entities/Product';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { Select, SelectOptions } from '@/shared/ui/Select/Select';
+import { Select, SelectOptions } from '@/shared/ui/Select/Select/Select';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Sort } from '@/shared/types/sort';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -27,8 +27,8 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
 
   const selectOptions = useMemo<SelectOptions<Sort>[]>(
     () => [
-      { value: 'asc', content: 'возрастанию' },
-      { value: 'desc', content: 'убыванию' },
+      { value: 'asc', content: 'По возрастанию' },
+      { value: 'desc', content: 'По убыванию' },
     ],
     [],
   );
@@ -48,12 +48,7 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
 
   return (
     <div className={classNames(cls.SortingOrder, {}, [className])}>
-      <Select<Sort>
-        label={'по'}
-        options={selectOptions}
-        value={value}
-        onChange={onChange}
-      />
+      <Select<Sort> options={selectOptions} value={value} onChange={onChange} />
     </div>
   );
 });

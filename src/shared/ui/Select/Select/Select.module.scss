@@ -1,0 +1,85 @@
+.SelectWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 200px;
+    height: 150px;
+}
+
+.SelectButton{
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: 1px 2px 4px rgb(0 0 0 / 10%);
+    margin-bottom: 10px;
+
+    &:hover{
+        background-color: #cb11ab;
+        color: white;
+        fill: white;
+    }
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.SelectArrow{
+    height: 15px;
+    width: 15px;
+}
+
+.btnContent{
+    display: flex;
+    justify-content: center;
+    font: var(--font-m);
+}
+
+.options{
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font: var(--font-m);
+    padding: 5px 10px;
+}
+
+.active{
+    cursor: pointer;
+    background-color: #cb11ab;
+    color: white;
+}
+
+.selectedContentWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.selected{
+    cursor: pointer;
+    background-color: #481173;
+    color: white;
+}
+
+.SelectedIcon{
+    fill: white;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
