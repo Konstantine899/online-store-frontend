@@ -1,2 +1,2 @@
-export { BurgerMenuList } from './ui/BurgerMenuList/BurgerMenuList';
+export { BurgerMenu } from './ui/BurgerMenu/BurgerMenu';
 export type { BurgerMenuSchema } from './model/types/BurgerMenuSchema';

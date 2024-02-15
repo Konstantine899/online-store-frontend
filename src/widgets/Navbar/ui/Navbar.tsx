@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
-import { BurgerMenuButton } from '@/features/BurgerMenuButton';
+import { BurgerMenu } from '@/features/BurgerMenu';
 import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
@@ -72,7 +72,7 @@ export const Navbar = memo((props: NavbarProps) => {
       <nav className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.Navbar_content}>
           <div className={cls.Navbar_content_left}>
-            <BurgerMenuButton />
+            <BurgerMenu />
             <AppLink
               className={cls.Navbar_content_left_a}
               theme={AppLinkTheme.SECONDARY}
@@ -108,7 +108,7 @@ export const Navbar = memo((props: NavbarProps) => {
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <div className={cls.Navbar_content}>
         <div className={cls.Navbar_content_left}>
-          <BurgerMenuButton />
+          <BurgerMenu />
           <AppLink className={cls.Navbar_content_left_a} to={getRouteMain()}>
             Магазин
           </AppLink>
