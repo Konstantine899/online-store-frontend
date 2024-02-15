@@ -2,7 +2,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ProductsPageActions, FetchProducts } from '@/entities/Product';
+import {
+  FetchProducts,
+  FetchProductsByBrand,
+  ProductsPageActions,
+} from '@/entities/Product';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -14,7 +18,8 @@ import {
   getPreviosPage,
 } from '../../model/selectors/getPaginateState';
 import { getBrandSelector } from '@/entities/Brand';
-import { FetchProductsByBrand } from '@/entities/Product';
+import { getCategoryIdSelector } from '@/entities/Category/model/selectors/getCategoriesSelectors';
+import { FetchProductsByCategory } from '@/entities/Product/model/services/FetchProductsByCategory';
 
 interface PaginateProps {
   className?: string;
@@ -30,11 +35,13 @@ export const Paginate = memo((props: PaginateProps) => {
   const previosPage = useSelector(getPreviosPage); // предыдущая страница
   const nextPage = useSelector(getNextPage); // следующая страница
   const brandId = useSelector(getBrandSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   const onPageChange = (pageNumber: number) => () => {
     if (isNaN(pageNumber)) return;
     dispatch(ProductsPageActions.setPage(pageNumber));
     if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    if (categoryId) return dispatch(FetchProductsByCategory({ categoryId }));
     dispatch(FetchProducts());
   };
 

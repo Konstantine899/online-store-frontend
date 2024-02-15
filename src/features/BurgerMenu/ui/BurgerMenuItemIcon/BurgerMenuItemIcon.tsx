@@ -9,21 +9,35 @@ import FridgeIcon from '@/shared/assets/icons/fridge.svg';
 interface CategoryIconProps {
   className?: string;
   itemName?: string;
+  isActive?: boolean;
 }
 
 export const BurgerMenuItemIcon = memo((props: CategoryIconProps) => {
-  const { className, itemName } = props;
+  const { className, itemName, isActive } = props;
 
   return (
     <div className={classNames(cls.BurgerMenuItemIcon, {}, [className])}>
       {itemName === 'Смартфоны' && (
-        <Icon className={cls.SmartphoneIcon} Svg={SmartphoneIcon} />
+        <Icon
+          className={classNames(
+            cls.SmartphoneIcon,
+            { [cls.active]: isActive },
+            [],
+          )}
+          Svg={SmartphoneIcon}
+        />
       )}
       {itemName === 'Компьютеры' && (
-        <Icon className={cls.ImacIcon} Svg={ImacIcon} />
+        <Icon
+          className={classNames(cls.ImacIcon, { [cls.active]: isActive }, [])}
+          Svg={ImacIcon}
+        />
       )}
       {itemName === 'Холодильники' && (
-        <Icon className={cls.FridgeIcon} Svg={FridgeIcon} />
+        <Icon
+          className={classNames(cls.FridgeIcon, { [cls.active]: isActive }, [])}
+          Svg={FridgeIcon}
+        />
       )}
     </div>
   );

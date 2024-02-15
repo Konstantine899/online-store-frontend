@@ -5,7 +5,7 @@ import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { Product } from '../../model/types/ProductsSchema';
 import { Text } from '@/shared/ui/Text';
 import { TextSize } from '@/shared/ui/Text/Text';
-import { ProductListItemSkeleton } from '@/entities/Product';
+import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
 import { getLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 

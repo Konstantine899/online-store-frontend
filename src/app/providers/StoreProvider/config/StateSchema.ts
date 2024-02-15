@@ -14,6 +14,8 @@ import { ProductsSchema } from '@/pages/ProductsPage';
 import { FiltersSchema } from '@/features/Filters';
 import { BrandSchema } from '@/entities/Brand';
 import { IBrand } from '@/entities/Brand/model/types/BrandSchema';
+import { CategorySchema } from '@/entities/Category';
+import { Category } from '@/entities/Category/model/types/CategorySchema';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -23,12 +25,20 @@ export interface StateSchema {
   loginForm?: LoginSchema;
   productsList?: ProductsSchema;
   allBrands?: BrandSchema;
+  categoriesList?: CategorySchema;
   brand?: IBrand;
+  category?: Category;
 }
 
 export type StateSchemaKey = keyof StateSchema;
 const keyFromState: StateSchemaKey =
-  'registrationForm' || 'loginForm' || 'productsList' || 'brand' || 'allBrands';
+  'registrationForm' ||
+  'loginForm' ||
+  'productsList' ||
+  'brand' ||
+  'allBrands' ||
+  'categoriesList' ||
+  'category';
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;

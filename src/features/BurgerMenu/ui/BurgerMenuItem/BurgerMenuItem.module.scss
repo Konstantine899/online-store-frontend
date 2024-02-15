@@ -13,7 +13,17 @@
         color: var(--primary-color);
     }
 
-    &:hover svg{
+
+    &:hover svg {
         fill: var(--primary-color);
     }
-};
+}
+
+.active {
+    background-color: #481173;
+    border-radius: 8px;
+    color: white;
+}
+
+
+

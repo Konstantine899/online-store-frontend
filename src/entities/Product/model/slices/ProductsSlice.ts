@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
 import { FetchProducts } from '../services/FetchProducts';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
+import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -64,6 +65,24 @@ export const ProductsSlice = createSlice({
       )
       .addCase(
         FetchProductsByBrand.rejected,
+        (state: ProductsSchema, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      )
+      .addCase(FetchProductsByCategory.pending, (state: ProductsSchema) => {
+        state.isLoading = true;
+        state.error = '';
+      })
+      .addCase(FetchProductsByCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = '';
+        state.rows = action.payload.rows;
+        state.count = action.payload.count;
+        state.metaData = action.payload.metaData;
+      })
+      .addCase(
+        FetchProductsByCategory.rejected,
         (state: ProductsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
