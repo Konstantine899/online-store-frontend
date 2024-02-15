@@ -6,12 +6,15 @@
 
 .cardWrapper{
     display: flex;
-    overflow: hidden;
+    flex-direction: column;
+    width: 225px;
+    min-height: 350px;
+    max-height: 400px;
+    padding: 10px 0;
 }
 
 .cardTop{
-    height: 220px;
-    width: 100%;
+    flex: 0 0 220px;
 }
 
 .cardBottom{

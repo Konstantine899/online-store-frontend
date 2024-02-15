@@ -15,14 +15,17 @@ interface ProductProps {
   isLoading?: boolean;
 }
 
-const getSkeletons = (quantity: number) =>
-  new Array(quantity)
+const getSkeletons = (quantity: number) => {
+  return new Array(quantity)
     .fill(0)
     .map((_, index) => <ProductListItemSkeleton key={index} />);
+};
 
 export const ProductList = memo((props: ProductProps) => {
   const { className, products, isLoading } = props;
   const limit = useSelector(getLimit);
+
+  // const isLoading = true;
 
   if (!isLoading && !products.length) {
     return (
