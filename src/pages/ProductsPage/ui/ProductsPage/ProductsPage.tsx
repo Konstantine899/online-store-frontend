@@ -5,6 +5,8 @@ import { Page } from '@/widgets/Page';
 import { ProductsListPage } from '../ProductsListPage/ProductsListPage';
 import { ProductsListPaginate } from '../ProductsListPaginate/ProductsListPaginate';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
+import { useSelector } from 'react-redux';
+import { getProductsListSelector } from '@/entities/Product';
 
 interface ProductsPageProps {
   className?: string;
@@ -12,13 +14,14 @@ interface ProductsPageProps {
 
 const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
+  const products = useSelector(getProductsListSelector);
 
   return (
     <Suspense fallback={''}>
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
-        <ProductsListSorting />
+        {products.length ? <ProductsListSorting /> : null}
         <ProductsListPage />
-        <ProductsListPaginate />
+        {products.length ? <ProductsListPaginate /> : null}
       </Page>
     </Suspense>
   );

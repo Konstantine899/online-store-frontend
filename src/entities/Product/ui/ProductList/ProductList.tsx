@@ -8,6 +8,7 @@ import { TextSize } from '@/shared/ui/Text/Text';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
 import { getLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 interface ProductProps {
   className?: string;
@@ -30,9 +31,8 @@ export const ProductList = memo((props: ProductProps) => {
   if (!isLoading && !products.length) {
     return (
       <div className={classNames(cls.ProductListError, {}, [className])}>
-        <Text
-          size={TextSize.L}
-          text={'Извините, но по вашему запросу ничего не найдено'}
+        <NotFoundPage
+          message={'Извините, но по вашему запросу ничего не найдено'}
         />
       </div>
     );

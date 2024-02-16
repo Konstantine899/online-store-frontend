@@ -11,50 +11,31 @@ import {
   getRouteListProducts,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
+import { NotFoundImage } from '@/pages/NotFoundPage/ui/NotFoundImage/NotFoundImage';
+import { NotFoundMessage } from '@/pages/NotFoundPage/ui/NotFoundMessage/NotFoundMessage';
+import { NotFoundContent } from '@/pages/NotFoundPage/ui/NotFoundContent/NotFoundContent';
+import { HedgehogImage } from '@/pages/NotFoundPage/ui/HedgehogImage/HedgehogImage';
 
 interface NotFoundPageProps {
   className?: string;
+  message: string;
 }
 
 export const NotFoundPage = memo((props: NotFoundPageProps) => {
-  const { className } = props;
+  const { className, message } = props;
 
   return (
     <div className={classNames(cls.NotFoundPage, {}, [className])}>
       <div className={cls.contentWrapper}>
-        <div className={cls.errorNotfoundWrapper}>
-          <Icon className={cls.NotFoundImageIcon} Svg={NotFoundImageIcon} />
-          <p>Ошибка!</p>
+        <div className={cls.contentLeft}>
+          <NotFoundImage />
+          <NotFoundMessage message={message} />
         </div>
-        <p className={cls.contentMessage}>
-          К сожалению запрашиваемая вами страница не найдена
-        </p>
-        <div className={cls.linkWrapper}>
-          <AppLink
-            to={getRouteMain()}
-            theme={AppLinkTheme.PRIMARY}
-            className={cls.link}
-          >
-            <p>Перейдите на главную</p>
-            <Icon Svg={ArrowRightIcon} className={cls.ArrowRightIcon} />
-          </AppLink>
-          <AppLink
-            to={getRouteListProducts()}
-            theme={AppLinkTheme.PRIMARY}
-            className={cls.link}
-          >
-            <p>Просмотреть каталог товаров</p>
-            <Icon Svg={ArrowRightIcon} className={cls.ArrowRightIcon} />
-          </AppLink>
+        <div className={cls.contentRight}>
+          <HedgehogImage />
         </div>
       </div>
-      <div className={cls.notFoundImageWrapper}>
-        <KitImage
-          className={cls.notFoundImage}
-          src={`${__API_URL__}/static/hedgehog.jpg`}
-          alt={'ежик в тумане'}
-        />
-      </div>
+      <NotFoundContent />
     </div>
   );
 });

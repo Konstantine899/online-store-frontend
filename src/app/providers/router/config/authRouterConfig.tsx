@@ -25,6 +25,10 @@ export const authRouterConfig: Record<authRouter, RouteProps> = {
   },
   [authRouter.NOT_FOUND]: {
     path: '*',
-    element: <NotFoundPage />,
+    element: (
+      <NotFoundPage
+        message={'К сожалению запрашиваемая вами страница не найдена'}
+      />
+    ),
   },
 };

@@ -1,0 +1,26 @@
+.ContentWrapper{
+    margin-top: 40px;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    fill: var(--link-primary-color);
+
+    &:hover {
+        fill: var(--link-inverted-primary-color);
+    }
+}
+
+.link > p {
+    font: var(--font-xl);
+    padding: 10px;
+}
+
+.ArrowRightIcon {
+    width: 42px;
+    height: 42px;
+}
+

@@ -96,6 +96,10 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.NOT_FOUND]: {
     path: '*',
-    element: <NotFoundPage />,
+    element: (
+      <NotFoundPage
+        message={'К сожалению запрашиваемая вами страница не найдена'}
+      />
+    ),
   },
 };

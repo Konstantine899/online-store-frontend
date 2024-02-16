@@ -75,6 +75,10 @@ export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.REMOVE_USER_ROLE]: { path: getAdminRouteRemoveUserRole() },
   [adminRouter.NOT_FOUND]: {
     path: '*',
-    element: <NotFoundPage />,
+    element: (
+      <NotFoundPage
+        message={'К сожалению запрашиваемая вами страница не найдена'}
+      />
+    ),
   },
 };

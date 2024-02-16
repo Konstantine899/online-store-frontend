@@ -1,81 +1,23 @@
 .NotFoundPage {
     display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    flex-basis: 0;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     height: var(100vh - --navbar-height);
     width: 100vw;
     padding: 40px 50px 0;
     font: var(--font-xl);
     color: #757575;
-}
-
-.NotFoundIcon {
-    width: 50vh;
-    height: 50vw;
-}
-
-.notFoundImage {
-    height: 100%;
-    width: 100%;
-}
-
-.notFoundImageWrapper, .contentWrapper {
-    height: 80vh;
-    width: 50%;
+    overflow: hidden;
 }
 
 .contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    height: 50vh;
+}
+
+.contentLeft{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.errorNotfoundWrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.linkWrapper{
-    margin-top: 40px;
-}
-
-
-.link {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    fill: var(--link-primary-color);
-
-    &:hover {
-        fill: var(--link-inverted-primary-color);
-    }
-}
-
-.link > p {
-    font: var(--font-xl);
-    padding: 10px;
-}
-
-.ArrowRightIcon {
-    width: 42px;
-    height: 42px;
-}
-
-
-.contentMessage {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.NotFoundImageIcon {
-    height: 200px;
-    width: 200px;
 }
