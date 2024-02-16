@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 200px;
-    height: 120px;
 }
 
 .SelectButton{
@@ -47,6 +46,11 @@
     border: 1px solid #e5e5e5;
     border-radius: 8px;
     overflow: hidden;
+    position: absolute;
+    width: 200px;
+    margin-top: 40px;
+    z-index: var(--select-options-z-index);
+    background-color: var(--primary-color);
 }
 
 .option{
