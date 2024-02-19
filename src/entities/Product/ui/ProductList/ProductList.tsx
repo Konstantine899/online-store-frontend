@@ -26,8 +26,6 @@ export const ProductList = memo((props: ProductProps) => {
   const { className, products, isLoading } = props;
   const limit = useSelector(getLimit);
 
-  // const isLoading = true;
-
   if (!isLoading && !products.length) {
     return (
       <div className={classNames(cls.ProductListError, {}, [className])}>

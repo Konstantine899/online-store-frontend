@@ -19,7 +19,7 @@ import {
 } from '@/entities/Product/model/selectors/getProductsSelector';
 import { useSearchParams } from 'react-router-dom';
 import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
-import { Sort } from '@/shared/types/sort';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -43,7 +43,7 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(FiltersActions.setSearch(search));
-    dispatch(FiltersActions.setSortingOrder(sort as Sort));
+    dispatch(FiltersActions.setSortingOrder(sort as ISortOrder));
     dispatch(FetchProducts());
   }, [dispatch, limit, page, search, sort]);
 

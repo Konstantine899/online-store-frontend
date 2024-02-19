@@ -1,6 +1,6 @@
-import { Sort } from '@/shared/types/sort';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 
 export interface FiltersSchema {
   search?: string;
-  sortingOrder?: Sort;
+  sortingOrder?: ISortOrder;
 }

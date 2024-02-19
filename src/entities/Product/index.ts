@@ -5,6 +5,7 @@ export {
   getProductsListIsLoadingSelector,
   getProductsSelector,
   getProductsListSelector,
+  getLimitSelector,
 } from './model/selectors/getProductsSelector';
 export { FetchProducts } from './model/services/FetchProducts';
 export type {

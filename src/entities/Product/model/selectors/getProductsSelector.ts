@@ -13,3 +13,6 @@ export const getProductsListSelector = createSelector(
 
 export const getProductsListIsLoadingSelector = (state: StateSchema) =>
   state.productsList?.isLoading ?? false;
+
+export const getLimitSelector = (state: StateSchema) =>
+  state.productsList?.metaData?.limit ?? 5;

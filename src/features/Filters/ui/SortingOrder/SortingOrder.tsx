@@ -8,9 +8,17 @@ import {
   ProductsPageActions,
 } from '@/entities/Product';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { Select, SelectOptions } from '@/shared/ui/Select/Select/Select';
+import {
+  OptionsWidth,
+  Select,
+  SelectButtonWidth,
+  SelectOptions,
+  SelectSize,
+  SelectWidth,
+  SelectWrapperWidth,
+} from '@/shared/ui/Select/Select/Select';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Sort } from '@/shared/types/sort';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getBrandSelector } from '@/entities/Brand';
 
@@ -25,10 +33,10 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
   const value = useSelector(getSortOrderSelector);
   const brandId = useSelector(getBrandSelector);
 
-  const selectOptions = useMemo<SelectOptions<Sort>[]>(
+  const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
-      { value: 'asc', content: 'По возрастанию' },
-      { value: 'desc', content: 'По убыванию' },
+      { value: 'asc', content: 'возрастанию' },
+      { value: 'desc', content: 'убыванию' },
     ],
     [],
   );
@@ -40,7 +48,7 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
-  const onChange = (value: Sort) => {
+  const onChange = (value: ISortOrder) => {
     dispatch(FiltersActions.setSortingOrder(value));
     dispatch(ProductsPageActions.setPage(1));
     debounceFilterOrder();
@@ -48,7 +56,17 @@ export const SortingOrder = memo((props: SortingOrderProps) => {
 
   return (
     <div className={classNames(cls.SortingOrder, {}, [className])}>
-      <Select<Sort> options={selectOptions} value={value} onChange={onChange} />
+      <Select<ISortOrder>
+        options={selectOptions}
+        label={'По'}
+        value={value}
+        onChange={onChange}
+        size={SelectSize.M}
+        SelectWrapperWidth={SelectWrapperWidth.SELECT_WRAPPER_FULL_WIDTH}
+        SelectWidth={SelectWidth.SELECT_FULL_WIDTH}
+        ButtonWidth={SelectButtonWidth.SELECT_BUTTON_FULL_WIDTH}
+        OptionsWidth={OptionsWidth.OPTIONS_FULL_WIDTH}
+      />
     </div>
   );
 });

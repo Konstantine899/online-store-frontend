@@ -1,48 +1,115 @@
-.SelectWrapper {
+.SelectWrapper{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    width: 200px;
+    align-items: center;
+
+
 }
 
-.SelectButton{
+.size_m.SelectWrapper.select_wrapper_full_width{
+    width: var(--select-wrapper-full-width);
+}
+
+.size_m.SelectWrapper.select_wrapper_free_quarter_width{
+    width: var(--select-wrapper-free-quarter-width);
+}
+
+.size_m.SelectWrapper.select_wrapper_half_width{
+    width: var(--select-wrapper-half-width);
+}
+
+.size_m.SelectWrapper.select_wrapper_one_quarter_width{
+    width: var(--select-wrapper-half-width);
+}
+
+.size_m.Select {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* Размеры SelectWrapper */
+
+.size_m.Select.select_full_width{
+    width: var(--select-full-width);
+}
+
+.size_m.Select.select_free_quarter_width{
+    width: var(--select-free-quarter-width);
+}
+
+.size_m.Select.select_half_width{
+    width: var(--select-half-width);
+}
+
+.size_m.Select.select_one_quarter_width{
+    width: var(--select-one-quarter-width);
+}
+
+.size_m.SelectLabel {
+    padding-right: 10px;
+    font: var(--font-m);
+}
+
+.size_m > .Button {
     display: flex;
     justify-content: center;
+    flex-direction: row;
     border: none;
     border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
     background-color: transparent;
     box-shadow: 1px 2px 4px rgb(0 0 0 / 10%);
-    margin-bottom: 10px;
 
-    &:hover{
+
+    &:hover {
         background-color: #cb11ab;
         color: white;
         fill: white;
     }
 }
 
-.btn{
+/* Размеры Button */
+
+.size_m.select_button_full_width{
+    width: var(--select-button-full-width);
+}
+
+.size_m.select_button_free_quarter_width{
+    width: var(--select-button-free-quarter-width);
+}
+
+.size_m.select_button_half_width{
+    width: var(--select-button-half-width);
+}
+
+.size_m.select_button_one_quarter_width{
+    width: var(--select-button-one-quarter-width);
+}
+
+.size_m > .btn {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
+    gap: 10px;
 }
 
-.SelectArrow{
-    height: 15px;
-    width: 15px;
-}
-
-.btnContent{
+.size_m > .btnContent {
     display: flex;
     justify-content: center;
     font: var(--font-m);
 }
 
-.options{
+.size_m > .SelectArrowIcon {
+    height: 15px;
+    width: 15px;
+}
+
+.size_m.options {
     border: 1px solid #e5e5e5;
     border-radius: 8px;
     overflow: hidden;
@@ -53,21 +120,39 @@
     background-color: var(--primary-color);
 }
 
-.option{
+/* Размеры Options */
+
+.size_m > .options_full_width{
+    width: var(--options-full-width);
+}
+
+.size_m > .options_free_quarter_width{
+    width: var(--options-free-quarter-width);
+}
+
+.size_m > .options_half_width{
+    width: var(--options-half-width);
+}
+
+.size_m > .options_one_quarter_width{
+    width: var(--options-one-quarter-width);
+}
+
+.size_m.option {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     list-style: none;
     font: var(--font-m);
     padding: 5px 10px;
 }
 
-.active{
+.size_m.active {
     cursor: pointer;
     background-color: #cb11ab;
     color: white;
 }
 
-.selectedContentWrapper{
+.size_m.selectedContentWrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,13 +160,15 @@
     width: 100%;
 }
 
-.selected{
+
+
+.size_m.selected {
     cursor: pointer;
     background-color: #481173;
     color: white;
 }
 
-.SelectedIcon{
+.size_m > .SelectedIcon {
     fill: white;
     width: 15px;
     height: 15px;

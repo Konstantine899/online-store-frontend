@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FiltersSchema } from '../types/FiltersSchema';
-import { Sort } from '@/shared/types/sort';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 
 const initialState: FiltersSchema = {
   search: '',
@@ -14,7 +14,10 @@ export const FiltersSlice = createSlice({
     setSearch: (state: FiltersSchema, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
-    setSortingOrder: (state: FiltersSchema, action: PayloadAction<Sort>) => {
+    setSortingOrder: (
+      state: FiltersSchema,
+      action: PayloadAction<ISortOrder>,
+    ) => {
       state.sortingOrder = action.payload;
     },
   },
