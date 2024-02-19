@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import {
   RegistrationActions,
   RegistrationReducer,
-} from '@/features/Registration/model/slices/RegistrationSlice';
+} from '../../model/slices/RegistrationSlice';
 import {
   getRegistrationEmail,
   getRegistrationError,

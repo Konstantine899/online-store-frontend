@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import React, { ChangeEvent, InputHTMLAttributes, memo } from 'react';
 import cls from './Input.module.scss';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '../Icon/Icon';
 
 export enum InputTheme {
   OUTLINED = 'outlined',

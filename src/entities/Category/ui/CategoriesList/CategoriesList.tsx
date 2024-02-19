@@ -5,14 +5,14 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { CategoriesReducer } from '@/entities/Category/model/slices/CategoriesSlice';
 import { Overlay } from '@/shared/ui/Overlay';
 import { ButtonClose } from '@/features/ButtonClose';
 import { BurgerMenuItem } from '@/features/BurgerMenu/ui/BurgerMenuItem/BurgerMenuItem';
-import { Category } from '@/entities/Category/model/types/CategorySchema';
 import { useSelector } from 'react-redux';
-import { getCategoriesSelectors } from '@/entities/Category/model/selectors/getCategoriesSelectors';
-import { CategoryReducer } from '@/entities/Category/model/slices/CategorySlice';
+import { getCategoriesSelectors } from '../../model/selectors/getCategoriesSelectors';
+import { Category } from '../../model/types/CategorySchema';
+import { CategoryReducer } from '../../model/slices/CategorySlice';
+import { CategoriesReducer } from '../../model/slices/CategoriesSlice';
 
 const asyncCategoryListReducer: ReducersList = {
   categoriesList: CategoriesReducer,

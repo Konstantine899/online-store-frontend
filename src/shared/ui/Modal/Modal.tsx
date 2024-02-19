@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 import cls from './Modal.module.scss';
-import { Portal } from '@/shared/ui/Portal';
+import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
   className?: string;

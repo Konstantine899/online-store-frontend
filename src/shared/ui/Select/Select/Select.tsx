@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import SelectArrowIcon from '@/shared/assets/icons/select-arrow.svg';
 import SelectedIcon from '@/shared/assets/icons/selected.svg';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '../../Icon/Icon';
 
 export enum SelectSize {
   S = 'size_s',

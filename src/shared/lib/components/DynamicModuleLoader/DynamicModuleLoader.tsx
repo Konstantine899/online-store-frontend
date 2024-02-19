@@ -5,7 +5,7 @@ import {
 } from '@/app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 import { useStore } from 'react-redux';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 // Принимаемых reducers может быть множество
 export type ReducersList = {

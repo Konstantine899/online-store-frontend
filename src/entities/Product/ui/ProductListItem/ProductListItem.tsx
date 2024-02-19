@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductListItem.module.scss';
-import { Product } from '@/entities/Product';
+import { Product } from '../../model/types/ProductsSchema';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';

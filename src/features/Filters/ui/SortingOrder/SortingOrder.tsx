@@ -1,7 +1,6 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './SortingOrder.module.scss';
-import { FiltersActions, getSortOrderSelector } from '@/features/Filters';
 import {
   FetchProducts,
   FetchProductsByBrand,
@@ -21,6 +20,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getBrandSelector } from '@/entities/Brand';
+import { getSortOrderSelector } from '../../model/selectors/getFilters';
+import { FiltersActions } from '../../model/slices/FiltersSlice';
 
 interface SortingOrderProps {
   className?: string;

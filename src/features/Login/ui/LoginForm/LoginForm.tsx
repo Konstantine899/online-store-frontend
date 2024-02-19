@@ -5,22 +5,23 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { LoginActions, loginByEmail } from '@/features/Login';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
-import { LoginReducer } from '../../model/slices/LoginSlice';
-import {
-  getLoginEmail,
-  getLoginError,
-  getLoginIsLoading,
-  getLoginPassword,
-} from '@/features/Login/model/selectors/getLoginState';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 import { PasswordInput } from '@/features/PasswordInput';
+import {
+  getLoginEmail,
+  getLoginError,
+  getLoginIsLoading,
+  getLoginPassword,
+} from '../../model/selectors/getLoginState';
+import { loginByEmail } from '../../model/services/loginByEmail';
+import { LoginActions } from '../../model/slices/LoginSlice';
+import { LoginReducer } from '../../model/slices/LoginSlice';
 
 const initialAsyncReducersLoginForm: ReducersList = { loginForm: LoginReducer };
 
