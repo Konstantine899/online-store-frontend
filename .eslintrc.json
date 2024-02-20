@@ -31,7 +31,22 @@
     "feature-slised-design-bak-plugin/public-api": [
       "error",
       {
-        "alias": "@"
+        "alias": "@",
+        "testFiles": [
+          "**/*.test.*",
+          "**/*.story.*",
+          "**/StoreDecorator.tsx"
+        ]
+      }
+    ],
+    "feature-slised-design-bak-plugin/layer-imports": [
+      "error",
+      {
+        "alias": "@",
+        "ignoreImport": [
+          "**/StoreProvider/**",
+          "**/testing"
+        ]
       }
     ],
     "@typescript-eslint/no-explicit-any": "warn",
