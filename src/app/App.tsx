@@ -1,5 +1,5 @@
 import { AppRouter } from '@/app/providers/router/ui/AppRouter';
-import { Navbar } from '@/widgets/Navbar/ui/Navbar';
+import { Navbar } from '@/widgets/Navbar';
 import './styles/index.scss';
 import { Suspense, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';

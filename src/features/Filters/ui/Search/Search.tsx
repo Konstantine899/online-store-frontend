@@ -6,9 +6,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { FiltersActions } from '../../model/slices/FiltersSlice';
 import { useSelector } from 'react-redux';
 import { getSearchSelector } from '../../model/selectors/getFilters';
-import { ProductsPageActions } from '@/entities/Product/model/slices/ProductsSlice';
+import { ProductsPageActions, FetchProducts } from '@/entities/Product';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 
 interface SearchProps {
   className?: string;

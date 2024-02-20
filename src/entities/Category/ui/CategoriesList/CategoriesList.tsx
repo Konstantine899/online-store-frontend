@@ -7,7 +7,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Overlay } from '@/shared/ui/Overlay';
 import { ButtonClose } from '@/features/ButtonClose';
-import { BurgerMenuItem } from '@/features/BurgerMenu/ui/BurgerMenuItem/BurgerMenuItem';
+import { BurgerMenuItem } from '@/features/BurgerMenu';
 import { useSelector } from 'react-redux';
 import { getCategoriesSelectors } from '../../model/selectors/getCategoriesSelectors';
 import { Category } from '../../model/types/CategorySchema';

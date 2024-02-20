@@ -28,6 +28,12 @@
         "alias": "@"
       }
     ],
+    "feature-slised-design-bak-plugin/public-api": [
+      "error",
+      {
+        "alias": "@"
+      }
+    ],
     "@typescript-eslint/no-explicit-any": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",

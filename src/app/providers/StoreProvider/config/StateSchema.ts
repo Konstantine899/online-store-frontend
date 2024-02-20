@@ -12,10 +12,8 @@ import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsSchema } from '@/pages/ProductsPage';
 import { FiltersSchema } from '@/features/Filters';
-import { BrandSchema } from '@/entities/Brand';
-import { IBrand } from '@/entities/Brand/model/types/BrandSchema';
-import { CategorySchema } from '@/entities/Category';
-import { Category } from '@/entities/Category/model/types/CategorySchema';
+import { BrandSchema, IBrand } from '@/entities/Brand';
+import { CategorySchema, Category } from '@/entities/Category';
 
 export interface StateSchema {
   auth: AuthSchema;

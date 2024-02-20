@@ -5,10 +5,11 @@ import { BrandActions } from '../../model/slices/BrandSlice';
 import { getBrandSelector } from '../../model/selectors/getBrandSelector';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
 import { GetAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
-import { FetchProductsByBrand, ProductsPageActions } from '@/entities/Product';
+import { FetchProductsByBrand } from '@/entities/Product';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ProductsPageActions } from '@/entities/Product';
 
 interface BrandProps {
   className?: string;

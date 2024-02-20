@@ -4,4 +4,9 @@ export {
   CategoriesReducer,
 } from './model/slices/CategoriesSlice';
 export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
-export type { CategorySchema } from './model/types/CategorySchema';
+export {
+  getCategoriesSelectors,
+  getCategoryIdSelector,
+} from './model/selectors/getCategoriesSelectors';
+export { fetchCategoriesList } from './model/services/fetchCategoriesList';
+export type { CategorySchema, Category } from './model/types/CategorySchema';

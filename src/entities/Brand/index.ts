@@ -6,4 +6,4 @@ export {
 } from './model/slices/AllBrandsSlice';
 export { getBrandSelector } from './model/selectors/getBrandSelector';
 export { GetAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
-export type { BrandSchema } from './model/types/BrandSchema';
+export type { BrandSchema, IBrand } from './model/types/BrandSchema';

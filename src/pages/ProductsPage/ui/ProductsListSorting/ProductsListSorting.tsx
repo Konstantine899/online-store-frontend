@@ -1,9 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { SortingOrder, SortingLimit, TabBrand } from '@/features/Filters';
 import cls from './ProductsListSorting.module.scss';
-import { SortingOrder } from '@/features/Filters';
-import { TabBrand } from '@/features/Filters';
-import { SortingLimit } from '@/features/Filters/ui/SortingLimit/SortingLimit';
 
 interface ProductsListSortingProps {
   className?: string;

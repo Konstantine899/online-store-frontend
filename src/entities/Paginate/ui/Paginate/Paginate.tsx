@@ -18,8 +18,8 @@ import {
   getPreviosPage,
 } from '../../model/selectors/getPaginateState';
 import { getBrandSelector } from '@/entities/Brand';
-import { getCategoryIdSelector } from '@/entities/Category/model/selectors/getCategoriesSelectors';
-import { FetchProductsByCategory } from '@/entities/Product/model/services/FetchProductsByCategory';
+import { getCategoryIdSelector } from '@/entities/Category';
+import { FetchProductsByCategory } from '@/entities/Product';
 
 interface PaginateProps {
   className?: string;

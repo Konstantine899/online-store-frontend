@@ -6,11 +6,12 @@ import { IBurgerMenuItem } from '../../model/types/IBurgerMenuItem';
 import { BurgerMenuItemIcon } from '../BurgerMenuItemIcon/BurgerMenuItemIcon';
 import { getRouteCategory } from '@/shared/consts/router/publicRouter';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { CategoryActions } from '@/entities/Category';
-import { FetchProductsByCategory } from '@/entities/Product/model/services/FetchProductsByCategory';
-import { ProductsPageActions } from '@/entities/Product';
+import { CategoryActions, getCategoryIdSelector } from '@/entities/Category';
+import {
+  FetchProductsByCategory,
+  ProductsPageActions,
+} from '@/entities/Product';
 import { useSelector } from 'react-redux';
-import { getCategoryIdSelector } from '@/entities/Category/model/selectors/getCategoriesSelectors';
 
 interface CategoryProps {
   className?: string;

@@ -1,9 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
 import cls from './BurgerMenu.module.scss';
-import { CategoriesList } from '@/entities/Category';
+import { CategoriesList, fetchCategoriesList } from '@/entities/Category';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchCategoriesList } from '@/entities/Category/model/services/fetchCategoriesList';
 
 interface BurgerMenuButtonProps {
   className?: string;

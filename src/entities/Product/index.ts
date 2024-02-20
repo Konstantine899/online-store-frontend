@@ -1,6 +1,8 @@
 export { ProductList } from './ui/ProductList/ProductList';
-export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
-export { ProductsPageActions } from './model/slices/ProductsSlice';
+export {
+  ProductsPageActions,
+  ProductsPageReducer,
+} from './model/slices/ProductsSlice';
 export {
   getProductsListIsLoadingSelector,
   getProductsSelector,
@@ -8,6 +10,8 @@ export {
   getLimitSelector,
 } from './model/selectors/getProductsSelector';
 export { FetchProducts } from './model/services/FetchProducts';
+export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
+export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
 export type {
   ProductsSchema,
   Product,

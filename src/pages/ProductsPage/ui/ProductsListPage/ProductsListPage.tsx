@@ -1,25 +1,23 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
-import cls from './ProductsListPage.module.scss';
-import { ProductList } from '@/entities/Product';
+import {
+  ProductList,
+  ProductsPageActions,
+  ProductsPageReducer,
+  FetchProducts,
+  getProductsListIsLoadingSelector,
+  getProductsListSelector,
+} from '@/entities/Product';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-  ProductsPageActions,
-  ProductsPageReducer,
-} from '@/entities/Product/model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { FetchProducts } from '@/entities/Product/model/services/FetchProducts';
 import { useSelector } from 'react-redux';
-import {
-  getProductsListIsLoadingSelector,
-  getProductsListSelector,
-} from '@/entities/Product/model/selectors/getProductsSelector';
 import { useSearchParams } from 'react-router-dom';
-import { FiltersActions } from '@/features/Filters/model/slices/FiltersSlice';
+import { FiltersActions } from '@/features/Filters';
 import { ISortOrder } from '@/shared/types/ISortOrder';
+import cls from './ProductsListPage.module.scss';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,

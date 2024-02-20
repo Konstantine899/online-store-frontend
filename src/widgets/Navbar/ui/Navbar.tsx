@@ -9,8 +9,10 @@ import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
 import { LoginActions, LoginModal } from '@/features/Login';
-import { RegistrationModal } from '@/features/Registration';
-import { RegistrationActions } from '@/features/Registration/model/slices/RegistrationSlice';
+import {
+  RegistrationModal,
+  RegistrationActions,
+} from '@/features/Registration';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { getUserState, UserActions } from '@/entities/User';

@@ -5,7 +5,7 @@ import { UserReducer } from '@/entities/User';
 import { AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
-import { FiltersReducer } from '@/features/Filters/model/slices/FiltersSlice';
+import { FiltersReducer } from '@/features/Filters';
 
 export function createReduxStore(
   initialState: StateSchema,
