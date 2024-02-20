@@ -1,5 +1,5 @@
 export { RegistrationModal } from './ui/RegistrationModal/RegistrationModal';
-export { RegistrationValidationErrors } from './model/services/registrationByEmail';
+export type { RegistrationValidationErrors } from './model/services/registrationByEmail';
 export {
   RegistrationActions,
   RegistrationReducer,

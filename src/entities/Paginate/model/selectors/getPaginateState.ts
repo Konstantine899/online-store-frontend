@@ -1,28 +1,16 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { ProductsSchema } from '@/pages/ProductsPage';
-import { getProductsSelector } from '@/entities/Product';
+import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 
-export const getCurrentPage = createSelector(
-  getProductsSelector,
-  (state: ProductsSchema) => state?.metaData.currentPage ?? 1,
-);
+export const getCurrentPage = (state: StateSchema) =>
+  state.productsList?.metaData?.currentPage ?? 1;
 
-export const getLimit = createSelector(
-  getProductsSelector,
-  (state: ProductsSchema) => state?.metaData.limit ?? 1,
-);
+export const getLimit = (state: StateSchema) =>
+  state.productsList?.metaData?.limit ?? 1;
 
-export const getNextPage = createSelector(
-  getProductsSelector,
-  (state: ProductsSchema) => state?.metaData.nextPage ?? 1,
-);
+export const getNextPage = (state: StateSchema) =>
+  state.productsList?.metaData?.nextPage ?? 1;
 
-export const getPreviosPage = createSelector(
-  getProductsSelector,
-  (state: ProductsSchema) => state?.metaData.previousPage ?? 1,
-);
+export const getPreviosPage = (state: StateSchema) =>
+  state.productsList?.metaData?.previousPage ?? 1;
 
-export const getLastPage = createSelector(
-  getProductsSelector,
-  (state: ProductsSchema) => state?.metaData.lastPage ?? 1,
-);
+export const getLastPage = (state: StateSchema) =>
+  state.productsList?.metaData?.lastPage ?? 1;
