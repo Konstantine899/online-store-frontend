@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { ReducersMapObject } from 'redux';
 import { UserReducer } from '@/entities/User';
-import { AuthReducer } from '@/features/Auth';
+import { AuthReducer } from '@/entities/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
 import { FiltersReducer } from '@/features/Filters';

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setUserData } from '@/shared/lib/helpers/setUserData';
-import { Auth } from '@/features/Auth';
+import { setUserData } from '@/entities/Auth/helpers/setUserData';
+import { Auth } from '@/entities/Auth';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 
 interface RegistrationByEmailProps {

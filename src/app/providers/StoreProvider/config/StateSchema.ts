@@ -1,7 +1,7 @@
 import { UserSchema } from '@/entities/User';
 import { RegistrationSchema } from '@/features/Registration';
 import { LoginSchema } from '@/features/Login';
-import { AuthSchema } from '@/features/Auth';
+import { AuthSchema } from '@/entities/Auth';
 import {
   AnyAction,
   CombinedState,

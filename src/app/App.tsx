@@ -5,7 +5,7 @@ import { Suspense, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { UserActions } from '@/entities/User';
-import { AuthActions } from '@/features/Auth';
+import { AuthActions } from '@/entities/Auth';
 
 export const App = () => {
   const dispatch = useAppDispatch();
