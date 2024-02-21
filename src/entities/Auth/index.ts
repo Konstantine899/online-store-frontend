@@ -4,3 +4,4 @@ export {
   AuthReducer,
 } from '@/entities/Auth/model/slices/AuthSlice';
 export { getAuthState } from '@/entities/Auth/model/selectors/getAuthState';
+export { setUserData } from './helpers/setUserData';

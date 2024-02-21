@@ -1,4 +1,4 @@
-import { LoginValidationErrors } from '../services/loginByEmail';
+import { LoginValidationErrors } from '@/shared/types/LoginValidationErrors';
 
 export interface LoginSchema {
   email: string;

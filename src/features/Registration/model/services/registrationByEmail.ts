@@ -1,18 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setUserData } from '@/entities/Auth/helpers/setUserData';
-import { Auth } from '@/entities/Auth';
+import { Auth, setUserData } from '@/entities/Auth';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
+import { RegistrationValidationErrors } from '@/shared/types/RegistrationValidationErrors';
 
 interface RegistrationByEmailProps {
   email: string;
   password: string;
-}
-
-export interface RegistrationValidationErrors {
-  status: number;
-  property: string;
-  messages: string[];
-  value: string;
 }
 
 export const registrationByEmail = createAsyncThunk<

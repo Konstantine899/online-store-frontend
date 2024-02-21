@@ -12,7 +12,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { PasswordInput } from '@/features/PasswordInput';
+import { PasswordInput } from '@/shared/lib/components/PasswordInput';
 import {
   getLoginEmail,
   getLoginError,

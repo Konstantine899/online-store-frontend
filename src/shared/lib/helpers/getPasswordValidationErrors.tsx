@@ -1,5 +1,5 @@
-import { LoginValidationErrors } from '@/features/Login';
-import { RegistrationValidationErrors } from '@/features/Registration';
+import { LoginValidationErrors } from '@/shared/types/LoginValidationErrors';
+import { RegistrationValidationErrors } from '@/shared/types/RegistrationValidationErrors';
 
 type PasswordValidationProps =
   | string
