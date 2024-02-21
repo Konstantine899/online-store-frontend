@@ -3,12 +3,10 @@ import { memo } from 'react';
 import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { Product } from '../../model/types/ProductsSchema';
-import { Text } from '@/shared/ui/Text';
-import { TextSize } from '@/shared/ui/Text/Text';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
 import { getLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
-import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 
 interface ProductProps {
   className?: string;
@@ -29,7 +27,7 @@ export const ProductList = memo((props: ProductProps) => {
   if (!isLoading && !products.length) {
     return (
       <div className={classNames(cls.ProductListError, {}, [className])}>
-        <NotFoundPage
+        <ProductListNotFound
           message={'Извините, но по вашему запросу ничего не найдено'}
         />
       </div>

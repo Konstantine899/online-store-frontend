@@ -1,0 +1,23 @@
+.NotFoundPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: var(100vh - --navbar-height);
+    width: 100vw;
+    padding: 40px 50px 0;
+    font: var(--font-xl);
+    color: #757575;
+    overflow: hidden;
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    height: 50vh;
+}
+
+.contentLeft{
+    display: flex;
+    flex-direction: column;
+}
