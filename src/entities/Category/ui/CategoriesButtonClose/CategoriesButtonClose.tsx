@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, ReactNode } from 'react';
-import cls from './ButtonClose.module.scss';
+import cls from './CategoriesButtonClose.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 
 interface ButtonCloseProps {
@@ -9,7 +9,7 @@ interface ButtonCloseProps {
   onClose?: () => void;
 }
 
-export const ButtonClose = memo((props: ButtonCloseProps) => {
+export const CategoriesButtonClose = memo((props: ButtonCloseProps) => {
   const { className, children, onClose } = props;
 
   return (

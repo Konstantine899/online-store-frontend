@@ -2,7 +2,6 @@ import { RouteProps } from 'react-router-dom';
 import { LoginModal } from '@/features/Login';
 import { RegistrationModal } from '@/features/Registration';
 import { ProductsPage } from '@/pages/ProductsPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import {
   getRouteAllBrands,
   getRouteAppendToCart,
@@ -29,6 +28,7 @@ import {
   getRouteSingUp,
   publicRouter,
 } from '@/shared/consts/router/publicRouter';
+import { ProductListNotFound } from '@/entities/Product';
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
@@ -97,7 +97,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.NOT_FOUND]: {
     path: '*',
     element: (
-      <NotFoundPage
+      <ProductListNotFound
         message={'К сожалению запрашиваемая вами страница не найдена'}
       />
     ),

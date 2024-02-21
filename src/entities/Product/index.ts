@@ -18,3 +18,4 @@ export type {
   ProductsListMetaData,
 } from './model/types/ProductsSchema';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
+export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';

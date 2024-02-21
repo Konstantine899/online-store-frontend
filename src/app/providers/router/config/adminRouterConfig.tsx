@@ -1,5 +1,4 @@
 import { RouteProps } from 'react-router-dom';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import {
   adminRouter,
   getAdminCreateProductProperty,
@@ -30,6 +29,7 @@ import {
   getAdminRouteAddUserRole,
   getAdminRouteRemoveUserRole,
 } from '@/shared/consts/router/adminRouter';
+import { ProductListNotFound } from '@/entities/Product';
 
 export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.CREATE_BRAND]: { path: getAdminRouteCreateBrand() },
@@ -76,7 +76,7 @@ export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.NOT_FOUND]: {
     path: '*',
     element: (
-      <NotFoundPage
+      <ProductListNotFound
         message={'К сожалению запрашиваемая вами страница не найдена'}
       />
     ),

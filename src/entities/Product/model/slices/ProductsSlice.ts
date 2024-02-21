@@ -32,7 +32,7 @@ export const ProductsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(FetchProducts.pending, (state) => {
+      .addCase(FetchProducts.pending, (state: ProductsSchema) => {
         state.isLoading = true;
         state.error = '';
         state.rows = null;

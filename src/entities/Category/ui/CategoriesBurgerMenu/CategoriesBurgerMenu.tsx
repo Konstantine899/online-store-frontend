@@ -1,14 +1,15 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
-import cls from './BurgerMenu.module.scss';
-import { CategoriesList, fetchCategoriesList } from '@/entities/Category';
+import cls from './CategoriesBurgerMenu.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { fetchCategoriesList } from '../../model/services/fetchCategoriesList';
+import { CategoriesList } from '../CategoriesList/CategoriesList';
 
 interface BurgerMenuButtonProps {
   className?: string;
 }
 
-export const BurgerMenu = memo((props: BurgerMenuButtonProps) => {
+export const CategoriesBurgerMenu = memo((props: BurgerMenuButtonProps) => {
   const { className } = props;
 
   const [isOpen, setIsOpen] = useState(false);

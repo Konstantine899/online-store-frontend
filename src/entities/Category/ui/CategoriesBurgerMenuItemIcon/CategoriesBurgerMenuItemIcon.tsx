@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './BurgerMenuItemIcon.module.scss';
+import cls from './CategoriesBurgerMenuItemIcon.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import SmartphoneIcon from '@/shared/assets/icons/smartphone.svg';
 import ImacIcon from '@/shared/assets/icons/imac.svg';
@@ -12,7 +12,7 @@ interface CategoryIconProps {
   isActive?: boolean;
 }
 
-export const BurgerMenuItemIcon = memo((props: CategoryIconProps) => {
+export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {
   const { className, itemName, isActive } = props;
 
   return (

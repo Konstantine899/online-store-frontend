@@ -1,25 +1,26 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './BurgerMenuItem.module.scss';
+import cls from './CategoriesBurgerMenuItem.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
-import { IBurgerMenuItem } from '../../model/types/IBurgerMenuItem';
-import { BurgerMenuItemIcon } from '../BurgerMenuItemIcon/BurgerMenuItemIcon';
+import { ICategoryBurgerMenuItem } from '../../model/types/ICategoryBurgerMenuItem';
+import { CategoriesBurgerMenuItemIcon } from '../CategoriesBurgerMenuItemIcon/CategoriesBurgerMenuItemIcon';
 import { getRouteCategory } from '@/shared/consts/router/publicRouter';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { CategoryActions, getCategoryIdSelector } from '@/entities/Category';
 import {
   FetchProductsByCategory,
   ProductsPageActions,
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
+import { getCategoryIdSelector } from '../../model/selectors/getCategoriesSelectors';
+import { CategoryActions } from '../../model/slices/CategorySlice';
 
-interface CategoryProps {
+interface BurgerMenuItemProps {
   className?: string;
-  item?: IBurgerMenuItem;
+  item?: ICategoryBurgerMenuItem;
   onClose?: () => void;
 }
 
-export const BurgerMenuItem = memo((props: CategoryProps) => {
+export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const { className, item, onClose } = props;
   const dispatch = useAppDispatch();
   const categoryId = useSelector(getCategoryIdSelector);
@@ -43,7 +44,10 @@ export const BurgerMenuItem = memo((props: CategoryProps) => {
           className,
         ])}
       >
-        <BurgerMenuItemIcon itemName={item.name} isActive={isActive} />
+        <CategoriesBurgerMenuItemIcon
+          itemName={item.name}
+          isActive={isActive}
+        />
         {item.name}
       </li>
     </AppLink>

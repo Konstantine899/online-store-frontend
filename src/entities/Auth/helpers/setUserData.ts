@@ -5,10 +5,11 @@ import {
 } from '@/shared/consts/localstorage';
 import { UserActions, User } from '@/entities/User';
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
-import { LoginValidationErrors } from '@/features/Login';
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
-import { AuthActions, Auth } from '@/entities/Auth';
+import { Auth } from '../model/types/AuthSchema';
+import { LoginValidationErrors } from '@/shared/types/LoginValidationErrors';
+import { AuthActions } from '../model/slices/AuthSlice';
 
 export const setUserData = (
   data: Auth,

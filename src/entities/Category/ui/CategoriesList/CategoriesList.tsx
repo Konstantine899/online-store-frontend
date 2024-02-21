@@ -6,8 +6,8 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Overlay } from '@/shared/ui/Overlay';
-import { ButtonClose } from '@/features/ButtonClose';
-import { BurgerMenuItem } from '@/features/BurgerMenu';
+import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButtonClose';
+import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';
 import { useSelector } from 'react-redux';
 import { getCategoriesSelectors } from '../../model/selectors/getCategoriesSelectors';
 import { Category } from '../../model/types/CategorySchema';
@@ -44,13 +44,20 @@ export const CategoriesList = memo((props: CategoryProps) => {
         )}
       >
         <Overlay onClose={onClose} />
-        <ButtonClose className={cls.BurgerMenuButtonClose} onClose={onClose}>
+        <CategoriesButtonClose
+          className={cls.BurgerMenuButtonClose}
+          onClose={onClose}
+        >
           Закрыть меню
-        </ButtonClose>
+        </CategoriesButtonClose>
         <div className={cls.burgerMenuContent}>
           <ul>
             {categories?.map((item) => (
-              <BurgerMenuItem key={item.id} item={item} onClose={onClose} />
+              <CategoriesBurgerMenuItem
+                key={item.id}
+                item={item}
+                onClose={onClose}
+              />
             ))}
           </ul>
         </div>

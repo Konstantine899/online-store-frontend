@@ -11,5 +11,5 @@ type Story = StoryObj<typeof ProductListNotFound>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductListNotFound />,
+  render: () => <ProductListNotFound message={''} />,
 };
