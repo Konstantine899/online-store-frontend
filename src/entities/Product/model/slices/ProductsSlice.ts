@@ -3,6 +3,7 @@ import { ProductsSchema } from '../types/ProductsSchema';
 import { FetchProducts } from '../services/FetchProducts';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -15,6 +16,8 @@ const initialState: ProductsSchema = {
     totalCount: 0,
     limit: 0,
   },
+  search: '',
+  sortingOrder: 'asc',
   isLoading: false,
   error: '',
 };
@@ -23,11 +26,20 @@ export const ProductsSlice = createSlice({
   name: 'ProductsSlice',
   initialState,
   reducers: {
-    setPage: (state, action: PayloadAction<number>) => {
+    setPage: (state: ProductsSchema, action: PayloadAction<number>) => {
       state.metaData.currentPage = action.payload;
     },
-    setLimit: (state, action: PayloadAction<number>) => {
+    setLimit: (state: ProductsSchema, action: PayloadAction<number>) => {
       state.metaData.limit = action.payload;
+    },
+    setSearch: (state: ProductsSchema, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    setSortingOrder: (
+      state: ProductsSchema,
+      action: PayloadAction<ISortOrder>,
+    ) => {
+      state.sortingOrder = action.payload;
     },
   },
   extraReducers: (builder) => {

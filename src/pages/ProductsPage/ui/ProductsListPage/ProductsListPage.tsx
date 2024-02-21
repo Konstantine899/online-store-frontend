@@ -15,7 +15,6 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { FiltersActions } from '@/features/Filters';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
 
@@ -40,8 +39,8 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
-    dispatch(FiltersActions.setSearch(search));
-    dispatch(FiltersActions.setSortingOrder(sort as ISortOrder));
+    dispatch(ProductsPageActions.setSearch(search));
+    dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
     dispatch(FetchProducts());
   }, [dispatch, limit, page, search, sort]);
 

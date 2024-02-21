@@ -16,3 +16,7 @@ export const getProductsListIsLoadingSelector = (state: StateSchema) =>
 
 export const getLimitSelector = (state: StateSchema) =>
   state.productsList?.metaData?.limit ?? 5;
+export const getSearchSelector = (state: StateSchema) =>
+  state.productsList?.search ?? '';
+export const getSortOrderSelector = (state: StateSchema) =>
+  state.productsList?.sortingOrder ?? 'asc';

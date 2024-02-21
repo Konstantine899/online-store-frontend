@@ -1,19 +1,19 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
-import cls from './Search.module.scss';
+import cls from './ProductSearch.module.scss';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { FiltersActions } from '../../model/slices/FiltersSlice';
 import { useSelector } from 'react-redux';
-import { getSearchSelector } from '../../model/selectors/getFilters';
-import { ProductsPageActions, FetchProducts } from '@/entities/Product';
+import { ProductsPageActions } from '../../model/slices/ProductsSlice';
+import { FetchProducts } from '../../model/services/FetchProducts';
+import { getSearchSelector } from '../../model/selectors/getProductsSelector';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
 interface SearchProps {
   className?: string;
 }
 
-export const Search = memo((props: SearchProps) => {
+export const ProductSearch = memo((props: SearchProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ export const Search = memo((props: SearchProps) => {
 
   const onSearch = useCallback(
     (search: string) => {
-      dispatch(FiltersActions.setSearch(search));
+      dispatch(ProductsPageActions.setSearch(search));
       dispatch(ProductsPageActions.setPage(1));
       debounceFetchProductsListPage();
     },
@@ -35,7 +35,7 @@ export const Search = memo((props: SearchProps) => {
   );
 
   const onBlur = useCallback(() => {
-    dispatch(FiltersActions.setSearch(''));
+    dispatch(ProductsPageActions.setSearch(''));
     dispatch(ProductsPageActions.setPage(1));
     debounceFetchProductsListPage();
   }, [debounceFetchProductsListPage, dispatch]);

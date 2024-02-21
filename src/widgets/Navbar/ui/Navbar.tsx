@@ -23,7 +23,7 @@ import {
   getRouteCart,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
-import { Search } from '@/features/Filters';
+import { ProductSearch } from '@/entities/Product';
 
 interface NavbarProps {
   className?: string;
@@ -84,7 +84,7 @@ export const Navbar = memo((props: NavbarProps) => {
             </AppLink>
           </div>
           <div className={cls.Navbar_content_center}>
-            <Search />
+            <ProductSearch />
           </div>
           <div className={cls.Navbar_content_right}>
             <AppLink
@@ -116,7 +116,7 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
         <div className={cls.Navbar_content_center}>
-          <Search />
+          <ProductSearch />
         </div>
         <div className={cls.Navbar_content_right}>
           <AppLink

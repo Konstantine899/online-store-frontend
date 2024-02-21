@@ -19,3 +19,10 @@ export type {
 } from './model/types/ProductsSchema';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
+export { ProductSearch } from './ui/ProductSearch/ProductSearch';
+export { ProductSortingLimit } from './ui/ProductSortingLimit/ProductSortingLimit';
+export { ProductSortingOrder } from './ui/ProductSortingOrder/ProductSortingOrder';
+export { ProductTabBrand } from './ui/ProductTabBrand/ProductTabBrand';
+
+export { getSortOrderSelector } from '@/entities/Product/model/selectors/getProductsSelector';
+export { getSearchSelector } from '@/entities/Product/model/selectors/getProductsSelector';

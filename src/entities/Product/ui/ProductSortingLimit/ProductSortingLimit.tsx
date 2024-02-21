@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback, useMemo } from 'react';
-import cls from './SortingLimit.module.scss';
+import cls from './ProductSortingLimit.module.scss';
 import { Select } from '@/shared/ui/Select';
 import {
   OptionsWidth,
@@ -26,7 +26,7 @@ interface SortingLimitProps {
   className?: string;
 }
 
-export const SortingLimit = memo((props: SortingLimitProps) => {
+export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();

@@ -1,3 +1,5 @@
+import { ISortOrder } from '@/shared/types/ISortOrder';
+
 export interface ProductsListMetaData {
   totalCount: number;
   lastPage: number;
@@ -22,6 +24,8 @@ export interface ProductsSchema {
   metaData: ProductsListMetaData;
   count: number;
   rows: Product[];
+  search?: string;
+  sortingOrder?: ISortOrder;
   isLoading?: boolean;
   error?: string;
 }

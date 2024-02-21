@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './TabBrand.module.scss';
+import cls from './ProductTabBrand.module.scss';
 import { Brand } from '@/entities/Brand';
 import {
   DynamicModuleLoader,
@@ -17,7 +17,7 @@ export interface TabBrandProps {
   className?: string;
 }
 
-const TabBrand = memo((props: TabBrandProps) => {
+export const ProductTabBrand = memo((props: TabBrandProps) => {
   const { className } = props;
 
   return (
@@ -28,5 +28,3 @@ const TabBrand = memo((props: TabBrandProps) => {
     </DynamicModuleLoader>
   );
 });
-
-export default TabBrand;

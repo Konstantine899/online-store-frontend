@@ -1,7 +1,11 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import { SortingOrder, SortingLimit, TabBrand } from '@/features/Filters';
 import cls from './ProductsListSorting.module.scss';
+import {
+  ProductSortingLimit,
+  ProductSortingOrder,
+  ProductTabBrand,
+} from '@/entities/Product';
 
 interface ProductsListSortingProps {
   className?: string;
@@ -12,9 +16,9 @@ export const ProductsListSorting = memo((props: ProductsListSortingProps) => {
 
   return (
     <div className={classNames(cls.ProductsListSorting, {}, [className])}>
-      <SortingOrder />
-      <SortingLimit />
-      <TabBrand />
+      <ProductSortingOrder />
+      <ProductSortingLimit />
+      <ProductTabBrand />
     </div>
   );
 });
