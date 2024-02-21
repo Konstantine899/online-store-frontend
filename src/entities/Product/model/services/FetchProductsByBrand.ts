@@ -3,7 +3,10 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { ProductsSchema } from '../../model/types/ProductsSchema';
 import { getCurrentPage, getLimit } from '@/entities/Paginate';
 import { addQueryParams } from '@/shared/url/addQueryParams';
-import { getSearchSelector, getSortOrderSelector } from '@/entities/Product';
+import {
+  getSearchSelector,
+  getSortOrderSelector,
+} from '../../model/selectors/getProductsSelector';
 
 interface FetchProductsByBrandProps {
   brandId: number;

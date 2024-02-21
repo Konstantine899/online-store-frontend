@@ -3,7 +3,10 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { ProductsSchema } from '../types/ProductsSchema';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { getCurrentPage, getLimit } from '@/entities/Paginate';
-import { getSearchSelector, getSortOrderSelector } from '@/entities/Product';
+import {
+  getSearchSelector,
+  getSortOrderSelector,
+} from '../../model/selectors/getProductsSelector';
 
 export const FetchProducts = createAsyncThunk<
   ProductsSchema,

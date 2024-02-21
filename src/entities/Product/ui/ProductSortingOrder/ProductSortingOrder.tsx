@@ -1,12 +1,10 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
-import {
-  FetchProducts,
-  FetchProductsByBrand,
-  getSortOrderSelector,
-  ProductsPageActions,
-} from '@/entities/Product';
+import { FetchProducts } from '../../model/services/FetchProducts';
+import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
+import { getSortOrderSelector } from '../../model/selectors/getProductsSelector';
+import { ProductsPageActions } from '../../model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import {
   OptionsWidth,

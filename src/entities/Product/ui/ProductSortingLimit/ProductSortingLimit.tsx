@@ -11,12 +11,10 @@ import {
   SelectWrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
-import {
-  FetchProducts,
-  FetchProductsByBrand,
-  getLimitSelector,
-  ProductsPageActions,
-} from '@/entities/Product';
+import { FetchProducts } from '../../model/services/FetchProducts';
+import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
+import { getLimitSelector } from '../../model/selectors/getProductsSelector';
+import { ProductsPageActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { getBrandSelector } from '@/entities/Brand';

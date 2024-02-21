@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
-import { ProductsSchema } from '@/pages/ProductsPage';
+import { ProductsSchema } from '../types/ProductsSchema';
 
 export const getProductsSelector = (state: StateSchema) => {
   return state.productsList ?? null;
