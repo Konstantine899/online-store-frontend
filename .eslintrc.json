@@ -45,6 +45,7 @@
         "alias": "@",
         "ignoreImport": [
           "**/StoreProvider/**",
+          "**/AppRouter/**",
           "**/testing"
         ]
       }

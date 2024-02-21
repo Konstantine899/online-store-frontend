@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ProductTabBrand from './ProductTabBrand';
+import { ProductTabBrand } from './ProductTabBrand';
 
 const meta: Meta<typeof ProductTabBrand> = {
   title: 'entities/TabBrand',
