@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux';
 import { getUserState, UserActions } from '@/entities/User';
 import { AuthActions } from '@/entities/Auth';
 import { useNavigate } from 'react-router';
-import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { AppLinkFontSizeSize, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import {
   getRouteCart,
   getRouteMain,
@@ -90,13 +90,19 @@ export const Navbar = memo((props: NavbarProps) => {
             <AppLink
               className={cls.logout}
               theme={AppLinkTheme.SECONDARY}
+              fontSize={AppLinkFontSizeSize.L}
               to={getRouteMain()}
               onClick={onLogout}
             >
               <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
               Выйти
             </AppLink>
-            <AppLink className={cls.registration} to={getRouteCart()}>
+            <AppLink
+              className={cls.registration}
+              theme={AppLinkTheme.SECONDARY}
+              fontSize={AppLinkFontSizeSize.L}
+              to={getRouteCart()}
+            >
               <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
               Корзина
             </AppLink>

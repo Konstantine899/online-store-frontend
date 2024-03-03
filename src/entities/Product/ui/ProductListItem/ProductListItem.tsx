@@ -7,6 +7,7 @@ import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
+import { AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
 
 interface ProductListItemProps {
   className?: string;
@@ -46,6 +47,7 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
           <AppLink
             to={getRouteProduct(`${product.id}`)}
             className={cls.CardTitle}
+            fontSize={AppLinkFontSizeSize.M}
           >
             {product.name}
           </AppLink>
