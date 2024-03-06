@@ -26,21 +26,17 @@ export interface StateSchema {
   category?: Category;
 }
 
+// Конструкция, с помощью которой достаю ключи. Которые являются названиями reducers
 export type StateSchemaKey = keyof StateSchema;
-const keyFromState: StateSchemaKey =
-  'registrationForm' ||
-  'loginForm' ||
-  'productsList' ||
-  'brand' ||
-  'allBrands' ||
-  'categoriesList' ||
-  'category';
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
+  // true-вмонтирован, false-демонтирован
+  getMountedReducers: () => MountedReducers;
 }
 
 // тип для reducerManager
