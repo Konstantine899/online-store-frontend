@@ -1,15 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { IBrand } from '../types/IBrand';
+import { ICategory } from '../types/ICategory';
 
-export const FetchAllBrands = createAsyncThunk<
-  IBrand[],
-  null,
+interface fetchCategoryProps {
+  id: number;
+}
+
+export const fetchCategory = createAsyncThunk<
+  ICategory,
+  fetchCategoryProps,
   ThunkAPIConfig<string>
->('FetchAllBrands', async (_, thunkAPI) => {
+>('fetchCategory', async ({ id }, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await extra.api.get<IBrand[]>('/brand/brands');
+    const response = await extra.api.get<ICategory>(`/category/one/${id}`);
     if (!response.data) {
       throw new Error();
     }

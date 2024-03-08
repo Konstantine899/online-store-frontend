@@ -6,10 +6,10 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { BrandReducer, AllBrandsReducer } from '@/entities/Brand';
+import { FilteringByBrandIdReducer, AllBrandsReducer } from '@/entities/Brand';
 
 const asyncBrandReducer: ReducersList = {
-  brand: BrandReducer,
+  filteringByBrand: FilteringByBrandIdReducer,
   allBrands: AllBrandsReducer,
 };
 

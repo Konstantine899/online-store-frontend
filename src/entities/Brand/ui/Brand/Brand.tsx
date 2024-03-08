@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { memo, useEffect } from 'react';
 import cls from './Brand.module.scss';
-import { BrandActions } from '../../model/slices/BrandSlice';
-import { getBrandSelector } from '../../model/selectors/getBrandSelector';
+import { FilteringByBrandIdActions } from '../../model/slices/FilteringByBrandIdSlice';
+import { filteringByBrandSelector } from '../../model/selectors/filteringByBrandSelector';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
 import { GetAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
 import { FetchProductsByBrand } from '@/entities/Product';
@@ -24,10 +24,10 @@ export const Brand = memo((props: BrandProps) => {
   }, [dispatch]);
 
   const brands = useSelector(GetAllBrandsSelector);
-  const brandId = useSelector(getBrandSelector);
+  const brandId = useSelector(filteringByBrandSelector);
 
   const handleClick = (tab: TabItem) => {
-    dispatch(BrandActions.setBrandId(tab.id));
+    dispatch(FilteringByBrandIdActions.setBrandId(tab.id));
     dispatch(ProductsPageActions.setPage(1));
     dispatch(FetchProductsByBrand({ brandId: tab.id }));
   };

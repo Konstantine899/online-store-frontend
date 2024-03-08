@@ -29,6 +29,7 @@ import {
   publicRouter,
 } from '@/shared/consts/router/publicRouter';
 import { ProductListNotFound } from '@/entities/Product';
+import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
@@ -77,6 +78,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_PRODUCT]: {
     path: getRouteProduct(':id'),
+    element: <ProductDetailsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT]: {
     path: getRouteListProducts(),

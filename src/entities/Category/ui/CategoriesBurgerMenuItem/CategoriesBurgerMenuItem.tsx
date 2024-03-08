@@ -12,7 +12,7 @@ import {
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { getCategoryIdSelector } from '../../model/selectors/getCategoriesSelectors';
-import { CategoryActions } from '../../model/slices/CategorySlice';
+import { FilteringByCategoryIdActions } from '../../model/slices/FilteringByCategoryIdSlice';
 
 interface BurgerMenuItemProps {
   className?: string;
@@ -27,7 +27,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(ProductsPageActions.setPage(1));
-    dispatch(CategoryActions.setCategoryId(categoryId));
+    dispatch(FilteringByCategoryIdActions.setCategoryId(categoryId));
     dispatch(FetchProductsByCategory({ categoryId }));
     onClose();
   };

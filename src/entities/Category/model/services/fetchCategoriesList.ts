@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { Category } from '../types/CategorySchema';
 import { getRouteListAllCategories } from '@/shared/consts/router/publicRouter';
+import { ICategory } from '../../model/types/ICategory';
 
 interface fetchCategoriesListProps {}
 
 export const fetchCategoriesList = createAsyncThunk<
-  Category[],
+  ICategory[],
   fetchCategoriesListProps,
   ThunkAPIConfig<string>
 >('fetchCategoriesList', async (_, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await extra.api.get<Category[]>(
+    const response = await extra.api.get<ICategory[]>(
       getRouteListAllCategories(),
     );
     if (!response.data) {

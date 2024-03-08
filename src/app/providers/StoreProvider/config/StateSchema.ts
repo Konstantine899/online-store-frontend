@@ -11,8 +11,14 @@ import {
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsSchema } from '@/pages/ProductsPage';
-import { BrandSchema, IBrand } from '@/entities/Brand';
-import { CategorySchema, Category } from '@/entities/Category';
+import { AllBrandsSchema, BrandSchema, IBrand } from '@/entities/Brand';
+import {
+  AllCategoriesSchema,
+  CategorySchema,
+  ICategory,
+} from '@/entities/Category';
+import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
+import { RatingSchema } from '@/entities/Rating';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -20,10 +26,14 @@ export interface StateSchema {
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   productsList?: ProductsSchema;
-  allBrands?: BrandSchema;
-  categoriesList?: CategorySchema;
-  brand?: IBrand;
-  category?: Category;
+  productDetailsPage: ProductDetailsPageSchema;
+  allBrands?: AllBrandsSchema;
+  categoriesList?: AllCategoriesSchema;
+  filteringByBrand?: IBrand;
+  filteringCategory?: ICategory;
+  brand?: BrandSchema;
+  category?: CategorySchema;
+  rating?: RatingSchema;
 }
 
 // Конструкция, с помощью которой достаю ключи. Которые являются названиями reducers

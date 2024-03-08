@@ -10,13 +10,13 @@ import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButton
 import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';
 import { useSelector } from 'react-redux';
 import { getCategoriesSelectors } from '../../model/selectors/getCategoriesSelectors';
-import { Category } from '../../model/types/CategorySchema';
-import { CategoryReducer } from '../../model/slices/CategorySlice';
+import { FilteringByCategoryIdReducer } from '../../model/slices/FilteringByCategoryIdSlice';
 import { CategoriesReducer } from '../../model/slices/CategoriesSlice';
+import { ICategory } from '../../model/types/ICategory';
 
 const asyncCategoryListReducer: ReducersList = {
   categoriesList: CategoriesReducer,
-  category: CategoryReducer,
+  filteringCategory: FilteringByCategoryIdReducer,
 };
 
 interface CategoryProps {
@@ -29,7 +29,7 @@ interface CategoryProps {
 export const CategoriesList = memo((props: CategoryProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
-  const categories: Category[] = useSelector(getCategoriesSelectors);
+  const categories: ICategory[] = useSelector(getCategoriesSelectors);
 
   return (
     <DynamicModuleLoader reducers={asyncCategoryListReducer}>

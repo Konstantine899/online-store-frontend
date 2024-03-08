@@ -1,18 +1,39 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBrand } from '../types/BrandSchema';
+import { BrandSchema } from '../types/BrandSchema';
+import { fetchBrand } from '../services/fetchBrand';
+import { IBrand } from '../types/IBrand';
 
-const initialState: IBrand = {
-  id: 0,
-  name: '',
+const initialState: BrandSchema = {
+  brand: { id: 0, name: '' },
+  isLoading: false,
+  error: '',
 };
 
 export const BrandSlice = createSlice({
-  name: 'Brand',
+  name: 'BrandSlice',
   initialState,
-  reducers: {
-    setBrandId: (state: IBrand, action: PayloadAction<number>) => {
-      state.id = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBrand.pending, (state: BrandSchema) => {
+        state.error = '';
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchBrand.fulfilled,
+        (state: BrandSchema, action: PayloadAction<IBrand>) => {
+          state.isLoading = false;
+          state.brand.id = action.payload.id;
+          state.brand.name = action.payload.name;
+        },
+      )
+      .addCase(
+        fetchBrand.rejected,
+        (state: BrandSchema, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      );
   },
 });
 

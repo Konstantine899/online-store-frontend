@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BrandSchema, IBrand } from '../types/BrandSchema';
+import { AllBrandsSchema } from '../types/AllBrandsSchema';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
+import { IBrand } from '../types/IBrand';
 
-const initialState: BrandSchema = {
+const initialState: AllBrandsSchema = {
   brands: [],
   isLoading: false,
   error: '',
@@ -14,20 +15,20 @@ export const AllBrandsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(FetchAllBrands.pending, (state: BrandSchema) => {
+      .addCase(FetchAllBrands.pending, (state: AllBrandsSchema) => {
         state.isLoading = true;
         state.error = '';
       })
       .addCase(
         FetchAllBrands.fulfilled,
-        (state: BrandSchema, action: PayloadAction<IBrand[]>) => {
+        (state: AllBrandsSchema, action: PayloadAction<IBrand[]>) => {
           state.isLoading = false;
           state.brands = action.payload;
         },
       )
       .addCase(
         FetchAllBrands.rejected,
-        (state: BrandSchema, action: PayloadAction<string>) => {
+        (state: AllBrandsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
         },
