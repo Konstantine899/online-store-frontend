@@ -10,7 +10,7 @@ export {
 } from './model/slices/AllBrandsSlice';
 export { BrandReducer, BrandActions } from './model/slices/BrandSlice';
 export { filteringByBrandSelector } from './model/selectors/filteringByBrandSelector';
-export { GetAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
+export { getAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
 export { getBrandNameSelector } from './model/selectors/getBrandNameSelector';
 export type { AllBrandsSchema } from './model/types/AllBrandsSchema';
 export type { BrandSchema } from './model/types/BrandSchema';

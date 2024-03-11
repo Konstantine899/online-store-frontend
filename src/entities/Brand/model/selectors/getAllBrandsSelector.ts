@@ -1,4 +1,12 @@
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const GetAllBrandsSelector = (state: StateSchema) =>
-  state.allBrands?.brands ?? [];
+const getAllBrandsState = (state: StateSchema) => {
+  return state.allBrands;
+};
+export const getAllBrandsSelector = createSelector(
+  getAllBrandsState,
+  (state) => {
+    return state?.brands || [];
+  },
+);

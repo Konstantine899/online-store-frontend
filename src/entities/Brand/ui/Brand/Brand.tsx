@@ -4,7 +4,7 @@ import cls from './Brand.module.scss';
 import { FilteringByBrandIdActions } from '../../model/slices/FilteringByBrandIdSlice';
 import { filteringByBrandSelector } from '../../model/selectors/filteringByBrandSelector';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
-import { GetAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
+import { getAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
 import { FetchProductsByBrand } from '@/entities/Product';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -23,7 +23,7 @@ export const Brand = memo((props: BrandProps) => {
     dispatch(FetchAllBrands());
   }, [dispatch]);
 
-  const brands = useSelector(GetAllBrandsSelector);
+  const brands = useSelector(getAllBrandsSelector);
   const brandId = useSelector(filteringByBrandSelector);
 
   const handleClick = (tab: TabItem) => {

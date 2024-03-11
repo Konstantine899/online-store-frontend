@@ -11,7 +11,7 @@ import {
   ProductsPageActions,
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
-import { getCategoryIdSelector } from '../../model/selectors/getCategoriesSelectors';
+import { getCategoryIdSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { FilteringByCategoryIdActions } from '../../model/slices/FilteringByCategoryIdSlice';
 
 interface BurgerMenuItemProps {

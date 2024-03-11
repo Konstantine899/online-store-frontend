@@ -11,9 +11,9 @@ export {
   CategorySliceActions,
 } from './model/slices/CategorySlice';
 export {
-  getCategoriesSelectors,
+  getAllCategoriesSelector,
   getCategoryIdSelector,
-} from './model/selectors/getCategoriesSelectors';
+} from './model/selectors/getAllCategoriesSelector';
 export { getCategoryNameSelector } from './model/selectors/getCategoryNameSelector';
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';
 export { fetchCategory } from './model/services/fetchCategory';
