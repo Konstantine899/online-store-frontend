@@ -7,6 +7,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.imageWrapper{
+    width: 470px;
+    height: 500px;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .ProductSummaryCard {
