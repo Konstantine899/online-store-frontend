@@ -54,9 +54,6 @@
     font-size: var(--font-size-zero);
 }
 
-
-
-
 .outline {
     border: 1px solid var(--button-inline-primary-color);
     color: var(--inverted-primary-color);
@@ -67,13 +64,27 @@
     &:hover{
         cursor: pointer;
         color: var(--primary-color);
-        background-color: var(--button-inline-inverted-primary-color);
+        background: var(--button-inline-inverted-primary-color);
         border: 1px solid var(--button-inline-inverted-primary-color);
 
     }
 
 }
 
+
+.filled {
+    white-space: nowrap;
+    background: linear-gradient(147deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #60f 99.15%);
+    border: 0;
+    border-radius: 12px;
+    font-weight: 400;
+    color: var(--primary-color);
+    padding: 10px 20px;
+
+    &:hover{
+        background: #bf22e1;
+    }
+}
 
 
 .round{
