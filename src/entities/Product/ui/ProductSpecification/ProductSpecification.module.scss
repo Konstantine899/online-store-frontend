@@ -3,3 +3,27 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.productSpecificationsTitle{
+  background: var(--product-specifications-title-background-prymary);
+  padding: 10px 16px;
+  color: var(--product-specifications-title-color-prymary);
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.productSpecificationsTable{
+  font-size: 15px;
+  line-height: 20px;
+  color: #231f20;
+  width: 100%;
+  table-layout: fixed;
+  word-break: break-word;
+}
+
+.productSpecificationsTable td {
+  padding: 9px 16px 11px;
+  border-bottom: 1px dashed #e5e5e5;
+  vertical-align: top;
+  width: 50%;
+}

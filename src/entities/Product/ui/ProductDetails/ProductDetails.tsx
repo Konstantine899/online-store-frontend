@@ -14,7 +14,7 @@ import { fetchCategory, getCategoryNameSelector } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
-import { ProductSpecification } from '../ProductDetailsInfo/ProductSpecification';
+import { ProductSpecification } from '../ProductSpecification/ProductSpecification';
 
 interface ProductDetailsProps {
   className?: string;
@@ -71,7 +71,10 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
         </div>
         <ProductSummaryCard productDetails={productDetails} />
       </div>
-      <ProductSpecification productDetails={productDetails} />
+      <ProductSpecification
+        productDetails={productDetails}
+        title={`Характеристики`}
+      />
     </div>
   );
 });

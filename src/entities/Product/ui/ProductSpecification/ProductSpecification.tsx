@@ -5,26 +5,22 @@ import { IProductDetails } from '../../model/types/IProductDetails';
 
 interface ProductDetailsInfoProps {
   className?: string;
-  productDetails?: IProductDetails;
+  productDetails: IProductDetails;
+  title: string;
 }
 
 export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
-  const { className, productDetails } = props;
+  const { className, productDetails, title } = props;
 
   return (
     <div className={classNames(cls.ProductSpecification, {}, [className])}>
-      <table>
-        <thead>
-          <tr>
-            <th>Свойства</th>
-            <th>Характеристики</th>
-          </tr>
-        </thead>
+      <div className={cls.productSpecificationsTitle}>{title}</div>
+      <table className={cls.productSpecificationsTable}>
         <tbody>
           {productDetails?.properties.map((property) => (
             <tr key={property.id}>
-              <th>{property.name}</th>
-              <th>{property.value}</th>
+              <td>{property.name}</td>
+              <td>{property.value}</td>
             </tr>
           ))}
         </tbody>

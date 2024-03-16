@@ -1,5 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProductSpecification } from './ProductSpecification';
+import { IProductDetails } from '@/entities/Product';
+
+const productDetails: IProductDetails = {
+  id: 1,
+  name: 'Xiaomi',
+  price: 100,
+  rating: 5,
+  brand_id: 1,
+  category_id: 1,
+  image: '',
+  properties: [],
+  _inited: false,
+};
 
 const meta: Meta<typeof ProductSpecification> = {
   title: 'entities/ProductDetailsInfo',
@@ -11,5 +24,7 @@ type Story = StoryObj<typeof ProductSpecification>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductSpecification />,
+  render: () => (
+    <ProductSpecification productDetails={productDetails} title={'Основные'} />
+  ),
 };

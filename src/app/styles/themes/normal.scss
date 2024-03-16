@@ -1,43 +1,46 @@
-:root{
-    --bg-color: #fff;
-    --primary-color: #fff;
-    --primary-color-hover: rgb(255 255 255 / 60%);
-    --inverted-primary-color: #000;
+:root {
+  --bg-color: #fff;
+  --primary-color: #fff;
+  --primary-color-hover: rgb(255 255 255 / 60%);
+  --inverted-primary-color: #000;
 
-    /* Skeleton */
-    --skeleton-shadow: #e5e5e5;
-    --skeleton-color: #e5e5e5;
+  /* Skeleton */
+  --skeleton-shadow: #e5e5e5;
+  --skeleton-color: #e5e5e5;
 
-    /* Text */
-    --theme-primary-color: #fff;
-    --theme-inverted-color: #000;
-    --theme-error-color: #cb11ab;
+  /* Text */
+  --theme-primary-color: #fff;
+  --theme-inverted-color: #000;
+  --theme-error-color: #cb11ab;
 
-    /* Loader */
-    --loader-primary-color:#cb11ab;
+  /* Loader */
+  --loader-primary-color: #cb11ab;
 
-    /* Link */
-    --link-primary-color:#481173;
-    --link-inverted-primary-color:#cb11ab;
+  /* Link */
+  --link-primary-color: #481173;
+  --link-inverted-primary-color: #cb11ab;
 
-    /* Menu */
-    --menu-item-background-hover: #cb11ab;
+  /* Menu */
+  --menu-item-background-hover: #cb11ab;
 
-    /* Button */
-    --button-inline-primary-color: #481173;
-    --button-inline-inverted-primary-color:  linear-gradient(147deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #60f 99.15%);
-    --button-round-primary-background-color: #e5e5e5;
-    --button-round-inverted-primary-background-color: #481173;
-    --button-round-hover-primary-background-color: #cb11ab;
-    --button-round-previos-and-next-primary-background-color: #bea5d5;
+  /* Button */
+  --button-inline-primary-color: #481173;
+  --button-inline-inverted-primary-color: linear-gradient(147deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #60f 99.15%);
+  --button-round-primary-background-color: #e5e5e5;
+  --button-round-inverted-primary-background-color: #481173;
+  --button-round-hover-primary-background-color: #cb11ab;
+  --button-round-previos-and-next-primary-background-color: #bea5d5;
 
-    /* Product Card */
-    --title-primary-color: #000;
-    --title-inverted-primary-color: #481173;
+  /* Product Card */
+  --title-primary-color: #000;
+  --title-inverted-primary-color: #481173;
 
-    /* Input */
-    --input-standard-primary-color: #757575;
-    --input-standard-inverted-primary-color: #481173;
+  /* Input */
+  --input-standard-primary-color: #757575;
+  --input-standard-inverted-primary-color: #481173;
 
+  /* Product Specification */
 
+  --product-specifications-title-background-prymary: #F2F2F2;
+  --product-specifications-title-color-prymary: #191919;
 }
