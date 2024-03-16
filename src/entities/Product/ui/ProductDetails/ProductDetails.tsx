@@ -9,14 +9,12 @@ import {
   getProductDetailsIsLoadingSelector,
 } from '../../model/selectors/getProductDetails';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getBrandNameSelector, fetchBrand } from '@/entities/Brand';
+import { fetchBrand, getBrandNameSelector } from '@/entities/Brand';
 import { fetchCategory, getCategoryNameSelector } from '@/entities/Category';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
-import { getVotes, fetchRating, getRating } from '@/entities/Rating';
-import { Card } from '@/shared/ui/Card';
-import { CardTheme } from '@/shared/ui/Card/Card';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '@/entities/Product/ui/ProductSummaryCard/ProductSummaryCard';
+import { ProductImage } from '@/entities/Product/ui/ProductImage/ProductImage';
 
 interface ProductDetailsProps {
   className?: string;
@@ -66,15 +64,9 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 
       <div className={classNames(cls.ProductDetails, {}, [className])}>
         <div className={cls.imageWrapper}>
-          <KitImage
-            className={cls.image}
-            src={`${__API_URL__}/static/${productDetails?.image}`}
-            spareImage={
-              <img
-                src={`${__API_URL__}/static/not_found_image.jpeg`}
-                alt={'not_found_image'}
-              />
-            }
+          <ProductImage
+            productDetails={productDetails}
+            classNameProductDetails={cls.image}
           />
         </div>
         <ProductSummaryCard productDetails={productDetails} />

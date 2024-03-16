@@ -8,6 +8,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 import { AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
+import { ProductImage } from '@/entities/Product/ui/ProductImage/ProductImage';
 
 interface ProductListItemProps {
   className?: string;
@@ -28,16 +29,7 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
             to={getRouteProduct(`${product.id}`)}
             className={cls.CardImage}
           >
-            <KitImage
-              src={`${__API_URL__}/static/${product.image}`}
-              alt={product.name}
-              spareImage={
-                <img
-                  src={`${__API_URL__}/static/not_found_image.jpeg`}
-                  alt={'not_found_image'}
-                />
-              }
-            />
+            <ProductImage product={product} />
           </AppLink>
         </div>
         <div className={cls.CardBottom}>
