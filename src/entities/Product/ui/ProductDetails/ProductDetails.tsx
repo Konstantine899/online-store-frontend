@@ -16,6 +16,7 @@ import { getVotes, fetchRating, getRating } from '@/entities/Rating';
 import { Card } from '@/shared/ui/Card';
 import { CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { ProductSummaryCard } from '@/entities/Product/ui/ProductSummaryCard/ProductSummaryCard';
 
 interface ProductDetailsProps {
   className?: string;
@@ -40,9 +41,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
   const error = useSelector(getProductDetailsErrorSelector);
   const brand = useSelector(getBrandNameSelector);
   const category = useSelector(getCategoryNameSelector);
-  const rating = useSelector(getRating);
-  const votes = useSelector(getVotes);
-  
+
   if (isLoading) {
     return (
       <div className={classNames(cls.ProductDetails, {}, [className])}>
@@ -78,20 +77,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
             }
           />
         </div>
-        <Card className={cls.ProductSummaryCard} theme={CardTheme.OUTLINED}>
-          <div className={cls.upp}>
-            <p className={cls.price}>{`Цена:${productDetails?.price}`}</p>
-          </div>
-          <div className={cls.down}>
-            <Button theme={ButtonTheme.FILLED} size={ButtonSize.M} fullWidth>
-              В корзину
-            </Button>
-            <div className={cls.rating}>
-              <p>{`${rating}`}</p>
-              <p>{`голоса: ${votes}`}</p>
-            </div>
-          </div>
-        </Card>
+        <ProductSummaryCard productDetails={productDetails} />
       </div>
       <table>
         <thead>
