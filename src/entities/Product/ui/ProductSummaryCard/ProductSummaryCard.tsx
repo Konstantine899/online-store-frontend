@@ -3,10 +3,8 @@ import { memo } from 'react';
 import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { getBrandNameSelector } from '@/entities/Brand';
-import { getCategoryNameSelector } from '@/entities/Category';
 import { getRating, getVotes } from '@/entities/Rating';
-import { IProductDetails } from '@/entities/Product';
+import { IProductDetails } from '../../model/types/IProductDetails';
 import { useSelector } from 'react-redux';
 
 interface ProductSummaryCardProps {

@@ -5,10 +5,9 @@ import { Product } from '../../model/types/ProductsSchema';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 import { AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
-import { ProductImage } from '@/entities/Product/ui/ProductImage/ProductImage';
+import { ProductImage } from '../ProductImage/ProductImage';
 
 interface ProductListItemProps {
   className?: string;

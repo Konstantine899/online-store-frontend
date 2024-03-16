@@ -11,10 +11,10 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchBrand, getBrandNameSelector } from '@/entities/Brand';
 import { fetchCategory, getCategoryNameSelector } from '@/entities/Category';
-import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { fetchRating } from '@/entities/Rating';
-import { ProductSummaryCard } from '@/entities/Product/ui/ProductSummaryCard/ProductSummaryCard';
-import { ProductImage } from '@/entities/Product/ui/ProductImage/ProductImage';
+import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
+import { ProductImage } from '../ProductImage/ProductImage';
+import { ProductSpecification } from '../ProductDetailsInfo/ProductSpecification';
 
 interface ProductDetailsProps {
   className?: string;
@@ -71,22 +71,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
         </div>
         <ProductSummaryCard productDetails={productDetails} />
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Свойства</th>
-            <th>Характеристики</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productDetails?.properties.map((property) => (
-            <tr key={property.id}>
-              <th>{property.name}</th>
-              <th>{property.value}</th>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ProductSpecification productDetails={productDetails} />
     </div>
   );
 });

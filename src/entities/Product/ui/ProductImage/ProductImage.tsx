@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './ProductImage.module.scss';
-import { IProductDetails, Product } from '@/entities/Product';
+import { IProductDetails } from '../../model/types/IProductDetails';
+import { Product } from '../../model/types/ProductsSchema';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 
 interface ProductImageProps {
