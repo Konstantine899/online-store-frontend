@@ -3,10 +3,6 @@ export {
   CategoriesReducer,
 } from './model/slices/CategoriesSlice';
 export {
-  FilteringByCategoryIdReducer,
-  FilteringByCategoryIdActions,
-} from './model/slices/FilteringByCategoryIdSlice';
-export {
   CategorySliceReducer,
   CategorySliceActions,
 } from './model/slices/CategorySlice';

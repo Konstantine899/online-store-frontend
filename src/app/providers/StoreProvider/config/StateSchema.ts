@@ -11,7 +11,7 @@ import {
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsSchema } from '@/pages/ProductsPage';
-import { AllBrandsSchema, BrandSchema, IBrand } from '@/entities/Brand';
+import { AllBrandsSchema, BrandSchema } from '@/entities/Brand';
 import {
   AllCategoriesSchema,
   CategorySchema,
@@ -29,8 +29,6 @@ export interface StateSchema {
   productDetailsPage: ProductDetailsPageSchema;
   allBrands?: AllBrandsSchema;
   categoriesList?: AllCategoriesSchema;
-  filteringByBrand?: IBrand;
-  filteringCategory?: ICategory;
   brand?: BrandSchema;
   category?: CategorySchema;
   rating?: RatingSchema;

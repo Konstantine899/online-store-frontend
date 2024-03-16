@@ -12,7 +12,11 @@ const initialState: BrandSchema = {
 export const BrandSlice = createSlice({
   name: 'BrandSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setBrandId: (state: BrandSchema, action: PayloadAction<number>) => {
+      state.brand.id = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBrand.pending, (state: BrandSchema) => {

@@ -18,7 +18,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { filteringByBrandSelector } from '@/entities/Brand';
+import { brandIdSelector } from '@/entities/Brand';
 
 interface SortingOrderProps {
   className?: string;
@@ -29,7 +29,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getSortOrderSelector);
-  const brandId = useSelector(filteringByBrandSelector);
+  const brandId = useSelector(brandIdSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [

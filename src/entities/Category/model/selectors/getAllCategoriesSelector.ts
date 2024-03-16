@@ -10,4 +10,4 @@ export const getAllCategoriesSelector = createSelector(
 );
 
 export const getCategoryIdSelector = (state: StateSchema) =>
-  state.filteringCategory?.id ?? 0;
+  state.category?.category?.id ?? 0;

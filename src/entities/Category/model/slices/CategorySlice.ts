@@ -12,7 +12,11 @@ const initialState: CategorySchema = {
 export const CategorySliceSlice = createSlice({
   name: 'CategorySliceSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setCategoryId: (state: CategorySchema, action: PayloadAction<number>) => {
+      state.category.id = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategory.pending, (state: CategorySchema) => {
