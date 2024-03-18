@@ -41,5 +41,5 @@ export const CategorySliceSlice = createSlice({
   },
 });
 
-export const { actions: CategorySliceActions } = CategorySliceSlice;
-export const { reducer: CategorySliceReducer } = CategorySliceSlice;
+export const { actions: CategoryActions } = CategorySliceSlice;
+export const { reducer: CategoryReducer } = CategorySliceSlice;

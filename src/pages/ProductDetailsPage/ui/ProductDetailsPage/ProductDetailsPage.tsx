@@ -13,13 +13,13 @@ import { getProductDetailsPageSelector } from '../../model/selectors/getProductD
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { BrandReducer } from '@/entities/Brand';
-import { CategorySliceReducer } from '@/entities/Category';
+import { CategoryReducer } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
   productDetailsPage: ProductDetailsPageReducer,
   brand: BrandReducer,
-  category: CategorySliceReducer,
+  category: CategoryReducer,
   rating: RatingReducer,
 };
 

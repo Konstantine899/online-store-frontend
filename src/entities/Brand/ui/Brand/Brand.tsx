@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { memo, useEffect } from 'react';
 import cls from './Brand.module.scss';
-import { brandIdSelector } from '../../model/selectors/brandIdSelector';
+import { brandIdSelector } from '../../model/selectors/brandSelector';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
 import { getAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
 import { FetchProductsByBrand } from '@/entities/Product';

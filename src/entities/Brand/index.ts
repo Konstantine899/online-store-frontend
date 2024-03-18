@@ -5,7 +5,7 @@ export {
   AllBrandsActions,
 } from './model/slices/AllBrandsSlice';
 export { BrandReducer, BrandActions } from './model/slices/BrandSlice';
-export { brandIdSelector } from './model/selectors/brandIdSelector';
+export { brandIdSelector } from './model/selectors/brandSelector';
 export { getAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
 export { getBrandNameSelector } from './model/selectors/getBrandNameSelector';
 export type { AllBrandsSchema } from './model/types/AllBrandsSchema';

@@ -1,12 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import {
+  FetchProducts,
+  FetchProductsByBrand,
+  getProductsListIsLoadingSelector,
+  getProductsListSelector,
   ProductList,
   ProductsPageActions,
   ProductsPageReducer,
-  FetchProducts,
-  getProductsListIsLoadingSelector,
-  getProductsListSelector,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
@@ -17,9 +18,11 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
+import { BrandActions, BrandReducer } from '@/entities/Brand';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
+  brand: BrandReducer,
 };
 
 interface ArticleListPageProps {
@@ -35,14 +38,17 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const page = Number(URLSearchParams.get('page'));
   const search = URLSearchParams.get('search');
   const sort = URLSearchParams.get('sort');
+  const brandId = Number(URLSearchParams.get('brand'));
 
   useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
-    dispatch(FetchProducts());
-  }, [dispatch, limit, page, search, sort]);
+    dispatch(BrandActions.setBrandId(brandId));
+    if (brandId) dispatch(FetchProductsByBrand({ brandId: Number(brandId) }));
+    if (!brandId) dispatch(FetchProducts());
+  }, [brandId, dispatch, limit, page, search, sort]);
 
   const products = useSelector(getProductsListSelector);
   const isLoading = useSelector(getProductsListIsLoadingSelector);

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProductSpecification } from './ProductSpecification';
-import { IProductDetails } from '@/entities/Product';
+import { IProductDetails } from '../../model/types/IProductDetails';
 
 const productDetails: IProductDetails = {
   id: 1,

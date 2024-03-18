@@ -2,10 +2,7 @@ export {
   CategoriesActions,
   CategoriesReducer,
 } from './model/slices/CategoriesSlice';
-export {
-  CategorySliceReducer,
-  CategorySliceActions,
-} from './model/slices/CategorySlice';
+export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
 export {
   getAllCategoriesSelector,
   getCategoryIdSelector,

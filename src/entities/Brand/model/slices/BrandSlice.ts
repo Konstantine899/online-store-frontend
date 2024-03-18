@@ -13,8 +13,8 @@ export const BrandSlice = createSlice({
   name: 'BrandSlice',
   initialState,
   reducers: {
-    setBrandId: (state: BrandSchema, action: PayloadAction<number>) => {
-      state.brand.id = action.payload;
+    setBrandId: (state: BrandSchema, { payload }: PayloadAction<number>) => {
+      state.brand.id = payload;
     },
   },
   extraReducers: (builder) => {
