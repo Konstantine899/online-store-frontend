@@ -12,9 +12,11 @@ import { useSelector } from 'react-redux';
 import { getAllCategoriesSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { CategoriesReducer } from '../../model/slices/CategoriesSlice';
 import { ICategory } from '../../model/types/ICategory';
+import { CategoryReducer } from '../../model/slices/CategorySlice';
 
 const asyncCategoryListReducer: ReducersList = {
   categoriesList: CategoriesReducer,
+  category: CategoryReducer,
 };
 
 interface CategoryProps {
