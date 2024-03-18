@@ -16,7 +16,7 @@ export const CategoriesBurgerMenu = memo((props: BurgerMenuButtonProps) => {
   const [isClose, setIsClose] = useState(false);
   const dispatch = useAppDispatch();
   const onToggle = () => {
-    dispatch(fetchCategoriesList(1));
+    dispatch(fetchCategoriesList());
     setIsOpen(true);
     setIsClose(false);
   };
