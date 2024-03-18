@@ -1,6 +1,6 @@
 .TabsWrapper {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: flex-end;
     gap: 8px;
     cursor: pointer;

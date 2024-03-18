@@ -25,7 +25,7 @@ export const Tabs = memo((props: TabsProps) => {
 
   return (
     <div className={classNames(cls.TabsWrapper, {}, [className])}>
-      {tabs.map((tab) => (
+      {tabs.map((tab: TabItem) => (
         <Card
           className={cls.Tab}
           key={tab.id}
