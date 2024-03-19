@@ -5,7 +5,7 @@ export {
 export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
 export {
   getAllCategoriesSelector,
-  getCategoryIdSelector,
+  getCategoryStateSelector,
 } from './model/selectors/getAllCategoriesSelector';
 export { getCategoryNameSelector } from './model/selectors/getCategoryNameSelector';
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';

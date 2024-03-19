@@ -11,7 +11,7 @@ import {
   ProductsPageActions,
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
-import { getCategoryIdSelector } from '../../model/selectors/getAllCategoriesSelector';
+import { getCategoryStateSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { CategoryActions } from '../../model/slices/CategorySlice';
 
 interface BurgerMenuItemProps {
@@ -23,7 +23,7 @@ interface BurgerMenuItemProps {
 export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const { className, item, onClose } = props;
   const dispatch = useAppDispatch();
-  const categoryId = useSelector(getCategoryIdSelector);
+  const category = useSelector(getCategoryStateSelector);
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(ProductsPageActions.setPage(1));
@@ -32,7 +32,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
     onClose();
   };
 
-  const isActive = categoryId === item.id;
+  const isActive = category.id === item.id;
 
   return (
     <AppLink

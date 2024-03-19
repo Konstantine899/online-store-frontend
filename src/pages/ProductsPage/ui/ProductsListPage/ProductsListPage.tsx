@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import {
   FetchProducts,
-  FetchProductsByBrand,
+  FetchProductsByCategory,
   getProductsListIsLoadingSelector,
   getProductsListSelector,
   ProductList,
@@ -19,6 +19,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
 import { BrandActions, BrandReducer } from '@/entities/Brand';
+import { getCategoryStateSelector } from '@/entities/Category';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -39,6 +40,9 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const search = URLSearchParams.get('search');
   const sort = URLSearchParams.get('sort');
   const brandId = Number(URLSearchParams.get('brand'));
+  const products = useSelector(getProductsListSelector);
+  const isLoading = useSelector(getProductsListIsLoadingSelector);
+  const category = useSelector(getCategoryStateSelector);
 
   useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));
@@ -46,12 +50,13 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
     dispatch(BrandActions.setBrandId(brandId));
-    if (brandId) dispatch(FetchProductsByBrand({ brandId: Number(brandId) }));
-    if (!brandId) dispatch(FetchProducts());
-  }, [brandId, dispatch, limit, page, search, sort]);
-
-  const products = useSelector(getProductsListSelector);
-  const isLoading = useSelector(getProductsListIsLoadingSelector);
+    if (category.id != 0) {
+      dispatch(FetchProductsByCategory({ categoryId: category.id }));
+    }
+    if (category.id == 0) {
+      dispatch(FetchProducts());
+    }
+  }, [brandId, category.id, dispatch, limit, page, search, sort]);
 
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
