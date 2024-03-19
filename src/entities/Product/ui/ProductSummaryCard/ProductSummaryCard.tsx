@@ -6,6 +6,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { getRating, getVotes } from '@/entities/Rating';
 import { IProductDetails } from '../../model/types/IProductDetails';
 import { useSelector } from 'react-redux';
+import { Star, StarSize } from '@/shared/ui/Star/Star';
 
 interface ProductSummaryCardProps {
   className?: string;
@@ -17,6 +18,7 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
 
   const rating = useSelector(getRating);
   const votes = useSelector(getVotes);
+  const inverted = rating == 0;
 
   return (
     <Card
@@ -30,9 +32,17 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
         <Button theme={ButtonTheme.FILLED} size={ButtonSize.M} fullWidth>
           В корзину
         </Button>
-        <div className={cls.rating}>
-          <p>{`${rating}`}</p>
-          <p>{`голоса: ${votes}`}</p>
+        <div className={cls.bottom}>
+          <div className={rating == 0 ? cls.invertedRating : cls.rating}>
+            <p>{`${rating}`}</p>
+            <Star
+              size={StarSize.S}
+              className={classNames(cls.Star, { [cls.inverted]: inverted }, [])}
+            />
+          </div>
+          <div className={cls.votes}>
+            <p>{`голоса: ${votes}`}</p>
+          </div>
         </div>
       </div>
     </Card>
