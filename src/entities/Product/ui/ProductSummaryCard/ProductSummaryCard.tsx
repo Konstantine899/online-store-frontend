@@ -3,7 +3,7 @@ import { memo } from 'react';
 import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { getRating, getVotes } from '@/entities/Rating';
+import { getVotes } from '@/entities/Rating';
 import { IProductDetails } from '../../model/types/IProductDetails';
 import { useSelector } from 'react-redux';
 import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
@@ -17,7 +17,6 @@ interface ProductSummaryCardProps {
 export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
   const { className, productDetails } = props;
 
-  const rating = useSelector(getRating);
   const votes = useSelector(getVotes);
 
   return (
@@ -33,7 +32,7 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
           В корзину
         </Button>
         <div className={cls.bottom}>
-          <ProductRating rating={rating} />
+          <ProductRating />
           <div className={cls.votesWrapper}>
             <Thumb size={ThumbSize.M} className={cls.Thumb} />
             <p className={cls.votes}>{votes}</p>

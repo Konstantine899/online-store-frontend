@@ -11,5 +11,5 @@ type Story = StoryObj<typeof ProductRating>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductRating rating={5} />,
+  render: () => <ProductRating />,
 };
