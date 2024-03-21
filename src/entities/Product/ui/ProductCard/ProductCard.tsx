@@ -2,12 +2,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
-import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
-import { AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Product } from '../../model/types/ProductsSchema';
+import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
 
 interface ProductCardProps {
   className?: string;
@@ -27,13 +25,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
         <ProductCardImage product={product} />
       </div>
       <div className={cls.CardBottom}>
-        <AppLink
-          to={getRouteProduct(`${product.id}`)}
-          className={cls.CardTitle}
-          fontSize={AppLinkFontSizeSize.M}
-        >
-          {product.name}
-        </AppLink>
+        <ProductCardTitle product={product} />
         <div className={cls.CardPriceWrapper}>
           <div className={cls.CardPrice}>{product.price}</div>
         </div>

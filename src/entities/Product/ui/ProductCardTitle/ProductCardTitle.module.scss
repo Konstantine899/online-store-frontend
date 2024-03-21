@@ -1,0 +1,15 @@
+.CardTitle {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  text-overflow: ellipsis; // добавляет многоточие
+  white-space: nowrap; // выводит текст в одну строку т.е. без переноса
+  overflow: hidden; // скрываю текст за пределами блока
+  color: var(--title-primary-color);
+
+  &:hover {
+    color: var(--title-inverted-primary-color)
+  }
+}
