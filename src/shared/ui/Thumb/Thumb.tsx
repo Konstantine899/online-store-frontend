@@ -1,28 +1,28 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './Star.module.scss';
-import StarSvg from '../../assets/icons/star.svg';
+import cls from './Thumb.module.scss';
 import { Icon } from '../Icon/Icon';
+import ThumbIcon from '../../assets/icons/thumbs-up.svg';
 
-export enum StarSize {
+export enum ThumbSize {
   S = 'size_s',
   M = 'size_m',
   L = 'size_l',
   XL = 'size_xl',
 }
 
-interface StarProps {
+interface ThumbProps {
   className?: string;
-  size?: StarSize;
+  size?: ThumbSize;
 }
 
-export const Star = memo((props: StarProps) => {
+export const Thumb = memo((props: ThumbProps) => {
   const { className, size } = props;
 
   return (
     <Icon
+      Svg={ThumbIcon}
       className={classNames(``, {}, [className, cls[size]])}
-      Svg={StarSvg}
     />
   );
 });

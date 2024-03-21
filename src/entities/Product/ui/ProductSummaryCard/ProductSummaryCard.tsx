@@ -7,6 +7,7 @@ import { getRating, getVotes } from '@/entities/Rating';
 import { IProductDetails } from '../../model/types/IProductDetails';
 import { useSelector } from 'react-redux';
 import { Star, StarSize } from '@/shared/ui/Star/Star';
+import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
 
 interface ProductSummaryCardProps {
   className?: string;
@@ -33,15 +34,16 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
           В корзину
         </Button>
         <div className={cls.bottom}>
-          <div className={rating == 0 ? cls.invertedRating : cls.rating}>
-            <p>{`${rating}`}</p>
+          <div className={rating == 0 ? cls.invertedRating : cls.ratingWrapper}>
+            <p className={cls.rating}>{rating}</p>
             <Star
               size={StarSize.S}
               className={classNames(cls.Star, { [cls.inverted]: inverted }, [])}
             />
           </div>
-          <div className={cls.votes}>
-            <p>{`голоса: ${votes}`}</p>
+          <div className={cls.votesWrapper}>
+            <Thumb size={ThumbSize.M} className={cls.Thumb} />
+            <p className={cls.votes}>{votes}</p>
           </div>
         </div>
       </div>
