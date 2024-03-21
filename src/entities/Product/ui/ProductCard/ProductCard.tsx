@@ -4,7 +4,7 @@ import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
-import { ProductImage } from '../ProductImage/ProductImage';
+import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Product } from '../../model/types/ProductsSchema';
@@ -24,12 +24,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
       className={classNames(cls.ProductCard, {}, [cls[className]])}
     >
       <div className={cls.CardTop}>
-        <AppLink
-          to={getRouteProduct(`${product.id}`)}
-          className={cls.CardImage}
-        >
-          <ProductImage product={product} />
-        </AppLink>
+        <ProductCardImage product={product} />
       </div>
       <div className={cls.CardBottom}>
         <AppLink
