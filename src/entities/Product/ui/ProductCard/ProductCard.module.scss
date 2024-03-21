@@ -27,15 +27,4 @@
     padding: 10px;
 }
 
-.CardPrice {
-    font-weight: 400;
-    font-size: 1rem;
-    color: var(--inverted-primary-color);
-    margin-bottom: 10px;
-}
 
-.CardPrice::after {
-    content: "₽";
-    margin-left: 4px;
-    position: relative;
-}

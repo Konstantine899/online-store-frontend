@@ -6,6 +6,7 @@ import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Product } from '../../model/types/ProductsSchema';
 import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
+import { ProductCardPrice } from '@/entities/Product/ui/ProductCardPrice/ProductCardPrice';
 
 interface ProductCardProps {
   className?: string;
@@ -26,9 +27,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
       </div>
       <div className={cls.CardBottom}>
         <ProductCardTitle product={product} />
-        <div className={cls.CardPriceWrapper}>
-          <div className={cls.CardPrice}>{product.price}</div>
-        </div>
+        <ProductCardPrice product={product} />
         <Button
           className={cls.CardAdd}
           theme={ButtonTheme.OUTLINE}
