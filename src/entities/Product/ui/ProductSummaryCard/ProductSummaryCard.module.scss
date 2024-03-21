@@ -29,21 +29,3 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
-
-
-.votesWrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-}
-
-.Thumb{
-    fill: #757575;
-}
-
-.votes{
-    font: var(--font-size-m);
-}
