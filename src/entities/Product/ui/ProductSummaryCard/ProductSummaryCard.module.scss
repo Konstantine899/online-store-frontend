@@ -30,40 +30,7 @@
     justify-content: space-between;
 }
 
-.ratingWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    color: var(--star-primary-color);
-}
 
-.rating{
-    font: var(--font-size-m);
-    font-weight: 700;
-}
-
-.invertedRating{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: var(--star-inverted-primary-color);
-}
-
-.Star {
-    background: none;
-    fill: var(--star-primary-color)
-}
-
-
-
-.inverted{
-    background: none;
-    fill: var(--star-inverted-primary-color)
-}
 
 .votesWrapper{
     display: flex;
