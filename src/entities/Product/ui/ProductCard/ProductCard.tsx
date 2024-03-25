@@ -6,7 +6,7 @@ import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Product } from '../../model/types/ProductsSchema';
 import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
-import { ProductCardPrice } from '@/entities/Product/ui/ProductCardPrice/ProductCardPrice';
+import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 
 interface ProductCardProps {
   className?: string;

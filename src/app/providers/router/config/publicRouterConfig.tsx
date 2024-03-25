@@ -30,11 +30,12 @@ import {
 } from '@/shared/consts/router/publicRouter';
 import { ProductListNotFound } from '@/entities/Product';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
+import { MainPage } from '@/pages/MainPage';
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
     path: getRouteMain(),
-    element: <ProductsPage />,
+    element: <MainPage />,
   },
   [publicRouter.SIGN_UP]: {
     path: getRouteSingUp(),

@@ -26,6 +26,7 @@ export { ProductSortingLimit } from './ui/ProductSortingLimit/ProductSortingLimi
 export { ProductSortingOrder } from './ui/ProductSortingOrder/ProductSortingOrder';
 export { ProductTabBrand } from './ui/ProductTabBrand/ProductTabBrand';
 export { ProductDetails } from './ui/ProductDetails/ProductDetails';
+export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 
 export { getSortOrderSelector } from './model/selectors/getProductsSelector';
 export { getSearchSelector } from './model/selectors/getProductsSelector';
