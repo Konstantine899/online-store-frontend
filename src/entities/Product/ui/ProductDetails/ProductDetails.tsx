@@ -10,7 +10,7 @@ import {
 } from '../../model/selectors/getProductDetails';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchBrand, getBrandSelector } from '@/entities/Brand';
-import { fetchCategory, getCategoryNameSelector } from '@/entities/Category';
+import { fetchCategory, getCategorySelector } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
@@ -30,15 +30,24 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
   useEffect(() => {
     if (_inited) {
       dispatch(fetchBrand({ id: productDetails?.brand_id }));
-      dispatch(fetchCategory({ id: productDetails?.brand_id }));
+      dispatch(fetchCategory({ id: productDetails?.category_id }));
       dispatch(fetchRating({ productId: productDetails?.id }));
     }
-  }, [_inited, dispatch, productDetails?.brand_id, productDetails?.id]);
+  }, [
+    _inited,
+    dispatch,
+    productDetails?.brand_id,
+    productDetails?.category_id,
+    productDetails?.id,
+  ]);
 
   const isLoading = useSelector(getProductDetailsIsLoadingSelector);
   const error = useSelector(getProductDetailsErrorSelector);
   const brand = useSelector(getBrandSelector);
-  const category = useSelector(getCategoryNameSelector);
+  const category = useSelector(getCategorySelector);
+
+  console.log('brand', brand);
+  console.log('category', category);
 
   if (isLoading) {
     return (

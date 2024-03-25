@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ProductsPageActions } from '@/entities/Product';
 import { BrandActions } from '../../model/slices/BrandSlice';
-import { getBrandSelector } from '@/entities/Brand';
+import { getBrandSelector } from '../../model/selectors/getBrandSelector';
 
 interface BrandProps {
   className?: string;

@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 
 import { IBrand } from '../types/IBrand';
+import { getRouteBrand } from '@/shared/consts/router/publicRouter';
 
 interface fetchBrandProps {
   id: number;
@@ -14,7 +15,7 @@ export const fetchBrand = createAsyncThunk<
 >('fetchBrand', async ({ id }, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await extra.api.get<IBrand>(`/brand/one/${id}`);
+    const response = await extra.api.get<IBrand>(getRouteBrand(`${id}`));
     if (!response.data) {
       throw new Error();
     }

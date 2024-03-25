@@ -18,7 +18,7 @@ import { ProductsPageActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { getBrandSelector } from '@/entities/Brand/model/selectors/getBrandSelector';
+import { getBrandSelector } from '@/entities/Brand';
 
 interface SortingLimitProps {
   className?: string;

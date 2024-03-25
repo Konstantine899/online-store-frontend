@@ -19,7 +19,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
 import { BrandActions, BrandReducer } from '@/entities/Brand';
-import { getCategoryStateSelector } from '@/entities/Category';
+import { getCategorySelector } from '@/entities/Category';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -42,7 +42,7 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const brandId = Number(URLSearchParams.get('brand'));
   const products = useSelector(getProductsListSelector);
   const isLoading = useSelector(getProductsListIsLoadingSelector);
-  const category = useSelector(getCategoryStateSelector);
+  const category = useSelector(getCategorySelector);
 
   useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));

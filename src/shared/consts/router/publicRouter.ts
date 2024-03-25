@@ -29,7 +29,7 @@ export const getRouteMain = () => '/';
 export const getRouteSingUp = () => '/auth/registration';
 export const getRouteAuth = () => '/auth/login';
 export const getRouteAllBrands = () => '/brand/brands';
-export const getRouteBrand = (id: string) => `/brand/one/${id}`;
+export const getRouteBrand = (id: string) => `/brand/${id}`;
 
 export const getRouteCart = () => `/cart/get-cart`;
 export const getRouteAppendToCart = (productId: string, quantity: string) =>

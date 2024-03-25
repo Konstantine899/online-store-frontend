@@ -3,11 +3,8 @@ export {
   CategoriesReducer,
 } from './model/slices/CategoriesSlice';
 export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
-export {
-  getAllCategoriesSelector,
-  getCategoryStateSelector,
-} from './model/selectors/getAllCategoriesSelector';
-export { getCategoryNameSelector } from './model/selectors/getCategoryNameSelector';
+export { getAllCategoriesSelector } from './model/selectors/getAllCategoriesSelector';
+export { getCategorySelector } from './model/selectors/getCategorySelector';
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';
 export { fetchCategory } from './model/services/fetchCategory';
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';

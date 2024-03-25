@@ -11,8 +11,8 @@ import {
   ProductsPageActions,
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
-import { getCategoryStateSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { CategoryActions } from '../../model/slices/CategorySlice';
+import { getCategorySelector } from '../../model/selectors/getCategorySelector';
 
 interface BurgerMenuItemProps {
   className?: string;
@@ -23,7 +23,7 @@ interface BurgerMenuItemProps {
 export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const { className, item, onClose } = props;
   const dispatch = useAppDispatch();
-  const category = useSelector(getCategoryStateSelector);
+  const category = useSelector(getCategorySelector);
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(ProductsPageActions.setPage(1));
