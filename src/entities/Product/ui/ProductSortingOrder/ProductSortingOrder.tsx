@@ -18,7 +18,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { brandIdSelector } from '@/entities/Brand';
+import { getBrandSelector } from '@/entities/Brand';
 
 interface SortingOrderProps {
   className?: string;
@@ -29,7 +29,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getSortOrderSelector);
-  const brandId = useSelector(brandIdSelector);
+  const brand = useSelector(getBrandSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
@@ -40,9 +40,9 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    if (brand) return dispatch(FetchProductsByBrand({ brandId: brand.id }));
     dispatch(FetchProducts());
-  }, [brandId, dispatch]);
+  }, [brand, dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 

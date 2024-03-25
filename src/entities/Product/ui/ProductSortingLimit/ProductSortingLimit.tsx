@@ -17,8 +17,8 @@ import { getLimitSelector } from '../../model/selectors/getProductsSelector';
 import { ProductsPageActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { brandIdSelector } from '@/entities/Brand';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { getBrandSelector } from '@/entities/Brand/model/selectors/getBrandSelector';
 
 interface SortingLimitProps {
   className?: string;
@@ -29,7 +29,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getLimitSelector);
-  const brandId = useSelector(brandIdSelector);
+  const brand = useSelector(getBrandSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
     () => [
@@ -41,9 +41,9 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    if (brand) return dispatch(FetchProductsByBrand({ brandId: brand.id }));
     dispatch(FetchProducts());
-  }, [brandId, dispatch]);
+  }, [brand, dispatch]);
 
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 

@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { memo, useEffect } from 'react';
 import cls from './Brand.module.scss';
-import { brandIdSelector } from '../../model/selectors/brandSelector';
 import { FetchAllBrands } from '../../model/services/FetchAllBrands';
 import { getAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
 import { FetchProductsByBrand } from '@/entities/Product';
@@ -10,6 +9,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ProductsPageActions } from '@/entities/Product';
 import { BrandActions } from '../../model/slices/BrandSlice';
+import { getBrandSelector } from '@/entities/Brand';
 
 interface BrandProps {
   className?: string;
@@ -24,7 +24,7 @@ export const Brand = memo((props: BrandProps) => {
   }, [dispatch]);
 
   const brands = useSelector(getAllBrandsSelector);
-  const brandId = useSelector(brandIdSelector);
+  const brand = useSelector(getBrandSelector);
 
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
@@ -34,7 +34,7 @@ export const Brand = memo((props: BrandProps) => {
 
   return (
     <div className={classNames(cls.BrandWrapper, {}, [className])}>
-      {<Tabs tabs={brands} brandId={brandId} onTabClick={handleClick} />}
+      {<Tabs tabs={brands} brandId={brand.id} onTabClick={handleClick} />}
     </div>
   );
 });

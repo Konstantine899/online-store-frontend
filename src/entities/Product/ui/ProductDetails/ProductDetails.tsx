@@ -9,7 +9,7 @@ import {
   getProductDetailsIsLoadingSelector,
 } from '../../model/selectors/getProductDetails';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchBrand, getBrandNameSelector } from '@/entities/Brand';
+import { fetchBrand, getBrandSelector } from '@/entities/Brand';
 import { fetchCategory, getCategoryNameSelector } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
@@ -37,7 +37,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 
   const isLoading = useSelector(getProductDetailsIsLoadingSelector);
   const error = useSelector(getProductDetailsErrorSelector);
-  const brand = useSelector(getBrandNameSelector);
+  const brand = useSelector(getBrandSelector);
   const category = useSelector(getCategoryNameSelector);
 
   if (isLoading) {
