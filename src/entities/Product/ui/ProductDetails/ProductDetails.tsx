@@ -10,7 +10,7 @@ import {
 } from '../../model/selectors/getProductDetails';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchBrand, getBrandSelector } from '@/entities/Brand';
-import { fetchCategory, getCategorySelector } from '@/entities/Category';
+import { fetchCategory, getCategoryStateSelector } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
@@ -44,7 +44,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
   const isLoading = useSelector(getProductDetailsIsLoadingSelector);
   const error = useSelector(getProductDetailsErrorSelector);
   const brand = useSelector(getBrandSelector);
-  const category = useSelector(getCategorySelector);
+  const category = useSelector(getCategoryStateSelector);
 
   console.log('brand', brand);
   console.log('category', category);

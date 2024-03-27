@@ -6,10 +6,11 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { AllBrandsReducer } from '@/entities/Brand';
+import { AllBrandsReducer, AllBrandsByCategoryReducer } from '@/entities/Brand';
 
 const asyncBrandReducer: ReducersList = {
   allBrands: AllBrandsReducer,
+  allBrandsByCategory: AllBrandsByCategoryReducer,
 };
 
 export interface TabBrandProps {

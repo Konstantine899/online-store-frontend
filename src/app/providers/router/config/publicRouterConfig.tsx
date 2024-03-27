@@ -4,6 +4,7 @@ import { RegistrationModal } from '@/features/Registration';
 import { ProductsPage } from '@/pages/ProductsPage';
 import {
   getRouteAllBrands,
+  getRouteAllBrandsByCategory,
   getRouteAppendToCart,
   getRouteAuth,
   getRouteBrand,
@@ -43,6 +44,9 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.AUTH]: { path: getRouteAuth(), element: <LoginModal /> },
   [publicRouter.GET_LIST_ALL_BRANDS]: { path: getRouteAllBrands() },
+  [publicRouter.GET_LIST_ALL_BRANDS_BY_CATEGORY]: {
+    path: getRouteAllBrandsByCategory(':categoryId'),
+  },
   [publicRouter.GET_BRAND]: { path: getRouteBrand(':id') },
   [publicRouter.GET_CART]: { path: getRouteCart() },
   [publicRouter.APPEND_TO_CART]: {

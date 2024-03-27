@@ -12,7 +12,8 @@ import {
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
-import { getCategorySelector } from '../../model/selectors/getCategorySelector';
+import { getCategoryIdSelector } from '../../model/selectors/getCategoryStateSelector';
+import { fetchCategory } from '../../model/services/fetchCategory';
 
 interface BurgerMenuItemProps {
   className?: string;
@@ -23,21 +24,22 @@ interface BurgerMenuItemProps {
 export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const { className, item, onClose } = props;
   const dispatch = useAppDispatch();
-  const category = useSelector(getCategorySelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   const onHandleClick = (categoryId: number) => () => {
+    dispatch(fetchCategory({ id: item.id }));
     dispatch(ProductsPageActions.setPage(1));
-    dispatch(CategoryActions.setCategoryId(categoryId));
+    dispatch(CategoryActions.setCategoryId(item.id));
     dispatch(FetchProductsByCategory({ categoryId }));
     onClose();
   };
 
-  const isActive = category.id === item.id;
+  const isActive = categoryId === item.id;
 
   return (
     <AppLink
-      to={getRouteCategory(`${item.id}`)}
-      onClick={onHandleClick(item.id)}
+      to={getRouteCategory(`${categoryId}`)}
+      onClick={onHandleClick(categoryId)}
     >
       <li
         className={classNames(cls.BurgerMenuItem, { [cls.active]: isActive }, [

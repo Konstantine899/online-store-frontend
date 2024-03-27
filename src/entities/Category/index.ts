@@ -4,7 +4,10 @@ export {
 } from './model/slices/CategoriesSlice';
 export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
 export { getAllCategoriesSelector } from './model/selectors/getAllCategoriesSelector';
-export { getCategorySelector } from './model/selectors/getCategorySelector';
+export {
+  getCategoryStateSelector,
+  getCategoryIdSelector,
+} from './model/selectors/getCategoryStateSelector';
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';
 export { fetchCategory } from './model/services/fetchCategory';
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';

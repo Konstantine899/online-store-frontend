@@ -1,7 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import {
-  FetchProducts,
   FetchProductsByCategory,
   getProductsListIsLoadingSelector,
   getProductsListSelector,
@@ -19,7 +18,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
 import { BrandActions, BrandReducer } from '@/entities/Brand';
-import { getCategorySelector } from '@/entities/Category';
+import { CategoryActions, getCategoryStateSelector } from '@/entities/Category';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -42,19 +41,17 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const brandId = Number(URLSearchParams.get('brand'));
   const products = useSelector(getProductsListSelector);
   const isLoading = useSelector(getProductsListIsLoadingSelector);
-  const category = useSelector(getCategorySelector);
+  const category = useSelector(getCategoryStateSelector);
 
   useEffect(() => {
+    dispatch(CategoryActions.initCategory());
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
     dispatch(BrandActions.setBrandId(brandId));
-    if (category.id != 0) {
+    if (category.id !== 0) {
       dispatch(FetchProductsByCategory({ categoryId: category.id }));
-    }
-    if (category.id == 0) {
-      dispatch(FetchProducts());
     }
   }, [brandId, category.id, dispatch, limit, page, search, sort]);
 

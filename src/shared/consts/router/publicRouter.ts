@@ -3,6 +3,7 @@ export enum publicRouter {
   SIGN_UP = 'sign_up',
   AUTH = 'auth',
   GET_LIST_ALL_BRANDS = 'get_list_all_brands',
+  GET_LIST_ALL_BRANDS_BY_CATEGORY = 'get_list_all_brands_by_category',
   GET_BRAND = 'get_brand',
   GET_CART = 'get_cart',
   APPEND_TO_CART = 'append_to_cart',
@@ -29,6 +30,8 @@ export const getRouteMain = () => '/';
 export const getRouteSingUp = () => '/auth/registration';
 export const getRouteAuth = () => '/auth/login';
 export const getRouteAllBrands = () => '/brand/brands';
+export const getRouteAllBrandsByCategory = (categoryId: string) =>
+  `/brand/brand_list_by_category/${categoryId}`;
 export const getRouteBrand = (id: string) => `/brand/${id}`;
 
 export const getRouteCart = () => `/cart/get-cart`;

@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import { memo, useEffect } from 'react';
 import cls from './Brand.module.scss';
-import { FetchAllBrands } from '../../model/services/FetchAllBrands';
-import { getAllBrandsSelector } from '../../model/selectors/getAllBrandsSelector';
-import { FetchProductsByBrand } from '@/entities/Product';
+import { FetchProductsByBrand, ProductsPageActions } from '@/entities/Product';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ProductsPageActions } from '@/entities/Product';
 import { BrandActions } from '../../model/slices/BrandSlice';
-import { getBrandSelector } from '../../model/selectors/getBrandSelector';
+import { getBrandIdSelector } from '../../model/selectors/getBrandSelector';
+import { getAllBrandsByCategorySelector } from '../../model/selectors/getAllBrandsByCategorySelector';
+import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
+import { getCategoryIdSelector } from '@/entities/Category';
 
 interface BrandProps {
   className?: string;
@@ -18,13 +18,18 @@ interface BrandProps {
 export const Brand = memo((props: BrandProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
+  const brands = useSelector(getAllBrandsByCategorySelector);
+  const brandId = useSelector(getBrandIdSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   useEffect(() => {
-    dispatch(FetchAllBrands());
-  }, [dispatch]);
-
-  const brands = useSelector(getAllBrandsSelector);
-  const brand = useSelector(getBrandSelector);
+    if (brandId !== 0) {
+      dispatch(BrandActions.setBrandId(brandId));
+      dispatch(ProductsPageActions.setPage(1));
+      dispatch(FetchProductsByBrand({ brandId }));
+    }
+    dispatch(fetchAllBrandsByCategory({ categoryId: 2 }));
+  }, [brandId, categoryId, dispatch]);
 
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
@@ -34,7 +39,7 @@ export const Brand = memo((props: BrandProps) => {
 
   return (
     <div className={classNames(cls.BrandWrapper, {}, [className])}>
-      {<Tabs tabs={brands} brandId={brand.id} onTabClick={handleClick} />}
+      {<Tabs tabs={brands} brandId={brandId} onTabClick={handleClick} />}
     </div>
   );
 });
