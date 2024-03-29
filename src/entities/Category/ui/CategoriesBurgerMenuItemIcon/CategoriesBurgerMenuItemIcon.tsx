@@ -27,7 +27,7 @@ export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {
           Svg={SmartphoneIcon}
         />
       )}
-      {itemName === 'Компьютеры' && (
+      {itemName === 'Ноутбуки' && (
         <Icon
           className={classNames(cls.ImacIcon, { [cls.active]: isActive }, [])}
           Svg={ImacIcon}

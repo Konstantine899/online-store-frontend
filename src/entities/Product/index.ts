@@ -9,8 +9,10 @@ export {
   getProductsListSelector,
   getLimitSelector,
 } from './model/selectors/getProductsSelector';
-export { FetchProducts } from './model/services/FetchProducts';
+export { fetchProducts } from './model/services/fetchProducts';
 export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
+export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
+
 export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
 export { fetchProductDetailsPage } from '../../pages/ProductDetailsPage/model/services/fetchProductDetailsPage';
 export type {

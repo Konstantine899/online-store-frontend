@@ -1,7 +1,6 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
-import { FetchProducts } from '../../model/services/FetchProducts';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { getSortOrderSelector } from '../../model/selectors/getProductsSelector';
 import { ProductsPageActions } from '../../model/slices/ProductsSlice';
@@ -18,7 +17,9 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { getBrandSelector } from '@/entities/Brand';
+import { getBrandIdSelector } from '@/entities/Brand';
+import { getCategoryIdSelector } from '@/entities/Category';
+import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 
 interface SortingOrderProps {
   className?: string;
@@ -29,7 +30,8 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getSortOrderSelector);
-  const brand = useSelector(getBrandSelector);
+  const brandId = useSelector(getBrandIdSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
@@ -40,9 +42,9 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (brand) return dispatch(FetchProductsByBrand({ brandId: brand.id }));
-    dispatch(FetchProducts());
-  }, [brand, dispatch]);
+    if (categoryId) return dispatch(FetchProductsByCategory({ categoryId }));
+    if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+  }, [brandId, categoryId, dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 

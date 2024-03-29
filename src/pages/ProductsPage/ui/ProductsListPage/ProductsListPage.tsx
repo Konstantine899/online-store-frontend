@@ -1,6 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import {
+  FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
   getProductsListIsLoadingSelector,
   getProductsListSelector,
@@ -17,8 +18,12 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import cls from './ProductsListPage.module.scss';
-import { BrandActions, BrandReducer } from '@/entities/Brand';
-import { CategoryActions, getCategoryStateSelector } from '@/entities/Category';
+import {
+  BrandActions,
+  BrandReducer,
+  getBrandIdSelector,
+} from '@/entities/Brand';
+import { CategoryActions, getCategoryIdSelector } from '@/entities/Category';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -38,10 +43,10 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
   const page = Number(URLSearchParams.get('page'));
   const search = URLSearchParams.get('search');
   const sort = URLSearchParams.get('sort');
-  const brandId = Number(URLSearchParams.get('brand'));
   const products = useSelector(getProductsListSelector);
   const isLoading = useSelector(getProductsListIsLoadingSelector);
-  const category = useSelector(getCategoryStateSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
+  const brandId = useSelector(getBrandIdSelector);
 
   useEffect(() => {
     dispatch(CategoryActions.initCategory());
@@ -50,10 +55,13 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
     dispatch(BrandActions.setBrandId(brandId));
-    if (category.id !== 0) {
-      dispatch(FetchProductsByCategory({ categoryId: category.id }));
+    if (categoryId !== 0) {
+      dispatch(FetchProductsByCategory({ categoryId }));
     }
-  }, [brandId, category.id, dispatch, limit, page, search, sort]);
+    if (categoryId !== 0 && brandId !== 0) {
+      dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
+    }
+  }, [brandId, categoryId, dispatch, limit, page, search, sort]);
 
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>

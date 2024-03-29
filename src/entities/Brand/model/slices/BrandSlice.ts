@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BrandSchema } from '../types/BrandSchema';
 import { fetchBrand } from '../services/fetchBrand';
 import { IBrand } from '../types/IBrand';
+import { BRAND_ID } from '@/shared/consts/localstorage';
 
 const initialState: BrandSchema = {
   brand: { id: 0, name: '' },
@@ -13,8 +14,12 @@ export const BrandSlice = createSlice({
   name: 'BrandSlice',
   initialState,
   reducers: {
+    initBrand: (state: BrandSchema) => {
+      state.brand.id = JSON.parse(localStorage.getItem(BRAND_ID));
+    },
     setBrandId: (state: BrandSchema, { payload }: PayloadAction<number>) => {
       state.brand.id = payload;
+      localStorage.setItem(BRAND_ID, JSON.stringify(payload));
     },
   },
   extraReducers: (builder) => {

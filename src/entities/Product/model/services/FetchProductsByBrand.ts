@@ -28,7 +28,6 @@ export const FetchProductsByBrand = createAsyncThunk<
       page: `${page}`,
       limit: `${limit}`,
       sort: `${sort}`,
-      brand: `${brandId}`,
     });
     const response = await extra.api.get<ProductsSchema>(
       `/product/all/brandId/${brandId}`,

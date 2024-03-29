@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
-import { FetchProducts } from '../services/FetchProducts';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { ISortOrder } from '@/shared/types/ISortOrder';
+import { fetchProducts } from '../services/fetchProducts';
+import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -44,19 +45,19 @@ export const ProductsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(FetchProducts.pending, (state: ProductsSchema) => {
+      .addCase(fetchProducts.pending, (state: ProductsSchema) => {
         state.isLoading = true;
         state.error = '';
         state.rows = null;
       })
-      .addCase(FetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = '';
         state.rows = action.payload.rows;
         state.count = action.payload.count;
         state.metaData = action.payload.metaData;
       })
-      .addCase(FetchProducts.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.rows = null;
@@ -86,15 +87,42 @@ export const ProductsSlice = createSlice({
         state.isLoading = true;
         state.error = '';
       })
-      .addCase(FetchProductsByCategory.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = '';
-        state.rows = action.payload.rows;
-        state.count = action.payload.count;
-        state.metaData = action.payload.metaData;
-      })
+      .addCase(
+        FetchProductsByCategory.fulfilled,
+        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
+          state.isLoading = false;
+          state.error = '';
+          state.rows = action.payload.rows;
+          state.count = action.payload.count;
+          state.metaData = action.payload.metaData;
+        },
+      )
       .addCase(
         FetchProductsByCategory.rejected,
+        (state: ProductsSchema, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      )
+      .addCase(
+        FetchProductsByBrandAndCategory.pending,
+        (state: ProductsSchema) => {
+          state.isLoading = true;
+          state.error = '';
+        },
+      )
+      .addCase(
+        FetchProductsByBrandAndCategory.fulfilled,
+        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
+          state.isLoading = false;
+          state.error = '';
+          state.rows = action.payload.rows;
+          state.count = action.payload.count;
+          state.metaData = action.payload.metaData;
+        },
+      )
+      .addCase(
+        FetchProductsByBrandAndCategory.rejected,
         (state: ProductsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;

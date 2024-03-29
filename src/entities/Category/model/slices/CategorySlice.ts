@@ -19,7 +19,7 @@ export const CategorySliceSlice = createSlice({
     },
     setCategoryId: (state: CategorySchema, action: PayloadAction<number>) => {
       localStorage.setItem(CATEGORY_ID, JSON.stringify(action.payload));
-      state.category.id = action.payload;
+      state.category.id = JSON.parse(localStorage.getItem(CATEGORY_ID));
     },
   },
   extraReducers: (builder) => {

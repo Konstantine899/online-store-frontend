@@ -11,14 +11,15 @@ import {
   SelectWrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
-import { FetchProducts } from '../../model/services/FetchProducts';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { getLimitSelector } from '../../model/selectors/getProductsSelector';
 import { ProductsPageActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { getBrandSelector } from '@/entities/Brand';
+import { getBrandIdSelector } from '@/entities/Brand';
+import { getCategoryIdSelector } from '@/entities/Category';
+import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 
 interface SortingLimitProps {
   className?: string;
@@ -29,7 +30,8 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(getLimitSelector);
-  const brand = useSelector(getBrandSelector);
+  const brandId = useSelector(getBrandIdSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
     () => [
@@ -41,9 +43,9 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (brand) return dispatch(FetchProductsByBrand({ brandId: brand.id }));
-    dispatch(FetchProducts());
-  }, [brand, dispatch]);
+    if (categoryId) dispatch(FetchProductsByCategory({ categoryId }));
+    if (brandId) dispatch(FetchProductsByBrand({ brandId }));
+  }, [brandId, categoryId, dispatch]);
 
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 

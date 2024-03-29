@@ -8,11 +8,11 @@ import {
   getSortOrderSelector,
 } from '../../model/selectors/getProductsSelector';
 
-export const FetchProducts = createAsyncThunk<
+export const fetchProducts = createAsyncThunk<
   ProductsSchema,
   void,
   ThunkAPIConfig<string>
->('FetchProducts', async (_, thunkAPI) => {
+>('fetchProducts', async (_, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
     const limit = getLimit(getState());

@@ -23,13 +23,8 @@ export const Brand = memo((props: BrandProps) => {
   const categoryId = useSelector(getCategoryIdSelector);
 
   useEffect(() => {
-    if (brandId !== 0) {
-      dispatch(BrandActions.setBrandId(brandId));
-      dispatch(ProductsPageActions.setPage(1));
-      dispatch(FetchProductsByBrand({ brandId }));
-    }
-    dispatch(fetchAllBrandsByCategory({ categoryId: 2 }));
-  }, [brandId, categoryId, dispatch]);
+    if (categoryId) dispatch(fetchAllBrandsByCategory({ categoryId }));
+  }, [categoryId, dispatch]);
 
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
@@ -39,7 +34,14 @@ export const Brand = memo((props: BrandProps) => {
 
   return (
     <div className={classNames(cls.BrandWrapper, {}, [className])}>
-      {<Tabs tabs={brands} brandId={brandId} onTabClick={handleClick} />}
+      {
+        <Tabs
+          tabs={brands}
+          brandId={brandId}
+          categoryId={categoryId}
+          onTabClick={handleClick}
+        />
+      }
     </div>
   );
 });

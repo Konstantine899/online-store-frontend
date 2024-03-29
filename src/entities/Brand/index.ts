@@ -10,7 +10,10 @@ export {
   AllBrandsByCategoryReducer,
 } from './model/slices/AllBrandsByCategorySlice';
 export { getAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
-export { getBrandSelector } from './model/selectors/getBrandSelector';
+export {
+  getBrandSelector,
+  getBrandIdSelector,
+} from './model/selectors/getBrandSelector';
 export {
   getAllBrandsByCategorySelector,
   getAllBrandsByCategoryErrorSelector,

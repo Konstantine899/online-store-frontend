@@ -3,8 +3,8 @@ import { memo } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
-  FetchProducts,
   FetchProductsByBrand,
+  FetchProductsByCategory,
   ProductsPageActions,
 } from '@/entities/Product';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
@@ -17,9 +17,9 @@ import {
   getNextPage,
   getPreviosPage,
 } from '../../model/selectors/getPaginateState';
-import { getCategoryStateSelector } from '@/entities/Category';
-import { FetchProductsByCategory } from '@/entities/Product';
-import { getBrandSelector } from '@/entities/Brand';
+import { getCategoryIdSelector } from '@/entities/Category';
+import { getBrandIdSelector } from '@/entities/Brand';
+import { FetchProductsByBrandAndCategory } from '@/entities/Product';
 
 interface PaginateProps {
   className?: string;
@@ -34,16 +34,17 @@ export const Paginate = memo((props: PaginateProps) => {
   const lastPage = useSelector(getLastPage); // последняя страница
   const previosPage = useSelector(getPreviosPage); // предыдущая страница
   const nextPage = useSelector(getNextPage); // следующая страница
-  const brand = useSelector(getBrandSelector);
-  const category = useSelector(getCategoryStateSelector);
+  const brandId = useSelector(getBrandIdSelector);
+  const categoryId = useSelector(getCategoryIdSelector);
 
   const onPageChange = (pageNumber: number) => () => {
     if (isNaN(pageNumber)) return;
     dispatch(ProductsPageActions.setPage(pageNumber));
-    if (brand) return dispatch(FetchProductsByBrand({ brandId: brand.id }));
-    if (category)
-      return dispatch(FetchProductsByCategory({ categoryId: category.id }));
-    dispatch(FetchProducts());
+    if (brandId) dispatch(FetchProductsByBrand({ brandId }));
+    if (categoryId) dispatch(FetchProductsByCategory({ categoryId }));
+    if (brandId && categoryId) {
+      dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
+    }
   };
 
   const paginationRange = usePaginate({

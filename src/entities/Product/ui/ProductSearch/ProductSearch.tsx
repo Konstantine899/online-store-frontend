@@ -5,9 +5,11 @@ import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ProductsPageActions } from '../../model/slices/ProductsSlice';
-import { FetchProducts } from '../../model/services/FetchProducts';
+import { fetchProducts } from '../../model/services/fetchProducts';
 import { getSearchSelector } from '../../model/selectors/getProductsSelector';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { BrandActions } from '@/entities/Brand';
+import { CategoryActions } from '@/entities/Category';
 
 interface SearchProps {
   className?: string;
@@ -20,7 +22,9 @@ export const ProductSearch = memo((props: SearchProps) => {
   const search = useSelector(getSearchSelector);
 
   const getProducts = useCallback(() => {
-    dispatch(FetchProducts());
+    dispatch(BrandActions.setBrandId(0));
+    dispatch(CategoryActions.setCategoryId(0));
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   const debounceFetchProductsListPage = useDebounce(getProducts, 1000);

@@ -67,7 +67,6 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_CATEGORY]: {
     path: getRouteCategory(':id'),
-    element: <ProductsPage />,
   },
   [publicRouter.GUEST_CREATE_ORDER]: {
     path: getRouteGuestCreateOrder(),
@@ -91,12 +90,15 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
     path: getRouteListProductsByBrand(':brandId'),
+    element: <ProductsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
     path: getRouteListProductsByCategory(':categoryId'),
+    element: <ProductsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
     path: getRouteListProductsByBrandAndByCategory(':brandId', ':categoryId'),
+    element: <ProductsPage />,
   },
   [publicRouter.GET_RATING]: {
     path: getRouteRating(':productId'),
