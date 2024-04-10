@@ -50,6 +50,7 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
 
   useEffect(() => {
     dispatch(CategoryActions.initCategory());
+    dispatch(BrandActions.initBrand());
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(ProductsPageActions.setSearch(search));

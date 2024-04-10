@@ -18,8 +18,8 @@ export const BrandSlice = createSlice({
       state.brand.id = JSON.parse(localStorage.getItem(BRAND_ID));
     },
     setBrandId: (state: BrandSchema, { payload }: PayloadAction<number>) => {
-      state.brand.id = payload;
       localStorage.setItem(BRAND_ID, JSON.stringify(payload));
+      state.brand.id = JSON.parse(localStorage.getItem(BRAND_ID));
     },
   },
   extraReducers: (builder) => {
