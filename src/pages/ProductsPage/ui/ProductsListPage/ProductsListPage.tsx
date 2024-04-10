@@ -1,6 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import {
+  fetchProducts,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
   getProductsListIsLoadingSelector,
@@ -56,13 +57,19 @@ export const ProductsListPage = memo((props: ArticleListPageProps) => {
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
     dispatch(BrandActions.setBrandId(brandId));
+  }, [brandId, dispatch, limit, page, search, sort]);
+
+  useEffect(() => {
+    if (search) {
+      dispatch(fetchProducts());
+    }
     if (categoryId !== 0) {
       dispatch(FetchProductsByCategory({ categoryId }));
     }
     if (categoryId !== 0 && brandId !== 0) {
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
-  }, [brandId, categoryId, dispatch, limit, page, search, sort]);
+  }, [brandId, categoryId, dispatch, search]);
 
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>

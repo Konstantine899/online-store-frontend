@@ -8,6 +8,7 @@ import {
   getSearchSelector,
   getSortOrderSelector,
 } from '../selectors/getProductsSelector';
+import { ProductsPageActions } from '../slices/ProductsSlice';
 
 interface FetchProductsByCategoryProps {
   categoryId: number;
@@ -18,7 +19,7 @@ export const FetchProductsByCategory = createAsyncThunk<
   FetchProductsByCategoryProps,
   ThunkAPIConfig<string>
 >('FetchProductsByCategory', async ({ categoryId }, thunkAPI) => {
-  const { rejectWithValue, extra, getState } = thunkAPI;
+  const { rejectWithValue, extra, getState, dispatch } = thunkAPI;
   try {
     const limit = getLimit(getState());
     const page = getCurrentPage(getState());
@@ -30,6 +31,7 @@ export const FetchProductsByCategory = createAsyncThunk<
       limit: `${limit}`,
       sort: `${sort}`,
     });
+    dispatch(ProductsPageActions.setSearch(''));
     const response = await extra.api.get<ProductsSchema>(
       getRouteListProductsByCategory(`${categoryId}`),
       {

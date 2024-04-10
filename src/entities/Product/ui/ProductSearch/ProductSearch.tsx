@@ -38,12 +38,6 @@ export const ProductSearch = memo((props: SearchProps) => {
     [debounceFetchProductsListPage, dispatch],
   );
 
-  const onBlur = useCallback(() => {
-    dispatch(ProductsPageActions.setSearch(''));
-    dispatch(ProductsPageActions.setPage(1));
-    debounceFetchProductsListPage();
-  }, [debounceFetchProductsListPage, dispatch]);
-
   return (
     <div className={classNames(cls.SearchWrapper, {}, [className])}>
       <Input
@@ -51,7 +45,6 @@ export const ProductSearch = memo((props: SearchProps) => {
         className={cls.InputSearch}
         value={search}
         onChange={onSearch}
-        onBlur={onBlur}
         theme={InputTheme.OUTLINED}
       />
     </div>
