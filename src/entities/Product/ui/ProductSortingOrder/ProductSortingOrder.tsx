@@ -20,6 +20,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { getBrandIdSelector } from '@/entities/Brand';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
+import { fetchProducts } from '../../model/services/fetchProducts';
 
 interface SortingOrderProps {
   className?: string;
@@ -44,6 +45,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const fetchProductsList = useCallback(() => {
     if (categoryId) return dispatch(FetchProductsByCategory({ categoryId }));
     if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    dispatch(fetchProducts());
   }, [brandId, categoryId, dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);

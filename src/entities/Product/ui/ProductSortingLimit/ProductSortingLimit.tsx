@@ -20,6 +20,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { getBrandIdSelector } from '@/entities/Brand';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
+import { fetchProducts } from '../../model/services/fetchProducts';
 
 interface SortingLimitProps {
   className?: string;
@@ -45,6 +46,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   const fetchProductsList = useCallback(() => {
     if (categoryId) dispatch(FetchProductsByCategory({ categoryId }));
     if (brandId) dispatch(FetchProductsByBrand({ brandId }));
+    dispatch(fetchProducts());
   }, [brandId, categoryId, dispatch]);
 
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
