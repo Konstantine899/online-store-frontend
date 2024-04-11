@@ -27,7 +27,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { CategoryActions, getCategoryIdSelector } from '@/entities/Category';
 import { ISortOrder } from '@/shared/types/ISortOrder';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsPageReducer,
@@ -51,15 +51,23 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const isLoading = useSelector(getProductsListIsLoadingSelector);
   const categoryId = useSelector(getCategoryIdSelector);
   const brandId = useSelector(getBrandIdSelector);
+  const { categoryId: URLParamCategoryId, brandId: URLParamBrandId } =
+    useParams();
 
   useEffect(() => {
-    dispatch(CategoryActions.initCategory());
-    dispatch(BrandActions.initBrand());
+    if (URLParamCategoryId) {
+      dispatch(CategoryActions.setCategoryId(Number(URLParamCategoryId)));
+    }
+    if (URLParamBrandId) {
+      dispatch(BrandActions.setBrandId(Number(URLParamBrandId)));
+    }
+  }, [URLParamBrandId, URLParamCategoryId, dispatch]);
+
+  useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
     dispatch(ProductsPageActions.setSearch(search));
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
-    dispatch(BrandActions.setBrandId(brandId));
   }, [brandId, dispatch, limit, page, search, sort]);
 
   useEffect(() => {

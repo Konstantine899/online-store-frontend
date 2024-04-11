@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CategorySchema } from '../types/CategorySchema';
 import { fetchCategory } from '../services/fetchCategory';
 import { ICategory } from '../types/ICategory';
-import { CATEGORY_ID } from '@/shared/consts/localstorage';
 
 const initialState: CategorySchema = {
   category: { id: 0, name: '' },
@@ -14,12 +13,8 @@ export const CategorySliceSlice = createSlice({
   name: 'CategorySliceSlice',
   initialState,
   reducers: {
-    initCategory: (state: CategorySchema) => {
-      state.category.id = JSON.parse(localStorage.getItem(CATEGORY_ID));
-    },
     setCategoryId: (state: CategorySchema, action: PayloadAction<number>) => {
-      localStorage.setItem(CATEGORY_ID, JSON.stringify(action.payload));
-      state.category.id = JSON.parse(localStorage.getItem(CATEGORY_ID));
+      state.category.id = action.payload;
     },
   },
   extraReducers: (builder) => {
