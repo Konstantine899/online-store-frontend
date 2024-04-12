@@ -3,6 +3,7 @@ import { memo } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
+  fetchProducts,
   FetchProductsByBrand,
   FetchProductsByCategory,
   ProductsPageActions,
@@ -45,6 +46,7 @@ export const Paginate = memo((props: PaginateProps) => {
     if (brandId && categoryId) {
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
+    dispatch(fetchProducts());
   };
 
   const paginationRange = usePaginate({
