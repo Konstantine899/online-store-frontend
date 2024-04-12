@@ -5,6 +5,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
   fetchProducts,
   FetchProductsByBrand,
+  FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
   ProductsPageActions,
 } from '@/entities/Product';
@@ -20,7 +21,6 @@ import {
 } from '../../model/selectors/getPaginateState';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { getBrandIdSelector } from '@/entities/Brand';
-import { FetchProductsByBrandAndCategory } from '@/entities/Product';
 
 interface PaginateProps {
   className?: string;
@@ -40,13 +40,22 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const onPageChange = (pageNumber: number) => () => {
     if (isNaN(pageNumber)) return;
-    dispatch(ProductsPageActions.setPage(pageNumber));
-    if (brandId) dispatch(FetchProductsByBrand({ brandId }));
-    if (categoryId) dispatch(FetchProductsByCategory({ categoryId }));
+    if (brandId) {
+      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(FetchProductsByBrand({ brandId }));
+    }
+    if (categoryId) {
+      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(FetchProductsByCategory({ categoryId }));
+    }
     if (brandId && categoryId) {
+      dispatch(ProductsPageActions.setPage(pageNumber));
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
-    dispatch(fetchProducts());
+    if (!categoryId) {
+      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(fetchProducts());
+    }
   };
 
   const paginationRange = usePaginate({
