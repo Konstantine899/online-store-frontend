@@ -21,6 +21,7 @@ import { getBrandIdSelector } from '@/entities/Brand';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
+import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 
 interface SortingOrderProps {
   className?: string;
@@ -45,6 +46,9 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const fetchProductsList = useCallback(() => {
     if (categoryId) return dispatch(FetchProductsByCategory({ categoryId }));
     if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    if (categoryId && brandId) {
+      dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
+    }
     dispatch(fetchProducts());
   }, [brandId, categoryId, dispatch]);
 
