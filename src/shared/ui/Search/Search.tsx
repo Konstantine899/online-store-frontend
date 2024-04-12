@@ -9,10 +9,11 @@ interface SearchProps {
   onValue: () => void;
   onSearch: (value: string) => void;
   search: string;
+  navigate?: () => void;
 }
 
 export const Search = memo((props: SearchProps) => {
-  const { className, onSearch, onValue, search } = props;
+  const { className, onSearch, onValue, search, navigate } = props;
 
   const onValueHandler = () => {
     onValue?.();
@@ -21,6 +22,7 @@ export const Search = memo((props: SearchProps) => {
   const debounce = useDebounce(onValueHandler, 1000);
 
   const onSearchHandler = (value: string) => {
+    navigate?.();
     onSearch?.(value);
     debounce();
   };

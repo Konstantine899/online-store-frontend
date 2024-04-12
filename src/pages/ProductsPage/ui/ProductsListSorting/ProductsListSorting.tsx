@@ -9,16 +9,16 @@ import {
 
 interface ProductsListSortingProps {
   className?: string;
+  categoryId?: number;
 }
 
 export const ProductsListSorting = memo((props: ProductsListSortingProps) => {
-  const { className } = props;
-
+  const { className, categoryId } = props;
   return (
     <div className={classNames(cls.ProductsListSorting, {}, [className])}>
       <ProductSortingOrder />
       <ProductSortingLimit />
-      <ProductTabBrand />
+      {!categoryId || categoryId == 0 ? null : <ProductTabBrand />}
     </div>
   );
 });

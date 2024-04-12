@@ -7,6 +7,7 @@ import {
   getSearchSelector,
   getSortOrderSelector,
 } from '../../model/selectors/getProductsSelector';
+import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
 
 export const fetchProducts = createAsyncThunk<
   ProductsSchema,
@@ -25,9 +26,12 @@ export const fetchProducts = createAsyncThunk<
       limit: `${limit}`,
       sort: `${sort}`,
     });
-    const response = await extra.api.get<ProductsSchema>('/product/all', {
-      params: { search, page, limit, sort },
-    });
+    const response = await extra.api.get<ProductsSchema>(
+      getRouteListProducts(),
+      {
+        params: { search, page, limit, sort },
+      },
+    );
     if (!response.data) {
       throw new Error();
     }

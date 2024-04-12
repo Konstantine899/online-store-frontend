@@ -34,8 +34,10 @@ export const ProductsSlice = createSlice({
       state.metaData.limit = action.payload;
     },
     setSearch: (state: ProductsSchema, action: PayloadAction<string>) => {
+      console.log(action.payload);
       state.search = action.payload;
     },
+
     setSortingOrder: (
       state: ProductsSchema,
       action: PayloadAction<ISortOrder>,

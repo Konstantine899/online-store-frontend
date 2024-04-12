@@ -11,6 +11,7 @@ import {
   FetchProductsByCategory,
   getProductsListIsLoadingSelector,
   getProductsListSelector,
+  getSearchSelector,
   ProductList,
   ProductsPageActions,
   ProductsPageReducer,
@@ -45,20 +46,23 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const [URLSearchParams] = useSearchParams();
   const limit = Number(URLSearchParams.get('limit'));
   const page = Number(URLSearchParams.get('page'));
-  const search = URLSearchParams.get('search');
   const sort = URLSearchParams.get('sort');
+  const paramSearch = URLSearchParams.get('search');
   const products = useSelector(getProductsListSelector);
   const isLoading = useSelector(getProductsListIsLoadingSelector);
   const categoryId = useSelector(getCategoryIdSelector);
   const brandId = useSelector(getBrandIdSelector);
+  const search = useSelector(getSearchSelector);
   const { categoryId: URLParamCategoryId, brandId: URLParamBrandId } =
     useParams();
 
   useEffect(() => {
     if (URLParamCategoryId) {
+      dispatch(ProductsPageActions.setSearch(''));
       dispatch(CategoryActions.setCategoryId(Number(URLParamCategoryId)));
     }
     if (URLParamBrandId) {
+      dispatch(ProductsPageActions.setSearch(''));
       dispatch(BrandActions.setBrandId(Number(URLParamBrandId)));
     }
   }, [URLParamBrandId, URLParamCategoryId, dispatch]);
@@ -66,12 +70,14 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   useEffect(() => {
     dispatch(ProductsPageActions.setPage(page || 1));
     dispatch(ProductsPageActions.setLimit(limit || 5));
-    dispatch(ProductsPageActions.setSearch(search));
+    if (paramSearch) {
+      dispatch(ProductsPageActions.setSearch(paramSearch));
+    }
     dispatch(ProductsPageActions.setSortingOrder(sort as ISortOrder));
-  }, [brandId, dispatch, limit, page, search, sort]);
+  }, [brandId, dispatch, limit, page, paramSearch, sort]);
 
   useEffect(() => {
-    if (search) {
+    if (!search) {
       dispatch(fetchProducts());
     }
     if (categoryId !== 0) {
@@ -85,7 +91,9 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
-          {products.length ? <ProductsListSorting /> : null}
+          {products.length ? (
+            <ProductsListSorting categoryId={categoryId} />
+          ) : null}
           <ProductList products={products} isLoading={isLoading} />
           {products.length ? <ProductsListPaginate /> : null}
         </Page>

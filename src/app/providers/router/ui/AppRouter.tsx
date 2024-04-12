@@ -13,7 +13,6 @@ export const AppRouter = () => {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        <Route />
         {Object.values(publicRouterConfig).map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
         ))}
