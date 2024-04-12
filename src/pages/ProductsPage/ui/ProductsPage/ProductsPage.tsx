@@ -74,6 +74,9 @@ const ProductsPage = memo((props: ProductsPageProps) => {
         }),
       );
     }
+    if (!URLParamCategoryId) {
+      dispatch(fetchProducts());
+    }
     if (paramSearch) {
       dispatch(ProductsPageActions.setSearch(paramSearch));
       dispatch(fetchProducts());
