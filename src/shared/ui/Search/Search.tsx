@@ -6,23 +6,23 @@ import { Input, InputTheme } from '../Input/Input';
 
 interface SearchProps {
   className?: string;
-  onValue: () => void;
+  fetchData: () => void;
   onSearch: (value: string) => void;
   search: string;
   navigate?: () => void;
 }
 
 export const Search = memo((props: SearchProps) => {
-  const { className, onSearch, onValue, search, navigate } = props;
+  const { className, onSearch, fetchData, search, navigate } = props;
 
-  const onValueHandler = () => {
-    onValue?.();
+  const onFetchData = () => {
+    navigate?.();
+    fetchData?.();
   };
 
-  const debounce = useDebounce(onValueHandler, 1000);
+  const debounce = useDebounce(onFetchData, 1000);
 
-  const onSearchHandler = (value: string) => {
-    navigate?.();
+  const onChangeSearch = (value: string) => {
     onSearch?.(value);
     debounce();
   };
@@ -32,7 +32,7 @@ export const Search = memo((props: SearchProps) => {
       type={'text'}
       className={classNames(cls.InputSearch, {}, [className])}
       value={search}
-      onChange={onSearchHandler}
+      onChange={onChangeSearch}
       theme={InputTheme.OUTLINED}
     />
   );

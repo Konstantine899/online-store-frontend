@@ -32,15 +32,17 @@ export const ProductSearch = memo((props: SearchProps) => {
 
   const search = useSelector(getSearchSelector);
 
-  const getProducts = useCallback(() => {
+  const onChangeFetchProducts = useCallback(() => {
     dispatch(BrandActions.setBrandId(0));
     dispatch(CategoryActions.setCategoryId(0));
+    addQueryParams({ search: `${search}` });
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch, search]);
 
-  const onSearch = useCallback(
+  const productSearchChangeHandler = useCallback(
     (search: string) => {
-      addQueryParams({ search: `${search}` });
+      dispatch(ProductsPageActions.setRows([]));
+      dispatch(ProductsPageActions.setProductsListIsLoading(true));
       dispatch(ProductsPageActions.setSearch(search));
       dispatch(ProductsPageActions.setPage(1));
     },
@@ -55,8 +57,8 @@ export const ProductSearch = memo((props: SearchProps) => {
     <DynamicModuleLoader reducers={initialAsyncReducersProductSearch}>
       <Search
         className={classNames(``, {}, [className])}
-        onValue={getProducts}
-        onSearch={onSearch}
+        fetchData={onChangeFetchProducts}
+        onSearch={productSearchChangeHandler}
         search={search}
         navigate={onNavigate}
       />
