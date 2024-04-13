@@ -10,17 +10,23 @@
     .input {
         width: 100%;
         font: var(--font-l);
-        color: #757575;
-        font-weight: 400;
+        color: var(--input-theme-outlined-primary-color);
+        font-weight: bold;
         border: none;
         outline: none;
-        padding: 10px 30px;
+        padding: 8px 20px;
+        border-radius: 15px;
+
+    }
+
+    .input::placeholder{
+        color: var(--input-theme-outlined-inverted-primary-color);
     }
 }
 
 .standard {
     .label {
-        color: var(--input-standard-primary-color);
+        color: var(--input-theme-standard-primary-color);
         font: var(--font-l);
         font-weight: normal;
         position: absolute;
@@ -31,11 +37,11 @@
     }
 
     .inputSvg {
-        fill: var(--input-standard-primary-color);
+        fill: var(--input-theme-standard-primary-color);
         cursor: pointer;
         height: 40px;
         width: 40px;
-        border-bottom: 1px dashed var(--input-standard-primary-color);
+        border-bottom: 1px dashed var(--input-theme-standard-primary-color);
     }
 
     .input {
@@ -46,24 +52,24 @@
         width: 100%;
         outline: none;
         height: 40px;
-        color: var(--input-standard-inverted-primary-color);
-        border-bottom: 1px dashed var(--input-standard-primary-color);
+        color: var(--input-theme-standard-inverted-primary-color);
+        border-bottom: 1px dashed var(--input-theme-standard-primary-color);
 
 
         &:focus ~ .label, &:valid ~ label {
             top: -30px;
             font-size: 14px;
             font-weight: bold;
-            color: var(--input-standard-inverted-primary-color);
+            color: var(--input-theme-standard-inverted-primary-color);
         }
 
         &:focus {
-            border-bottom: 1px solid var(--input-standard-inverted-primary-color);
+            border-bottom: 1px solid var(--input-theme-standard-inverted-primary-color);
         }
 
         &:focus ~ .inputSvg {
             fill: #481173;
-            border-bottom: 1px solid var(--input-standard-inverted-primary-color);
+            border-bottom: 1px solid var(--input-theme-standard-inverted-primary-color);
         }
 
     }
