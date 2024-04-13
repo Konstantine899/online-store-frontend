@@ -15,6 +15,7 @@ import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { useNavigate } from 'react-router-dom';
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
+import cls from './ProductSearch.module.scss';
 
 const initialAsyncReducersProductSearch = {
   productsList: ProductsPageReducer,
@@ -56,11 +57,12 @@ export const ProductSearch = memo((props: SearchProps) => {
   return (
     <DynamicModuleLoader reducers={initialAsyncReducersProductSearch}>
       <Search
-        className={classNames(``, {}, [className])}
+        className={classNames(cls.ProductSearch, {}, [className])}
         fetchData={onChangeFetchProducts}
         onSearch={productSearchChangeHandler}
         search={search}
         navigate={onNavigate}
+        placeholder={'Найти товары'}
       />
     </DynamicModuleLoader>
   );

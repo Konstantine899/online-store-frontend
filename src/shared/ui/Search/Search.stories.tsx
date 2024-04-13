@@ -11,5 +11,12 @@ type Story = StoryObj<typeof Search>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Search search={''} onSearch={() => {}} fetchData={() => {}} />,
+  render: () => (
+    <Search
+      search={''}
+      onSearch={() => {}}
+      fetchData={() => {}}
+      placeholder={'Найти товары'}
+    />
+  ),
 };
