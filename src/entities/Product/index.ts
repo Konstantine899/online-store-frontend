@@ -8,6 +8,7 @@ export {
   getProductsSelector,
   getProductsListSelector,
   getLimitSelector,
+  getCountSelector,
 } from './model/selectors/getProductsSelector';
 export { fetchProducts } from './model/services/fetchProducts';
 export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';

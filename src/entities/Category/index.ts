@@ -7,6 +7,7 @@ export { getAllCategoriesSelector } from './model/selectors/getAllCategoriesSele
 export {
   getCategoryStateSelector,
   getCategoryIdSelector,
+  getCategoryNameSelector,
 } from './model/selectors/getCategoryStateSelector';
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';
 export { fetchCategory } from './model/services/fetchCategory';

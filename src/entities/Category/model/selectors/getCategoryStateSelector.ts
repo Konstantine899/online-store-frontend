@@ -12,3 +12,10 @@ export const getCategoryIdSelector = createSelector(
     return state?.id ?? 0;
   },
 );
+
+export const getCategoryNameSelector = createSelector(
+  getCategoryStateSelector,
+  (state: ICategory) => {
+    return state?.name ?? '';
+  },
+);
