@@ -11,12 +11,35 @@ export const getProductsListSelector = createSelector(
   (state: ProductsSchema) => state?.rows ?? [],
 );
 
-export const getProductsListIsLoadingSelector = (state: StateSchema) =>
-  state.productsList?.isLoading ?? false;
+export const getProductsListIsLoadingSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?.isLoading ?? false;
+  },
+);
 
-export const getLimitSelector = (state: StateSchema) =>
-  state.productsList?.metaData?.limit ?? 5;
-export const getSearchSelector = (state: StateSchema) =>
-  state.productsList?.search ?? '';
-export const getSortOrderSelector = (state: StateSchema) =>
-  state.productsList?.sortingOrder ?? 'asc';
+export const getLimitSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?.metaData?.limit ?? 5;
+  },
+);
+
+export const getCountSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?.metaData?.totalCount ?? 0;
+  },
+);
+export const getSearchSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?.search ?? '';
+  },
+);
+export const getSortOrderSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?.sortingOrder ?? 'asc';
+  },
+);
