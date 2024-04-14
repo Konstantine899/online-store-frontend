@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
-import { CategoriesBurgerMenu } from '@/entities/Category';
+import { CategoriesBurgerMenu, CategoryActions } from '@/entities/Category';
 import { Icon } from '@/shared/ui/Icon';
 import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
@@ -23,7 +23,7 @@ import {
   getRouteCart,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
-import { ProductSearch } from '@/entities/Product';
+import { ProductSearch, ProductsPageActions } from '@/entities/Product';
 
 interface NavbarProps {
   className?: string;
@@ -69,6 +69,11 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(AuthActions.removeAuthData());
   };
 
+  const toMainPage = () => {
+    dispatch(ProductsPageActions.setSearch(''));
+    dispatch(CategoryActions.setCategoryId(0));
+  };
+
   if (authData) {
     return (
       <nav className={classNames(cls.Navbar, {}, [className])}>
@@ -79,6 +84,7 @@ export const Navbar = memo((props: NavbarProps) => {
               className={cls.Navbar_content_left_a}
               theme={AppLinkTheme.SECONDARY}
               to={getRouteMain()}
+              onClick={toMainPage}
             >
               Магазин
             </AppLink>
