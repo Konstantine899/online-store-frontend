@@ -93,7 +93,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
-          <ProductsPageHeading />
+          {categoryId !== 0 && <ProductsPageHeading />}
           {products.length ? (
             <ProductsListSorting categoryId={categoryId} />
           ) : null}
