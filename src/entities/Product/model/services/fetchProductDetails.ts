@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { IProductDetails } from '@/entities/Product';
+import { IProductDetails } from '../types/IProductDetails';
 
 interface fetchProductDetailsProps {
   id: number;
 }
 
-export const fetchProductDetailsPage = createAsyncThunk<
+export const fetchProductDetails = createAsyncThunk<
   IProductDetails,
   fetchProductDetailsProps,
   ThunkAPIConfig<string>

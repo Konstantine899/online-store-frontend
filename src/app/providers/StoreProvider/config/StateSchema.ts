@@ -17,7 +17,7 @@ import {
   AllBrandsByCategorySchema,
 } from '@/entities/Brand';
 import { AllCategoriesSchema, CategorySchema } from '@/entities/Category';
-import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
+import { ProductDetailsSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 
 export interface StateSchema {
@@ -26,7 +26,7 @@ export interface StateSchema {
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   productsList?: ProductsSchema;
-  productDetailsPage: ProductDetailsPageSchema;
+  productDetailsPage: ProductDetailsSchema;
   allBrands?: AllBrandsSchema;
   allBrandsByCategory?: AllBrandsByCategorySchema;
   categoriesList?: AllCategoriesSchema;

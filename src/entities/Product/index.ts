@@ -15,12 +15,14 @@ export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
 export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
 
 export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
-export { fetchProductDetailsPage } from '../../pages/ProductDetailsPage/model/services/fetchProductDetailsPage';
+export { fetchProductDetails } from './model/services/fetchProductDetails';
 export type {
   ProductsSchema,
   Product,
   ProductsListMetaData,
 } from './model/types/ProductsSchema';
+export type { ProductDetailsSchema } from './model/types/ProductDetailsSchema';
+
 export type { IProductDetails } from './model/types/IProductDetails';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';

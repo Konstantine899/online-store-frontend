@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductDetailsPageSchema } from '../types/ProductDetailsPageSchema';
-import { IProductDetails, fetchProductDetailsPage } from '@/entities/Product';
+import { ProductDetailsSchema } from '../types/ProductDetailsSchema';
+import { IProductDetails } from '../types/IProductDetails';
+import { fetchProductDetails } from '../services/fetchProductDetails';
 
-const initialState: ProductDetailsPageSchema = {
+const initialState: ProductDetailsSchema = {
   productDetails: {
     id: 0,
     name: '',
@@ -18,23 +19,20 @@ const initialState: ProductDetailsPageSchema = {
   error: '',
 };
 
-export const ProductDetailsPageSlice = createSlice({
+export const ProductDetailsSlice = createSlice({
   name: 'ProductDetailsSliceSlice',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchProductDetails.pending, (state: ProductDetailsSchema) => {
+        state.isLoading = true;
+        state.error = '';
+      })
       .addCase(
-        fetchProductDetailsPage.pending,
-        (state: ProductDetailsPageSchema) => {
-          state.isLoading = true;
-          state.error = '';
-        },
-      )
-      .addCase(
-        fetchProductDetailsPage.fulfilled,
+        fetchProductDetails.fulfilled,
         (
-          state: ProductDetailsPageSchema,
+          state: ProductDetailsSchema,
           action: PayloadAction<IProductDetails>,
         ) => {
           state.isLoading = false;
@@ -51,8 +49,8 @@ export const ProductDetailsPageSlice = createSlice({
         },
       )
       .addCase(
-        fetchProductDetailsPage.rejected,
-        (state: ProductDetailsPageSchema, action: PayloadAction<string>) => {
+        fetchProductDetails.rejected,
+        (state: ProductDetailsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
         },
@@ -60,5 +58,5 @@ export const ProductDetailsPageSlice = createSlice({
   },
 });
 
-export const { actions: ProductDetailsPageActions } = ProductDetailsPageSlice;
-export const { reducer: ProductDetailsPageReducer } = ProductDetailsPageSlice;
+export const { actions: ProductDetailsPageActions } = ProductDetailsSlice;
+export const { reducer: ProductDetailsPageReducer } = ProductDetailsSlice;

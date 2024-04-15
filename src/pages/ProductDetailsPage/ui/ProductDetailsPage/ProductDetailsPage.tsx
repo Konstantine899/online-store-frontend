@@ -2,14 +2,14 @@ import { memo, Suspense, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductDetailsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { fetchProductDetailsPage, ProductDetails } from '@/entities/Product';
+import { fetchProductDetails, ProductDetails } from '@/entities/Product';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ProductDetailsPageReducer } from '../../model/slices/ProductDetailsPageSlice';
+import { ProductDetailsPageReducer } from '../../../../entities/Product/model/slices/ProductDetailsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getProductDetailsPageSelector } from '../../model/selectors/getProductDetailsPageSelector';
+import { getProductDetailsSelector } from '../../../../entities/Product/model/selectors/getProductDetailsSelector';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { BrandReducer } from '@/entities/Brand';
@@ -34,10 +34,10 @@ export const ProductDetailsPage = memo((props: ProductDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    dispatch(fetchProductDetailsPage({ id: Number(id) }));
+    dispatch(fetchProductDetails({ id: Number(id) }));
   }, [dispatch, id]);
 
-  const productDetails = useSelector(getProductDetailsPageSelector);
+  const productDetails = useSelector(getProductDetailsSelector);
 
   return (
     <Suspense fallback={''}>
