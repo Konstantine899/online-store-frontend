@@ -2,7 +2,12 @@ import { memo, Suspense, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductDetailsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { fetchProductDetails, ProductDetails } from '@/entities/Product';
+import {
+  fetchProductDetails,
+  ProductPreview,
+  ProductHeading,
+  ProductSpecification,
+} from '@/entities/Product';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -39,7 +44,9 @@ export const ProductDetailsPage = memo((props: ProductDetailsPageProps) => {
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={ProductDetailsPageAsyncReducer}>
         <Page className={classNames(cls.ProductDetailsPage, {}, [className])}>
-          <ProductDetails />
+          <ProductHeading />
+          <ProductPreview />
+          <ProductSpecification title={`Характеристики`} />
         </Page>
       </DynamicModuleLoader>
     </Suspense>

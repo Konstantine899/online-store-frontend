@@ -30,8 +30,10 @@ export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { ProductSortingLimit } from './ui/ProductSortingLimit/ProductSortingLimit';
 export { ProductSortingOrder } from './ui/ProductSortingOrder/ProductSortingOrder';
 export { ProductTabBrand } from './ui/ProductTabBrand/ProductTabBrand';
-export { ProductDetails } from './ui/ProductDetails/ProductDetails';
+export { ProductPreview } from './ui/ProductPreview/ProductPreview';
+export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
+export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 
 export { getSortOrderSelector } from './model/selectors/getProductsSelector';
 export { getSearchSelector } from './model/selectors/getProductsSelector';

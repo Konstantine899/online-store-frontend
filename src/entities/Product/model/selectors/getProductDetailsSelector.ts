@@ -19,11 +19,15 @@ export const getProductDetailsPropertiesSelector = createSelector(
     return state?.properties ?? [];
   },
 );
+
+export const getProductDetailsNameSelector = createSelector(
+  getProductDetailsSelector,
+  (state: IProductDetails) => {
+    return state?.name ?? '';
+  },
+);
 export const getProductDetailsIsLoadingSelector = (state: StateSchema) => {
   return state.productDetailsPage?.isLoading ?? false;
-};
-export const getProductDetailsErrorSelector = (state: StateSchema) => {
-  return state.productDetailsPage?.error ?? '';
 };
 
 export const getProductDetailsInitedSelector = (state: StateSchema) => {
