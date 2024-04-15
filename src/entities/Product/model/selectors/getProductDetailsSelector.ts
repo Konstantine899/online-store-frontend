@@ -7,5 +7,9 @@ export const getProductDetailsIsLoadingSelector = (state: StateSchema) => {
   return state.productDetailsPage?.isLoading ?? false;
 };
 export const getProductDetailsErrorSelector = (state: StateSchema) => {
-  return state.productDetailsPage?.isLoading ?? false;
+  return state.productDetailsPage?.error ?? '';
+};
+
+export const getProductDetailsInitedSelector = (state: StateSchema) => {
+  return state.productDetailsPage?._inited ?? false;
 };

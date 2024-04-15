@@ -11,5 +11,5 @@ type Story = StoryObj<typeof ProductImage>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductImage />,
+  render: () => <ProductImage image={''} />,
 };

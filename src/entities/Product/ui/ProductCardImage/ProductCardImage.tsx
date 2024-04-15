@@ -19,7 +19,7 @@ export const ProductCardImage = memo((props: ProductCardImageProps) => {
       to={getRouteProduct(`${product.id}`)}
       className={classNames(cls.CardImage, {}, [className])}
     >
-      <ProductImage product={product} />
+      <ProductImage image={product.image} />
     </AppLink>
   );
 });

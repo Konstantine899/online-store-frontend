@@ -11,6 +11,7 @@ import { ProductImage } from '../ProductImage/ProductImage';
 import { ProductSpecification } from '../ProductSpecification/ProductSpecification';
 import {
   getProductDetailsErrorSelector,
+  getProductDetailsInitedSelector,
   getProductDetailsIsLoadingSelector,
   getProductDetailsSelector,
 } from '../../model/selectors/getProductDetailsSelector';
@@ -24,20 +25,23 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 
   const dispatch = useAppDispatch();
   const productDetails = useSelector(getProductDetailsSelector);
+  const isLoading = useSelector(getProductDetailsIsLoadingSelector);
+  const _inited = useSelector(getProductDetailsInitedSelector);
+  const error = useSelector(getProductDetailsErrorSelector);
 
   useEffect(() => {
-    dispatch(fetchBrand({ id: productDetails?.brand_id }));
-    dispatch(fetchCategory({ id: productDetails?.category_id }));
-    dispatch(fetchRating({ productId: productDetails?.id }));
+    if (_inited) {
+      dispatch(fetchBrand({ id: productDetails?.brand_id }));
+      dispatch(fetchCategory({ id: productDetails?.category_id }));
+      dispatch(fetchRating({ productId: productDetails?.id }));
+    }
   }, [
+    _inited,
     dispatch,
     productDetails?.brand_id,
     productDetails?.category_id,
     productDetails?.id,
   ]);
-
-  const isLoading = useSelector(getProductDetailsIsLoadingSelector);
-  const error = useSelector(getProductDetailsErrorSelector);
 
   if (isLoading) {
     return (
@@ -55,21 +59,20 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
     );
   }
 
-  return (
-    <div className={classNames(cls.ProductDetailsWrapper, {}, [className])}>
-      <div className={classNames(cls.ProductDetails, {}, [className])}>
-        <div className={cls.imageWrapper}>
-          <ProductImage
-            productDetails={productDetails}
-            classNameProductDetails={cls.image}
-          />
+  if (_inited) {
+    return (
+      <div className={classNames(cls.ProductDetailsWrapper, {}, [className])}>
+        <div className={classNames(cls.ProductDetails, {}, [className])}>
+          <div className={cls.imageWrapper}>
+            <ProductImage image={productDetails.image} className={cls.image} />
+          </div>
+          <ProductSummaryCard productDetails={productDetails} />
         </div>
-        <ProductSummaryCard productDetails={productDetails} />
+        <ProductSpecification
+          productDetails={productDetails}
+          title={`Характеристики`}
+        />
       </div>
-      <ProductSpecification
-        productDetails={productDetails}
-        title={`Характеристики`}
-      />
-    </div>
-  );
+    );
+  }
 });

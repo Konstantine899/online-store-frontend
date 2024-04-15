@@ -16,6 +16,7 @@ const initialState: ProductDetailsSchema = {
   },
   isLoading: false,
   error: '',
+  _inited: false,
 };
 
 export const ProductDetailsSlice = createSlice({
@@ -27,6 +28,7 @@ export const ProductDetailsSlice = createSlice({
       .addCase(fetchProductDetails.pending, (state: ProductDetailsSchema) => {
         state.isLoading = true;
         state.error = '';
+        state._inited = false;
       })
       .addCase(
         fetchProductDetails.fulfilled,
@@ -44,6 +46,7 @@ export const ProductDetailsSlice = createSlice({
           state.productDetails.category_id = action.payload.category_id;
           state.productDetails.image = action.payload.image;
           state.productDetails.properties = action.payload.properties;
+          state._inited = true;
         },
       )
       .addCase(
@@ -51,6 +54,7 @@ export const ProductDetailsSlice = createSlice({
         (state: ProductDetailsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
+          state._inited = false;
         },
       );
   },
