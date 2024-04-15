@@ -11,7 +11,6 @@ const productDetails: IProductDetails = {
   category_id: 1,
   image: '',
   properties: [],
-  _inited: false,
 };
 
 const meta: Meta<typeof ProductSummaryCard> = {

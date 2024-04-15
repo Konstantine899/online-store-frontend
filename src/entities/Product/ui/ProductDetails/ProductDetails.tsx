@@ -1,40 +1,35 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import cls from './ProductDetails.module.scss';
-import { IProductDetails } from '../../model/types/IProductDetails';
 import { useSelector } from 'react-redux';
-import {
-  getProductDetailsErrorSelector,
-  getProductDetailsInitedSelector,
-  getProductDetailsIsLoadingSelector,
-} from '../../model/selectors/getProductDetails';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchBrand, getBrandSelector } from '@/entities/Brand';
-import { fetchCategory, getCategoryStateSelector } from '@/entities/Category';
+import { fetchBrand } from '@/entities/Brand';
+import { fetchCategory } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
 import { ProductSpecification } from '../ProductSpecification/ProductSpecification';
+import {
+  getProductDetailsErrorSelector,
+  getProductDetailsIsLoadingSelector,
+  getProductDetailsSelector,
+} from '../../model/selectors/getProductDetailsSelector';
 
 interface ProductDetailsProps {
   className?: string;
-  productDetails: IProductDetails;
 }
 
 export const ProductDetails = memo((props: ProductDetailsProps) => {
-  const { className, productDetails } = props;
+  const { className } = props;
 
   const dispatch = useAppDispatch();
-  const _inited = useSelector(getProductDetailsInitedSelector);
+  const productDetails = useSelector(getProductDetailsSelector);
 
   useEffect(() => {
-    if (_inited) {
-      dispatch(fetchBrand({ id: productDetails?.brand_id }));
-      dispatch(fetchCategory({ id: productDetails?.category_id }));
-      dispatch(fetchRating({ productId: productDetails?.id }));
-    }
+    dispatch(fetchBrand({ id: productDetails?.brand_id }));
+    dispatch(fetchCategory({ id: productDetails?.category_id }));
+    dispatch(fetchRating({ productId: productDetails?.id }));
   }, [
-    _inited,
     dispatch,
     productDetails?.brand_id,
     productDetails?.category_id,
@@ -43,11 +38,6 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 
   const isLoading = useSelector(getProductDetailsIsLoadingSelector);
   const error = useSelector(getProductDetailsErrorSelector);
-  const brand = useSelector(getBrandSelector);
-  const category = useSelector(getCategoryStateSelector);
-
-  console.log('brand', brand);
-  console.log('category', category);
 
   if (isLoading) {
     return (
@@ -67,10 +57,6 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 
   return (
     <div className={classNames(cls.ProductDetailsWrapper, {}, [className])}>
-      {/*<p>{productDetails?.name}</p>*/}
-      {/*<p>{`Категория:${category}`}</p>*/}
-      {/*<p>{`Бренд:${brand}`}</p>*/}
-
       <div className={classNames(cls.ProductDetails, {}, [className])}>
         <div className={cls.imageWrapper}>
           <ProductImage

@@ -14,5 +14,4 @@ export interface IProductDetails {
   category_id: number;
   brand_id: number;
   properties: IProductProperty[];
-  _inited: boolean;
 }

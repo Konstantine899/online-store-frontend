@@ -13,7 +13,6 @@ const initialState: ProductDetailsSchema = {
     image: '',
     price: 0,
     rating: 0,
-    _inited: false,
   },
   isLoading: false,
   error: '',
@@ -45,7 +44,6 @@ export const ProductDetailsSlice = createSlice({
           state.productDetails.category_id = action.payload.category_id;
           state.productDetails.image = action.payload.image;
           state.productDetails.properties = action.payload.properties;
-          state.productDetails._inited = true;
         },
       )
       .addCase(
