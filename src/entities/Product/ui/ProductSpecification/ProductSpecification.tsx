@@ -1,23 +1,24 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductSpecification.module.scss';
-import { IProductDetails } from '../../model/types/IProductDetails';
+import { useSelector } from 'react-redux';
+import { getProductDetailsPropertiesSelector } from '../../model/selectors/getProductDetailsSelector';
 
 interface ProductDetailsInfoProps {
   className?: string;
-  productDetails: IProductDetails;
   title: string;
 }
 
 export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
-  const { className, productDetails, title } = props;
+  const { className, title } = props;
+  const properties = useSelector(getProductDetailsPropertiesSelector);
 
   return (
     <div className={classNames(cls.ProductSpecification, {}, [className])}>
       <div className={cls.productSpecificationsTitle}>{title}</div>
       <table className={cls.productSpecificationsTable}>
         <tbody>
-          {productDetails?.properties.map((property) => (
+          {properties.map((property) => (
             <tr key={property.id}>
               <td>{property.name}</td>
               <td>{property.value}</td>

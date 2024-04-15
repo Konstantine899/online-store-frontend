@@ -68,10 +68,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
           </div>
           <ProductSummaryCard />
         </div>
-        <ProductSpecification
-          productDetails={productDetails}
-          title={`Характеристики`}
-        />
+        <ProductSpecification title={`Характеристики`} />
       </div>
     );
   }

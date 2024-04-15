@@ -12,6 +12,13 @@ export const getProductDetailsPriceSelector = createSelector(
     return state?.price ?? 0;
   },
 );
+
+export const getProductDetailsPropertiesSelector = createSelector(
+  getProductDetailsSelector,
+  (state: IProductDetails) => {
+    return state?.properties ?? [];
+  },
+);
 export const getProductDetailsIsLoadingSelector = (state: StateSchema) => {
   return state.productDetailsPage?.isLoading ?? false;
 };
