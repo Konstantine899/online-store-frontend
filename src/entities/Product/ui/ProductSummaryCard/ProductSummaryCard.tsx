@@ -3,17 +3,18 @@ import { memo } from 'react';
 import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { IProductDetails } from '../../model/types/IProductDetails';
 import { ProductRating } from '../ProductRating/ProductRating';
 import { ProductVotes } from '../ProductVotes/ProductVotes';
+import { useSelector } from 'react-redux';
+import { getProductDetailsPriceSelector } from '../../model/selectors/getProductDetailsSelector';
 
 interface ProductSummaryCardProps {
   className?: string;
-  productDetails: IProductDetails;
 }
 
 export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
-  const { className, productDetails } = props;
+  const { className } = props;
+  const price = useSelector(getProductDetailsPriceSelector);
 
   return (
     <Card
@@ -21,7 +22,7 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
       theme={CardTheme.OUTLINED}
     >
       <div className={cls.upp}>
-        <p className={cls.price}>{`Цена:${productDetails?.price}`}</p>
+        <p className={cls.price}>{`Цена:${price}`}</p>
       </div>
       <div className={cls.down}>
         <Button theme={ButtonTheme.FILLED} size={ButtonSize.M} fullWidth>

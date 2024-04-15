@@ -66,7 +66,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
           <div className={cls.imageWrapper}>
             <ProductImage image={productDetails.image} className={cls.image} />
           </div>
-          <ProductSummaryCard productDetails={productDetails} />
+          <ProductSummaryCard />
         </div>
         <ProductSpecification
           productDetails={productDetails}
