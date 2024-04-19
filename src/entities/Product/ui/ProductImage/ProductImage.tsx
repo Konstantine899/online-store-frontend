@@ -1,6 +1,10 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
+import {
+  getRouteImage,
+  getRouteImageNotFound,
+} from '@/shared/consts/router/publicRouter';
 
 interface ProductImageProps {
   className?: string;
@@ -13,14 +17,9 @@ export const ProductImage = memo((props: ProductImageProps) => {
   return (
     <KitImage
       className={classNames('', {}, [className])}
-      src={`${__API_URL__}/static/${image}`}
+      src={getRouteImage(`${image}`)}
       alt={image}
-      spareImage={
-        <img
-          src={`${__API_URL__}/static/not_found_image.jpeg`}
-          alt={'not_found_image'}
-        />
-      }
+      spareImage={<img src={getRouteImageNotFound()} alt={'not_found_image'} />}
     />
   );
 });

@@ -80,3 +80,9 @@ export const getRouteListProductsByBrandAndByCategory = (
 
 export const getRouteRating = (productId: string) =>
   `/rating/product/${productId}`;
+
+export const getRouteImage = (image: string) =>
+  `${__API_URL__}/static/${image}`;
+
+export const getRouteImageNotFound = () =>
+  `${__API_URL__}/static/not_found_image.jpeg`;
