@@ -5,6 +5,7 @@ import { Icon } from '@/shared/ui/Icon';
 import SmartphoneIcon from '@/shared/assets/icons/smartphone.svg';
 import ImacIcon from '@/shared/assets/icons/imac.svg';
 import FridgeIcon from '@/shared/assets/icons/fridge.svg';
+import WashingMachineIcon from '@/shared/assets/icons/washing-machine.svg';
 
 interface CategoryIconProps {
   className?: string;
@@ -37,6 +38,16 @@ export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {
         <Icon
           className={classNames(cls.FridgeIcon, { [cls.active]: isActive }, [])}
           Svg={FridgeIcon}
+        />
+      )}
+      {itemName === 'Стиральные машины' && (
+        <Icon
+          className={classNames(
+            cls.WashingMachineIcon,
+            { [cls.active]: isActive },
+            [],
+          )}
+          Svg={WashingMachineIcon}
         />
       )}
     </div>
