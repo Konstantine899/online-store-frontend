@@ -11,5 +11,5 @@ type Story = StoryObj<typeof Carousel>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Carousel />,
+  render: () => <Carousel elementsQuantity={4} />,
 };

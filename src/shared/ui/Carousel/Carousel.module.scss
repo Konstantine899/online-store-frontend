@@ -28,6 +28,27 @@
     flex-grow: 1;
 }
 
+.oneElement > *{
+    width: 100%;
+}
+
+.twoElement > *{
+    width: 50%;
+}
+
+.threeElement > *{
+    width: calc(100% / 3);
+}
+
+.fourElement > *{
+    width: calc(100% / 4);
+    outline: 1px solid red;
+}
+
+.fiveElement > *{
+    width: calc(100% / 5);
+}
+
 .ButtonLeft,
 .ButtonRight{
     position: absolute;
