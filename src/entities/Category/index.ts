@@ -12,6 +12,8 @@ export {
 export { fetchCategoriesList } from './model/services/fetchCategoriesList';
 export { fetchCategory } from './model/services/fetchCategory';
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
+export { CategoryCarousel } from './ui/CategoryCarousel/CategoryCarousel';
+export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';
 export type { AllCategoriesSchema } from './model/types/AllCategoriesSchema';
 export type { CategorySchema } from './model/types/CategorySchema';
 export type { ICategory } from './model/types/ICategory';

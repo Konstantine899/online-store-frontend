@@ -4,7 +4,7 @@ import { fetchCategory } from '../services/fetchCategory';
 import { ICategory } from '../types/ICategory';
 
 const initialState: CategorySchema = {
-  category: { id: 0, name: '' },
+  category: { id: 0, name: '', image: '' },
   isLoading: false,
   error: '',
 };

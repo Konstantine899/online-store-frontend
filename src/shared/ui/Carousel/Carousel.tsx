@@ -61,7 +61,7 @@ export const Carousel = memo((props: CarouselProps) => {
   };
 
   const renderPrev = () => {
-    let output = [];
+    const output = [];
     for (let index = 0; index < elementsQuantity; index++) {
       output.push(children[length - 1 - index]);
     }
@@ -70,7 +70,7 @@ export const Carousel = memo((props: CarouselProps) => {
   };
 
   const renderNext = () => {
-    let output = [];
+    const output = [];
     for (let index = 0; index < elementsQuantity; index++) {
       output.push(children[index]);
     }
