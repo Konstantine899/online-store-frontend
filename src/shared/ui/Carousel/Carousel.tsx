@@ -7,27 +7,74 @@ interface CarouselProps {
   className?: string;
   children?: ReactNode[];
   elementsQuantity: number;
+  infinite: boolean;
 }
 
 export const Carousel = memo((props: CarouselProps) => {
-  const { className, children, elementsQuantity } = props;
-  const [currentElement, setCurrentElement] = useState(0);
+  const { className, children, elementsQuantity, infinite } = props;
+  const [currentElement, setCurrentElement] = useState(
+    infinite ? elementsQuantity : 0,
+  );
   const [length, setLength] = useState(children.length);
+
+  const [isRepeating, setIsRepeating] = useState(
+    infinite && children.length > elementsQuantity,
+  ); // isRepeating будет в true толко в том случае если infinite = true и children.length больше отображаемых элементов в ленте elementsQuantity
+
+  const [transitionEnabled, setTransitionEnabled] = useState(true); // По умолчанию анимация включена
 
   // устанавливаю длину соответствующую текущему props children
   useEffect(() => {
     setLength(children.length);
-  }, [children.length]);
+    setIsRepeating(infinite && children.length > elementsQuantity);
+  }, [children.length, infinite, elementsQuantity]);
+
+  useEffect(() => {
+    if (isRepeating) {
+      if (currentElement === elementsQuantity || currentElement === length) {
+        setTransitionEnabled(true); // Включаю анимацию
+      }
+    }
+  }, [isRepeating, currentElement, length, elementsQuantity]);
 
   const onHandlerNext = () => {
-    if (currentElement < length - elementsQuantity) {
+    if (isRepeating || currentElement < length - elementsQuantity) {
       setCurrentElement((previousState: number) => previousState + 1);
     }
   };
   const onHandlerPrevious = () => {
-    if (currentElement > 0) {
+    if (isRepeating || currentElement > 0) {
       setCurrentElement((previousState: number) => previousState - 1);
     }
+  };
+
+  const transitionEndHandler = () => {
+    if (isRepeating) {
+      if (currentElement === 0) {
+        setTransitionEnabled(false);
+        setCurrentElement(length);
+      } else if (currentElement === length + elementsQuantity) {
+        setTransitionEnabled(false);
+        setCurrentElement(elementsQuantity);
+      }
+    }
+  };
+
+  const renderPrev = () => {
+    let output = [];
+    for (let index = 0; index < elementsQuantity; index++) {
+      output.push(children[length - 1 - index]);
+    }
+    output.reverse();
+    return output;
+  };
+
+  const renderNext = () => {
+    let output = [];
+    for (let index = 0; index < elementsQuantity; index++) {
+      output.push(children[index]);
+    }
+    return output;
   };
 
   const isOneElement = elementsQuantity === 1;
@@ -46,7 +93,7 @@ export const Carousel = memo((props: CarouselProps) => {
 
   return (
     <div className={classNames(cls.Carousel, {}, [className])}>
-      {currentElement > 0 && (
+      {(isRepeating || currentElement > 0) && (
         <Button onClick={onHandlerPrevious} className={cls.ButtonLeft}>
           &lt;
         </Button>
@@ -58,12 +105,16 @@ export const Carousel = memo((props: CarouselProps) => {
             transform: `translateX(-${
               currentElement * (100 / elementsQuantity)
             }%)`,
+            transition: !transitionEnabled ? 'none' : undefined,
           }}
+          onTransitionEnd={() => transitionEndHandler()}
         >
+          {length > elementsQuantity && isRepeating && renderPrev()}
           {children}
+          {length > elementsQuantity && isRepeating && renderNext()}
         </div>
       </div>
-      {currentElement < length - elementsQuantity && (
+      {(isRepeating || currentElement < length - elementsQuantity) && (
         <Button onClick={onHandlerNext} className={cls.ButtonRight}>
           &gt;
         </Button>

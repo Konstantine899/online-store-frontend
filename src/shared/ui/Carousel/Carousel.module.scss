@@ -29,23 +29,37 @@
 }
 
 .oneElement > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
 .twoElement > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
 }
 
 .threeElement > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: calc(100% / 3);
 }
 
 .fourElement > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: calc(100% / 4);
-    outline: 1px solid red;
 }
 
 .fiveElement > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: calc(100% / 5);
 }
 
