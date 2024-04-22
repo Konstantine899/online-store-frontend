@@ -87,7 +87,7 @@ export const Paginate = memo((props: PaginateProps) => {
           return (
             <Button
               key={index}
-              className={classNames(cls.Btn, {}, [cls.lastPageBtn])}
+              className={classNames(``, {}, [cls.lastPageBtn])}
               theme={ButtonTheme.ROUND}
               size={ButtonSize.M}
               onClick={onPageChange(Number(item))}

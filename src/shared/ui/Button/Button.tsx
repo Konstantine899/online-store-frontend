@@ -13,6 +13,7 @@ export enum ButtonTheme {
   CLEAR = 'clear',
   OUTLINE = 'outline',
   ROUND = 'round',
+  ROUND_ARROW = 'round_arrow',
   FILLED = 'filled',
 }
 

@@ -17,7 +17,7 @@ interface UsePaginateProps {
 export const usePaginate = ({
   lastPage,
   currentPage,
-  siblingCount = 2,
+  siblingCount = 3,
 }: UsePaginateProps) => {
   return useMemo(() => {
     /*  siblingCount - количество кнопок которые находятся слева и справа от текущей страницы

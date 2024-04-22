@@ -68,13 +68,8 @@
 .ButtonRight{
     position: absolute;
     z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-    background-color: white;
-    border: 1px solid #ddd;
+    top: 50%; // смещаю элемент относительно верха браузера
+    transform: translateY(-50%); // смещаю элемент относительно низа браузера
 }
 
 .ButtonLeft{

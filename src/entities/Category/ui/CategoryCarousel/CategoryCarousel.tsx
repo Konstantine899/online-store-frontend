@@ -32,8 +32,6 @@ export const CategoryCarousel = memo((props: CategoryCarouselProps) => {
   const categories = useSelector(getAllCategoriesSelector);
   const navigate = useNavigate();
 
-  console.log(categories);
-
   useEffect(() => {
     dispatch(fetchCategoriesList());
   }, [dispatch]);

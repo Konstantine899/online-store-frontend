@@ -1,7 +1,7 @@
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { ReactNode, memo, useEffect, useState } from 'react';
 import cls from './Carousel.module.scss';
-import { Button } from '../Button/Button';
+import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
 
 interface CarouselProps {
   className?: string;
@@ -94,7 +94,12 @@ export const Carousel = memo((props: CarouselProps) => {
   return (
     <div className={classNames(cls.Carousel, {}, [className])}>
       {(isRepeating || currentElement > 0) && (
-        <Button onClick={onHandlerPrevious} className={cls.ButtonLeft}>
+        <Button
+          theme={ButtonTheme.ROUND_ARROW}
+          size={ButtonSize.M}
+          onClick={onHandlerPrevious}
+          className={cls.ButtonLeft}
+        >
           &lt;
         </Button>
       )}
@@ -115,7 +120,12 @@ export const Carousel = memo((props: CarouselProps) => {
         </div>
       </div>
       {(isRepeating || currentElement < length - elementsQuantity) && (
-        <Button onClick={onHandlerNext} className={cls.ButtonRight}>
+        <Button
+          theme={ButtonTheme.ROUND_ARROW}
+          size={ButtonSize.M}
+          onClick={onHandlerNext}
+          className={cls.ButtonRight}
+        >
           &gt;
         </Button>
       )}
