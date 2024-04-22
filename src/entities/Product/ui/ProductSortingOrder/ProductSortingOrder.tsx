@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { getSortOrderSelector } from '../../model/selectors/getProductsSelector';
-import { ProductsPageActions } from '../../model/slices/ProductsSlice';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import {
   OptionsWidth,
@@ -55,8 +55,8 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
   const onChange = (value: ISortOrder) => {
-    dispatch(ProductsPageActions.setSortingOrder(value));
-    dispatch(ProductsPageActions.setPage(1));
+    dispatch(ProductsActions.setSortingOrder(value));
+    dispatch(ProductsActions.setPage(1));
     debounceFilterOrder();
   };
 

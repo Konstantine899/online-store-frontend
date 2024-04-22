@@ -14,10 +14,7 @@ import {
   getRouteListProductsByCategory,
 } from '@/shared/consts/router/publicRouter';
 import { CardTheme } from '@/shared/ui/Card/Card';
-import {
-  FetchProductsByCategory,
-  ProductsPageActions,
-} from '@/entities/Product';
+import { FetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { BrandActions } from '@/entities/Brand';
 import { useNavigate } from 'react-router';
 
@@ -38,7 +35,7 @@ export const CategoryCarousel = memo((props: CategoryCarouselProps) => {
 
   const onHandleClick = (categoryId: number) => () => {
     navigate(getRouteListProductsByCategory(`${categoryId}`));
-    dispatch(ProductsPageActions.setPage(1));
+    dispatch(ProductsActions.setPage(1));
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
     dispatch(FetchProductsByCategory({ categoryId }));
@@ -46,7 +43,7 @@ export const CategoryCarousel = memo((props: CategoryCarouselProps) => {
 
   return (
     <div className={classNames(cls.CategoryCarousel, {}, [className])}>
-      <Carousel elementsQuantity={4} infinite={true}>
+      <Carousel elementsQuantity={3} infinite={true}>
         {categories.map((category) => (
           <Card
             theme={CardTheme.OUTLINED}

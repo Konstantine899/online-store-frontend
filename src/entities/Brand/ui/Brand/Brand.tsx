@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { memo, useEffect } from 'react';
 import cls from './Brand.module.scss';
-import { FetchProductsByBrand, ProductsPageActions } from '@/entities/Product';
+import { FetchProductsByBrand, ProductsActions } from '@/entities/Product';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -28,7 +28,7 @@ export const Brand = memo((props: BrandProps) => {
 
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
-    dispatch(ProductsPageActions.setPage(1));
+    dispatch(ProductsActions.setPage(1));
     dispatch(FetchProductsByBrand({ brandId: tab.id }));
   };
 

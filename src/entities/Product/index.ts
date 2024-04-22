@@ -1,8 +1,5 @@
 export { ProductList } from './ui/ProductList/ProductList';
-export {
-  ProductsPageActions,
-  ProductsPageReducer,
-} from './model/slices/ProductsSlice';
+export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
 export {
   getProductsListIsLoadingSelector,
   getProductsSelector,
@@ -16,6 +13,7 @@ export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsB
 
 export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
 export { fetchProductDetails } from './model/services/fetchProductDetails';
+export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 export type {
   ProductsSchema,
   Product,
@@ -34,6 +32,11 @@ export { ProductPreview } from './ui/ProductPreview/ProductPreview';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
+export { ProductPopular } from './ui/ProductPopular/ProductPopular';
 
 export { getSortOrderSelector } from './model/selectors/getProductsSelector';
 export { getSearchSelector } from './model/selectors/getProductsSelector';
+export {
+  ProductsCarouselReducer,
+  ProductsCarouselActions,
+} from './model/slices/ProductsCarouselSlice';

@@ -142,5 +142,5 @@ export const ProductsSlice = createSlice({
   },
 });
 
-export const { actions: ProductsPageActions } = ProductsSlice;
-export const { reducer: ProductsPageReducer } = ProductsSlice;
+export const { actions: ProductsActions } = ProductsSlice;
+export const { reducer: ProductsReducer } = ProductsSlice;

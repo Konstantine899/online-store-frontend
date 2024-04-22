@@ -7,7 +7,7 @@ import {
   FetchProductsByBrand,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
-  ProductsPageActions,
+  ProductsActions,
 } from '@/entities/Product';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -41,19 +41,19 @@ export const Paginate = memo((props: PaginateProps) => {
   const onPageChange = (pageNumber: number) => () => {
     if (isNaN(pageNumber)) return;
     if (brandId) {
-      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrand({ brandId }));
     }
     if (categoryId) {
-      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByCategory({ categoryId }));
     }
     if (brandId && categoryId) {
-      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
     if (!categoryId) {
-      dispatch(ProductsPageActions.setPage(pageNumber));
+      dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProducts());
     }
   };

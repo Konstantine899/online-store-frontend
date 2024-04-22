@@ -13,7 +13,7 @@ import {
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
 import { getLimitSelector } from '../../model/selectors/getProductsSelector';
-import { ProductsPageActions } from '../../model/slices/ProductsSlice';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
@@ -56,8 +56,8 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
   const onChange = (value: ISortLimit) => {
-    dispatch(ProductsPageActions.setLimit(Number(value)));
-    dispatch(ProductsPageActions.setPage(1));
+    dispatch(ProductsActions.setLimit(Number(value)));
+    dispatch(ProductsActions.setPage(1));
     debounceLimitOrder();
   };
 

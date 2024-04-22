@@ -2,8 +2,8 @@ import { memo, useCallback } from 'react';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
-  ProductsPageActions,
-  ProductsPageReducer,
+  ProductsActions,
+  ProductsReducer,
 } from '../../model/slices/ProductsSlice';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { getSearchSelector } from '../../model/selectors/getProductsSelector';
@@ -18,7 +18,7 @@ import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
 import cls from './ProductSearch.module.scss';
 
 const initialAsyncReducersProductSearch = {
-  productsList: ProductsPageReducer,
+  productsList: ProductsReducer,
 };
 
 interface SearchProps {
@@ -42,10 +42,10 @@ export const ProductSearch = memo((props: SearchProps) => {
 
   const productSearchChangeHandler = useCallback(
     (search: string) => {
-      dispatch(ProductsPageActions.setRows([]));
-      dispatch(ProductsPageActions.setProductsListIsLoading(true));
-      dispatch(ProductsPageActions.setSearch(search));
-      dispatch(ProductsPageActions.setPage(1));
+      dispatch(ProductsActions.setRows([]));
+      dispatch(ProductsActions.setProductsListIsLoading(true));
+      dispatch(ProductsActions.setSearch(search));
+      dispatch(ProductsActions.setPage(1));
     },
     [dispatch],
   );

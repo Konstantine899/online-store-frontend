@@ -12,8 +12,8 @@ import {
   getProductsListIsLoadingSelector,
   getProductsListSelector,
   ProductList,
-  ProductsPageActions,
-  ProductsPageReducer,
+  ProductsActions,
+  ProductsReducer,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
@@ -31,7 +31,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
-  productsList: ProductsPageReducer,
+  productsList: ProductsReducer,
   brand: BrandReducer,
 };
 
@@ -55,22 +55,22 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     useParams();
 
   useEffect(() => {
-    dispatch(ProductsPageActions.setPage(paramPage || 1));
-    dispatch(ProductsPageActions.setLimit(paramLimit || 5));
-    dispatch(ProductsPageActions.setSortingOrder(paramSort as ISortOrder));
+    dispatch(ProductsActions.setPage(paramPage || 1));
+    dispatch(ProductsActions.setLimit(paramLimit || 5));
+    dispatch(ProductsActions.setSortingOrder(paramSort as ISortOrder));
     dispatch(fetchCategory({ id: Number(URLParamCategoryId) }));
   }, [URLParamCategoryId, dispatch, paramLimit, paramPage, paramSort]);
 
   useEffect(() => {
     if (URLParamCategoryId) {
-      dispatch(ProductsPageActions.setSearch(''));
+      dispatch(ProductsActions.setSearch(''));
       dispatch(CategoryActions.setCategoryId(Number(URLParamCategoryId)));
       dispatch(
         FetchProductsByCategory({ categoryId: Number(URLParamCategoryId) }),
       );
     }
     if (URLParamCategoryId && URLParamBrandId) {
-      dispatch(ProductsPageActions.setSearch(''));
+      dispatch(ProductsActions.setSearch(''));
       dispatch(CategoryActions.setCategoryId(Number(URLParamCategoryId)));
       dispatch(BrandActions.setBrandId(Number(URLParamBrandId)));
       dispatch(
@@ -84,7 +84,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
       dispatch(fetchProducts());
     }
     if (paramSearch) {
-      dispatch(ProductsPageActions.setSearch(paramSearch));
+      dispatch(ProductsActions.setSearch(paramSearch));
       dispatch(fetchProducts());
     }
   }, [URLParamBrandId, URLParamCategoryId, dispatch, paramSearch]);

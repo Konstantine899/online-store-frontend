@@ -12,7 +12,7 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
 
   return (
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
-      <h1>Популярные категории</h1>
+      <h1 className={cls.Title}>Популярные категории</h1>
       <CategoryCarousel />
     </div>
   );

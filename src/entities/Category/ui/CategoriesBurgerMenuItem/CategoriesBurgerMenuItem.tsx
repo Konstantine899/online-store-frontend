@@ -5,10 +5,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { ICategoryBurgerMenuItem } from '../../model/types/ICategoryBurgerMenuItem';
 import { CategoriesBurgerMenuItemIcon } from '../CategoriesBurgerMenuItemIcon/CategoriesBurgerMenuItemIcon';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import {
-  FetchProductsByCategory,
-  ProductsPageActions,
-} from '@/entities/Product';
+import { FetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
 import { getCategoryIdSelector } from '../../model/selectors/getCategoryStateSelector';
@@ -29,7 +26,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(fetchCategory({ id: categoryId }));
-    dispatch(ProductsPageActions.setPage(1));
+    dispatch(ProductsActions.setPage(1));
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
     dispatch(FetchProductsByCategory({ categoryId }));

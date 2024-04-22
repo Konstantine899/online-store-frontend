@@ -23,7 +23,7 @@ import {
   getRouteCart,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
-import { ProductSearch, ProductsPageActions } from '@/entities/Product';
+import { ProductSearch, ProductsActions } from '@/entities/Product';
 
 interface NavbarProps {
   className?: string;
@@ -70,7 +70,7 @@ export const Navbar = memo((props: NavbarProps) => {
   };
 
   const toMainPage = () => {
-    dispatch(ProductsPageActions.setSearch(''));
+    dispatch(ProductsActions.setSearch(''));
     dispatch(CategoryActions.setCategoryId(0));
   };
 

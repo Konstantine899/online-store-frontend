@@ -8,8 +8,11 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
+import { ProductsCarouselReducer, ProductPopular } from '@/entities/Product';
+
 const asyncReducersMainPage: ReducersList = {
   categoriesList: CategoriesReducer,
+  productsList: ProductsCarouselReducer,
 };
 
 interface MainPageProps {
@@ -24,6 +27,7 @@ export const MainPage = memo((props: MainPageProps) => {
       <DynamicModuleLoader reducers={asyncReducersMainPage}>
         <Page className={classNames(cls.MainPage, {}, [className])}>
           <CategoriesPopular />
+          <ProductPopular />
         </Page>
       </DynamicModuleLoader>
     </Suspense>
