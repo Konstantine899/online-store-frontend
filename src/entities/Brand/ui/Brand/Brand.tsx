@@ -10,6 +10,7 @@ import { getBrandIdSelector } from '../../model/selectors/getBrandSelector';
 import { getAllBrandsByCategorySelector } from '../../model/selectors/getAllBrandsByCategorySelector';
 import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
 import { getCategoryIdSelector } from '@/entities/Category';
+import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 
 interface BrandProps {
   className?: string;
@@ -32,13 +33,20 @@ export const Brand = memo((props: BrandProps) => {
     dispatch(FetchProductsByBrand({ brandId: tab.id }));
   };
 
+  const handleGetRoute = (tab: TabItem) => {
+    return getRouteListProductsByBrandAndByCategory(
+      `${tab.id}`,
+      `${categoryId}`,
+    );
+  };
+
   return (
     <div className={classNames(cls.BrandWrapper, {}, [className])}>
       {
         <Tabs
+          id={brandId}
           tabs={brands}
-          brandId={brandId}
-          categoryId={categoryId}
+          getRoute={handleGetRoute}
           onTabClick={handleClick}
         />
       }

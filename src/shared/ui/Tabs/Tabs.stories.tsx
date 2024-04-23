@@ -11,6 +11,5 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Tabs />,
+  render: () => <Tabs id={1} />,
 };
-  
