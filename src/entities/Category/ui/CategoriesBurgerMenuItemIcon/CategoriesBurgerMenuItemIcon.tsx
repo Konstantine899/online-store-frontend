@@ -6,6 +6,8 @@ import SmartphoneIcon from '@/shared/assets/icons/smartphone.svg';
 import ImacIcon from '@/shared/assets/icons/imac.svg';
 import FridgeIcon from '@/shared/assets/icons/fridge.svg';
 import WashingMachineIcon from '@/shared/assets/icons/washing-machine.svg';
+import TvIcon from '@/shared/assets/icons/tv.svg';
+import HeadphonesIcon from '@/shared/assets/icons/headphones.svg';
 
 interface CategoryIconProps {
   className?: string;
@@ -48,6 +50,22 @@ export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {
             [],
           )}
           Svg={WashingMachineIcon}
+        />
+      )}
+      {itemName === 'Телевизоры' && (
+        <Icon
+          className={classNames(cls.TvIcon, { [cls.active]: isActive }, [])}
+          Svg={TvIcon}
+        />
+      )}
+      {itemName === 'Наушники' && (
+        <Icon
+          className={classNames(
+            cls.HeadphonesIcon,
+            { [cls.active]: isActive },
+            [],
+          )}
+          Svg={HeadphonesIcon}
         />
       )}
     </div>
