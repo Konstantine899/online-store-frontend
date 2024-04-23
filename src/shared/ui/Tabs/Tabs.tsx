@@ -12,8 +12,6 @@ export interface TabItem {
 interface TabsProps {
   className?: string;
   tabs?: TabItem[];
-  // brandId?: number;
-  // categoryId?: number;
   id: number;
   onTabClick?: (tab: TabItem) => void;
   getRoute?: (tab: TabItem) => string;
@@ -28,7 +26,7 @@ export const Tabs = memo((props: TabsProps) => {
   );
 
   const onHandlerGetRoute = useCallback(
-    (tab: TabItem) => getRoute(tab),
+    (tab: TabItem) => getRoute?.(tab),
     [getRoute],
   );
 

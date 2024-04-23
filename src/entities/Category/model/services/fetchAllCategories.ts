@@ -3,7 +3,7 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { getRouteListAllCategories } from '@/shared/consts/router/publicRouter';
 import { ICategory } from '../../model/types/ICategory';
 
-export const fetchCategoriesList = createAsyncThunk<
+export const fetchAllCategories = createAsyncThunk<
   ICategory[],
   void,
   ThunkAPIConfig<string>

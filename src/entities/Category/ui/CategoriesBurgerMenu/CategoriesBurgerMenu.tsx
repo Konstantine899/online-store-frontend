@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
 import cls from './CategoriesBurgerMenu.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchCategoriesList } from '../../model/services/fetchCategoriesList';
+import { fetchAllCategories } from '../../model/services/fetchAllCategories';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 
 interface BurgerMenuButtonProps {
@@ -16,7 +16,7 @@ export const CategoriesBurgerMenu = memo((props: BurgerMenuButtonProps) => {
   const [isClose, setIsClose] = useState(false);
   const dispatch = useAppDispatch();
   const onToggle = () => {
-    dispatch(fetchCategoriesList());
+    dispatch(fetchAllCategories());
     setIsOpen(true);
     setIsClose(false);
   };

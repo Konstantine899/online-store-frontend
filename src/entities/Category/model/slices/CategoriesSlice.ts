@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AllCategoriesSchema } from '../types/AllCategoriesSchema';
-import { fetchCategoriesList } from '../services/fetchCategoriesList';
+import { fetchAllCategories } from '../services/fetchAllCategories';
 import { ICategory } from '../../model/types/ICategory';
 
 const initialState: AllCategoriesSchema = {
@@ -15,19 +15,19 @@ export const CategoriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategoriesList.pending, (state: AllCategoriesSchema) => {
+      .addCase(fetchAllCategories.pending, (state: AllCategoriesSchema) => {
         state.error = '';
         state.isLoading = true;
       })
       .addCase(
-        fetchCategoriesList.fulfilled,
+        fetchAllCategories.fulfilled,
         (state: AllCategoriesSchema, action: PayloadAction<ICategory[]>) => {
           state.isLoading = false;
           state.categories = action.payload;
         },
       )
       .addCase(
-        fetchCategoriesList.rejected,
+        fetchAllCategories.rejected,
         (state: AllCategoriesSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;

@@ -9,7 +9,7 @@ export const getCategoryStateSelector = (state: StateSchema) => {
 export const getCategoryIdSelector = createSelector(
   getCategoryStateSelector,
   (state: ICategory) => {
-    return state?.id ?? 0;
+    return state?.id ?? JSON.parse(localStorage.getItem(`categoryId`));
   },
 );
 

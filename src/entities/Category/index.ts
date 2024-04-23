@@ -9,7 +9,7 @@ export {
   getCategoryIdSelector,
   getCategoryNameSelector,
 } from './model/selectors/getCategoryStateSelector';
-export { fetchCategoriesList } from './model/services/fetchCategoriesList';
+export { fetchAllCategories } from './model/services/fetchAllCategories';
 export { fetchCategory } from './model/services/fetchCategory';
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
 export { CategoryCarousel } from './ui/CategoryCarousel/CategoryCarousel';

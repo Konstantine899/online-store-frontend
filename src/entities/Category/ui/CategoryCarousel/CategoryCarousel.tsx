@@ -5,7 +5,7 @@ import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getAllCategoriesSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { CategoryActions } from '../../model/slices/CategorySlice';
-import { fetchCategoriesList } from '../../model/services/fetchCategoriesList';
+import { fetchAllCategories } from '../../model/services/fetchAllCategories';
 import { useSelector } from 'react-redux';
 import { Card } from '@/shared/ui/Card';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
@@ -17,21 +17,18 @@ import { CardTheme } from '@/shared/ui/Card/Card';
 import { FetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { BrandActions } from '@/entities/Brand';
 import { useNavigate } from 'react-router';
+import { ICategory } from '../../model/types/ICategory';
 
 interface CategoryCarouselProps {
   className?: string;
+  categories?: ICategory[];
 }
 
 export const CategoryCarousel = memo((props: CategoryCarouselProps) => {
-  const { className } = props;
+  const { className, categories } = props;
 
   const dispatch = useAppDispatch();
-  const categories = useSelector(getAllCategoriesSelector);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(fetchCategoriesList());
-  }, [dispatch]);
 
   const onHandleClick = (categoryId: number) => () => {
     navigate(getRouteListProductsByCategory(`${categoryId}`));
