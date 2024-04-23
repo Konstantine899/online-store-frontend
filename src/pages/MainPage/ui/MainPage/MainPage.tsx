@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 
 const asyncReducersMainPage: ReducersList = {
   categoriesList: CategoriesReducer,
-  productsList: ProductsCarouselReducer,
+  productsCarouselList: ProductsCarouselReducer,
 };
 
 interface MainPageProps {

@@ -43,3 +43,8 @@ export const getSortOrderSelector = createSelector(
     return state?.sortingOrder ?? 'asc';
   },
 );
+
+/* Получение состояния для карусели */
+export const getProductsCarouselSelector = (state: StateSchema) => {
+  return state.productsCarouselList?.rows ?? [];
+};
