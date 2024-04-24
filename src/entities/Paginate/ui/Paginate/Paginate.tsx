@@ -39,12 +39,11 @@ export const Paginate = memo((props: PaginateProps) => {
   const categoryId = useSelector(getCategoryIdSelector);
 
   const onPageChange = (pageNumber: number) => () => {
-    if (isNaN(pageNumber)) return;
-    if (brandId) {
+    if (brandId && categoryId == 0) {
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrand({ brandId }));
     }
-    if (categoryId) {
+    if (categoryId && brandId == 0) {
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByCategory({ categoryId }));
     }
@@ -52,7 +51,7 @@ export const Paginate = memo((props: PaginateProps) => {
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
-    if (!categoryId) {
+    if (categoryId == 0 && brandId == 0) {
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProducts());
     }
