@@ -85,4 +85,4 @@ export const getRouteImage = (image: string) =>
   `${__API_URL__}/static/${image}`;
 
 export const getRouteImageNotFound = () =>
-  `${__API_URL__}/static/not_found_image.jpeg`;
+  `${__API_URL__}/static/not_found_image.png`;

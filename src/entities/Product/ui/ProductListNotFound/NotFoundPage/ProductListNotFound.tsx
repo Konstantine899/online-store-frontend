@@ -11,19 +11,19 @@ interface NotFoundPageProps {
   message: string;
 }
 
-export const NotFoundPage = memo((props: NotFoundPageProps) => {
-  const { className, message } = props;
+export const ProductListNotFound = memo((props: NotFoundPageProps) => {
+  const { className } = props;
 
   return (
-    <div className={classNames(cls.NotFoundPage, {}, [className])}>
-      <div className={cls.contentWrapper}>
-        <div className={cls.contentLeft}>
-          <NotFoundImage />
-          <NotFoundMessage message={message} />
-        </div>
-        <div className={cls.contentRight}>
-          <HedgehogImage />
-        </div>
+    <div className={classNames(cls.contentWrapper, {}, [className])}>
+      <div className={cls.contentLeft}>
+        <NotFoundImage />
+        <NotFoundMessage
+          message={'К сожалению запрашиваемая вами страница не найдена'}
+        />
+      </div>
+      <div className={cls.contentRight}>
+        <HedgehogImage />
       </div>
       <NotFoundContent />
     </div>

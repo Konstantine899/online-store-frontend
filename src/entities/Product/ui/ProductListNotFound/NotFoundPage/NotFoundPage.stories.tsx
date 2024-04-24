@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NotFoundPage } from './NotFoundPage';
+import { ProductListNotFound } from './ProductListNotFound';
 
-const meta: Meta<typeof NotFoundPage> = {
+const meta: Meta<typeof ProductListNotFound> = {
   title: 'pages/NotFoundPage',
-  component: NotFoundPage,
+  component: ProductListNotFound,
 };
 
 export default meta;
-type Story = StoryObj<typeof NotFoundPage>;
+type Story = StoryObj<typeof ProductListNotFound>;
 
 export const Primary: Story = {
   args: {},
   render: () => (
-    <NotFoundPage
+    <ProductListNotFound
       message={'К сожалению запрашиваемая вами страница не найдена'}
     />
   ),

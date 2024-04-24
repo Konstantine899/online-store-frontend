@@ -29,7 +29,7 @@ import {
   getRouteSingUp,
   publicRouter,
 } from '@/shared/consts/router/publicRouter';
-import { ProductListNotFound } from '@/entities/Product';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import { MainPage } from '@/pages/MainPage';
 
@@ -105,10 +105,6 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.NOT_FOUND]: {
     path: '*',
-    element: (
-      <ProductListNotFound
-        message={'К сожалению запрашиваемая вами страница не найдена'}
-      />
-    ),
+    element: <NotFoundPage />,
   },
 };
