@@ -29,6 +29,7 @@ import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 import { Paginate } from '@/entities/Paginate';
+import { getProductsListInitedSelector } from '@/entities/Product';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsReducer,
@@ -53,6 +54,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const categoryId = useSelector(getCategoryIdSelector);
   const { categoryId: URLParamCategoryId, brandId: URLParamBrandId } =
     useParams();
+  const _inited = useSelector(getProductsListInitedSelector);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(paramPage || 1));
@@ -93,12 +95,18 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
-          {categoryId !== 0 && <ProductsPageHeading />}
-          {products.length ? (
+          {_inited && products.length > 0 && (
+            <ProductsPageHeading categoryId={categoryId} />
+          )}
+          {_inited && products.length > 0 && (
             <ProductsListSorting categoryId={categoryId} />
-          ) : null}
-          <ProductList products={products} isLoading={isLoading} />
-          {products.length ? <Paginate /> : null}
+          )}
+          <ProductList
+            _inited={_inited}
+            products={products}
+            isLoading={isLoading}
+          />
+          <Paginate />
         </Page>
       </DynamicModuleLoader>
     </Suspense>

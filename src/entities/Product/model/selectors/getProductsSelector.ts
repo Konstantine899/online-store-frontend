@@ -18,6 +18,13 @@ export const getProductsListIsLoadingSelector = createSelector(
   },
 );
 
+export const getProductsListInitedSelector = createSelector(
+  getProductsSelector,
+  (state: ProductsSchema) => {
+    return state?._inited ?? false;
+  },
+);
+
 export const getLimitSelector = createSelector(
   getProductsSelector,
   (state: ProductsSchema) => {

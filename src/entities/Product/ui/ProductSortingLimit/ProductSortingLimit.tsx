@@ -21,6 +21,7 @@ import { getBrandIdSelector } from '@/entities/Brand';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
+import { fetchProducts } from '../../model/services/fetchProducts';
 
 interface SortingLimitProps {
   className?: string;
@@ -48,6 +49,9 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
     if (brandId) dispatch(FetchProductsByBrand({ brandId }));
     if (categoryId && brandId) {
       dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
+    }
+    if (categoryId == 0) {
+      dispatch(fetchProducts());
     }
   }, [brandId, categoryId, dispatch]);
 

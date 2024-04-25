@@ -42,8 +42,6 @@ export const ProductSearch = memo((props: SearchProps) => {
 
   const productSearchChangeHandler = useCallback(
     (search: string) => {
-      dispatch(ProductsActions.setRows([]));
-      dispatch(ProductsActions.setProductsListIsLoading(true));
       dispatch(ProductsActions.setSearch(search));
       dispatch(ProductsActions.setPage(1));
     },

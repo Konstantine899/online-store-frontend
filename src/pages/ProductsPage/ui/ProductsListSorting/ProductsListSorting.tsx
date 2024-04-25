@@ -18,7 +18,7 @@ export const ProductsListSorting = memo((props: ProductsListSortingProps) => {
     <div className={classNames(cls.ProductsListSorting, {}, [className])}>
       <ProductSortingOrder />
       <ProductSortingLimit />
-      {!categoryId || categoryId == 0 ? null : <ProductTabBrand />}
+      {categoryId == 0 ? null : <ProductTabBrand />}
     </div>
   );
 });

@@ -7,17 +7,19 @@ import { getCountSelector } from '@/entities/Product';
 
 interface ProductsPageHeadingProps {
   className?: string;
+  categoryId: number;
 }
 
 export const ProductsPageHeading = memo((props: ProductsPageHeadingProps) => {
-  const { className } = props;
+  const { className, categoryId } = props;
   const categoryName = useSelector(getCategoryNameSelector);
   const count = useSelector(getCountSelector);
 
   return (
     <div className={classNames(cls.ProductsPageHeading, {}, [className])}>
       <h1>
-        {categoryName} <span>{`(${count})`}</span>
+        {!categoryId ? `Все товары` : `${categoryName}`}
+        <span>{`(${count})`}</span>
       </h1>
     </div>
   );

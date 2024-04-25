@@ -10,8 +10,9 @@ import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound'
 
 interface ProductProps {
   className?: string;
-  products?: Product[];
-  isLoading?: boolean;
+  products: Product[];
+  isLoading: boolean;
+  _inited: boolean;
 }
 
 const getSkeletons = (quantity: number) => {
@@ -21,10 +22,10 @@ const getSkeletons = (quantity: number) => {
 };
 
 export const ProductList = memo((props: ProductProps) => {
-  const { className, products, isLoading } = props;
+  const { className, products, isLoading, _inited } = props;
   const limit = useSelector(getLimit);
 
-  if (!isLoading && !products.length) {
+  if (_inited && products.length == 0) {
     return (
       <div className={classNames(cls.ProductListError, {}, [className])}>
         <ProductListNotFound
@@ -36,9 +37,10 @@ export const ProductList = memo((props: ProductProps) => {
 
   return (
     <div className={classNames(cls.ProductList, {}, [className])}>
-      {products.map((product) => (
-        <ProductListItem key={product.id} product={product} />
-      ))}
+      {_inited &&
+        products.map((product) => (
+          <ProductListItem key={product.id} product={product} />
+        ))}
       {isLoading && getSkeletons(limit)}
     </div>
   );
