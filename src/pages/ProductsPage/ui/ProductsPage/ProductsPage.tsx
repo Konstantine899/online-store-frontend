@@ -2,7 +2,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, Suspense, useEffect } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { ProductsListPaginate } from '../ProductsListPaginate/ProductsListPaginate';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
 import { useSelector } from 'react-redux';
 import {
@@ -29,6 +28,7 @@ import {
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
+import { Paginate } from '@/entities/Paginate';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsReducer,
@@ -98,7 +98,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
             <ProductsListSorting categoryId={categoryId} />
           ) : null}
           <ProductList products={products} isLoading={isLoading} />
-          {products.length ? <ProductsListPaginate /> : null}
+          {products.length ? <Paginate /> : null}
         </Page>
       </DynamicModuleLoader>
     </Suspense>
