@@ -4,7 +4,7 @@ import cls from './ProductCarousel.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchProductsCarousel } from '../../model/services/fetchProductsCarousel';
 import { useSelector } from 'react-redux';
-import { getProductsCarouselSelector } from '../../model/selectors/getProductsSelector';
+import { getProductsCarouselRowsSelector } from '../../model/selectors/getProductsSelector';
 import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { ProductCard } from '../ProductCard/ProductCard';
 
@@ -15,7 +15,7 @@ interface ProductCarouselProps {
 export const ProductCarousel = memo((props: ProductCarouselProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-  const products = useSelector(getProductsCarouselSelector);
+  const products = useSelector(getProductsCarouselRowsSelector);
 
   useEffect(() => {
     dispatch(fetchProductsCarousel());

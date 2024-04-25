@@ -45,6 +45,13 @@ export const getSortOrderSelector = createSelector(
 );
 
 /* Получение состояния для карусели */
-export const getProductsCarouselSelector = (state: StateSchema) => {
-  return state.productsCarouselList?.rows ?? [];
+export const getProductsCarouselStateSelector = (state: StateSchema) => {
+  return state.productsCarouselList ?? null;
 };
+
+export const getProductsCarouselRowsSelector = createSelector(
+  getProductsCarouselStateSelector,
+  (state: ProductsSchema) => {
+    return state?.rows ?? [];
+  },
+);
