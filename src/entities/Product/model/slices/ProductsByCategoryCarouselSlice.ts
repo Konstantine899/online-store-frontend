@@ -17,6 +17,7 @@ const initialState: ProductsSchema = {
   sortingOrder: 'asc',
   isLoading: false,
   error: '',
+  _inited: false,
 };
 
 export const ProductsByCategoryCarouselSlice = createSlice({
@@ -30,7 +31,7 @@ export const ProductsByCategoryCarouselSlice = createSlice({
         (state: ProductsSchema) => {
           state.isLoading = true;
           state.error = '';
-          state.rows = null;
+          state._inited = false;
         },
       )
       .addCase(fetchProductsByCategoryCarousel.fulfilled, (state, action) => {
@@ -39,11 +40,12 @@ export const ProductsByCategoryCarouselSlice = createSlice({
         state.rows = action.payload.rows;
         state.count = action.payload.count;
         state.metaData = action.payload.metaData;
+        state._inited = true;
       })
       .addCase(fetchProductsByCategoryCarousel.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        state.rows = null;
+        state._inited = false;
       });
   },
 });

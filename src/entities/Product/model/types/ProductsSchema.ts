@@ -24,8 +24,9 @@ export interface ProductsSchema {
   metaData: ProductsListMetaData;
   count: number;
   rows: Product[];
-  search?: string;
-  sortingOrder?: ISortOrder;
-  isLoading?: boolean;
-  error?: string;
+  search: string;
+  sortingOrder: ISortOrder;
+  isLoading: boolean;
+  error: string;
+  _inited: boolean;
 }

@@ -21,6 +21,7 @@ const initialState: ProductsSchema = {
   sortingOrder: 'asc',
   isLoading: false,
   error: '',
+  _inited: false,
 };
 
 export const ProductsSlice = createSlice({
@@ -59,7 +60,7 @@ export const ProductsSlice = createSlice({
       .addCase(fetchProducts.pending, (state: ProductsSchema) => {
         state.isLoading = true;
         state.error = '';
-        state.rows = null;
+        state._inited = false;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -67,15 +68,18 @@ export const ProductsSlice = createSlice({
         state.rows = action.payload.rows;
         state.count = action.payload.count;
         state.metaData = action.payload.metaData;
+        state._inited = true;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.rows = null;
+        state._inited = false;
       })
       .addCase(FetchProductsByBrand.pending, (state: ProductsSchema) => {
         state.isLoading = true;
         state.error = '';
+        state._inited = false;
       })
       .addCase(
         FetchProductsByBrand.fulfilled,
@@ -85,6 +89,7 @@ export const ProductsSlice = createSlice({
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
+          state._inited = true;
         },
       )
       .addCase(
@@ -92,11 +97,13 @@ export const ProductsSlice = createSlice({
         (state: ProductsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
+          state._inited = false;
         },
       )
       .addCase(FetchProductsByCategory.pending, (state: ProductsSchema) => {
         state.isLoading = true;
         state.error = '';
+        state._inited = false;
       })
       .addCase(
         FetchProductsByCategory.fulfilled,
@@ -106,6 +113,7 @@ export const ProductsSlice = createSlice({
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
+          state._inited = true;
         },
       )
       .addCase(
@@ -113,6 +121,7 @@ export const ProductsSlice = createSlice({
         (state: ProductsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
+          state._inited = false;
         },
       )
       .addCase(
@@ -120,6 +129,7 @@ export const ProductsSlice = createSlice({
         (state: ProductsSchema) => {
           state.isLoading = true;
           state.error = '';
+          state._inited = false;
         },
       )
       .addCase(
@@ -130,6 +140,7 @@ export const ProductsSlice = createSlice({
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
+          state._inited = true;
         },
       )
       .addCase(
@@ -137,6 +148,7 @@ export const ProductsSlice = createSlice({
         (state: ProductsSchema, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.error = action.payload;
+          state._inited = false;
         },
       );
   },
