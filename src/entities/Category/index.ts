@@ -3,7 +3,10 @@ export {
   CategoriesReducer,
 } from './model/slices/CategoriesSlice';
 export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
-export { getAllCategoriesSelector } from './model/selectors/getAllCategoriesSelector';
+export {
+  getAllCategoriesSelector,
+  getAllCategoriesIsLoadingSelector,
+} from './model/selectors/getAllCategoriesSelector';
 export {
   getCategoryStateSelector,
   getCategoryIdSelector,

@@ -4,6 +4,7 @@ import cls from './ProductCarouselHeading.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
   CategoryActions,
+  getAllCategoriesIsLoadingSelector,
   getCategoryIdSelector,
   ICategory,
 } from '@/entities/Category';
@@ -11,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { fetchProductsCarousel } from '../../model/services/fetchProductsCarousel';
 import { fetchProductsByCategoryCarousel } from '../../model/services/fetchProductsByCategoryCarousel';
+import { ProductCarouselHeadingSkeleton } from '@/entities/Product/ui/ProductCarouselHeadingSkeleton/ProductCarouselHeadingSkeleton';
 
 interface ProductCarouselHeadingProps {
   className?: string;
@@ -25,6 +27,7 @@ export const ProductCarouselHeading = memo(
 
     const dispatch = useAppDispatch();
     const categoryId = useSelector(getCategoryIdSelector);
+    const isLoading = useSelector(getAllCategoriesIsLoadingSelector);
 
     const tempArray: Omit<ICategory, 'image'>[] = [...categories];
     tempArray.unshift({ id: 0, name: 'Все' });
@@ -45,6 +48,7 @@ export const ProductCarouselHeading = memo(
       >
         <h1 className={cls.Title}>Популярные товары</h1>
         <Tabs tabs={tempArray} id={categoryId} onTabClick={handleClick} />
+        {isLoading && <ProductCarouselHeadingSkeleton />}
       </div>
     );
   },
