@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, Suspense, useEffect } from 'react';
+import { memo, MutableRefObject, Suspense, useEffect, useRef } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
@@ -91,10 +91,13 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     }
   }, [URLParamBrandId, URLParamCategoryId, dispatch, paramSearch]);
 
+  const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+
   return (
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
+          <div ref={topRef} />
           {_inited && products.length > 0 && (
             <ProductsPageHeading categoryId={categoryId} />
           )}
@@ -106,7 +109,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
             products={products}
             isLoading={isLoading}
           />
-          <Paginate />
+          <Paginate topRef={topRef} />
         </Page>
       </DynamicModuleLoader>
     </Suspense>

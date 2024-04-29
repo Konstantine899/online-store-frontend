@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, MutableRefObject } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
@@ -24,10 +24,11 @@ import { getBrandIdSelector } from '@/entities/Brand';
 
 interface PaginateProps {
   className?: string;
+  topRef?: MutableRefObject<HTMLDivElement | null>;
 }
 
 export const Paginate = memo((props: PaginateProps) => {
-  const { className } = props;
+  const { className, topRef } = props;
 
   const dispatch = useAppDispatch();
 
@@ -40,18 +41,22 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const onPageChange = (pageNumber: number) => () => {
     if (brandId && categoryId == 0) {
+      topRef.current?.scrollIntoView();
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrand({ brandId }));
     }
     if (categoryId && brandId == 0) {
+      topRef.current?.scrollIntoView();
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByCategory({ categoryId }));
     }
     if (brandId && categoryId) {
+      topRef.current?.scrollIntoView();
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
     if (categoryId == 0 && brandId == 0) {
+      topRef.current?.scrollIntoView();
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProducts());
     }
