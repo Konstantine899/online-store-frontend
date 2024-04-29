@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, MutableRefObject, useRef } from 'react';
 import cls from './ProductCarouselHeading.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
@@ -21,6 +21,8 @@ export const ProductCarouselHeading = memo(
   (props: ProductCarouselHeadingProps) => {
     const { className, categories } = props;
 
+    const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+
     const dispatch = useAppDispatch();
     const categoryId = useSelector(getCategoryIdSelector);
 
@@ -28,6 +30,7 @@ export const ProductCarouselHeading = memo(
     tempArray.unshift({ id: 0, name: 'Все' });
 
     const handleClick = (tab: TabItem) => {
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       if (tab.id === 0) {
         dispatch(CategoryActions.setCategoryId(tab.id));
         return dispatch(fetchProductsCarousel());
@@ -36,7 +39,10 @@ export const ProductCarouselHeading = memo(
     };
 
     return (
-      <div className={classNames(cls.ProductCarouselHeading, {}, [className])}>
+      <div
+        className={classNames(cls.ProductCarouselHeading, {}, [className])}
+        ref={topRef}
+      >
         <h1 className={cls.Title}>Популярные товары</h1>
         <Tabs tabs={tempArray} id={categoryId} onTabClick={handleClick} />
       </div>

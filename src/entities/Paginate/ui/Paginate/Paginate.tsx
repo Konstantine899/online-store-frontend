@@ -41,22 +41,22 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const onPageChange = (pageNumber: number) => () => {
     if (brandId && categoryId == 0) {
-      topRef.current?.scrollIntoView();
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrand({ brandId }));
     }
     if (categoryId && brandId == 0) {
-      topRef.current?.scrollIntoView();
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByCategory({ categoryId }));
     }
     if (brandId && categoryId) {
-      topRef.current?.scrollIntoView();
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
     }
     if (categoryId == 0 && brandId == 0) {
-      topRef.current?.scrollIntoView();
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProducts());
     }
