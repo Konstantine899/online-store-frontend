@@ -1,4 +1,7 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { BuildPath } from '../build/types/config';
+import path from 'path';
+import { buildCssLoader } from '../build/loaders/buildCssLoader';
 
 const config: StorybookConfig = {
   stories: [
@@ -18,6 +21,20 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+  },
+  features: { storyStoreV7: false },
+  webpackFinal: async (config) => {
+    const paths: BuildPath = {
+      build: '',
+      html: '',
+      entry: '',
+      src: path.resolve(__dirname, '..', '..', 'src'),
+    };
+    config.resolve.modules.push(paths.src);
+    config.resolve.extensions.push('ts', 'tsx');
+    config.resolve.alias = { '@': paths.src };
+    config.module.rules.push(buildCssLoader(true));
+    return config;
   },
 };
 export default config;
