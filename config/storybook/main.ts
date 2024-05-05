@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import webpack, { DefinePlugin } from 'webpack';
+import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 
 import { BuildPath } from '../build/types/config';
 import path from 'path';
@@ -37,6 +37,22 @@ const config: StorybookConfig = {
     config.resolve!.extensions!.push('ts', 'tsx');
     config.resolve!.alias = { ...config.resolve!.alias, '@': paths.src };
     config.module!.rules!.push(buildCssLoader(true));
+
+    /*В storybook есть собственный loader обрабатывающий svg. Для того что бы подключить @svgr/webpack,
+     * необходимо исключить из rules exclude loader svg, и далее подключить @svgr/webpack */
+    // @ts-ignore
+    config.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
+      if (/svg/.test(rule.test as string)) {
+        return { ...rule, exclude: /\.svg$/i };
+      }
+      return rule;
+    });
+
+    // Добавляю правило для обработки svg
+    config.module!.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
 
     config.plugins!.push(
       new DefinePlugin({
