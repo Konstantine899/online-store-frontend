@@ -14,6 +14,16 @@ export const WithoutOutline: Story = {
   render: (args) => <Input {...args} />,
 };
 
+export const Outline: Story = {
+  args: { theme: InputTheme.OUTLINE, placeholder: 'Найти' },
+  render: (args) => <Input {...args} />,
+};
+
+export const Filled: Story = {
+  args: { theme: InputTheme.FILLED, placeholder: 'Найти' },
+  render: (args) => <Input {...args} />,
+};
+
 export const OutlineBottomEmail: Story = {
   args: {
     theme: InputTheme.OUTLINE_BOTTOM,

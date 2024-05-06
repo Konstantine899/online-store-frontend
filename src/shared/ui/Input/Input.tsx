@@ -5,7 +5,9 @@ import { Icon } from '../Icon/Icon';
 
 export enum InputTheme {
   WITHOUT_OUTLINE = 'without_outline',
+  OUTLINE = 'outline',
   OUTLINE_BOTTOM = 'outline_bottom',
+  FILLED = 'filled',
 }
 
 type HtmlInputProps = Omit<
