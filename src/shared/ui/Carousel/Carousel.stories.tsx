@@ -59,7 +59,7 @@ export const FourElements: Story = {
 
 export const FiveElements: Story = {
   args: {
-    elementsQuantity: 4,
+    elementsQuantity: 5,
   },
   render: (args) => <Carousel {...args} />,
 };
