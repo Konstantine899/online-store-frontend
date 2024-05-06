@@ -7,6 +7,7 @@ import { AllBrandsReducer } from '@/entities/Brand';
 
 const meta: Meta<typeof Tabs> = {
   title: 'shared/Tabs',
+  tags: ['autodocs'],
   component: Tabs,
   args: {
     tabs: [

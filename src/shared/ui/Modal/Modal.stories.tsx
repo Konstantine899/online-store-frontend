@@ -3,6 +3,7 @@ import { Modal } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   title: 'shared/Modal',
+  tags: ['autodocs'],
   component: Modal,
 };
 

@@ -3,6 +3,7 @@ import { Search } from './Search';
 
 const meta: Meta<typeof Search> = {
   title: 'shared/Search',
+  tags: ['autodocs'],
   component: Search,
 };
 

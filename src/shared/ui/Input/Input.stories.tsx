@@ -3,6 +3,7 @@ import { Input, InputTheme } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'shared/Input',
+  tags: ['autodocs'],
   component: Input,
 };
 

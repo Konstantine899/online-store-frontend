@@ -3,6 +3,7 @@ import { Select } from './Select';
 
 const meta: Meta<typeof Select> = {
   title: 'shared/Select',
+  tags: ['autodocs'],
   component: Select,
 };
 

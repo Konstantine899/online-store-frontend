@@ -3,6 +3,7 @@ import { KitImage } from './KitImage';
 
 const meta: Meta<typeof KitImage> = {
   title: 'shared/Image',
+  tags: ['autodocs'],
   component: KitImage,
 };
 

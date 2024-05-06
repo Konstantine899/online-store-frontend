@@ -3,6 +3,7 @@ import { Text } from './Text';
 
 const meta: Meta<typeof Text> = {
   title: 'shared/Text',
+  tags: ['autodocs'],
   component: Text,
 };
 
