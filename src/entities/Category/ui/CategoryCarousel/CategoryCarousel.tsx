@@ -1,12 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import cls from './CategoryCarousel.module.scss';
 import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getAllCategoriesSelector } from '../../model/selectors/getAllCategoriesSelector';
 import { CategoryActions } from '../../model/slices/CategorySlice';
-import { fetchAllCategories } from '../../model/services/fetchAllCategories';
-import { useSelector } from 'react-redux';
 import { Card } from '@/shared/ui/Card';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import {
