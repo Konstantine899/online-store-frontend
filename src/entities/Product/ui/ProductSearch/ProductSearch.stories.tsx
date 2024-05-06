@@ -3,6 +3,7 @@ import { ProductSearch } from './ProductSearch';
 
 const meta: Meta<typeof ProductSearch> = {
   title: 'features/Filters',
+  tags: ['autodocs'],
   component: ProductSearch,
 };
 

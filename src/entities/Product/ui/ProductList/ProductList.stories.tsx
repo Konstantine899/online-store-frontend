@@ -16,6 +16,7 @@ const products: Product[] = [
 ];
 const meta: Meta<typeof ProductList> = {
   title: 'entities/Product',
+  tags: ['autodocs'],
   component: ProductList,
 };
 

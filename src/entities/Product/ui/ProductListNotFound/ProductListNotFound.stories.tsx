@@ -3,6 +3,7 @@ import { ProductListNotFound } from './ProductListNotFound';
 
 const meta: Meta<typeof ProductListNotFound> = {
   title: 'entities/ProductListNotFound',
+  tags: ['autodocs'],
   component: ProductListNotFound,
 };
 

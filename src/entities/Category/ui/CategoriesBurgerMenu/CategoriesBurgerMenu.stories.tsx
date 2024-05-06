@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CategoriesBurgerMenu } from './CategoriesBurgerMenu';
 
 const meta: Meta<typeof CategoriesBurgerMenu> = {
-  title: 'features/BurgerMenuButton',
+  title: 'entities/BurgerMenuButton',
+  tags: ['autodocs'],
   component: CategoriesBurgerMenu,
 };
 

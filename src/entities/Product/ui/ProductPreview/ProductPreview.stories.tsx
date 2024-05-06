@@ -3,6 +3,7 @@ import { ProductPreview } from './ProductPreview';
 
 const meta: Meta<typeof ProductPreview> = {
   title: 'entities/ProductDetails',
+  tags: ['autodocs'],
   component: ProductPreview,
 };
 

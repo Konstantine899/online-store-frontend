@@ -3,6 +3,7 @@ import { CategoryCarousel } from './CategoryCarousel';
 
 const meta: Meta<typeof CategoryCarousel> = {
   title: 'entities/CategoryCarousel',
+  tags: ['autodocs'],
   component: CategoryCarousel,
 };
 

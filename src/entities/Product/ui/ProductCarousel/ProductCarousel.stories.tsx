@@ -3,6 +3,7 @@ import { ProductCarousel } from './ProductCarousel';
 
 const meta: Meta<typeof ProductCarousel> = {
   title: 'entities/ProductCarousel',
+  tags: ['autodocs'],
   component: ProductCarousel,
 };
 

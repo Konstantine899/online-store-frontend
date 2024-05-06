@@ -3,6 +3,7 @@ import { ProductSortingOrder } from './ProductSortingOrder';
 
 const meta: Meta<typeof ProductSortingOrder> = {
   title: 'entities/SortingOrder',
+  tags: ['autodocs'],
   component: ProductSortingOrder,
 };
 

@@ -3,6 +3,7 @@ import { ProductTabBrand } from './ProductTabBrand';
 
 const meta: Meta<typeof ProductTabBrand> = {
   title: 'entities/TabBrand',
+  tags: ['autodocs'],
   component: ProductTabBrand,
 };
 

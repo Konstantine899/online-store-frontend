@@ -3,6 +3,7 @@ import { ProductSortingLimit } from './ProductSortingLimit';
 
 const meta: Meta<typeof ProductSortingLimit> = {
   title: 'entities/SortingLimit',
+  tags: ['autodocs'],
   component: ProductSortingLimit,
 };
 
