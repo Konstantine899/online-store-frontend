@@ -23,22 +23,7 @@
     }
 }
 
-.without_outline {
-    .input {
-        width: 100%;
-        font: var(--font-l);
-        color: var(--input-theme-outlined-primary-color);
-        font-weight: bold;
-        border: none;
-        outline: none;
-        padding: 8px 20px;
-        border-radius: 15px;
-    }
 
-    .input::placeholder{
-        color: var(--input-theme-outlined-inverted-primary-color);
-    }
-}
 
 .outline {
     .input {

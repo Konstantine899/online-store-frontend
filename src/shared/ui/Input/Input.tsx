@@ -20,7 +20,6 @@ interface InputProps extends HtmlInputProps {
   value?: string;
   htmlFor?: string;
   label?: string;
-  fullWidth?: boolean;
   required?: boolean;
   theme?: InputTheme;
   Svg?: React.FC<React.SVGProps<SVGElement>>;
