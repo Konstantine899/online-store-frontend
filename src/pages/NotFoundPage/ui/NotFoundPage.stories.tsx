@@ -3,6 +3,7 @@ import { NotFoundPage } from './NotFoundPage';
 
 const meta: Meta<typeof NotFoundPage> = {
   title: 'entities/NotFoundPage',
+  tags: ['autodocs'],
   component: NotFoundPage,
 };
 

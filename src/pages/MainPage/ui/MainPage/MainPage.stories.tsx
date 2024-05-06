@@ -1,17 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { MainPage } from './MainPage';
 
-  import type { Meta, StoryObj } from '@storybook/react';
-  import { MainPage } from './MainPage';
-  
-  const meta: Meta<typeof MainPage> = {
-  title: 'pages/MainPage',   
+const meta: Meta<typeof MainPage> = {
+  title: 'pages/MainPage',
+  tags: ['autodocs'],
   component: MainPage,
 };
-  
-  export default meta;
-  type Story = StoryObj<typeof MainPage>;
-  
-  export const Primary: Story = {
+
+export default meta;
+type Story = StoryObj<typeof MainPage>;
+
+export const Primary: Story = {
   args: {},
   render: () => <MainPage />,
 };
-  
