@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Thumb } from './Thumb';
 
 const meta: Meta<typeof Thumb> = {
-  title: 'entities/Thumb',
+  title: 'shared/Thumb',
   component: Thumb,
 };
 

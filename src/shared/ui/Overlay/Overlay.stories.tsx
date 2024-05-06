@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Overlay } from './Overlay';
 
 const meta: Meta<typeof Overlay> = {
-  title: 'entities/Overlay',
+  title: 'shared/Overlay',
   component: Overlay,
 };
 
@@ -13,4 +13,3 @@ export const Primary: Story = {
   args: {},
   render: () => <Overlay />,
 };
-  

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './Select';
 
 const meta: Meta<typeof Select> = {
-  title: 'entities/Select',
+  title: 'shared/Select',
   component: Select,
 };
 
@@ -13,4 +13,3 @@ export const Primary: Story = {
   args: {},
   render: () => <Select />,
 };
-  

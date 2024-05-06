@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { KitImage } from './KitImage';
 
 const meta: Meta<typeof KitImage> = {
-  title: 'entities/Image',
+  title: 'shared/Image',
   component: KitImage,
 };
 

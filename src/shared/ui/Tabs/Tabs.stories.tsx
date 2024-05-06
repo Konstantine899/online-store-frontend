@@ -6,7 +6,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { AllBrandsReducer } from '@/entities/Brand';
 
 const meta: Meta<typeof Tabs> = {
-  title: 'entities/Tabs',
+  title: 'shared/Tabs',
   component: Tabs,
   args: {
     tabs: [

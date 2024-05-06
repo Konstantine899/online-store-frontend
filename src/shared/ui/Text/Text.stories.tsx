@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from './Text';
 
 const meta: Meta<typeof Text> = {
-  title: 'entities/Text',
+  title: 'shared/Text',
   component: Text,
 };
 
@@ -13,4 +13,3 @@ export const Primary: Story = {
   args: {},
   render: () => <Text />,
 };
-  

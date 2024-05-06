@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Loader } from './Loader';
 
 const meta: Meta<typeof Loader> = {
-  title: 'entities/Loader',
+  title: 'shared/Loader',
   component: Loader,
 };
 
@@ -13,4 +13,3 @@ export const Primary: Story = {
   args: {},
   render: () => <Loader />,
 };
-  

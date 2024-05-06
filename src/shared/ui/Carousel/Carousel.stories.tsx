@@ -15,7 +15,7 @@ const mokData: { id: number; name: string }[] = [
 ];
 
 const meta: Meta<typeof Carousel> = {
-  title: 'entities/Carousel',
+  title: 'shared/Carousel',
   component: Carousel,
   args: {
     infinite: true,
