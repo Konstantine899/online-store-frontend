@@ -4,8 +4,8 @@ import cls from './Input.module.scss';
 import { Icon } from '../Icon/Icon';
 
 export enum InputTheme {
-  OUTLINED = 'outlined',
-  STANDARD = 'standard',
+  WITHOUT_OUTLINE = 'without_outline',
+  OUTLINE_BOTTOM = 'outline_bottom',
 }
 
 type HtmlInputProps = Omit<

@@ -90,7 +90,7 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
             label={'email'}
             htmlFor={'email'}
             required
-            theme={InputTheme.STANDARD}
+            theme={InputTheme.OUTLINE_BOTTOM}
           />
         </div>
 

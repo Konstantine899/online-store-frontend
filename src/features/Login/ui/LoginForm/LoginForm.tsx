@@ -88,7 +88,7 @@ const LoginForm = memo((props: LoginFormProps) => {
             value={email}
             required
             onChange={onChangeEmail}
-            theme={InputTheme.STANDARD}
+            theme={InputTheme.OUTLINE_BOTTOM}
           />
         </div>
 

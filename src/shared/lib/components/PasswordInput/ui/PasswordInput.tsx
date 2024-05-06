@@ -29,7 +29,7 @@ export const PasswordInput = memo((props: PasswordInputProps) => {
       onChange={onChangePassword}
       Svg={eyeSvgIcon}
       onViewPassword={onViewPassword}
-      theme={InputTheme.STANDARD}
+      theme={InputTheme.OUTLINE_BOTTOM}
     />
   );
 });

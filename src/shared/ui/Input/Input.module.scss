@@ -6,7 +6,7 @@
 
 }
 
-.outlined {
+.without_outline {
     .input {
         width: 100%;
         font: var(--font-l);
@@ -16,7 +16,6 @@
         outline: none;
         padding: 8px 20px;
         border-radius: 15px;
-
     }
 
     .input::placeholder{
@@ -24,7 +23,7 @@
     }
 }
 
-.standard {
+.outline_bottom {
     .label {
         color: var(--input-theme-standard-primary-color);
         font: var(--font-l);

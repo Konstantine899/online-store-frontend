@@ -35,7 +35,7 @@ export const Search = memo((props: SearchProps) => {
       className={classNames(cls.InputSearch, {}, [className])}
       value={search}
       onChange={onChangeSearch}
-      theme={InputTheme.OUTLINED}
+      theme={InputTheme.WITHOUT_OUTLINE}
       placeholder={placeholder}
     />
   );
