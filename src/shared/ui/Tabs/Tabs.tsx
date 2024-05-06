@@ -12,7 +12,7 @@ export interface TabItem {
 interface TabsProps {
   className?: string;
   tabs?: TabItem[];
-  id: number;
+  id?: number;
   onTabClick?: (tab: TabItem) => void;
   getRoute?: (tab: TabItem) => string;
 }

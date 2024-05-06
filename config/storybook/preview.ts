@@ -4,7 +4,6 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

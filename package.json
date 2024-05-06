@@ -74,6 +74,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@reduxjs/toolkit": "^1.9.7",
+    "@storybook/test": "^8.0.10",
     "axios": "^1.6.3",
     "eslint-plugin-react-hooks": "^5.0.0-canary-6c7b41da3-20231123",
     "jwt-decode": "^4.0.0",
