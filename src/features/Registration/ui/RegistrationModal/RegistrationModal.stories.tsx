@@ -3,6 +3,7 @@ import { RegistrationModal } from './RegistrationModal';
 
 const meta: Meta<typeof RegistrationModal> = {
   title: 'entities/RegistrationModal',
+  tags: ['autodocs'],
   component: RegistrationModal,
 };
 
@@ -13,4 +14,3 @@ export const Primary: Story = {
   args: {},
   render: () => <RegistrationModal />,
 };
-  

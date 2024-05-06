@@ -3,6 +3,7 @@ import { LoginModal } from './LoginModal';
 
 const meta: Meta<typeof LoginModal> = {
   title: 'entities/LoginModal',
+  tags: ['autodocs'],
   component: LoginModal,
 };
 
@@ -13,4 +14,3 @@ export const Primary: Story = {
   args: {},
   render: () => <LoginModal />,
 };
-  

@@ -3,6 +3,7 @@ import { RegistrationFormAsync as RegistrationForm } from './RegistrationForm.as
 
 const meta: Meta<typeof RegistrationForm> = {
   title: 'entities/RegistrationForm',
+  tags: ['autodocs'],
   component: RegistrationForm,
 };
 

@@ -3,6 +3,7 @@ import { LoginFormAsync as LoginForm } from './LoginForm.async';
 
 const meta: Meta<typeof LoginForm> = {
   title: 'entities/LoginForm',
+  tags: ['autodocs'],
   component: LoginForm,
 };
 
@@ -13,4 +14,3 @@ export const Primary: Story = {
   args: {},
   render: () => <LoginForm />,
 };
-  
