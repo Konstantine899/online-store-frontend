@@ -13,5 +13,5 @@ type Story = StoryObj<typeof Skeleton>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Skeleton />,
+  render: (args) => <Skeleton {...args} />,
 };
