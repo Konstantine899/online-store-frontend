@@ -11,9 +11,9 @@ export interface TabItem {
 
 interface TabsProps {
   className?: string;
-  tabs?: TabItem[];
-  id?: number;
-  onTabClick?: (tab: TabItem) => void;
+  tabs: TabItem[];
+  id: number;
+  onTabClick: (tab: TabItem) => void;
   getRoute?: (tab: TabItem) => string;
 }
 
