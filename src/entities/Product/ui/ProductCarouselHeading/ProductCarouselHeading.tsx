@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { fetchProductsCarousel } from '../../model/services/fetchProductsCarousel';
 import { fetchProductsByCategoryCarousel } from '../../model/services/fetchProductsByCategoryCarousel';
-import { ProductCarouselHeadingSkeleton } from '@/entities/Product/ui/ProductCarouselHeadingSkeleton/ProductCarouselHeadingSkeleton';
 
 interface ProductCarouselHeadingProps {
   className?: string;
@@ -48,7 +47,6 @@ export const ProductCarouselHeading = memo(
       >
         <h1 className={cls.Title}>Популярные товары</h1>
         <Tabs tabs={tempArray} id={categoryId} onTabClick={handleClick} />
-        {isLoading && <ProductCarouselHeadingSkeleton />}
       </div>
     );
   },
