@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input, InputTheme } from './Input';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Input> = {
   title: 'shared/Input',
   tags: ['autodocs'],
   component: Input,
+  args: { onChange: action('onChange') },
 };
 
 export default meta;

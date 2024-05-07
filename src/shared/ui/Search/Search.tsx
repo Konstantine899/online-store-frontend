@@ -8,14 +8,22 @@ interface SearchProps {
   className?: string;
   fetchData: () => void;
   onSearch: (value: string) => void;
+  theme: InputTheme;
   search: string;
-  navigate?: () => void;
+  navigate: () => void;
   placeholder: string;
 }
 
 export const Search = memo((props: SearchProps) => {
-  const { className, onSearch, fetchData, search, navigate, placeholder } =
-    props;
+  const {
+    className,
+    onSearch,
+    fetchData,
+    search,
+    navigate,
+    placeholder,
+    theme,
+  } = props;
 
   const onFetchData = () => {
     navigate?.();
@@ -35,7 +43,7 @@ export const Search = memo((props: SearchProps) => {
       className={classNames(cls.InputSearch, {}, [className])}
       value={search}
       onChange={onChangeSearch}
-      theme={InputTheme.WITHOUT_OUTLINE}
+      theme={theme}
       placeholder={placeholder}
     />
   );

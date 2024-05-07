@@ -16,6 +16,7 @@ import { addQueryParams } from '@/shared/url/addQueryParams';
 import { useNavigate } from 'react-router-dom';
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
 import cls from './ProductSearch.module.scss';
+import { InputTheme } from '@/shared/ui/Input/Input';
 
 const initialAsyncReducersProductSearch = {
   productsList: ProductsReducer,
@@ -61,6 +62,7 @@ export const ProductSearch = memo((props: SearchProps) => {
         search={search}
         navigate={onNavigate}
         placeholder={'Найти товары'}
+        theme={InputTheme.WITHOUT_OUTLINE}
       />
     </DynamicModuleLoader>
   );
