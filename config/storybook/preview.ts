@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
-import '../../src/app/styles/index.scss';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
+import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -10,8 +10,9 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    layout: 'centered',
   },
-  decorators: [RouterDecorator],
+  decorators: [StyleDecorator, RouterDecorator],
 };
 
 export default preview;
