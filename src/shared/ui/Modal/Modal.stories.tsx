@@ -5,6 +5,7 @@ const meta: Meta<typeof Modal> = {
   title: 'shared/Modal',
   tags: ['autodocs'],
   component: Modal,
+  args: { isOpen: true, children: <p>Контент модального окна</p> },
 };
 
 export default meta;
@@ -12,5 +13,5 @@ type Story = StoryObj<typeof Modal>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Modal />,
+  render: (args) => <Modal {...args} />,
 };

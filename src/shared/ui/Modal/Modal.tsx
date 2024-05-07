@@ -13,10 +13,10 @@ import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
   className?: string;
-  children?: ReactNode;
-  isOpen?: boolean;
-  onClose?: () => void;
-  lazy?: boolean;
+  children: ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  lazy: boolean;
 }
 
 export const Modal = memo((props: ModalProps) => {
