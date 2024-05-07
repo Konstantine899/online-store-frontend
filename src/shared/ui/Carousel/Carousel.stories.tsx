@@ -16,6 +16,7 @@ const mokData: { id: number; name: string }[] = [
 
 const meta: Meta<typeof Carousel> = {
   title: 'shared/Carousel',
+  parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],
   component: Carousel,
   args: {

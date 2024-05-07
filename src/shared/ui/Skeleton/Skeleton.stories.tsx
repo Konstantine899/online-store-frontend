@@ -3,6 +3,7 @@ import { Skeleton } from './Skeleton';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'shared/Skeleton',
+  parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],
   component: Skeleton,
 };
