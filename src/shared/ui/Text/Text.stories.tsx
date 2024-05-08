@@ -1,16 +1,143 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text } from './Text';
+import { Text, TextAlign, TextSize, TextTheme } from './Text';
 
 const meta: Meta<typeof Text> = {
   title: 'shared/Text',
   tags: ['autodocs'],
   component: Text,
+  args: {
+    title: 'Описание',
+    text: 'Рандомный текст',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Text>;
 
-export const Primary: Story = {
-  args: {},
-  render: () => <Text />,
+export const TextThemePrimary: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextThemeInverted: Story = {
+  args: {
+    theme: TextTheme.INVERTED,
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextThemeError: Story = {
+  args: {
+    theme: TextTheme.ERROR,
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextAlignLeft: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    align: TextAlign.LEFT,
+  },
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextAlignCenter: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    align: TextAlign.CENTER,
+  },
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextAlignRight: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    align: TextAlign.RIGHT,
+  },
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextSizeS: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    size: TextSize.S,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextSizeM: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    size: TextSize.M,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextSizeL: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    size: TextSize.L,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const TextSizeXL: Story = {
+  args: {
+    theme: TextTheme.PRIMARY,
+    size: TextSize.XL,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
 };
