@@ -19,6 +19,12 @@ type Story = StoryObj<typeof Search>;
 
 export const WithoutOutline: Story = {
   args: { theme: InputTheme.WITHOUT_OUTLINE },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
   render: (args) => <Search {...args} />,
 };
 
