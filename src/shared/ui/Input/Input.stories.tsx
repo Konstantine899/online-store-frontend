@@ -15,6 +15,12 @@ type Story = StoryObj<typeof Input>;
 
 export const WithoutOutline: Story = {
   args: { theme: InputTheme.WITHOUT_OUTLINE, placeholder: 'Найти' },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
   render: (args) => <Input {...args} />,
 };
 
