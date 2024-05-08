@@ -20,7 +20,6 @@ const meta: Meta<typeof Carousel> = {
   tags: ['autodocs'],
   component: Carousel,
   args: {
-    infinite: true,
     children: mokData.map((item) => (
       <Card theme={CardTheme.OUTLINED} key={item.id} style={{ height: '50px' }}>
         {item.name}
@@ -60,6 +59,14 @@ export const FourElements: Story = {
 
 export const FiveElements: Story = {
   args: {
+    elementsQuantity: 5,
+  },
+  render: (args) => <Carousel {...args} />,
+};
+
+export const Infinite: Story = {
+  args: {
+    infinite: true,
     elementsQuantity: 5,
   },
   render: (args) => <Carousel {...args} />,
