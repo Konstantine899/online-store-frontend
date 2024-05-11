@@ -12,5 +12,5 @@ type Story = StoryObj<typeof Select>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Select />,
+  render: (args) => <Select {...args} />,
 };

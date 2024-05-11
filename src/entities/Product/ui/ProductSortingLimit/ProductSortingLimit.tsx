@@ -3,12 +3,9 @@ import { memo, useCallback, useMemo } from 'react';
 import cls from './ProductSortingLimit.module.scss';
 import { Select } from '@/shared/ui/Select';
 import {
-  OptionsWidth,
-  SelectButtonWidth,
   SelectOptions,
-  SelectSize,
   SelectWidth,
-  SelectWrapperWidth,
+  WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
@@ -67,14 +64,11 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
     <div className={classNames(cls.SortingLimit, {}, [className])}>
       <Select
         options={selectOptions}
-        value={`${value}`}
+        active={`${value}`}
         onChange={onChange}
         label={'Показывать по'}
-        size={SelectSize.M}
-        SelectWrapperWidth={SelectWrapperWidth.SELECT_WRAPPER_FULL_WIDTH}
-        SelectWidth={SelectWidth.SELECT_HALF_WIDTH}
-        ButtonWidth={SelectButtonWidth.SELECT_BUTTON_HALF_WIDTH}
-        OptionsWidth={OptionsWidth.OPTIONS_HALF_WIDTH}
+        WrapperWidth={WrapperWidth.XL}
+        SelectWidth={SelectWidth.M}
       />
     </div>
   );

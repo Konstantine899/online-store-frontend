@@ -1,44 +1,24 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import SelectArrowIcon from '@/shared/assets/icons/select-arrow.svg';
-import SelectedIcon from '@/shared/assets/icons/selected.svg';
+import CheckIcon from '@/shared/assets/icons/selected.svg';
 import { Icon } from '../../Icon/Icon';
+import { Text, TextSize, TextTheme } from '../../Text/Text';
 
-export enum SelectSize {
-  S = 'size_s',
-  M = 'size_m',
-  L = 'size_l',
-  XL = 'size_xl',
-}
-
-export enum SelectWrapperWidth {
-  SELECT_WRAPPER_FULL_WIDTH = 'select_wrapper_full_width',
-  SELECT_WRAPPER_THREE_QUARTER_WIDTH = 'select_wrapper_free_quarter_width', // 3/4
-  SELECT_WRAPPER_HALF_WIDTH = 'select_wrapper_half_width', // 2/4
-  SELECT_WRAPPER_ONE_QUARTER_WIDTH = 'select_wrapper_one_quarter_width',
+export enum WrapperWidth {
+  XL = 'wrapper-xl',
+  L = 'wrapper-l',
+  M = 'wrapper-m',
+  S = 'wrapper-s',
 }
 
 export enum SelectWidth {
-  SELECT_FULL_WIDTH = 'select_full_width',
-  SELECT_THREE_QUARTER_WIDTH = 'select_free_quarter_width', // 3/4
-  SELECT_HALF_WIDTH = 'select_half_width', // 2/4
-  SELECT_ONE_QUARTER_WIDTH = 'select_one_quarter_width',
-}
-
-export enum SelectButtonWidth {
-  SELECT_BUTTON_FULL_WIDTH = 'select_button_full_width',
-  SELECT_BUTTON_THREE_QUARTER_WIDTH = 'select_button_free_quarter_width', // 3/4
-  SELECT_BUTTON_HALF_WIDTH = 'select_button_half_width', // 2/4
-  SELECT_BUTTON_ONE_QUARTER_WIDTH = 'select_button_one_quarter_width',
-}
-
-export enum OptionsWidth {
-  OPTIONS_FULL_WIDTH = 'options_full_width',
-  OPTIONS_THREE_QUARTER_WIDTH = 'options_free_quarter_width', // 3/4
-  OPTIONS_HALF_WIDTH = 'options_half_width', // 2/4
-  OPTIONS_ONE_QUARTER_WIDTH = 'options_one_quarter_width',
+  XL = 'select-xl',
+  L = 'select-l',
+  M = 'select-m',
+  S = 'select-s',
 }
 
 export interface SelectOptions<T extends string> {
@@ -48,69 +28,58 @@ export interface SelectOptions<T extends string> {
 
 interface SelectProps<T extends string> {
   className?: string;
-  options?: SelectOptions<T>[];
-  value?: T;
-  onChange?: (value: T) => void;
-  label?: string;
-  size?: SelectSize;
-  ButtonWidth?: SelectButtonWidth;
-  OptionsWidth?: OptionsWidth;
-  SelectWidth?: SelectWidth;
-  SelectWrapperWidth?: SelectWrapperWidth;
+  options: SelectOptions<T>[];
+  active: T;
+  onChange: (value: T) => void;
+  label: string;
+  SelectWidth: SelectWidth;
+  WrapperWidth: WrapperWidth;
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
   const {
     className,
     options,
-    value,
+    active,
     onChange,
     label,
-    size,
-    SelectWrapperWidth,
+    WrapperWidth,
     SelectWidth,
-    ButtonWidth,
-    OptionsWidth,
   } = props;
+
+  const [hovered, setHovered] = useState(false);
 
   const onChangeHandler = (value: T) => {
     onChange?.(value);
   };
 
+  const onMouseEnter = () => setHovered(true);
+  const onMouseLeave = () => setHovered(false);
+
   return (
-    <div
-      className={classNames(cls.SelectWrapper, {}, [
-        cls[size],
-        cls[SelectWrapperWidth],
-      ])}
-    >
-      <span className={classNames(cls.SelectLabel, {}, [cls[size]])}>
-        {label}
-      </span>
+    <div className={classNames(cls.Wrapper, {}, [cls[WrapperWidth]])}>
+      <span className={cls.Label}>{label}</span>
       <div
-        className={classNames(cls.Select, {}, [
-          className,
-          cls[size],
-          cls[SelectWidth],
-        ])}
+        className={classNames(cls.Select, {}, [className, cls[SelectWidth]])}
       >
-        <Listbox value={value} onChange={onChangeHandler}>
+        <Listbox value={active} onChange={onChangeHandler}>
           <Listbox.Button
-            className={classNames(cls.Button, {}, [
-              cls[size],
-              cls[ButtonWidth],
-            ])}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            className={classNames(cls.ListboxButton, {}, [cls[SelectWidth]])}
           >
-            {options.map((btn) => {
-              if (btn.value === value) {
+            {options.map(({ value, content }) => {
+              if (value === active) {
                 return (
-                  <div
-                    key={btn.value}
-                    className={classNames(cls.btn, {}, [cls[size]])}
-                  >
-                    <span className={cls.btnContent} key={btn.value}>
-                      {btn.content}
-                    </span>
+                  <div key={value} className={cls.btn}>
+                    <Text
+                      size={TextSize.M}
+                      theme={
+                        (hovered && TextTheme.PRIMARY) ||
+                        (!hovered && TextTheme.INVERTED)
+                      }
+                      text={content}
+                    />
                     <Icon
                       className={cls.SelectArrowIcon}
                       Svg={SelectArrowIcon}
@@ -127,43 +96,40 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options
-              className={classNames(cls.options, {}, [
-                cls[size],
-                cls[OptionsWidth],
-              ])}
+              className={classNames(cls.ListboxOptions, {}, [cls[SelectWidth]])}
             >
-              {options?.map((element) => (
+              {options?.map(({ value, content }) => (
                 <Listbox.Option
                   className={({ active, selected }) =>
-                    classNames(
-                      `${cls.option} ${active && cls.active} ${
-                        selected && cls.selected
-                      }`,
-                      {},
-                      [cls[size]],
-                    )
+                    `${cls.ListboxOption} ${active && cls.active} ${
+                      selected && cls.selected
+                    }`
                   }
-                  key={element.value}
-                  value={element.value}
+                  key={value}
+                  value={value}
                 >
-                  {({ selected }) => (
+                  {({ selected, active }) => (
                     <>
                       {selected ? (
-                        <div
-                          className={classNames(
-                            cls.selectedContentWrapper,
-                            {},
-                            [cls[size]],
-                          )}
-                        >
-                          <Icon
-                            className={cls.SelectedIcon}
-                            Svg={SelectedIcon}
+                        <div className={cls.selected}>
+                          <Icon className={cls.CheckIcon} Svg={CheckIcon} />
+                          <Text
+                            size={TextSize.M}
+                            theme={
+                              selected ? TextTheme.PRIMARY : TextTheme.INVERTED
+                            }
+                            text={content}
                           />
-                          <p>{element.content}</p>
                         </div>
                       ) : (
-                        <p>{element.content}</p>
+                        <Text
+                          size={TextSize.M}
+                          theme={
+                            (active && TextTheme.PRIMARY) ||
+                            (!active && TextTheme.INVERTED)
+                          }
+                          text={content}
+                        />
                       )}
                     </>
                   )}
