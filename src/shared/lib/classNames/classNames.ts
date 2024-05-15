@@ -9,6 +9,6 @@ export function classNames(
     .filter(([_, value]) => Boolean(value))
     .map(([className]) => className);
 
-  const Additional: string[] = additional.filter(Boolean);
+  const Additional = additional.filter(Boolean);
   return [cls, ...Mods, ...Additional].join(' ');
 }
