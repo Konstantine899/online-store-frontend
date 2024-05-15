@@ -3,6 +3,6 @@ import { RegistrationValidationErrors } from '@/shared/types/RegistrationValidat
 export interface RegistrationSchema {
   email: string;
   password: string;
-  error: string | RegistrationValidationErrors[];
+  error?: string | RegistrationValidationErrors[];
   isLoading: boolean;
 }

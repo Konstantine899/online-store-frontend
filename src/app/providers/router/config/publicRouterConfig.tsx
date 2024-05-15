@@ -40,9 +40,8 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.SIGN_UP]: {
     path: getRouteSingUp(),
-    element: <RegistrationModal />,
   },
-  [publicRouter.AUTH]: { path: getRouteAuth(), element: <LoginModal /> },
+  [publicRouter.AUTH]: { path: getRouteAuth() },
   [publicRouter.GET_LIST_ALL_BRANDS]: { path: getRouteAllBrands() },
   [publicRouter.GET_LIST_ALL_BRANDS_BY_CATEGORY]: {
     path: getRouteAllBrandsByCategory(':categoryId'),

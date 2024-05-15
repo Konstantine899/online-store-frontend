@@ -39,7 +39,7 @@ export const Input = memo((props: InputProps) => {
     required,
     onViewPassword,
     type = 'text',
-    theme,
+    theme = InputTheme.OUTLINE,
     ...otherProps
   } = props;
 

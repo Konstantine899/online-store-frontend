@@ -12,5 +12,5 @@ type Story = StoryObj<typeof CategoriesBurgerMenuItemIcon>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <CategoriesBurgerMenuItemIcon />,
+  render: (args) => <CategoriesBurgerMenuItemIcon {...args} />,
 };

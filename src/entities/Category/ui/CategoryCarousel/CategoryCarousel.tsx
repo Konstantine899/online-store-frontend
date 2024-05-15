@@ -18,7 +18,7 @@ import { ICategory } from '../../model/types/ICategory';
 
 interface CategoryCarouselProps {
   className?: string;
-  categories?: ICategory[];
+  categories: ICategory[];
 }
 
 export const CategoryCarousel = memo((props: CategoryCarouselProps) => {

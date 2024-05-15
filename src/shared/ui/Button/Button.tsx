@@ -31,13 +31,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = memo((props: ButtonProps) => {
   const {
     className,
-    square,
+    square = false,
     children,
-    size,
-    theme,
-    fullWidth,
-    disabled,
-    buttonFontSizeZero,
+    size = ButtonSize.M,
+    theme = ButtonTheme.OUTLINE,
+    fullWidth = false,
+    disabled = false,
+    buttonFontSizeZero = false,
     ...otherProps
   } = props;
   return (

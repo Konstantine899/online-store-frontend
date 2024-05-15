@@ -27,6 +27,6 @@ export interface ProductsSchema {
   search: string;
   sortingOrder: ISortOrder;
   isLoading: boolean;
-  error: string;
+  error?: string;
   _inited: boolean;
 }

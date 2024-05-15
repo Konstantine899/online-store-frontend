@@ -6,8 +6,8 @@ import { RegistrationFormAsync as RegistrationForm } from '../RegistrationForm/R
 
 interface RegistrationModalProps {
   className?: string;
-  isOpen?: boolean;
-  onClose?: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export const RegistrationModal = memo((props: RegistrationModalProps) => {

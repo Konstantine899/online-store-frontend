@@ -7,7 +7,7 @@ const getAllCategoriesStateSelector = (state: StateSchema) =>
 
 export const getAllCategoriesIsLoadingSelector = createSelector(
   getAllCategoriesStateSelector,
-  (state: AllCategoriesSchema) => {
+  (state: AllCategoriesSchema | undefined) => {
     return state?.isLoading ?? false;
   },
 );

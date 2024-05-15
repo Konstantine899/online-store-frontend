@@ -7,5 +7,5 @@ export interface IRating {
 export interface RatingSchema {
   rating: IRating;
   isLoading: boolean;
-  error: string;
+  error?: string;
 }

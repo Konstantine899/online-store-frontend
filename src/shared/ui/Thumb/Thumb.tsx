@@ -13,7 +13,7 @@ export enum ThumbSize {
 
 interface ThumbProps {
   className?: string;
-  size?: ThumbSize;
+  size: ThumbSize;
 }
 
 export const Thumb = memo((props: ThumbProps) => {

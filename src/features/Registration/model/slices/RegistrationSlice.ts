@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RegistrationSchema } from '../types/RegistrationSchema';
 import { registrationByEmail } from '../services/registrationByEmail';
+import { RegistrationValidationErrors } from '@/shared/types/RegistrationValidationErrors';
 
 const initialState: RegistrationSchema = {
   email: '',
   password: '',
-  error: '',
+  error: undefined,
   isLoading: false,
 };
 
@@ -36,10 +37,18 @@ export const RegistrationSlice = createSlice({
         state.isLoading = false;
         state.error = undefined;
       })
-      .addCase(registrationByEmail.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(
+        registrationByEmail.rejected,
+        (
+          state,
+          action: PayloadAction<
+            string | RegistrationValidationErrors[] | undefined
+          >,
+        ) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      );
   },
 });
 

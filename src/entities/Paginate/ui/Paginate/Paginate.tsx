@@ -24,7 +24,7 @@ import { getBrandIdSelector } from '@/entities/Brand';
 
 interface PaginateProps {
   className?: string;
-  topRef?: MutableRefObject<HTMLDivElement | null>;
+  topRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export const Paginate = memo((props: PaginateProps) => {

@@ -8,7 +8,7 @@ import { Product } from '../../model/types/ProductsSchema';
 
 interface ProductCardImageProps {
   className?: string;
-  product?: Product;
+  product: Product;
 }
 
 export const ProductCardImage = memo((props: ProductCardImageProps) => {

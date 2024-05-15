@@ -14,8 +14,8 @@ import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRou
 import { BrandActions } from '@/entities/Brand';
 
 interface BurgerMenuItemProps {
+  item: ICategoryBurgerMenuItem;
   className?: string;
-  item?: ICategoryBurgerMenuItem;
   onClose?: () => void;
 }
 
@@ -30,7 +30,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
     dispatch(FetchProductsByCategory({ categoryId }));
-    onClose();
+    onClose?.();
   };
 
   const isActive = categoryId === item.id;

@@ -5,7 +5,7 @@ import { fetchRating } from '../services/fetchRating';
 const initialState: RatingSchema = {
   rating: { rating: 0, ratingsSum: 0, votes: 0 },
   isLoading: false,
-  error: '',
+  error: undefined,
 };
 
 export const RatingSlice = createSlice({
@@ -27,10 +27,13 @@ export const RatingSlice = createSlice({
           state.rating.votes = action.payload.votes;
         },
       )
-      .addCase(fetchRating.rejected, (state, action: PayloadAction<string>) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(
+        fetchRating.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        },
+      );
   },
 });
 

@@ -7,7 +7,7 @@ import { ICategory } from '@/entities/Category';
 
 interface ProductPopularProps {
   className?: string;
-  categories?: ICategory[];
+  categories: ICategory[];
 }
 
 export const ProductPopular = memo((props: ProductPopularProps) => {

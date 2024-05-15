@@ -3,26 +3,26 @@ import { IProductDetails } from '../types/IProductDetails';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const getProductDetailsSelector = (state: StateSchema) => {
-  return state.productDetailsPage?.productDetails ?? null;
+  return state.productDetailsPage?.productDetails;
 };
 
 export const getProductDetailsPriceSelector = createSelector(
   getProductDetailsSelector,
-  (state: IProductDetails) => {
+  (state: IProductDetails | undefined) => {
     return state?.price ?? 0;
   },
 );
 
 export const getProductDetailsPropertiesSelector = createSelector(
   getProductDetailsSelector,
-  (state: IProductDetails) => {
+  (state: IProductDetails | undefined) => {
     return state?.properties ?? [];
   },
 );
 
 export const getProductDetailsNameSelector = createSelector(
   getProductDetailsSelector,
-  (state: IProductDetails) => {
+  (state: IProductDetails | undefined) => {
     return state?.name ?? '';
   },
 );

@@ -66,5 +66,6 @@ export const usePaginate = ({
       const middleRange = range(leftIndex, rightIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
+    return [firstPageIndex, lastPageIndex];
   }, [currentPage, lastPage, siblingCount]);
 };

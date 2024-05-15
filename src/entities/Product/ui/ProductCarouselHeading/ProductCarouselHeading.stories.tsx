@@ -12,5 +12,5 @@ type Story = StoryObj<typeof ProductCarouselHeading>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductCarouselHeading />,
+  render: (args) => <ProductCarouselHeading {...args} />,
 };

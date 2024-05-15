@@ -15,7 +15,7 @@ import { fetchProductsByCategoryCarousel } from '../../model/services/fetchProdu
 
 interface ProductCarouselHeadingProps {
   className?: string;
-  categories?: ICategory[];
+  categories: ICategory[];
 }
 
 export const ProductCarouselHeading = memo(

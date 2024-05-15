@@ -13,7 +13,7 @@ export enum StarSize {
 
 interface StarProps {
   className?: string;
-  size?: StarSize;
+  size: StarSize;
 }
 
 export const Star = memo((props: StarProps) => {

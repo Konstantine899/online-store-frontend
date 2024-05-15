@@ -10,7 +10,7 @@ import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 
 interface ProductCardProps {
   className?: string;
-  product?: Product;
+  product: Product;
 }
 
 export const ProductCard = memo((props: ProductCardProps) => {
@@ -20,7 +20,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
     <Card
       key={product.id}
       theme={CardTheme.OUTLINED}
-      className={classNames(cls.ProductCard, {}, [cls[className]])}
+      className={classNames(cls.ProductCard, {}, [className])}
     >
       <div className={cls.CardTop}>
         <ProductCardImage product={product} />

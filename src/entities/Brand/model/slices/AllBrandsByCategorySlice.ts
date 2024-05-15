@@ -6,7 +6,7 @@ import { IBrand } from '../types/IBrand';
 const initialState: AllBrandsByCategorySchema = {
   brands: [],
   isLoading: false,
-  error: '',
+  error: undefined,
 };
 
 export const AllBrandsByCategorySlice = createSlice({
@@ -19,7 +19,7 @@ export const AllBrandsByCategorySlice = createSlice({
         fetchAllBrandsByCategory.pending,
         (state: AllBrandsByCategorySchema) => {
           state.isLoading = true;
-          state.error = '';
+          state.error = undefined;
           state.brands = [];
         },
       )
@@ -27,13 +27,15 @@ export const AllBrandsByCategorySlice = createSlice({
         fetchAllBrandsByCategory.fulfilled,
         (state: AllBrandsByCategorySchema, action: PayloadAction<IBrand[]>) => {
           state.isLoading = true;
-          state.error = '';
           state.brands = action.payload;
         },
       )
       .addCase(
         fetchAllBrandsByCategory.rejected,
-        (state: AllBrandsByCategorySchema, action: PayloadAction<string>) => {
+        (
+          state: AllBrandsByCategorySchema,
+          action: PayloadAction<string | undefined>,
+        ) => {
           state.isLoading = true;
           state.error = action.payload;
         },

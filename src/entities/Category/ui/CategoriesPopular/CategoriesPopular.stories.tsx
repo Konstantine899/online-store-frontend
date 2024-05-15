@@ -12,5 +12,5 @@ type Story = StoryObj<typeof CategoriesPopular>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <CategoriesPopular />,
+  render: (args) => <CategoriesPopular {...args} />,
 };

@@ -16,9 +16,13 @@ export const AuthSlice = createSlice({
       state.authData = action.payload;
     },
     initAuthData: (state) => {
-      const type = JSON.parse(localStorage.getItem(TOKEN_TYPE_KEY));
-      const accessToken = JSON.parse(localStorage.getItem(ACCESS_TOKEN_KEY));
-      const refreshToken = JSON.parse(localStorage.getItem(REFRESH_TOKEN_KEY));
+      const type = JSON.parse(localStorage.getItem(TOKEN_TYPE_KEY) as string);
+      const accessToken = JSON.parse(
+        localStorage.getItem(ACCESS_TOKEN_KEY) as string,
+      );
+      const refreshToken = JSON.parse(
+        localStorage.getItem(REFRESH_TOKEN_KEY) as string,
+      );
 
       state.authData = { type, accessToken, refreshToken };
     },
@@ -26,23 +30,9 @@ export const AuthSlice = createSlice({
       localStorage.removeItem(TOKEN_TYPE_KEY);
       localStorage.removeItem(ACCESS_TOKEN_KEY);
       localStorage.removeItem(REFRESH_TOKEN_KEY);
-      state.authData = null;
+      state.authData = undefined;
     },
   },
-  // extraReducers: (builder) => {
-  //     builder
-  //         .addCase(, (state) => {
-  //             state.error = undefined;
-  //             state.isLoading = true;
-  //         })
-  //         .addCase(, (state) => {
-  //             state.isLoading = false;
-  //         })
-  //         .addCase(, (state, action) => {
-  //             state.isLoading = false;
-  //             state.error = action.payload;
-  //         });
-  // },
 });
 
 export const { actions: AuthActions } = AuthSlice;

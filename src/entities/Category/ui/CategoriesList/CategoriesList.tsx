@@ -21,9 +21,9 @@ const asyncCategoryListReducer: ReducersList = {
 
 interface CategoryProps {
   className?: string;
-  isOpen?: boolean;
-  isClose?: boolean;
-  onClose?: () => void;
+  isOpen: boolean;
+  isClose: boolean;
+  onClose: () => void;
 }
 
 export const CategoriesList = memo((props: CategoryProps) => {

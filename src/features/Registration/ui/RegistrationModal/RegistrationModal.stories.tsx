@@ -12,5 +12,5 @@ type Story = StoryObj<typeof RegistrationModal>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <RegistrationModal />,
+  render: (args) => <RegistrationModal {...args} />,
 };

@@ -6,7 +6,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductListItemProps {
   className?: string;
-  product?: Product;
+  product: Product;
 }
 
 export const ProductListItem = memo((props: ProductListItemProps) => {

@@ -27,18 +27,12 @@ export const ProductPreview = memo((props: ProductDetailsProps) => {
   const _inited = useSelector(getProductDetailsInitedSelector);
 
   useEffect(() => {
-    if (_inited) {
+    if (productDetails) {
       dispatch(fetchBrand({ id: productDetails?.brand_id }));
       dispatch(fetchCategory({ id: productDetails?.category_id }));
       dispatch(fetchRating({ productId: productDetails?.id }));
     }
-  }, [
-    _inited,
-    dispatch,
-    productDetails?.brand_id,
-    productDetails?.category_id,
-    productDetails?.id,
-  ]);
+  }, [_inited, dispatch, productDetails]);
 
   if (isLoading) {
     return (
@@ -52,7 +46,7 @@ export const ProductPreview = memo((props: ProductDetailsProps) => {
     return (
       <div className={classNames(cls.ProductPreview, {}, [className])}>
         <div className={cls.imageWrapper}>
-          <ProductImage image={productDetails.image} className={cls.image} />
+          <ProductImage image={productDetails!.image} className={cls.image} />
         </div>
         <ProductSummaryCard />
       </div>

@@ -6,7 +6,7 @@ import { ICategory } from '../../model/types/ICategory';
 
 interface CategoriesPopularProps {
   className?: string;
-  categories?: ICategory[];
+  categories: ICategory[];
 }
 
 export const CategoriesPopular = memo((props: CategoriesPopularProps) => {

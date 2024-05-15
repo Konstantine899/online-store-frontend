@@ -12,5 +12,5 @@ type Story = StoryObj<typeof ProductListItem>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductListItem />,
+  render: (args) => <ProductListItem {...args} />,
 };

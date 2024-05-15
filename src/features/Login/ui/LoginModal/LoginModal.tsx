@@ -6,8 +6,8 @@ import { Modal } from '@/shared/ui/Modal/Modal';
 
 export interface LoginModalProps {
   className?: string;
-  isOpen?: boolean;
-  onClose?: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export const LoginModal = memo((props: LoginModalProps) => {

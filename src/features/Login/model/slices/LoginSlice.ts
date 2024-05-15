@@ -5,7 +5,7 @@ import { loginByEmail } from '../services/loginByEmail';
 const initialState: LoginSchema = {
   email: '',
   password: '',
-  error: '',
+  error: undefined,
   isLoading: false,
 };
 
@@ -34,7 +34,6 @@ export const LoginSlice = createSlice({
       })
       .addCase(loginByEmail.fulfilled, (state) => {
         state.isLoading = false;
-        state.error = undefined;
       })
       .addCase(loginByEmail.rejected, (state, action) => {
         state.isLoading = false;

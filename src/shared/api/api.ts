@@ -5,7 +5,7 @@ export const $api = axios.create({
   baseURL: __API_URL__,
   headers: {
     Authorization: `Bearer ${JSON.parse(
-      localStorage.getItem(ACCESS_TOKEN_KEY),
+      localStorage.getItem(ACCESS_TOKEN_KEY) as string,
     )}`,
   },
 });

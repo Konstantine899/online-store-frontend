@@ -13,30 +13,18 @@ export const UserSlice = createSlice({
       state.userData = action.payload;
     },
     initUserData: (state) => {
-      const accessToken = JSON.parse(localStorage.getItem(ACCESS_TOKEN_KEY));
+      const accessToken = JSON.parse(
+        localStorage.getItem(ACCESS_TOKEN_KEY) as string,
+      );
 
       if (accessToken) {
         state.userData = jwtDecode<User>(accessToken);
       }
     },
     removeUserData: (state) => {
-      state.userData = null;
+      state.userData = undefined;
     },
   },
-  // extraReducers: (builder) => {
-  //     builder
-  //         .addCase(, (state) => {
-  //             state.error = undefined;
-  //             state.isLoading = true;
-  //         })
-  //         .addCase(, (state) => {
-  //             state.isLoading = false;
-  //         })
-  //         .addCase(, (state, action) => {
-  //             state.isLoading = false;
-  //             state.error = action.payload;
-  //         });
-  // },
 });
 
 export const { actions: UserActions } = UserSlice;

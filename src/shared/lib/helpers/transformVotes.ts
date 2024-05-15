@@ -1,5 +1,5 @@
 export const transformVotes = (userVotes: string) => {
-  let votes: string;
+  let votes!: string;
   let left: string[];
   let middle: string[];
   let right: string[];

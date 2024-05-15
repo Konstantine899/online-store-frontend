@@ -6,7 +6,7 @@ import { ICategory } from '../../model/types/ICategory';
 const initialState: AllCategoriesSchema = {
   categories: [],
   isLoading: false,
-  error: '',
+  error: undefined,
 };
 
 export const CategoriesSlice = createSlice({
@@ -16,7 +16,7 @@ export const CategoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCategories.pending, (state: AllCategoriesSchema) => {
-        state.error = '';
+        state.error = undefined;
         state.isLoading = true;
       })
       .addCase(
@@ -28,7 +28,10 @@ export const CategoriesSlice = createSlice({
       )
       .addCase(
         fetchAllCategories.rejected,
-        (state: AllCategoriesSchema, action: PayloadAction<string>) => {
+        (
+          state: AllCategoriesSchema,
+          action: PayloadAction<string | undefined>,
+        ) => {
           state.isLoading = false;
           state.error = action.payload;
         },

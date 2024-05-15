@@ -7,7 +7,7 @@ import { Product } from '../../model/types/ProductsSchema';
 
 interface ProductCardTitleProps {
   className?: string;
-  product?: Product;
+  product: Product;
 }
 
 export const ProductCardTitle = memo((props: ProductCardTitleProps) => {
@@ -15,7 +15,7 @@ export const ProductCardTitle = memo((props: ProductCardTitleProps) => {
 
   return (
     <AppLink
-      className={classNames(cls.CardTitle, {}, [cls[className]])}
+      className={classNames(cls.CardTitle, {}, [className])}
       to={getRouteProduct(`${product.id}`)}
       fontSize={AppLinkFontSizeSize.M}
     >

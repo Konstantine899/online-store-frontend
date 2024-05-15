@@ -74,10 +74,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
                   <div key={value} className={cls.btn}>
                     <Text
                       size={TextSize.M}
-                      theme={
-                        (hovered && TextTheme.PRIMARY) ||
-                        (!hovered && TextTheme.INVERTED)
-                      }
+                      theme={hovered ? TextTheme.PRIMARY : TextTheme.INVERTED}
                       text={content}
                     />
                     <Icon
@@ -125,8 +122,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
                         <Text
                           size={TextSize.M}
                           theme={
-                            (active && TextTheme.PRIMARY) ||
-                            (!active && TextTheme.INVERTED)
+                            active ? TextTheme.PRIMARY : TextTheme.INVERTED
                           }
                           text={content}
                         />

@@ -12,5 +12,5 @@ type Story = StoryObj<typeof CategoryCarousel>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <CategoryCarousel />,
+  render: (args) => <CategoryCarousel {...args} />,
 };

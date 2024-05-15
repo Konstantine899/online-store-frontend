@@ -5,7 +5,7 @@ import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
 
 interface CarouselProps {
   className?: string;
-  children?: ReactNode[];
+  children: ReactNode[];
   elementsQuantity: number;
   infinite: boolean;
 }

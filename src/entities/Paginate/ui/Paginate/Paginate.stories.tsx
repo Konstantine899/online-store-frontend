@@ -12,5 +12,5 @@ type Story = StoryObj<typeof Paginate>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <Paginate />,
+  render: (args) => <Paginate {...args} />,
 };

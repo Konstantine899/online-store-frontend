@@ -64,7 +64,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
     <div className={classNames(cls.SortingLimit, {}, [className])}>
       <Select
         options={selectOptions}
-        active={`${value}`}
+        active={`${value}` as ISortLimit}
         onChange={onChange}
         label={'Показывать по'}
         WrapperWidth={WrapperWidth.XL}

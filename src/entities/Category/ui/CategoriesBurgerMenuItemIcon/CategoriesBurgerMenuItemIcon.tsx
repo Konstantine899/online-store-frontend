@@ -11,8 +11,8 @@ import HeadphonesIcon from '@/shared/assets/icons/headphones.svg';
 
 interface CategoryIconProps {
   className?: string;
-  itemName?: string;
-  isActive?: boolean;
+  itemName: string;
+  isActive: boolean;
 }
 
 export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {

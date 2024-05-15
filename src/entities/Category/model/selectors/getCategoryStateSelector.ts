@@ -3,19 +3,21 @@ import { createSelector } from '@reduxjs/toolkit';
 import { ICategory } from '../types/ICategory';
 
 export const getCategoryStateSelector = (state: StateSchema) => {
-  return state.category?.category ?? null;
+  return state.category?.category;
 };
 
 export const getCategoryIdSelector = createSelector(
   getCategoryStateSelector,
-  (state: ICategory) => {
-    return state?.id ?? JSON.parse(localStorage.getItem(`categoryId`));
+  (state: ICategory | undefined) => {
+    return (
+      state?.id ?? JSON.parse(localStorage.getItem(`categoryId`) as string)
+    );
   },
 );
 
 export const getCategoryNameSelector = createSelector(
   getCategoryStateSelector,
-  (state: ICategory) => {
+  (state: ICategory | undefined) => {
     return state?.name ?? '';
   },
 );

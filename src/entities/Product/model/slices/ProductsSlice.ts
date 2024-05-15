@@ -20,7 +20,7 @@ const initialState: ProductsSchema = {
   search: '',
   sortingOrder: 'asc',
   isLoading: false,
-  error: '',
+  error: undefined,
   _inited: false,
 };
 
@@ -59,33 +59,39 @@ export const ProductsSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state: ProductsSchema) => {
         state.isLoading = true;
-        state.error = '';
+        state.rows = [];
+        state.error = undefined;
         state._inited = false;
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = '';
-        state.rows = action.payload.rows;
-        state.count = action.payload.count;
-        state.metaData = action.payload.metaData;
-        state._inited = true;
-      })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-        state.rows = null;
-        state._inited = false;
-      })
+      .addCase(
+        fetchProducts.fulfilled,
+        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
+          state.isLoading = false;
+          state.rows = action.payload.rows;
+          state.count = action.payload.count;
+          state.metaData = action.payload.metaData;
+          state._inited = true;
+        },
+      )
+      .addCase(
+        fetchProducts.rejected,
+        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
+          state.isLoading = false;
+          state.rows = [];
+          state.error = action.payload;
+          state._inited = false;
+        },
+      )
       .addCase(FetchProductsByBrand.pending, (state: ProductsSchema) => {
         state.isLoading = true;
-        state.error = '';
+        state.error = undefined;
+        state.rows = [];
         state._inited = false;
       })
       .addCase(
         FetchProductsByBrand.fulfilled,
         (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
           state.isLoading = false;
-          state.error = '';
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
@@ -94,22 +100,23 @@ export const ProductsSlice = createSlice({
       )
       .addCase(
         FetchProductsByBrand.rejected,
-        (state: ProductsSchema, action: PayloadAction<string>) => {
+        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
           state.isLoading = false;
+          state.rows = [];
           state.error = action.payload;
           state._inited = false;
         },
       )
       .addCase(FetchProductsByCategory.pending, (state: ProductsSchema) => {
         state.isLoading = true;
-        state.error = '';
+        state.error = undefined;
+        state.rows = [];
         state._inited = false;
       })
       .addCase(
         FetchProductsByCategory.fulfilled,
         (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
           state.isLoading = false;
-          state.error = '';
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
@@ -118,8 +125,9 @@ export const ProductsSlice = createSlice({
       )
       .addCase(
         FetchProductsByCategory.rejected,
-        (state: ProductsSchema, action: PayloadAction<string>) => {
+        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
           state.isLoading = false;
+          state.rows = [];
           state.error = action.payload;
           state._inited = false;
         },
@@ -128,7 +136,8 @@ export const ProductsSlice = createSlice({
         FetchProductsByBrandAndCategory.pending,
         (state: ProductsSchema) => {
           state.isLoading = true;
-          state.error = '';
+          state.error = undefined;
+          state.rows = [];
           state._inited = false;
         },
       )
@@ -136,7 +145,6 @@ export const ProductsSlice = createSlice({
         FetchProductsByBrandAndCategory.fulfilled,
         (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
           state.isLoading = false;
-          state.error = '';
           state.rows = action.payload.rows;
           state.count = action.payload.count;
           state.metaData = action.payload.metaData;
@@ -145,8 +153,9 @@ export const ProductsSlice = createSlice({
       )
       .addCase(
         FetchProductsByBrandAndCategory.rejected,
-        (state: ProductsSchema, action: PayloadAction<string>) => {
+        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
           state.isLoading = false;
+          state.rows = [];
           state.error = action.payload;
           state._inited = false;
         },

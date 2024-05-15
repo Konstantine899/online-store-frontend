@@ -18,7 +18,6 @@ export const loginByEmail = createAsyncThunk<
     const response = await extra.api.post('/auth/login', { email, password });
     return setUserData(response.data, thunkAPI);
   } catch (error) {
-    const messages: LoginValidationErrors[] = error.response.data;
-    return rejectWithValue(error.response.data.message || messages);
+    return rejectWithValue(`${error}`);
   }
 });

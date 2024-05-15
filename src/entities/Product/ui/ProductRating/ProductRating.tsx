@@ -25,7 +25,7 @@ export const ProductRating = memo((props: ProductRatingProps) => {
       <Star
         size={StarSize.S}
         className={classNames(cls.Star, { [cls.inverted]: inverted }, [
-          cls[className],
+          className,
         ])}
       />
     </div>

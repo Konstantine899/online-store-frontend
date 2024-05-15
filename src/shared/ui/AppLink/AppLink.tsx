@@ -25,7 +25,7 @@ interface AppLinkProps extends LinkProps {
 export const AppLink = (props: AppLinkProps) => {
   const {
     children,
-    theme,
+    theme = AppLinkTheme.SECONDARY,
     fontSize = AppLinkFontSizeSize.M,
     className,
     to,

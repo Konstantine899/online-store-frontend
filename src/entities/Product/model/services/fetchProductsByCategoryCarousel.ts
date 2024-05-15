@@ -37,6 +37,6 @@ export const fetchProductsByCategoryCarousel = createAsyncThunk<
     }
     return response.data;
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(`${error}`);
   }
 });

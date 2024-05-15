@@ -21,7 +21,6 @@ export const registrationByEmail = createAsyncThunk<
     );
     return setUserData(response.data, thunkAPI);
   } catch (error) {
-    const messages: RegistrationValidationErrors[] = error.response.data;
-    return rejectWithValue(error.response.data.message || messages);
+    return rejectWithValue(`${error}`);
   }
 });

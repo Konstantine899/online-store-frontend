@@ -15,7 +15,7 @@ const initialState: ProductDetailsSchema = {
     rating: 0,
   },
   isLoading: false,
-  error: '',
+  error: undefined,
   _inited: false,
 };
 
@@ -27,7 +27,7 @@ export const ProductDetailsSlice = createSlice({
     builder
       .addCase(fetchProductDetails.pending, (state: ProductDetailsSchema) => {
         state.isLoading = true;
-        state.error = '';
+        state.error = undefined;
         state._inited = false;
       })
       .addCase(
@@ -37,7 +37,6 @@ export const ProductDetailsSlice = createSlice({
           action: PayloadAction<IProductDetails>,
         ) => {
           state.isLoading = false;
-          state.error = '';
           state.productDetails.id = action.payload.id;
           state.productDetails.name = action.payload.name;
           state.productDetails.price = action.payload.price;
@@ -51,7 +50,10 @@ export const ProductDetailsSlice = createSlice({
       )
       .addCase(
         fetchProductDetails.rejected,
-        (state: ProductDetailsSchema, action: PayloadAction<string>) => {
+        (
+          state: ProductDetailsSchema,
+          action: PayloadAction<string | undefined>,
+        ) => {
           state.isLoading = false;
           state.error = action.payload;
           state._inited = false;
