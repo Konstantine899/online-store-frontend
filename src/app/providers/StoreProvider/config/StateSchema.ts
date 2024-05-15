@@ -27,7 +27,7 @@ export interface StateSchema {
   loginForm?: LoginSchema;
   productsList?: ProductsSchema;
   productsCarouselList?: ProductsSchema;
-  productDetailsPage: ProductDetailsSchema;
+  productDetailsPage?: ProductDetailsSchema;
   allBrands?: AllBrandsSchema;
   allBrandsByCategory?: AllBrandsByCategorySchema;
   categoriesList?: AllCategoriesSchema;
