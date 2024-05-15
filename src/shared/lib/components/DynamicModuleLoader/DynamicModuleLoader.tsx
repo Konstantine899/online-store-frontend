@@ -13,7 +13,7 @@ export type ReducersList = {
 };
 
 // типизирую кортеж
-type ReducerListEntry = [StateSchemaKey, Reducer];
+type ReducersListEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
   reducers: ReducersList;
@@ -28,22 +28,27 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
-      store.reducerManager.add(name, reducer);
-      dispatch({ type: `MOUNTING ${name} reducer` });
+    const mountedReducers = store.reducerManager.getMountedReducers();
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      const mounted = mountedReducers[name as StateSchemaKey];
+      // если reducer не вмонтирован, то добавляю его
+      if (!mounted) {
+        store.reducerManager.add(name as StateSchemaKey, reducer);
+        dispatch({ type: `@INIT ${name} reducer` });
+      }
     });
 
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(
-          ([name, reducer]: ReducerListEntry) => {
-            store.reducerManager.remove(name);
-            dispatch({ type: `UNMOUNTING ${name} reducer` });
-          },
-        );
+        Object.entries(reducers).forEach(([name, reducer]) => {
+          store.reducerManager.remove(name as StateSchemaKey);
+          dispatch({ type: `@DESTROY ${name} reducer` });
+        });
       }
     };
-  }, [dispatch, reducers, removeAfterUnmount, store.reducerManager]);
+    // зависимости не добавляю что бы не было лишних перерисовок
+    // eslint-disable-next-line
+  }, []);
 
   return <>{children}</>;
 };
