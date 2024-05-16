@@ -19,6 +19,7 @@ import {
 import { AllCategoriesSchema, CategorySchema } from '@/entities/Category';
 import { ProductDetailsSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
+import { MainPageSchema } from '@/pages/MainPage';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -26,7 +27,7 @@ export interface StateSchema {
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   productsList?: ProductsSchema;
-  productsCarouselList?: ProductsSchema;
+  mainPage?: MainPageSchema;
   productDetailsPage?: ProductDetailsSchema;
   allBrands?: AllBrandsSchema;
   allBrandsByCategory?: AllBrandsByCategorySchema;

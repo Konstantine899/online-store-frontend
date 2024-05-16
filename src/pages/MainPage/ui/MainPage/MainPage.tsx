@@ -4,7 +4,6 @@ import cls from './MainPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   CategoriesPopular,
-  CategoriesReducer,
   fetchAllCategories,
   getAllCategoriesSelector,
 } from '@/entities/Category';
@@ -13,13 +12,13 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { ProductsCarouselReducer, ProductPopular } from '@/entities/Product';
+import { ProductPopular } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { mainPageReducers } from '../../model/slices/index';
 
 const asyncReducersMainPage: ReducersList = {
-  categoriesList: CategoriesReducer,
-  productsCarouselList: ProductsCarouselReducer,
+  mainPage: mainPageReducers,
 };
 
 interface MainPageProps {
