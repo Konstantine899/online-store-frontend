@@ -1,6 +1,6 @@
 import { ICategory } from './ICategory';
 
-export interface AllCategoriesSchema {
+export interface CategoriesSchema {
   categories: ICategory[];
   isLoading: boolean;
   error?: string;

@@ -1,13 +1,13 @@
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
-import { AllCategoriesSchema } from '../types/AllCategoriesSchema';
+import { CategoriesSchema } from '../types/CategoriesSchema';
 
 const getAllCategoriesStateSelector = (state: StateSchema) =>
-  state.categoriesList;
+  state.entityCategory?.categories;
 
 export const getAllCategoriesIsLoadingSelector = createSelector(
   getAllCategoriesStateSelector,
-  (state: AllCategoriesSchema | undefined) => {
+  (state: CategoriesSchema | undefined) => {
     return state?.isLoading ?? false;
   },
 );

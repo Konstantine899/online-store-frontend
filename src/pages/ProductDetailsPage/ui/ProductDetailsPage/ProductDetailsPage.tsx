@@ -16,13 +16,13 @@ import { ProductDetailsPageReducer } from '../../../../entities/Product/model/sl
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
 import { EntityBrandReducers } from '@/entities/Brand';
-import { CategoryReducer } from '@/entities/Category';
+import { entityCategoryReducers } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
   productDetails: ProductDetailsPageReducer,
   entityBrand: EntityBrandReducers,
-  category: CategoryReducer,
+  entityCategory: entityCategoryReducers,
   rating: RatingReducer,
 };
 

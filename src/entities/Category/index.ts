@@ -1,8 +1,14 @@
-export {
-  CategoriesActions,
-  CategoriesReducer,
-} from './model/slices/CategoriesSlice';
-export { CategoryReducer, CategoryActions } from './model/slices/CategorySlice';
+//ui
+export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
+export { CategoryCarousel } from './ui/CategoryCarousel/CategoryCarousel';
+export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';
+
+// slices
+export { CategoriesActions } from './model/slices/CategoriesSlice';
+export { CategoryActions } from './model/slices/CategorySlice';
+export { entityCategoryReducers } from './model/slices';
+
+// selectors
 export {
   getAllCategoriesSelector,
   getAllCategoriesIsLoadingSelector,
@@ -12,11 +18,11 @@ export {
   getCategoryIdSelector,
   getCategoryNameSelector,
 } from './model/selectors/getCategoryStateSelector';
+
+// services
 export { fetchAllCategories } from './model/services/fetchAllCategories';
 export { fetchCategory } from './model/services/fetchCategory';
-export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
-export { CategoryCarousel } from './ui/CategoryCarousel/CategoryCarousel';
-export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';
-export type { AllCategoriesSchema } from './model/types/AllCategoriesSchema';
-export type { CategorySchema } from './model/types/CategorySchema';
+
+// types
+export type { EntityCategorySchema } from './model/types';
 export type { ICategory } from './model/types/ICategory';

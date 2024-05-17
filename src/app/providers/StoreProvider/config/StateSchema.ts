@@ -12,7 +12,7 @@ import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { ProductsSchema } from '@/pages/ProductsPage';
 import { EntityBrandSchema } from '@/entities/Brand';
-import { AllCategoriesSchema, CategorySchema } from '@/entities/Category';
+import { EntityCategorySchema } from '@/entities/Category';
 import { ProductDetailsSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 import { MainPageSchema } from '@/pages/MainPage';
@@ -26,9 +26,7 @@ export interface StateSchema {
   mainPage?: MainPageSchema;
   productDetails?: ProductDetailsSchema;
   entityBrand?: EntityBrandSchema;
-  categoriesList?: AllCategoriesSchema;
-
-  category?: CategorySchema;
+  entityCategory?: EntityCategorySchema;
   rating?: RatingSchema;
 }
 

@@ -10,13 +10,11 @@ import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButton
 import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';
 import { useSelector } from 'react-redux';
 import { getAllCategoriesSelector } from '../../model/selectors/getAllCategoriesSelector';
-import { CategoriesReducer } from '../../model/slices/CategoriesSlice';
 import { ICategory } from '../../model/types/ICategory';
-import { CategoryReducer } from '../../model/slices/CategorySlice';
+import { entityCategoryReducers } from '../../model/slices';
 
 const asyncCategoryListReducer: ReducersList = {
-  categoriesList: CategoriesReducer,
-  category: CategoryReducer,
+  entityCategory: entityCategoryReducers,
 };
 
 interface CategoryProps {

@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { ICategory } from '../types/ICategory';
 
 export const getCategoryStateSelector = (state: StateSchema) => {
-  return state.category?.category;
+  return state.entityCategory?.category?.category;
 };
 
 export const getCategoryIdSelector = createSelector(
