@@ -8,6 +8,7 @@ import {
   fetchProducts,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
+  getProductsListInitedSelector,
   getProductsListIsLoadingSelector,
   getProductsListSelector,
   ProductList,
@@ -18,7 +19,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { BrandActions, BrandReducer } from '@/entities/Brand';
+import { BrandActions, EntityBrandReducers } from '@/entities/Brand';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
   CategoryActions,
@@ -29,11 +30,10 @@ import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 import { Paginate } from '@/entities/Paginate';
-import { getProductsListInitedSelector } from '@/entities/Product';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   productsList: ProductsReducer,
-  brand: BrandReducer,
+  entityBrand: EntityBrandReducers,
 };
 
 interface ProductsPageProps {

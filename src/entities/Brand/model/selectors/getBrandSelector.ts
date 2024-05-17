@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { IBrand } from '../types/IBrand';
 
 export const getBrandSelector = (state: StateSchema) => {
-  return state.brand?.brand;
+  return state.entityBrand?.brand?.brand;
 };
 
 export const getBrandIdSelector = createSelector(

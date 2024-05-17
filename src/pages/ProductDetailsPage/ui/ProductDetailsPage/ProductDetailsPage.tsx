@@ -4,8 +4,8 @@ import cls from './ProductDetailsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   fetchProductDetails,
-  ProductPreview,
   ProductHeading,
+  ProductPreview,
   ProductSpecification,
 } from '@/entities/Product';
 import {
@@ -15,13 +15,13 @@ import {
 import { ProductDetailsPageReducer } from '../../../../entities/Product/model/slices/ProductDetailsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
-import { BrandReducer } from '@/entities/Brand';
+import { EntityBrandReducers } from '@/entities/Brand';
 import { CategoryReducer } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
-  productDetailsPage: ProductDetailsPageReducer,
-  brand: BrandReducer,
+  productDetails: ProductDetailsPageReducer,
+  entityBrand: EntityBrandReducers,
   category: CategoryReducer,
   rating: RatingReducer,
 };

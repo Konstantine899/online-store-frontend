@@ -1,16 +1,14 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductTabBrand.module.scss';
-import { Brand } from '@/entities/Brand';
+import { Brand, EntityBrandReducers } from '@/entities/Brand';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { AllBrandsReducer, AllBrandsByCategoryReducer } from '@/entities/Brand';
 
 const asyncBrandReducer: ReducersList = {
-  allBrands: AllBrandsReducer,
-  allBrandsByCategory: AllBrandsByCategoryReducer,
+  entityBrand: EntityBrandReducers,
 };
 
 export interface TabBrandProps {

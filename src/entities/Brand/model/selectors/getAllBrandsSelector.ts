@@ -2,7 +2,7 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getAllBrandsState = (state: StateSchema) => {
-  return state.allBrands;
+  return state.entityBrand?.allBrands;
 };
 export const getAllBrandsSelector = createSelector(
   getAllBrandsState,

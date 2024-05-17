@@ -1,14 +1,16 @@
+// ui
 export { Brand } from './ui/Brand/Brand';
+
+// services
 export { fetchBrand } from './model/services/fetchBrand';
-export {
-  AllBrandsReducer,
-  AllBrandsActions,
-} from './model/slices/AllBrandsSlice';
-export { BrandReducer, BrandActions } from './model/slices/BrandSlice';
-export {
-  AllBrandsByCategoryActions,
-  AllBrandsByCategoryReducer,
-} from './model/slices/AllBrandsByCategorySlice';
+
+// slices
+export { AllBrandsActions } from './model/slices/AllBrandsSlice';
+export { BrandActions } from './model/slices/BrandSlice';
+export { AllBrandsByCategoryActions } from './model/slices/AllBrandsByCategorySlice';
+export { EntityBrandReducers } from './model/slices';
+
+// selectors
 export { getAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
 export {
   getBrandSelector,
@@ -20,7 +22,7 @@ export {
   getAllBrandsByCategoryIsLoadingSelector,
   getAllBrandsByCategoryStateSelector,
 } from './model/selectors/getAllBrandsByCategorySelector';
-export type { AllBrandsSchema } from './model/types/AllBrandsSchema';
-export type { AllBrandsByCategorySchema } from './model/types/AllBrandsByCategorySchema';
-export type { BrandSchema } from './model/types/BrandSchema';
+
+// types
+export type { EntityBrandSchema } from './model/types';
 export type { IBrand } from './model/types/IBrand';
