@@ -1,21 +1,5 @@
+//ui
 export { ProductList } from './ui/ProductList/ProductList';
-export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
-export {
-  ProductsCarouselReducer,
-  ProductsCarouselActions,
-} from './model/slices/ProductsCarouselSlice';
-export { fetchProducts } from './model/services/fetchProducts';
-export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
-export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
-
-export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
-export { fetchProductDetails } from './model/services/fetchProductDetails';
-export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
-export type {
-  ProductsSchema,
-  Product,
-  ProductsListMetaData,
-} from './model/types/ProductsSchema';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
@@ -28,6 +12,23 @@ export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 export { ProductPopular } from './ui/ProductPopular/ProductPopular';
 
+//slices
+export { ProductsActions } from './model/slices/ProductsSlice';
+export {
+  ProductsCarouselActions,
+  ProductsCarouselReducer,
+} from './model/slices/ProductsCarouselSlice';
+export { entityProductReducers } from './model/slices';
+
+//services
+export { fetchProducts } from './model/services/fetchProducts';
+export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
+export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
+export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
+export { fetchProductDetails } from './model/services/fetchProductDetails';
+export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
+
+// selectors
 export {
   getSearchSelector,
   getSortOrderSelector,
@@ -41,5 +42,6 @@ export {
   getCountSelector,
 } from './model/selectors/getProductsSelector';
 
-export type { ProductDetailsSchema } from './model/types/ProductDetailsSchema';
-export type { IProductDetails } from './model/types/IProductDetails';
+// types
+export type { ProductsSchema } from './model/types/ProductsSchema';
+export type { EntityProductSchema } from './model/types';

@@ -3,6 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductDetailsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
+  entityProductReducers,
   fetchProductDetails,
   ProductHeading,
   ProductPreview,
@@ -12,7 +13,6 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ProductDetailsPageReducer } from '../../../../entities/Product/model/slices/ProductDetailsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
 import { EntityBrandReducers } from '@/entities/Brand';
@@ -20,7 +20,7 @@ import { entityCategoryReducers } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
-  productDetails: ProductDetailsPageReducer,
+  entityProduct: entityProductReducers,
   entityBrand: EntityBrandReducers,
   entityCategory: entityCategoryReducers,
   rating: RatingReducer,

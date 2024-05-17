@@ -63,4 +63,4 @@ export const ProductDetailsSlice = createSlice({
 });
 
 export const { actions: ProductDetailsPageActions } = ProductDetailsSlice;
-export const { reducer: ProductDetailsPageReducer } = ProductDetailsSlice;
+export const { reducer: ProductDetailsReducer } = ProductDetailsSlice;

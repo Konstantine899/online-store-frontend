@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
 import { fetchProductsByCategoryCarousel } from '../services/fetchProductsByCategoryCarousel';
+import { ProductsByCategoryCarouselSchema } from '../types/ProductsByCategoryCarouselSchema';
 
-const initialState: ProductsSchema = {
+const initialState: ProductsByCategoryCarouselSchema = {
   rows: [],
   count: 0,
   metaData: {

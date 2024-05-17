@@ -10,10 +10,9 @@ import {
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
-import { ProductsSchema } from '@/pages/ProductsPage';
 import { EntityBrandSchema } from '@/entities/Brand';
 import { EntityCategorySchema } from '@/entities/Category';
-import { ProductDetailsSchema } from '@/entities/Product';
+import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 import { MainPageSchema } from '@/pages/MainPage';
 
@@ -22,9 +21,8 @@ export interface StateSchema {
   user: UserSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
-  productsList?: ProductsSchema;
   mainPage?: MainPageSchema;
-  productDetails?: ProductDetailsSchema;
+  entityProduct?: EntityProductSchema;
   entityBrand?: EntityBrandSchema;
   entityCategory?: EntityCategorySchema;
   rating?: RatingSchema;

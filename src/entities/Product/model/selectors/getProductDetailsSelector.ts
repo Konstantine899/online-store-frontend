@@ -3,7 +3,7 @@ import { IProductDetails } from '../types/IProductDetails';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const getProductDetailsSelector = (state: StateSchema) => {
-  return state.productDetails?.productDetails;
+  return state.entityProduct?.productDetails?.productDetails;
 };
 
 export const getProductDetailsPriceSelector = createSelector(
@@ -27,9 +27,9 @@ export const getProductDetailsNameSelector = createSelector(
   },
 );
 export const getProductDetailsIsLoadingSelector = (state: StateSchema) => {
-  return state.productDetails?.isLoading ?? false;
+  return state.entityProduct?.productDetails?.isLoading ?? false;
 };
 
 export const getProductDetailsInitedSelector = (state: StateSchema) => {
-  return state.productDetails?._inited ?? false;
+  return state.entityProduct?.productDetails?._inited ?? false;
 };

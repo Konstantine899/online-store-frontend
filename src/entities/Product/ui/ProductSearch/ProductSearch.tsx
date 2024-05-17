@@ -11,15 +11,19 @@ import { BrandActions } from '@/entities/Brand';
 import { CategoryActions } from '@/entities/Category';
 import { Search } from '@/shared/ui/Search/Search';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { useNavigate } from 'react-router-dom';
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
 import cls from './ProductSearch.module.scss';
 import { InputTheme } from '@/shared/ui/Input/Input';
+import { entityProductReducers } from '../../model/slices';
 
-const initialAsyncReducersProductSearch = {
-  productsList: ProductsReducer,
+const initialAsyncReducersProductSearch: ReducersList = {
+  entityProduct: entityProductReducers,
 };
 
 interface SearchProps {

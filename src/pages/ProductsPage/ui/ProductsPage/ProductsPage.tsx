@@ -5,6 +5,7 @@ import { Page } from '@/widgets/Page';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
 import { useSelector } from 'react-redux';
 import {
+  entityProductReducers,
   fetchProducts,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
@@ -13,7 +14,6 @@ import {
   getProductsListSelector,
   ProductList,
   ProductsActions,
-  ProductsReducer,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
@@ -32,7 +32,7 @@ import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading'
 import { Paginate } from '@/entities/Paginate';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
-  productsList: ProductsReducer,
+  entityProduct: entityProductReducers,
   entityBrand: EntityBrandReducers,
 };
 

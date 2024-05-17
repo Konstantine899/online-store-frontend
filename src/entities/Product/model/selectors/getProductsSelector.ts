@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
 
 export const getProductsSelector = (state: StateSchema) => {
-  return state.productsList;
+  return state.entityProduct?.products;
 };
 
 export const getProductsListSelector = createSelector(
