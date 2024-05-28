@@ -1,22 +1,22 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductPopular.module.scss';
-import { ProductCarousel } from '../ProductCarousel/ProductCarousel';
-import { ProductCarouselHeading } from '../ProductCarouselHeading/ProductCarouselHeading';
-import { ICategory } from '@/entities/Category';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 
 interface ProductPopularProps {
   className?: string;
-  categories: ICategory[];
 }
 
 export const ProductPopular = memo((props: ProductPopularProps) => {
-  const { className, categories } = props;
+  const { className } = props;
 
   return (
     <div className={classNames(cls.ProductPopular, {}, [className])}>
-      <ProductCarouselHeading categories={categories} />
-      <ProductCarousel />
+      <Text
+        title={'Популярные товары'}
+        theme={TextTheme.INVERTED}
+        size={TextSize.XL}
+      />
     </div>
   );
 });

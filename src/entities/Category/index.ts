@@ -1,6 +1,5 @@
 //ui
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
-export { CategoryCarousel } from './ui/CategoryCarousel/CategoryCarousel';
 export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';
 
 // slices

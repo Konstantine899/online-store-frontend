@@ -39,8 +39,8 @@ export const MainPage = memo((props: MainPageProps) => {
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={asyncReducersMainPage}>
         <Page className={classNames(cls.MainPage, {}, [className])}>
-          <CategoriesPopular categories={categories} />
-          <ProductPopular categories={categories} />
+          <CategoriesPopular />
+          <ProductPopular />
         </Page>
       </DynamicModuleLoader>
     </Suspense>

@@ -2,7 +2,7 @@
 
 .primary {
     .title {
-        color: var(--theme-primary-color)
+        color: var(--theme-primary-color);
     }
 
     .text {
@@ -14,7 +14,7 @@
 
 .inverted {
     .title {
-        color: var(--theme-inverted-color)
+        color: var(--theme-inverted-color);
     }
 
     .text {
@@ -26,7 +26,7 @@
 
 .error {
     .title {
-        color: var(--theme-error-color)
+        color: var(--theme-error-color);
     }
 
     .text {
@@ -49,6 +49,7 @@
 .size_s {
     .title {
         font: var(--font-m);
+        font-weight: 900;
     }
 
     .text{
@@ -59,6 +60,7 @@
 .size_m {
     .title {
         font: var(--font-l);
+        font-weight: 900;
     }
 
     .text{
@@ -69,6 +71,7 @@
 .size_l {
     .title {
         font: var(--font-l);
+        font-weight: 900;
     }
 
     .text{
@@ -79,6 +82,7 @@
 .size_xl {
     .title {
         font: var(--font-xl);
+        font-weight: 900;
     }
 
     .text{

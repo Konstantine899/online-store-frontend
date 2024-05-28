@@ -1,6 +1,15 @@
 .CategoriesPopular {
+    margin: -10px -15px;
+    padding: 10px 15px;
 }
 
-.Title{
-  margin-bottom: 20px;
+.CategoryCard{
+    display: flex;
+    flex-direction: column;
+    width: 141.5px;
+    height: 157.6px;
+}
+
+.image{
+    object-fit: contain;
 }
