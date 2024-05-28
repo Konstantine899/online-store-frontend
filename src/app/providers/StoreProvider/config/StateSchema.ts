@@ -15,10 +15,12 @@ import { EntityCategorySchema } from '@/entities/Category';
 import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 import { MainPageSchema } from '@/pages/MainPage';
+import { ScrollSchema } from '@/features/Scroll';
 
 export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
+  scroll: ScrollSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   mainPage?: MainPageSchema;
