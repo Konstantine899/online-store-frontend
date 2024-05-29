@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { FetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
-import { getCategoryIdSelector } from '../../model/selectors/getCategoryStateSelector';
+import { selectCategoryId } from '../../model/selectors/selectCategory';
 import { fetchCategory } from '../../model/services/fetchCategory';
 import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
 import { BrandActions } from '@/entities/Brand';
@@ -22,7 +22,7 @@ interface BurgerMenuItemProps {
 export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const { className, item, onClose } = props;
   const dispatch = useAppDispatch();
-  const categoryId = useSelector(getCategoryIdSelector);
+  const categoryId = useSelector(selectCategoryId);
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(fetchCategory({ id: categoryId }));

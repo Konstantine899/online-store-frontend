@@ -6,14 +6,16 @@ import {
   ProductSortingOrder,
   ProductTabBrand,
 } from '@/entities/Product';
+import { useSelector } from 'react-redux';
+import { selectCategoryId } from '@/entities/Category';
 
 interface ProductsListSortingProps {
   className?: string;
-  categoryId?: number;
 }
 
 export const ProductsListSorting = memo((props: ProductsListSortingProps) => {
-  const { className, categoryId } = props;
+  const { className } = props;
+  const categoryId = useSelector(selectCategoryId);
   return (
     <div className={classNames(cls.ProductsListSorting, {}, [className])}>
       <ProductSortingOrder />

@@ -11,7 +11,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
 import { selectBrandId } from '../../model/selectors/selectBrand';
 import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
-import { getCategoryIdSelector } from '@/entities/Category';
+import { selectCategoryId } from '@/entities/Category';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { useNavigate } from 'react-router';
 import { selectBrandsByCategory } from '../../model/selectors/selectBrandsByCategory';
@@ -26,7 +26,7 @@ export const Brand = memo((props: BrandProps) => {
   const navigate = useNavigate();
   const brands = useSelector(selectBrandsByCategory);
   const brandId = useSelector(selectBrandId);
-  const categoryId = useSelector(getCategoryIdSelector);
+  const categoryId = useSelector(selectCategoryId);
 
   useEffect(() => {
     if (categoryId) dispatch(fetchAllBrandsByCategory({ categoryId }));

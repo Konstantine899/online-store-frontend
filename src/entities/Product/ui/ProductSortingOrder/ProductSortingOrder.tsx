@@ -15,7 +15,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { selectBrandId } from '@/entities/Brand';
-import { getCategoryIdSelector } from '@/entities/Category';
+import { selectCategoryId } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
@@ -30,7 +30,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const dispatch = useAppDispatch();
   const sortOrder = useSelector(selectSortOrder);
   const brandId = useSelector(selectBrandId);
-  const categoryId = useSelector(getCategoryIdSelector);
+  const categoryId = useSelector(selectCategoryId);
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [

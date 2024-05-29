@@ -19,7 +19,7 @@ import {
   getNextPage,
   getPreviosPage,
 } from '../../model/selectors/getPaginateState';
-import { getCategoryIdSelector } from '@/entities/Category';
+import { selectCategoryId } from '@/entities/Category';
 import { selectBrandId } from '@/entities/Brand';
 
 interface PaginateProps {
@@ -37,7 +37,7 @@ export const Paginate = memo((props: PaginateProps) => {
   const previosPage = useSelector(getPreviosPage); // предыдущая страница
   const nextPage = useSelector(getNextPage); // следующая страница
   const brandId = useSelector(selectBrandId);
-  const categoryId = useSelector(getCategoryIdSelector);
+  const categoryId = useSelector(selectCategoryId);
 
   const onPageChange = (pageNumber: number) => () => {
     if (brandId && categoryId == 0) {

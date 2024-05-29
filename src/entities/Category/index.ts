@@ -13,10 +13,9 @@ export {
   selectCategoriesIsLoading,
 } from './model/selectors/selectCategories';
 export {
-  getCategoryStateSelector,
-  getCategoryIdSelector,
-  getCategoryNameSelector,
-} from './model/selectors/getCategoryStateSelector';
+  selectCategoryId,
+  selectCategory,
+} from './model/selectors/selectCategory';
 
 // services
 export { fetchAllCategories } from './model/services/fetchAllCategories';
