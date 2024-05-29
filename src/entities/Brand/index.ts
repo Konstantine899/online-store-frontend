@@ -11,7 +11,6 @@ export { AllBrandsByCategoryActions } from './model/slices/AllBrandsByCategorySl
 export { EntityBrandReducers } from './model/slices';
 
 // selectors
-export { getAllBrandsSelector } from './model/selectors/getAllBrandsSelector';
 export {
   getBrandSelector,
   getBrandIdSelector,
@@ -20,7 +19,7 @@ export {
   selectBrandsByCategory,
   selectBrandsByCategoryIsLoading,
   selectSchemaBrandsByCategory,
-} from './model/selectors/selectSchemaBrandsByCategory';
+} from './model/selectors/selectBrandsByCategory';
 
 // types
 export type { EntityBrandSchema } from './model/types';

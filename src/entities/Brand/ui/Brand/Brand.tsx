@@ -14,7 +14,7 @@ import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByC
 import { getCategoryIdSelector } from '@/entities/Category';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { useNavigate } from 'react-router';
-import { selectBrandsByCategory } from '../../model/selectors/selectSchemaBrandsByCategory';
+import { selectBrandsByCategory } from '../../model/selectors/selectBrandsByCategory';
 
 interface BrandProps {
   className?: string;
