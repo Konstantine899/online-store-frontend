@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductSpecification.module.scss';
 import { useSelector } from 'react-redux';
-import { getProductDetailsPropertiesSelector } from '../../model/selectors/getProductDetailsSelector';
+import { selectProperties } from '../../model/selectors/selectProductDetails';
 
 interface ProductDetailsInfoProps {
   className?: string;
@@ -11,7 +11,7 @@ interface ProductDetailsInfoProps {
 
 export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
   const { className, title } = props;
-  const properties = useSelector(getProductDetailsPropertiesSelector);
+  const properties = useSelector(selectProperties);
 
   return (
     <div className={classNames(cls.ProductSpecification, {}, [className])}>

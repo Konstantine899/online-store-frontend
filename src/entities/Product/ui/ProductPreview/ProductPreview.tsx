@@ -9,10 +9,10 @@ import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
 import {
-  getProductDetailsInitedSelector,
-  getProductDetailsIsLoadingSelector,
-  getProductDetailsSelector,
-} from '../../model/selectors/getProductDetailsSelector';
+  selectProductDetails,
+  selectProductDetailsInited,
+  selectProductDetailsIsLoading,
+} from '../../model/selectors/selectProductDetails';
 
 interface ProductDetailsProps {
   className?: string;
@@ -22,9 +22,9 @@ export const ProductPreview = memo((props: ProductDetailsProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const productDetails = useSelector(getProductDetailsSelector);
-  const isLoading = useSelector(getProductDetailsIsLoadingSelector);
-  const _inited = useSelector(getProductDetailsInitedSelector);
+  const productDetails = useSelector(selectProductDetails);
+  const isLoading = useSelector(selectProductDetailsIsLoading);
+  const _inited = useSelector(selectProductDetailsInited);
 
   useEffect(() => {
     if (productDetails) {

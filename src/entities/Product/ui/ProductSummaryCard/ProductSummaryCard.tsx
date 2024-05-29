@@ -6,7 +6,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { ProductRating } from '../ProductRating/ProductRating';
 import { ProductVotes } from '../ProductVotes/ProductVotes';
 import { useSelector } from 'react-redux';
-import { getProductDetailsPriceSelector } from '../../model/selectors/getProductDetailsSelector';
+import { selectPrice } from '../../model/selectors/selectProductDetails';
 
 interface ProductSummaryCardProps {
   className?: string;
@@ -14,7 +14,7 @@ interface ProductSummaryCardProps {
 
 export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
   const { className } = props;
-  const price = useSelector(getProductDetailsPriceSelector);
+  const price = useSelector(selectPrice);
 
   return (
     <Card
