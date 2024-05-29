@@ -15,7 +15,7 @@ import {
 } from '@/features/Registration';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getUserState, UserActions } from '@/entities/User';
+import { selectUserRole, UserActions } from '@/entities/User';
 import { AuthActions } from '@/entities/Auth';
 import { useNavigate } from 'react-router';
 import { AppLinkFontSizeSize, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
@@ -38,7 +38,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const authData = useSelector(getUserState);
+  const authData = useSelector(selectUserRole);
 
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
