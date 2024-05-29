@@ -3,5 +3,5 @@ export {
   AuthActions,
   AuthReducer,
 } from '@/entities/Auth/model/slices/AuthSlice';
-export { getAuthState } from '@/entities/Auth/model/selectors/getAuthState';
+export { selectAuth } from '@/entities/Auth/model/selectors/selectAuth';
 export { setUserData } from './helpers/setUserData';
