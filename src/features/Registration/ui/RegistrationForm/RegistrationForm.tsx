@@ -9,11 +9,11 @@ import {
   RegistrationReducer,
 } from '../../model/slices/RegistrationSlice';
 import {
-  getRegistrationEmail,
-  getRegistrationError,
-  getRegistrationIsLoading,
-  getRegistrationPassword,
-} from '../../model/selectors/getRegistrationState';
+  selectRegistrationEmail,
+  selectRegistrationError,
+  selectRegistrationIsLoading,
+  selectRegistrationPassword,
+} from '../../model/selectors/selectRegistration';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
@@ -37,10 +37,10 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
   const { className, onClose } = props;
 
   const dispatch = useAppDispatch();
-  const email = useSelector(getRegistrationEmail);
-  const password = useSelector(getRegistrationPassword);
-  const isLoading = useSelector(getRegistrationIsLoading);
-  const error = useSelector(getRegistrationError);
+  const email = useSelector(selectRegistrationEmail);
+  const password = useSelector(selectRegistrationPassword);
+  const isLoading = useSelector(selectRegistrationIsLoading);
+  const error = useSelector(selectRegistrationError);
 
   const onChangeEmail = useCallback(
     (value: string) => {
