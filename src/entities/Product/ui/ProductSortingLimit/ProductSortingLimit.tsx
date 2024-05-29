@@ -14,7 +14,7 @@ import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { getBrandIdSelector } from '@/entities/Brand';
+import { selectBrandId } from '@/entities/Brand';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
@@ -29,7 +29,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
 
   const dispatch = useAppDispatch();
   const value = useSelector(selectLimit);
-  const brandId = useSelector(getBrandIdSelector);
+  const brandId = useSelector(selectBrandId);
   const categoryId = useSelector(getCategoryIdSelector);
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(

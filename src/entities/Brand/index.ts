@@ -11,14 +11,10 @@ export { AllBrandsByCategoryActions } from './model/slices/AllBrandsByCategorySl
 export { EntityBrandReducers } from './model/slices';
 
 // selectors
-export {
-  getBrandSelector,
-  getBrandIdSelector,
-} from './model/selectors/getBrandSelector';
+export { selectBrandId } from './model/selectors/selectBrand';
 export {
   selectBrandsByCategory,
   selectBrandsByCategoryIsLoading,
-  selectSchemaBrandsByCategory,
 } from './model/selectors/selectBrandsByCategory';
 
 // types

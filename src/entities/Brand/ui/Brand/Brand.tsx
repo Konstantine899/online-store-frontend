@@ -9,7 +9,7 @@ import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
-import { getBrandIdSelector } from '../../model/selectors/getBrandSelector';
+import { selectBrandId } from '../../model/selectors/selectBrand';
 import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
@@ -25,7 +25,7 @@ export const Brand = memo((props: BrandProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const brands = useSelector(selectBrandsByCategory);
-  const brandId = useSelector(getBrandIdSelector);
+  const brandId = useSelector(selectBrandId);
   const categoryId = useSelector(getCategoryIdSelector);
 
   useEffect(() => {

@@ -20,7 +20,7 @@ import {
   getPreviosPage,
 } from '../../model/selectors/getPaginateState';
 import { getCategoryIdSelector } from '@/entities/Category';
-import { getBrandIdSelector } from '@/entities/Brand';
+import { selectBrandId } from '@/entities/Brand';
 
 interface PaginateProps {
   className?: string;
@@ -36,7 +36,7 @@ export const Paginate = memo((props: PaginateProps) => {
   const lastPage = useSelector(getLastPage); // последняя страница
   const previosPage = useSelector(getPreviosPage); // предыдущая страница
   const nextPage = useSelector(getNextPage); // следующая страница
-  const brandId = useSelector(getBrandIdSelector);
+  const brandId = useSelector(selectBrandId);
   const categoryId = useSelector(getCategoryIdSelector);
 
   const onPageChange = (pageNumber: number) => () => {
