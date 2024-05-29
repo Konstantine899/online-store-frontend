@@ -14,7 +14,6 @@ import { EntityBrandSchema } from '@/entities/Brand';
 import { EntityCategorySchema } from '@/entities/Category';
 import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
-import { MainPageSchema } from '@/pages/MainPage';
 import { ScrollSchema } from '@/features/Scroll';
 
 export interface StateSchema {
@@ -23,7 +22,6 @@ export interface StateSchema {
   scroll: ScrollSchema;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
-  mainPage?: MainPageSchema;
   entityProduct?: EntityProductSchema;
   entityBrand?: EntityBrandSchema;
   entityCategory?: EntityCategorySchema;

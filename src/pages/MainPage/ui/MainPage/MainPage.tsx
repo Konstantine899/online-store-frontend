@@ -4,21 +4,20 @@ import cls from './MainPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   CategoriesPopular,
+  entityCategoryReducers,
   fetchAllCategories,
-  selectCategories,
 } from '@/entities/Category';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { ProductPopular } from '@/entities/Product';
+import { entityProductReducers, ProductPopular } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { mainPageReducers } from '../../model/slices/index';
 
 const asyncReducersMainPage: ReducersList = {
-  mainPage: mainPageReducers,
+  entityProduct: entityProductReducers,
+  entityCategory: entityCategoryReducers,
 };
 
 interface MainPageProps {
@@ -28,8 +27,6 @@ interface MainPageProps {
 export const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-
-  const categories = useSelector(selectCategories);
 
   useEffect(() => {
     dispatch(fetchAllCategories());
