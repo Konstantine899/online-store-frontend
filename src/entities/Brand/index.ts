@@ -17,11 +17,10 @@ export {
   getBrandIdSelector,
 } from './model/selectors/getBrandSelector';
 export {
-  getAllBrandsByCategorySelector,
-  getAllBrandsByCategoryErrorSelector,
-  getAllBrandsByCategoryIsLoadingSelector,
-  getAllBrandsByCategoryStateSelector,
-} from './model/selectors/getAllBrandsByCategorySelector';
+  selectBrandsByCategory,
+  selectBrandsByCategoryIsLoading,
+  selectSchemaBrandsByCategory,
+} from './model/selectors/selectSchemaBrandsByCategory';
 
 // types
 export type { EntityBrandSchema } from './model/types';

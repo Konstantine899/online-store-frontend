@@ -10,11 +10,11 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
 import { getBrandIdSelector } from '../../model/selectors/getBrandSelector';
-import { getAllBrandsByCategorySelector } from '../../model/selectors/getAllBrandsByCategorySelector';
 import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
 import { getCategoryIdSelector } from '@/entities/Category';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { useNavigate } from 'react-router';
+import { selectBrandsByCategory } from '../../model/selectors/selectSchemaBrandsByCategory';
 
 interface BrandProps {
   className?: string;
@@ -24,7 +24,7 @@ export const Brand = memo((props: BrandProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const brands = useSelector(getAllBrandsByCategorySelector);
+  const brands = useSelector(selectBrandsByCategory);
   const brandId = useSelector(getBrandIdSelector);
   const categoryId = useSelector(getCategoryIdSelector);
 
