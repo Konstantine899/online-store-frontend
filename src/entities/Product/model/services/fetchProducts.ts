@@ -3,11 +3,9 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { ProductsSchema } from '../types/ProductsSchema';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { getCurrentPage, getLimit } from '@/entities/Paginate';
-import {
-  getSearchSelector,
-  getSortOrderSelector,
-} from '../../model/selectors/getProductsSelector';
+
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
+import { selectSearch, selectSortOrder } from '../selectors/selectProducts';
 
 export const fetchProducts = createAsyncThunk<
   ProductsSchema,
@@ -18,8 +16,8 @@ export const fetchProducts = createAsyncThunk<
   try {
     const limit = getLimit(getState());
     const page = getCurrentPage(getState());
-    const search = getSearchSelector(getState());
-    const sort = getSortOrderSelector(getState());
+    const search = selectSearch(getState());
+    const sort = selectSortOrder(getState());
     addQueryParams({
       search: `${search}`,
       page: `${page}`,

@@ -9,9 +9,9 @@ import {
   fetchProducts,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
-  getProductsListInitedSelector,
-  getProductsListIsLoadingSelector,
-  getProductsListSelector,
+  selectProductsInited,
+  selectProductsIsLoading,
+  selectProducts,
   ProductList,
   ProductsActions,
 } from '@/entities/Product';
@@ -49,12 +49,12 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const paramPage = Number(URLSearchParams.get('page'));
   const paramSort = URLSearchParams.get('sort');
   const paramSearch = URLSearchParams.get('search');
-  const products = useSelector(getProductsListSelector);
-  const isLoading = useSelector(getProductsListIsLoadingSelector);
+  const products = useSelector(selectProducts);
+  const isLoading = useSelector(selectProductsIsLoading);
   const categoryId = useSelector(getCategoryIdSelector);
   const { categoryId: URLParamCategoryId, brandId: URLParamBrandId } =
     useParams();
-  const _inited = useSelector(getProductsListInitedSelector);
+  const _inited = useSelector(selectProductsInited);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(paramPage || 1));

@@ -4,7 +4,7 @@ import { ProductsSchema } from '../types/ProductsSchema';
 import { getCurrentPage, getLimit } from '@/entities/Paginate';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
-import { getSortOrderSelector } from '../selectors/getProductsSelector';
+import { selectSortOrder } from '@/entities/Product/model/selectors/selectProducts';
 
 interface FetchProductsByCategoryProps {
   categoryId: number;
@@ -19,7 +19,7 @@ export const FetchProductsByCategory = createAsyncThunk<
   try {
     const limit = getLimit(getState());
     const page = getCurrentPage(getState());
-    const sort = getSortOrderSelector(getState());
+    const sort = selectSortOrder(getState());
     addQueryParams({
       page: `${page}`,
       limit: `${limit}`,

@@ -9,7 +9,7 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
-import { getLimitSelector } from '../../model/selectors/getProductsSelector';
+import { selectLimit } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const value = useSelector(getLimitSelector);
+  const value = useSelector(selectLimit);
   const brandId = useSelector(getBrandIdSelector);
   const categoryId = useSelector(getCategoryIdSelector);
 

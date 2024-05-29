@@ -1,17 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 import { ProductsSchema } from '../types/ProductsSchema';
-import { addQueryParams } from '@/shared/url/addQueryParams';
-import { getCurrentPage, getLimit } from '@/entities/Paginate';
-import {
-  getSearchSelector,
-  getSortOrderSelector,
-} from '../../model/selectors/getProductsSelector';
-import {
-  getRouteListProducts,
-  getRouteListProductsByCategory,
-} from '@/shared/consts/router/publicRouter';
-import { CategoryActions, getCategoryIdSelector } from '@/entities/Category';
+import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
+import { CategoryActions } from '@/entities/Category';
 
 interface IFetchProductsByCategoryCarousel {
   categoryId: number;

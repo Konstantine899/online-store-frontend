@@ -30,17 +30,15 @@ export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 
 // selectors
 export {
-  getSearchSelector,
-  getSortOrderSelector,
-  getProductsListInitedSelector,
-} from './model/selectors/getProductsSelector';
-export {
-  getProductsListIsLoadingSelector,
-  getProductsSelector,
-  getProductsListSelector,
-  getLimitSelector,
+  selectProductsIsLoading,
+  selectProductsState,
+  selectProducts,
+  selectLimit,
   getCountSelector,
-} from './model/selectors/getProductsSelector';
+  selectSortOrder,
+  selectSearch,
+  selectProductsInited,
+} from './model/selectors/selectProducts';
 
 // types
 export type { ProductsSchema } from './model/types/ProductsSchema';

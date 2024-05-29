@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
-import { getSortOrderSelector } from '../../model/selectors/getProductsSelector';
+import { selectSortOrder } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import {
@@ -28,7 +28,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const value = useSelector(getSortOrderSelector);
+  const sortOrder = useSelector(selectSortOrder);
   const brandId = useSelector(getBrandIdSelector);
   const categoryId = useSelector(getCategoryIdSelector);
 
@@ -62,7 +62,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
       <Select<ISortOrder>
         options={selectOptions}
         label={'По'}
-        active={value}
+        active={sortOrder}
         onChange={onChange}
         WrapperWidth={WrapperWidth.XL}
         SelectWidth={SelectWidth.XL}
