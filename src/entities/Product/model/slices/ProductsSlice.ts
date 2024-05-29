@@ -12,8 +12,8 @@ const initialState: ProductsSchema = {
   metaData: {
     previousPage: 0,
     currentPage: 1,
+    nextPage: 2,
     lastPage: 0,
-    nextPage: 0,
     totalCount: 0,
     limit: 0,
   },

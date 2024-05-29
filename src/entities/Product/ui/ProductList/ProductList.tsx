@@ -4,7 +4,7 @@ import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { Product } from '../../model/types/ProductsSchema';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
-import { getLimit } from '@/entities/Paginate';
+import { selectLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 
@@ -23,7 +23,7 @@ const getSkeletons = (quantity: number) => {
 
 export const ProductList = memo((props: ProductProps) => {
   const { className, products, isLoading, _inited } = props;
-  const limit = useSelector(getLimit);
+  const limit = useSelector(selectLimit);
 
   if (_inited && products.length == 0) {
     return (

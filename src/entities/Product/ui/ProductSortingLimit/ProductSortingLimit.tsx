@@ -9,7 +9,6 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
-import { selectLimit } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -19,6 +18,7 @@ import { selectCategoryId } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
+import { selectLimit } from '@/entities/Paginate';
 
 interface SortingLimitProps {
   className?: string;

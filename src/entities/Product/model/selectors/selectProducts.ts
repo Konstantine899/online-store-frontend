@@ -24,16 +24,13 @@ export const selectProductsInited = createSelector(
   },
 );
 
-export const selectLimit = createSelector(selectProductsState, (state) => {
-  return state?.metaData?.limit ?? 5;
-});
-
-export const getCountSelector = createSelector(selectProductsState, (state) => {
-  return state?.metaData?.totalCount ?? 0;
-});
 export const selectSearch = createSelector(selectProductsState, (state) => {
   return state?.search ?? '';
 });
 export const selectSortOrder = createSelector(selectProductsState, (state) => {
   return state?.sortingOrder ?? 'asc';
+});
+
+export const selectCount = createSelector(selectProductsState, (state) => {
+  return state?.count ?? 0;
 });

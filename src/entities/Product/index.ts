@@ -33,11 +33,10 @@ export {
   selectProductsIsLoading,
   selectProductsState,
   selectProducts,
-  selectLimit,
-  getCountSelector,
   selectSortOrder,
   selectSearch,
   selectProductsInited,
+  selectCount,
 } from './model/selectors/selectProducts';
 
 // types

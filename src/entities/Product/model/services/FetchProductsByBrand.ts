@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 import { ProductsSchema } from '../../model/types/ProductsSchema';
-import { getCurrentPage, getLimit } from '@/entities/Paginate';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { selectSearch, selectSortOrder } from '../selectors/selectProducts';
+import { selectCurrentPage, selectLimit } from '@/entities/Paginate';
 
 interface FetchProductsByBrandProps {
   brandId: number;
@@ -16,8 +16,8 @@ export const FetchProductsByBrand = createAsyncThunk<
 >('FetchProductsByBrand', async ({ brandId }, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
-    const limit = getLimit(getState());
-    const page = getCurrentPage(getState());
+    const limit = selectLimit(getState());
+    const page = selectCurrentPage(getState());
     const search = selectSearch(getState());
     const sort = selectSortOrder(getState());
     addQueryParams({

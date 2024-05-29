@@ -14,11 +14,11 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 
 import {
-  getCurrentPage,
-  getLastPage,
-  getNextPage,
-  getPreviosPage,
-} from '../../model/selectors/getPaginateState';
+  selectCurrentPage,
+  selectLastPage,
+  selectNextPage,
+  selectPreviosPage,
+} from '../../model/selectors/selectMetaData';
 import { selectCategoryId } from '@/entities/Category';
 import { selectBrandId } from '@/entities/Brand';
 
@@ -32,10 +32,10 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const dispatch = useAppDispatch();
 
-  const currentPage = useSelector(getCurrentPage); // текущая страница
-  const lastPage = useSelector(getLastPage); // последняя страница
-  const previosPage = useSelector(getPreviosPage); // предыдущая страница
-  const nextPage = useSelector(getNextPage); // следующая страница
+  const currentPage = useSelector(selectCurrentPage); // текущая страница
+  const lastPage = useSelector(selectLastPage); // последняя страница
+  const previosPage = useSelector(selectPreviosPage); // предыдущая страница
+  const nextPage = useSelector(selectNextPage); // следующая страница
   const brandId = useSelector(selectBrandId);
   const categoryId = useSelector(selectCategoryId);
 
