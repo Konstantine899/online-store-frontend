@@ -1,6 +1,6 @@
 export { Scroll } from '@/features/Scroll/ui/Scroll';
 export type { ScrollSchema } from '@/features/Scroll/models/types/ScrollSchema';
-export { getScrollPositionByPathSelector } from '@/features/Scroll/models/selectors/getScrollPositionSelector';
+export { selectScrollPosition } from '@/features/Scroll/models/selectors/selectScroll';
 export {
   ScrollReducer,
   ScrollActions,

@@ -2,10 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import cls from './Page.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import {
-  getScrollPositionByPathSelector,
-  ScrollActions,
-} from '@/features/Scroll';
+import { selectScrollPosition, ScrollActions } from '@/features/Scroll';
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
@@ -23,7 +20,7 @@ export const Page = memo((props: PageProps) => {
   const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
   const dispatch = useAppDispatch();
   const scrollPosition = useSelector((state: StateSchema) =>
-    getScrollPositionByPathSelector(state, pathname),
+    selectScrollPosition(state, pathname),
   );
 
   useInitialEffect(() => {
