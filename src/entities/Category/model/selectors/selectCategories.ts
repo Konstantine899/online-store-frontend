@@ -2,17 +2,17 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 import { CategoriesSchema } from '../types/CategoriesSchema';
 
-const getAllCategoriesStateSelector = (state: StateSchema) =>
+const selectSchemaCategories = (state: StateSchema) =>
   state.entityCategory?.categories;
 
-export const getAllCategoriesIsLoadingSelector = createSelector(
-  getAllCategoriesStateSelector,
+export const selectCategoriesIsLoading = createSelector(
+  selectSchemaCategories,
   (state: CategoriesSchema | undefined) => {
     return state?.isLoading ?? false;
   },
 );
-export const getAllCategoriesSelector = createSelector(
-  getAllCategoriesStateSelector,
+export const selectCategories = createSelector(
+  selectSchemaCategories,
   (state) => {
     return state?.categories ?? [];
   },

@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page';
 import {
   CategoriesPopular,
   fetchAllCategories,
-  getAllCategoriesSelector,
+  selectCategories,
 } from '@/entities/Category';
 import {
   DynamicModuleLoader,
@@ -29,7 +29,7 @@ export const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
 
-  const categories = useSelector(getAllCategoriesSelector);
+  const categories = useSelector(selectCategories);
 
   useEffect(() => {
     dispatch(fetchAllCategories());

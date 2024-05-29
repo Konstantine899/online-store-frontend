@@ -9,9 +9,9 @@ export { entityCategoryReducers } from './model/slices';
 
 // selectors
 export {
-  getAllCategoriesSelector,
-  getAllCategoriesIsLoadingSelector,
-} from './model/selectors/getAllCategoriesSelector';
+  selectCategories,
+  selectCategoriesIsLoading,
+} from './model/selectors/selectCategories';
 export {
   getCategoryStateSelector,
   getCategoryIdSelector,

@@ -9,7 +9,7 @@ import { Overlay } from '@/shared/ui/Overlay';
 import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButtonClose';
 import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';
 import { useSelector } from 'react-redux';
-import { getAllCategoriesSelector } from '../../model/selectors/getAllCategoriesSelector';
+import { selectCategories } from '../../model/selectors/selectCategories';
 import { ICategory } from '../../model/types/ICategory';
 import { entityCategoryReducers } from '../../model/slices';
 
@@ -27,7 +27,7 @@ interface CategoryProps {
 export const CategoriesList = memo((props: CategoryProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
-  const categories: ICategory[] = useSelector(getAllCategoriesSelector);
+  const categories: ICategory[] = useSelector(selectCategories);
 
   return (
     <DynamicModuleLoader reducers={asyncCategoryListReducer}>
