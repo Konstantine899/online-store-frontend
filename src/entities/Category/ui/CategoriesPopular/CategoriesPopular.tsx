@@ -11,7 +11,7 @@ import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchCategoriesPopular } from '../../model/services/fetchCategoriesPopular';
 import { useSelector } from 'react-redux';
-import { getCategoriesPopular } from '../../model/selectors/getCategoriesPopular';
+import { selectPopularCategories } from '../../model/selectors/selectPopularCategories';
 
 interface CategoriesPopularProps {
   className?: string;
@@ -21,7 +21,7 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const categories = useSelector(getCategoriesPopular);
+  const categories = useSelector(selectPopularCategories);
 
   useEffect(() => {
     dispatch(fetchCategoriesPopular());

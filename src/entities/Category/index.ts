@@ -16,6 +16,10 @@ export {
   selectCategoryId,
   selectCategory,
 } from './model/selectors/selectCategory';
+export {
+  selectPopularCategories,
+  selectPopularCategoriesIsLoading,
+} from './model/selectors/selectPopularCategories';
 
 // services
 export { fetchAllCategories } from './model/services/fetchAllCategories';
