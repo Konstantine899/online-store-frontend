@@ -5,9 +5,10 @@ import {
   ProductSortingLimit,
   ProductSortingOrder,
   ProductTabBrand,
+  selectProducts,
+  selectProductsInited,
 } from '@/entities/Product';
 import { useSelector } from 'react-redux';
-import { selectCategoryId } from '@/entities/Category';
 
 interface ProductsListSortingProps {
   className?: string;
@@ -15,12 +16,16 @@ interface ProductsListSortingProps {
 
 export const ProductsListSorting = memo((props: ProductsListSortingProps) => {
   const { className } = props;
-  const categoryId = useSelector(selectCategoryId);
-  return (
-    <div className={classNames(cls.ProductsListSorting, {}, [className])}>
-      <ProductSortingOrder />
-      <ProductSortingLimit />
-      {categoryId == 0 ? null : <ProductTabBrand />}
-    </div>
-  );
+  const _inited = useSelector(selectProductsInited);
+  const products = useSelector(selectProducts);
+
+  if (_inited && products.length > 0) {
+    return (
+      <div className={classNames(cls.ProductsListSorting, {}, [className])}>
+        <ProductSortingOrder />
+        <ProductSortingLimit />
+        <ProductTabBrand />
+      </div>
+    );
+  }
 });

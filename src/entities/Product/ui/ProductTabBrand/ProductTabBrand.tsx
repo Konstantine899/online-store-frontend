@@ -6,6 +6,8 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useSelector } from 'react-redux';
+import { selectCategoryId } from '@/entities/Category';
 
 const asyncBrandReducer: ReducersList = {
   entityBrand: EntityBrandReducers,
@@ -17,12 +19,15 @@ export interface TabBrandProps {
 
 export const ProductTabBrand = memo((props: TabBrandProps) => {
   const { className } = props;
+  const categoryId = useSelector(selectCategoryId);
 
-  return (
-    <DynamicModuleLoader reducers={asyncBrandReducer}>
-      <div className={classNames(cls.TabBrand, {}, [className])}>
-        <Brand />
-      </div>
-    </DynamicModuleLoader>
-  );
+  if (categoryId !== 0) {
+    return (
+      <DynamicModuleLoader reducers={asyncBrandReducer}>
+        <div className={classNames(cls.TabBrand, {}, [className])}>
+          <Brand />
+        </div>
+      </DynamicModuleLoader>
+    );
+  }
 });

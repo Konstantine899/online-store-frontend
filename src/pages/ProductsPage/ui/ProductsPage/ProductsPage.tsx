@@ -3,7 +3,6 @@ import { memo, MutableRefObject, Suspense, useEffect, useRef } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
-import { useSelector } from 'react-redux';
 import {
   entityProductReducers,
   fetchProducts,
@@ -11,9 +10,6 @@ import {
   FetchProductsByCategory,
   ProductList,
   ProductsActions,
-  selectProducts,
-  selectProductsInited,
-  selectProductsIsLoading,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
@@ -40,15 +36,13 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
+  const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [URLSearchParams] = useSearchParams();
   const paramLimit = Number(URLSearchParams.get('limit'));
   const paramPage = Number(URLSearchParams.get('page'));
   const paramSort = URLSearchParams.get('sort');
   const paramSearch = URLSearchParams.get('search');
-  const products = useSelector(selectProducts);
-  const isLoading = useSelector(selectProductsIsLoading);
   const { categoryId, brandId } = useParams();
-  const _inited = useSelector(selectProductsInited);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(paramPage || 1));
@@ -83,20 +77,14 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     }
   }, [brandId, categoryId, dispatch, paramSearch]);
 
-  const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
-
   return (
     <Suspense fallback={''}>
       <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
           <div ref={topRef} />
-          {_inited && products.length > 0 && <ProductsPageHeading />}
-          {_inited && products.length > 0 && <ProductsListSorting />}
-          <ProductList
-            _inited={_inited}
-            products={products}
-            isLoading={isLoading}
-          />
+          <ProductsPageHeading />
+          <ProductsListSorting />
+          <ProductList />
           <Paginate topRef={topRef} />
         </Page>
       </DynamicModuleLoader>
