@@ -14,11 +14,11 @@ import {
 
 import { PasswordInput } from '@/shared/lib/components/PasswordInput';
 import {
-  getLoginEmail,
-  getLoginError,
-  getLoginIsLoading,
-  getLoginPassword,
-} from '../../model/selectors/getLoginState';
+  selectLoginEmail,
+  selectLoginError,
+  selectLoginIsLoading,
+  selectLoginPassword,
+} from '../../model/selectors/selectLogin';
 import { loginByEmail } from '../../model/services/loginByEmail';
 import { LoginActions } from '../../model/slices/LoginSlice';
 import { LoginReducer } from '../../model/slices/LoginSlice';
@@ -34,10 +34,10 @@ const LoginForm = memo((props: LoginFormProps) => {
   const { className, onClose } = props;
 
   const dispatch = useAppDispatch();
-  const email = useSelector(getLoginEmail);
-  const password = useSelector(getLoginPassword);
-  const isLoading = useSelector(getLoginIsLoading);
-  const error = useSelector(getLoginError);
+  const email = useSelector(selectLoginEmail);
+  const password = useSelector(selectLoginPassword);
+  const isLoading = useSelector(selectLoginIsLoading);
+  const error = useSelector(selectLoginError);
 
   const onChangeEmail = useCallback(
     (value: string) => {
