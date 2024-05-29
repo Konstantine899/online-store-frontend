@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductVotes.module.scss';
 import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
-import { getVotes } from '@/entities/Rating';
+import { selectVotes } from '@/entities/Rating';
 import { useSelector } from 'react-redux';
 
 interface ProductVotesProps {
@@ -11,7 +11,7 @@ interface ProductVotesProps {
 
 export const ProductVotes = memo((props: ProductVotesProps) => {
   const { className } = props;
-  const votes = useSelector(getVotes);
+  const votes = useSelector(selectVotes);
 
   return (
     <div className={classNames(cls.ProductVotesWrapper, {}, [className])}>
