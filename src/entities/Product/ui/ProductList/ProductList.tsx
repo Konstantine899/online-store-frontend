@@ -3,10 +3,10 @@ import { memo } from 'react';
 import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
-import { selectLimit } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 import {
+  selectLimit,
   selectProducts,
   selectProductsInited,
   selectProductsIsLoading,

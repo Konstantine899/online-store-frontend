@@ -10,18 +10,21 @@ import {
   FetchProductsByCategory,
   ProductList,
   ProductsActions,
+  selectCurrentPage,
+  selectLimit,
+  selectSortOrder,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { BrandActions, EntityBrandReducers } from '@/entities/Brand';
+import { EntityBrandReducers, fetchBrand } from '@/entities/Brand';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { CategoryActions, fetchCategory } from '@/entities/Category';
-import { ISortOrder } from '@/shared/types/ISortOrder';
+import { fetchCategory } from '@/entities/Category';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 import { Paginate } from '@/entities/Paginate';
+import { useSelector } from 'react-redux';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   entityProduct: entityProductReducers,
@@ -38,29 +41,28 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const dispatch = useAppDispatch();
   const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [URLSearchParams] = useSearchParams();
-  const paramLimit = Number(URLSearchParams.get('limit'));
-  const paramPage = Number(URLSearchParams.get('page'));
-  const paramSort = URLSearchParams.get('sort');
   const paramSearch = URLSearchParams.get('search');
   const { categoryId, brandId } = useParams();
+  const limit = useSelector(selectLimit);
+  const currentPage = useSelector(selectCurrentPage);
+  const sortOrder = useSelector(selectSortOrder);
 
   useEffect(() => {
-    dispatch(ProductsActions.setPage(paramPage || 1));
-    dispatch(ProductsActions.setLimit(paramLimit || 5));
-    dispatch(ProductsActions.setSortingOrder(paramSort as ISortOrder));
-    dispatch(fetchCategory({ id: Number(categoryId) }));
-  }, [categoryId, dispatch, paramLimit, paramPage, paramSort]);
+    dispatch(ProductsActions.setPage(Number(currentPage)));
+    dispatch(ProductsActions.setLimit(limit));
+    dispatch(ProductsActions.setSortingOrder(sortOrder));
+  }, [categoryId, currentPage, dispatch, limit, sortOrder]);
 
   useEffect(() => {
     if (categoryId) {
       dispatch(ProductsActions.setSearch(''));
-      dispatch(CategoryActions.setCategoryId(Number(categoryId)));
+      dispatch(fetchCategory({ id: Number(categoryId) }));
       dispatch(FetchProductsByCategory({ categoryId: Number(categoryId) }));
     }
     if (categoryId && brandId) {
       dispatch(ProductsActions.setSearch(''));
-      dispatch(CategoryActions.setCategoryId(Number(categoryId)));
-      dispatch(BrandActions.setBrandId(Number(brandId)));
+      dispatch(fetchCategory({ id: Number(categoryId) }));
+      dispatch(fetchBrand({ id: Number(brandId) }));
       dispatch(
         FetchProductsByBrandAndCategory({
           brandId: Number(brandId),

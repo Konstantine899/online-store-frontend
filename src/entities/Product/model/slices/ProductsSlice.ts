@@ -15,7 +15,7 @@ const initialState: ProductsSchema = {
     nextPage: 2,
     lastPage: 0,
     totalCount: 0,
-    limit: 0,
+    limit: 5,
   },
   search: '',
   sortingOrder: 'asc',

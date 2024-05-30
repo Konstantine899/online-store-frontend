@@ -8,17 +8,15 @@ import {
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
   ProductsActions,
+  selectCurrentPage,
+  selectLastPage,
+  selectNextPage,
+  selectPreviosPage,
 } from '@/entities/Product';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 
-import {
-  selectCurrentPage,
-  selectLastPage,
-  selectNextPage,
-  selectPreviosPage,
-} from '../../model/selectors/selectMetaData';
 import { selectCategoryId } from '@/entities/Category';
 import { selectBrandId } from '@/entities/Brand';
 

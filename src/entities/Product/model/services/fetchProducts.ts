@@ -4,8 +4,12 @@ import { ProductsSchema } from '../types/ProductsSchema';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
-import { selectSearch, selectSortOrder } from '../selectors/selectProducts';
-import { selectCurrentPage, selectLimit } from '@/entities/Paginate';
+import {
+  selectCurrentPage,
+  selectLimit,
+  selectSearch,
+  selectSortOrder,
+} from '../selectors/selectProducts';
 
 export const fetchProducts = createAsyncThunk<
   ProductsSchema,
@@ -20,9 +24,6 @@ export const fetchProducts = createAsyncThunk<
     const sort = selectSortOrder(getState());
     addQueryParams({
       search: `${search}`,
-      page: `${page}`,
-      limit: `${limit}`,
-      sort: `${sort}`,
     });
     const response = await extra.api.get<ProductsSchema>(
       getRouteListProducts(),

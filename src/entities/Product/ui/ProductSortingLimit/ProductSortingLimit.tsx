@@ -18,7 +18,7 @@ import { selectCategoryId } from '@/entities/Category';
 import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
-import { selectLimit } from '@/entities/Paginate';
+import { selectLimit } from '../../model/selectors/selectProducts';
 
 interface SortingLimitProps {
   className?: string;

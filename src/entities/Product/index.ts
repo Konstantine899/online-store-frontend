@@ -42,3 +42,9 @@ export {
 // types
 export type { ProductsSchema } from './model/types/ProductsSchema';
 export type { EntityProductSchema } from './model/types';
+export { selectLastPage } from '@/entities/Product/model/selectors/selectProducts';
+export { selectPreviosPage } from '@/entities/Product/model/selectors/selectProducts';
+export { selectNextPage } from '@/entities/Product/model/selectors/selectProducts';
+export { selectCurrentPage } from '@/entities/Product/model/selectors/selectProducts';
+export { selectLimit } from '@/entities/Product/model/selectors/selectProducts';
+export { selectMetaData } from '@/entities/Product/model/selectors/selectProducts';
