@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductTabBrand.module.scss';
-import { Brand, EntityBrandReducers } from '@/entities/Brand';
+import { Brand, brandReducers } from '@/entities/Brand';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
 
 const asyncBrandReducer: ReducersList = {
-  brand: EntityBrandReducers,
+  brand: brandReducers,
 };
 
 export interface TabBrandProps {

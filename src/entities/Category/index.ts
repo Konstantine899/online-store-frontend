@@ -3,28 +3,15 @@ export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurger
 export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';
 
 // slices
-export { CategoriesActions } from './model/slices/CategoriesSlice';
 export { CategoryActions } from './model/slices/CategorySlice';
-export { entityCategoryReducers } from './model/slices';
+export { categoryReducers } from './model/slices';
 
 // selectors
-export {
-  selectCategories,
-  selectCategoriesIsLoading,
-} from './model/selectors/selectCategories';
 export {
   selectCategoryId,
   selectCategory,
 } from './model/selectors/selectCategory';
-export {
-  selectPopularCategories,
-  selectPopularCategoriesIsLoading,
-} from './model/selectors/selectPopularCategories';
-
-// services
-export { fetchAllCategories } from './model/services/fetchAllCategories';
-export { fetchCategory } from './model/services/fetchCategory';
 
 // types
-export type { EntityCategorySchema } from './model/types';
+export type { CategorySchema } from './model/types/CategorySchema';
 export type { ICategory } from './model/types/ICategory';

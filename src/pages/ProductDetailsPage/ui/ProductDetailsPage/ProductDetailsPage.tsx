@@ -15,14 +15,14 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
-import { EntityBrandReducers } from '@/entities/Brand';
-import { entityCategoryReducers } from '@/entities/Category';
+import { brandReducers } from '@/entities/Brand';
+import { categoryReducers } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
   entityProduct: entityProductReducers,
-  brand: EntityBrandReducers,
-  entityCategory: entityCategoryReducers,
+  brand: brandReducers,
+  category: categoryReducers,
   rating: RatingReducer,
 };
 

@@ -3,7 +3,7 @@ export { Brand } from './ui/Brand/Brand';
 
 // slices
 export { BrandActions } from './model/slices/BrandSlice';
-export { EntityBrandReducers } from './model/slices';
+export { brandReducers } from './model/slices';
 
 // selectors
 export { selectBrandId } from './model/selectors/selectBrand';

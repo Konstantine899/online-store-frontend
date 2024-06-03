@@ -52,7 +52,7 @@ export const getRouteRemoveProductFromCart = (productId: string) =>
 
 export const getRouteClearCart = () => `/cart/clear`;
 
-export const getRouteListAllCategories = () => `/category/categories`;
+export const getRouteCategories = () => `/category/categories`;
 export const getRouteCategory = (id: string) => `/category/one/${id}`;
 
 export const getRouteGuestCreateOrder = () => `/order/guest/create-order`;

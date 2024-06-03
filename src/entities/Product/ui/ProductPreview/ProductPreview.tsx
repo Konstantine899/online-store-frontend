@@ -3,7 +3,6 @@ import { memo, useEffect } from 'react';
 import cls from './ProductPreview.module.scss';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchCategory } from '@/entities/Category';
 import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
@@ -27,7 +26,6 @@ export const ProductPreview = memo((props: ProductDetailsProps) => {
 
   useEffect(() => {
     if (productDetails) {
-      dispatch(fetchCategory({ id: productDetails?.category_id }));
       dispatch(fetchRating({ productId: productDetails?.id }));
     }
   }, [_inited, dispatch, productDetails]);

@@ -13,7 +13,7 @@ import {
   getRouteGuestCreateOrder,
   getRouteGuestMakePayment,
   getRouteIncreaseInTheQuantityInTheCart,
-  getRouteListAllCategories,
+  getRouteCategories,
   getRouteListProductProperty,
   getRouteListProducts,
   getRouteListProductsByBrand,
@@ -60,7 +60,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.CLEAR_CART]: { path: getRouteClearCart() },
   [publicRouter.GET_LIST_ALL_CATEGORIES]: {
-    path: getRouteListAllCategories(),
+    path: getRouteCategories(),
   },
   [publicRouter.GET_CATEGORY]: {
     path: getRouteCategory(':id'),

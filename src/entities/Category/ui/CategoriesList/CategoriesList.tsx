@@ -8,13 +8,12 @@ import {
 import { Overlay } from '@/shared/ui/Overlay';
 import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButtonClose';
 import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';
-import { useSelector } from 'react-redux';
-import { selectCategories } from '../../model/selectors/selectCategories';
 import { ICategory } from '../../model/types/ICategory';
-import { entityCategoryReducers } from '../../model/slices';
+import { categoryReducers } from '../../model/slices';
+import { useCategories } from '../../api/categoryApi';
 
 const asyncCategoryListReducer: ReducersList = {
-  entityCategory: entityCategoryReducers,
+  category: categoryReducers,
 };
 
 interface CategoryProps {
@@ -27,39 +26,41 @@ interface CategoryProps {
 export const CategoriesList = memo((props: CategoryProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
-  const categories: ICategory[] = useSelector(selectCategories);
+  const { isSuccess, data: categories } = useCategories({});
 
-  return (
-    <DynamicModuleLoader reducers={asyncCategoryListReducer}>
-      <div
-        className={classNames(
-          cls.CategoriesList,
-          {
-            [cls.opened]: isOpen,
-            [cls.closed]: isClose,
-          },
-          [className],
-        )}
-      >
-        <Overlay onClose={onClose} />
-        <CategoriesButtonClose
-          className={cls.BurgerMenuButtonClose}
-          onClose={onClose}
+  if (isSuccess) {
+    return (
+      <DynamicModuleLoader reducers={asyncCategoryListReducer}>
+        <div
+          className={classNames(
+            cls.CategoriesList,
+            {
+              [cls.opened]: isOpen,
+              [cls.closed]: isClose,
+            },
+            [className],
+          )}
         >
-          Закрыть меню
-        </CategoriesButtonClose>
-        <div className={cls.burgerMenuContent}>
-          <ul>
-            {categories?.map((item) => (
-              <CategoriesBurgerMenuItem
-                key={item.id}
-                item={item}
-                onClose={onClose}
-              />
-            ))}
-          </ul>
+          <Overlay onClose={onClose} />
+          <CategoriesButtonClose
+            className={cls.BurgerMenuButtonClose}
+            onClose={onClose}
+          >
+            Закрыть меню
+          </CategoriesButtonClose>
+          <div className={cls.burgerMenuContent}>
+            <ul>
+              {categories?.map((item: ICategory) => (
+                <CategoriesBurgerMenuItem
+                  key={item.id}
+                  item={item}
+                  onClose={onClose}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </DynamicModuleLoader>
-  );
+      </DynamicModuleLoader>
+    );
+  }
 });

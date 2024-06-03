@@ -1,11 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { EntityCategorySchema } from '../types';
 import { CategoryReducer } from '../slices/CategorySlice';
-import { CategoriesReducer } from '../slices/CategoriesSlice';
-import { CategoriesPopularReducer } from '../slices/CategoriesPopularSlice';
+import { CategorySchema } from '../types/CategorySchema';
 
-export const entityCategoryReducers = combineReducers<EntityCategorySchema>({
+export const categoryReducers = combineReducers<CategorySchema>({
   category: CategoryReducer,
-  categories: CategoriesReducer,
-  categoriesPopular: CategoriesPopularReducer,
 });
