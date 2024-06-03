@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import cls from './Brand.module.scss';
 import {
   FetchProductsByBrandAndCategory,
@@ -9,12 +9,11 @@ import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
-import { selectBrandId } from '../../model/selectors/selectBrand';
-import { fetchAllBrandsByCategory } from '../../model/services/fetchAllBrandsByCategory';
 import { selectCategoryId } from '@/entities/Category';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { useNavigate } from 'react-router';
-import { selectBrandsByCategory } from '../../model/selectors/selectBrandsByCategory';
+import { useGetBrandsByCategory } from '../../api/brandApi';
+import { selectBrandId } from '../../model/selectors/selectBrand';
 
 interface BrandProps {
   className?: string;
@@ -24,13 +23,10 @@ export const Brand = memo((props: BrandProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const brands = useSelector(selectBrandsByCategory);
   const brandId = useSelector(selectBrandId);
   const categoryId = useSelector(selectCategoryId);
 
-  useEffect(() => {
-    if (categoryId) dispatch(fetchAllBrandsByCategory({ categoryId }));
-  }, [categoryId, dispatch]);
+  const { data: brands, isSuccess } = useGetBrandsByCategory(categoryId);
 
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
@@ -41,9 +37,11 @@ export const Brand = memo((props: BrandProps) => {
     );
   };
 
-  return (
-    <div className={classNames(cls.BrandWrapper, {}, [className])}>
-      {<Tabs id={brandId} tabs={brands} onTabClick={handleClick} />}
-    </div>
-  );
+  if (isSuccess) {
+    return (
+      <div className={classNames(cls.BrandWrapper, {}, [className])}>
+        {<Tabs id={brandId} tabs={brands} onTabClick={handleClick} />}
+      </div>
+    );
+  }
 });

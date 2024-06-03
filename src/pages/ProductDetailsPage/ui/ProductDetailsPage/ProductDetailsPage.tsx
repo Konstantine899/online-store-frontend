@@ -21,7 +21,7 @@ import { RatingReducer } from '@/entities/Rating';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
   entityProduct: entityProductReducers,
-  entityBrand: EntityBrandReducers,
+  brand: EntityBrandReducers,
   entityCategory: entityCategoryReducers,
   rating: RatingReducer,
 };

@@ -1,10 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { EntityBrandSchema } from '../types';
+import { BrandSchema } from '../types/BrandSchema';
 import { BrandReducer } from '../slices/BrandSlice';
-import { AllBrandsByCategoryReducer } from '../slices/AllBrandsByCategorySlice';
 
-export const EntityBrandReducers = combineReducers<EntityBrandSchema>({
+export const EntityBrandReducers = combineReducers<BrandSchema>({
   brand: BrandReducer,
-  allBrands: AllBrandsByCategoryReducer,
-  allBrandsByCategory: AllBrandsByCategoryReducer,
 });

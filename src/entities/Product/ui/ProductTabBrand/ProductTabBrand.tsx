@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
 
 const asyncBrandReducer: ReducersList = {
-  entityBrand: EntityBrandReducers,
+  brand: EntityBrandReducers,
 };
 
 export interface TabBrandProps {

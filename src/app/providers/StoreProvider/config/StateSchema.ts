@@ -10,7 +10,7 @@ import {
 } from '@reduxjs/toolkit';
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
-import { EntityBrandSchema } from '@/entities/Brand';
+import { BrandSchema } from '@/entities/Brand';
 import { EntityCategorySchema } from '@/entities/Category';
 import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
@@ -25,7 +25,7 @@ export interface StateSchema {
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   entityProduct?: EntityProductSchema;
-  entityBrand?: EntityBrandSchema;
+  brand?: BrandSchema;
   entityCategory?: EntityCategorySchema;
   rating?: RatingSchema;
 }

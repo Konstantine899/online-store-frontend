@@ -1,13 +1,11 @@
 import { RouteProps } from 'react-router-dom';
-import { LoginModal } from '@/features/Login';
-import { RegistrationModal } from '@/features/Registration';
 import { ProductsPage } from '@/pages/ProductsPage';
 import {
-  getRouteAllBrands,
-  getRouteAllBrandsByCategory,
+  getRouteBrandsByCategory,
   getRouteAppendToCart,
   getRouteAuth,
   getRouteBrand,
+  getRouteBrands,
   getRouteCart,
   getRouteCategory,
   getRouteClearCart,
@@ -42,9 +40,9 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     path: getRouteSingUp(),
   },
   [publicRouter.AUTH]: { path: getRouteAuth() },
-  [publicRouter.GET_LIST_ALL_BRANDS]: { path: getRouteAllBrands() },
+  [publicRouter.GET_LIST_ALL_BRANDS]: { path: getRouteBrands() },
   [publicRouter.GET_LIST_ALL_BRANDS_BY_CATEGORY]: {
-    path: getRouteAllBrandsByCategory(':categoryId'),
+    path: getRouteBrandsByCategory(':categoryId'),
   },
   [publicRouter.GET_BRAND]: { path: getRouteBrand(':id') },
   [publicRouter.GET_CART]: { path: getRouteCart() },

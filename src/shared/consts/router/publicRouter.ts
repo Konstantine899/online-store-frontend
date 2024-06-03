@@ -29,8 +29,8 @@ export enum publicRouter {
 export const getRouteMain = () => '/';
 export const getRouteSingUp = () => '/auth/registration';
 export const getRouteAuth = () => '/auth/login';
-export const getRouteAllBrands = () => '/brand/brands';
-export const getRouteAllBrandsByCategory = (categoryId: string) =>
+export const getRouteBrands = () => '/brand/brands';
+export const getRouteBrandsByCategory = (categoryId: string) =>
   `/brand/brand_list_by_category/${categoryId}`;
 export const getRouteBrand = (id: string) => `/brand/${id}`;
 

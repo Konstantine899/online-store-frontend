@@ -18,7 +18,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { EntityBrandReducers, fetchBrand } from '@/entities/Brand';
+import { EntityBrandReducers } from '@/entities/Brand';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchCategory } from '@/entities/Category';
 import { useParams, useSearchParams } from 'react-router-dom';
@@ -28,7 +28,7 @@ import { useSelector } from 'react-redux';
 
 const initialAsyncReducersProductsListPage: ReducersList = {
   entityProduct: entityProductReducers,
-  entityBrand: EntityBrandReducers,
+  brand: EntityBrandReducers,
 };
 
 interface ProductsPageProps {
@@ -62,7 +62,6 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     if (categoryId && brandId) {
       dispatch(ProductsActions.setSearch(''));
       dispatch(fetchCategory({ id: Number(categoryId) }));
-      dispatch(fetchBrand({ id: Number(brandId) }));
       dispatch(
         FetchProductsByBrandAndCategory({
           brandId: Number(brandId),
