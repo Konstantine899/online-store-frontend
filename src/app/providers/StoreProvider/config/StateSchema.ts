@@ -15,11 +15,13 @@ import { EntityCategorySchema } from '@/entities/Category';
 import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
   scroll: ScrollSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   entityProduct?: EntityProductSchema;

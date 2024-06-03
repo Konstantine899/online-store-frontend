@@ -6,6 +6,7 @@ import { AuthReducer } from '@/entities/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
 import { ScrollReducer } from '@/features/Scroll';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export function createReduxStore(
   initialState: StateSchema,
@@ -16,6 +17,7 @@ export function createReduxStore(
     auth: AuthReducer,
     user: UserReducer,
     scroll: ScrollReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -27,7 +29,7 @@ export function createReduxStore(
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: { extraArgument: { api: $api } },
-      }),
+      }).concat(rtkApi.middleware),
   });
 
   // @ts-ignore
