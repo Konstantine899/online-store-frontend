@@ -18,7 +18,7 @@ interface CategoriesPopularProps {
 export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
   const { className } = props;
 
-  const { isSuccess, data: categories } = useCategories({});
+  const { isSuccess, data: categories } = useCategories();
 
   if (isSuccess) {
     return (

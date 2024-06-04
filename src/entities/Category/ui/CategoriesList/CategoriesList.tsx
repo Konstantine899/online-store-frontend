@@ -26,7 +26,7 @@ interface CategoryProps {
 export const CategoriesList = memo((props: CategoryProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
-  const { isSuccess, data: categories } = useCategories({});
+  const { isSuccess, data: categories } = useCategories();
 
   if (isSuccess) {
     return (
