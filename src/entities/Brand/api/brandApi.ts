@@ -3,15 +3,16 @@ import {
   getRouteBrand,
   getRouteBrandsByCategory,
 } from '@/shared/consts/router/publicRouter';
+import { IBrand } from '../model/types/IBrand';
 
 const brandApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    getBrandsByCategory: build.query({
+    getBrandsByCategory: build.query<IBrand[], string>({
       query: (categoryId) => ({
         url: getRouteBrandsByCategory(categoryId),
       }),
     }),
-    getBrand: build.query({
+    getBrand: build.query<IBrand, string>({
       query: (brandId) => ({
         url: getRouteBrand(brandId),
       }),
