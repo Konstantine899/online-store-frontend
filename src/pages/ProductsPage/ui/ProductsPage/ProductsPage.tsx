@@ -4,7 +4,6 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
 import {
-  entityProductReducers,
   fetchProducts,
   FetchProductsByBrandAndCategory,
   FetchProductsByCategory,
@@ -24,9 +23,10 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 import { Paginate } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
+import { productsPageReducers } from '../../model/slices';
 
-const initialAsyncReducersProductsListPage: ReducersList = {
-  entityProduct: entityProductReducers,
+const reducers: ReducersList = {
+  productsPage: productsPageReducers,
   brand: brandReducers,
 };
 
@@ -77,7 +77,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
 
   return (
     <Suspense fallback={''}>
-      <DynamicModuleLoader reducers={initialAsyncReducersProductsListPage}>
+      <DynamicModuleLoader reducers={reducers}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
           <div ref={topRef} />
           <ProductsPageHeading />

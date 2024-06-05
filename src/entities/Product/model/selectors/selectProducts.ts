@@ -2,7 +2,7 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectProductsState = (state: StateSchema) => {
-  return state.entityProduct?.products;
+  return state.productsPage?.products;
 };
 
 export const selectProducts = createSelector(
@@ -38,7 +38,7 @@ export const selectCount = createSelector(selectProductsState, (state) => {
 // MetaData
 
 export const selectMetaData = (state: StateSchema) => {
-  return state.entityProduct?.products?.metaData;
+  return state?.productsPage?.products?.metaData;
 };
 export const selectLimit = createSelector(selectMetaData, (state) => {
   return state?.limit ?? 5;

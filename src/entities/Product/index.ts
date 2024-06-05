@@ -13,12 +13,16 @@ export { ProductSpecification } from './ui/ProductSpecification/ProductSpecifica
 export { ProductPopular } from './ui/ProductPopular/ProductPopular';
 
 //slices
-export { ProductsActions } from './model/slices/ProductsSlice';
+export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
 export {
   ProductsCarouselActions,
   ProductsCarouselReducer,
 } from './model/slices/ProductsCarouselSlice';
-export { entityProductReducers } from './model/slices';
+export {
+  ProductDetailsReducer,
+  ProductDetailsPageActions,
+} from './model/slices/ProductDetailsSlice';
+export { ProductsByCategoryCarouselReducer } from './model/slices/ProductsByCategoryCarouselSlice';
 
 //services
 export { fetchProducts } from './model/services/fetchProducts';
@@ -38,13 +42,14 @@ export {
   selectProductsInited,
   selectCount,
 } from './model/selectors/selectProducts';
-
-// types
-export type { ProductsSchema } from './model/types/ProductsSchema';
-export type { EntityProductSchema } from './model/types';
 export { selectLastPage } from '@/entities/Product/model/selectors/selectProducts';
 export { selectPreviosPage } from '@/entities/Product/model/selectors/selectProducts';
 export { selectNextPage } from '@/entities/Product/model/selectors/selectProducts';
 export { selectCurrentPage } from '@/entities/Product/model/selectors/selectProducts';
 export { selectLimit } from '@/entities/Product/model/selectors/selectProducts';
 export { selectMetaData } from '@/entities/Product/model/selectors/selectProducts';
+
+// types
+export type { ProductsSchema } from './model/types/ProductsSchema';
+export type { ProductDetailsSchema } from './model/types/ProductDetailsSchema';
+export type { ProductsByCategoryCarouselSchema } from './model/types/ProductsByCategoryCarouselSchema';

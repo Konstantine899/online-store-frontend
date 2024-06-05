@@ -3,7 +3,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductDetailsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
-  entityProductReducers,
   fetchProductDetails,
   ProductHeading,
   ProductPreview,
@@ -18,9 +17,10 @@ import { useParams } from 'react-router';
 import { brandReducers } from '@/entities/Brand';
 import { categoryReducers } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
+import { productDetailsPageReducers } from '../../model/slices';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
-  entityProduct: entityProductReducers,
+  productDetailsPage: productDetailsPageReducers,
   brand: brandReducers,
   category: categoryReducers,
   rating: RatingReducer,

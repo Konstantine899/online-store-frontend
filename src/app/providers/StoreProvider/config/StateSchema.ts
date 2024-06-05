@@ -12,19 +12,23 @@ import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { BrandSchema } from '@/entities/Brand';
 import { CategorySchema } from '@/entities/Category';
-import { EntityProductSchema } from '@/entities/Product';
 import { RatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { ProductsPageSchema } from '@/pages/ProductsPage';
+import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
+import { MainPageSchema } from '@/pages/MainPage';
 
 export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
   scroll: ScrollSchema;
+  mainPage: MainPageSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
-  entityProduct?: EntityProductSchema;
+  productsPage?: ProductsPageSchema;
+  productDetailsPage?: ProductDetailsPageSchema;
   brand?: BrandSchema;
   category?: CategorySchema;
   rating?: RatingSchema;
