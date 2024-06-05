@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
-import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
+import { fetchProductsByBrand } from '../../model/services/fetchProductsByBrand';
 import { selectSortOrder } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
@@ -16,7 +16,7 @@ import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
-import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
+import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 
@@ -41,8 +41,8 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (categoryId) return dispatch(FetchProductsByCategory({ categoryId }));
-    if (brandId) return dispatch(FetchProductsByBrand({ brandId }));
+    if (categoryId) return dispatch(fetchProductsByCategory({ categoryId }));
+    if (brandId) return dispatch(fetchProductsByBrand({ brandId }));
     if (categoryId && brandId) {
       dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
     }

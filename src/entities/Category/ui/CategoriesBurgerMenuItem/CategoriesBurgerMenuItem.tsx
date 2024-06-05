@@ -4,7 +4,7 @@ import cls from './CategoriesBurgerMenuItem.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
 import { CategoriesBurgerMenuItemIcon } from '../CategoriesBurgerMenuItemIcon/CategoriesBurgerMenuItemIcon';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { FetchProductsByCategory, ProductsActions } from '@/entities/Product';
+import { fetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
 import { selectCategoryId } from '../../model/selectors/selectCategory';
@@ -27,7 +27,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
     dispatch(ProductsActions.setPage(1));
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
-    dispatch(FetchProductsByCategory({ categoryId }));
+    dispatch(fetchProductsByCategory({ categoryId }));
     onClose?.();
   };
 

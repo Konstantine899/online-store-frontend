@@ -4,9 +4,9 @@ import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
   fetchProducts,
-  FetchProductsByBrand,
+  fetchProductsByBrand,
   FetchProductsByBrandAndCategory,
-  FetchProductsByCategory,
+  fetchProductsByCategory,
   ProductsActions,
   selectCurrentPage,
   selectLastPage,
@@ -41,12 +41,12 @@ export const Paginate = memo((props: PaginateProps) => {
     if (brandId && categoryId == 0) {
       topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
-      dispatch(FetchProductsByBrand({ brandId }));
+      dispatch(fetchProductsByBrand({ brandId }));
     }
     if (categoryId && brandId == 0) {
       topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
-      dispatch(FetchProductsByCategory({ categoryId }));
+      dispatch(fetchProductsByCategory({ categoryId }));
     }
     if (brandId && categoryId) {
       topRef.current?.scrollIntoView({ behavior: 'smooth' });

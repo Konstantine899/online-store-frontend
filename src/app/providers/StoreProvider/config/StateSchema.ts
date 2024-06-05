@@ -18,6 +18,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsPageSchema } from '@/pages/ProductsPage';
 import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
 import { MainPageSchema } from '@/pages/MainPage';
+import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -28,6 +29,7 @@ export interface StateSchema {
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;
   productsPage?: ProductsPageSchema;
+  productsByCategoryPage?: ProductsByCategoryPageSchema;
   productDetailsPage?: ProductDetailsPageSchema;
   brand?: BrandSchema;
   category?: CategorySchema;

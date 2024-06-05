@@ -1,34 +1,42 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { ProductsSchema } from '../types/ProductsSchema';
-import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
+import { ProductsSchema } from '../../model/types/ProductsSchema';
+import { addQueryParams } from '@/shared/url/addQueryParams';
 import {
   selectCurrentPage,
   selectLimit,
+  selectSearch,
   selectSortOrder,
-} from '../../model/selectors/selectProducts';
+} from '../selectors/selectProducts';
 
-interface FetchProductsByCategoryProps {
-  categoryId: number;
+interface FetchProductsByBrandProps {
+  brandId: number;
 }
 
-export const FetchProductsByCategory = createAsyncThunk<
+export const fetchProductsByBrand = createAsyncThunk<
   ProductsSchema,
-  FetchProductsByCategoryProps,
+  FetchProductsByBrandProps,
   ThunkAPIConfig<string>
->('FetchProductsByCategory', async ({ categoryId }, thunkAPI) => {
+>('fetchProductsByBrand', async ({ brandId }, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
     const limit = selectLimit(getState());
     const page = selectCurrentPage(getState());
+    const search = selectSearch(getState());
     const sort = selectSortOrder(getState());
-
+    addQueryParams({
+      search: `${search}`,
+      page: `${page}`,
+      limit: `${limit}`,
+      sort: `${sort}`,
+    });
     const response = await extra.api.get<ProductsSchema>(
-      getRouteListProductsByCategory(`${categoryId}`),
+      `/product/all/brandId/${brandId}`,
       {
         params: {
           limit,
           page,
+          search,
           sort,
         },
       },

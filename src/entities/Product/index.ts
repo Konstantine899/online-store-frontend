@@ -23,31 +23,46 @@ export {
   ProductDetailsPageActions,
 } from './model/slices/ProductDetailsSlice';
 export { ProductsByCategoryCarouselReducer } from './model/slices/ProductsByCategoryCarouselSlice';
+export {
+  ProductsByCategoryReducer,
+  ProductsByCategoryActions,
+} from './model/slices/ProductsByCategorySlice';
 
 //services
 export { fetchProducts } from './model/services/fetchProducts';
-export { FetchProductsByBrand } from './model/services/FetchProductsByBrand';
-export { FetchProductsByCategory } from './model/services/FetchProductsByCategory';
+export { fetchProductsByBrand } from './model/services/fetchProductsByBrand';
+export { fetchProductsByCategory } from './model/services/fetchProductsByCategory';
 export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
 export { fetchProductDetails } from './model/services/fetchProductDetails';
 export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 
 // selectors
 export {
-  selectProductsIsLoading,
-  selectProductsState,
-  selectProducts,
+  selectLastPage,
   selectSortOrder,
   selectSearch,
   selectProductsInited,
   selectCount,
-} from './model/selectors/selectProducts';
-export { selectLastPage } from '@/entities/Product/model/selectors/selectProducts';
-export { selectPreviosPage } from '@/entities/Product/model/selectors/selectProducts';
-export { selectNextPage } from '@/entities/Product/model/selectors/selectProducts';
-export { selectCurrentPage } from '@/entities/Product/model/selectors/selectProducts';
-export { selectLimit } from '@/entities/Product/model/selectors/selectProducts';
-export { selectMetaData } from '@/entities/Product/model/selectors/selectProducts';
+  selectProductsState,
+  selectProducts,
+  selectProductsIsLoading,
+  selectLimit,
+  selectCurrentPage,
+  selectNextPage,
+  selectPreviosPage,
+  selectMetaData,
+} from '@/entities/Product/model/selectors/selectProducts';
+
+export {
+  selectProductsByCategoryIsLoading,
+  selectProductsByCategoryState,
+  selectProductsByCategoryCount,
+  selectProductsByCategory,
+  selectProductsByCategoryCurrentPage,
+  selectProductsByCategoryInited,
+  selectProductsByCategoryLimit,
+  selectProductsByCategorySort,
+} from './model/selectors/selectProductsByCategoryState';
 
 // types
 export type { ProductsSchema } from './model/types/ProductsSchema';

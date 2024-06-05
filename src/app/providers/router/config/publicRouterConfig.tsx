@@ -30,6 +30,7 @@ import {
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import { MainPage } from '@/pages/MainPage';
+import { ProductsByCategoryPage } from '@/pages/ProductsByCategoryPage';
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
@@ -91,7 +92,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
     path: getRouteListProductsByCategory(':categoryId'),
-    element: <ProductsPage />,
+    element: <ProductsByCategoryPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
     path: getRouteListProductsByBrandAndByCategory(':brandId', ':categoryId'),

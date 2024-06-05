@@ -3,17 +3,15 @@ import { memo } from 'react';
 import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
-import { useSelector } from 'react-redux';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
-import {
-  selectLimit,
-  selectProducts,
-  selectProductsInited,
-  selectProductsIsLoading,
-} from '../../model/selectors/selectProducts';
+import { Product } from '../../model/types/ProductsSchema';
 
 interface ProductProps {
   className?: string;
+  _inited: boolean;
+  products: Product[];
+  limit: number;
+  isLoading: boolean;
 }
 
 const getSkeletons = (quantity: number) => {
@@ -23,11 +21,7 @@ const getSkeletons = (quantity: number) => {
 };
 
 export const ProductList = memo((props: ProductProps) => {
-  const { className } = props;
-  const limit = useSelector(selectLimit);
-  const _inited = useSelector(selectProductsInited);
-  const products = useSelector(selectProducts);
-  const isLoading = useSelector(selectProductsIsLoading);
+  const { className, limit, products, isLoading, _inited } = props;
 
   if (_inited && products.length == 0) {
     return (

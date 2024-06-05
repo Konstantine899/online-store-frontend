@@ -6,11 +6,13 @@ import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting'
 import {
   fetchProducts,
   FetchProductsByBrandAndCategory,
-  FetchProductsByCategory,
   ProductList,
   ProductsActions,
   selectCurrentPage,
   selectLimit,
+  selectProducts,
+  selectProductsInited,
+  selectProductsIsLoading,
   selectSortOrder,
 } from '@/entities/Product';
 import {
@@ -42,9 +44,12 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const [URLSearchParams] = useSearchParams();
   const paramSearch = URLSearchParams.get('search');
   const { categoryId, brandId } = useParams();
-  const limit = useSelector(selectLimit);
   const currentPage = useSelector(selectCurrentPage);
   const sortOrder = useSelector(selectSortOrder);
+  const products = useSelector(selectProducts);
+  const isLoading = useSelector(selectProductsIsLoading);
+  const _inited = useSelector(selectProductsInited);
+  const limit = useSelector(selectLimit);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(Number(currentPage)));
@@ -53,10 +58,6 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   }, [categoryId, currentPage, dispatch, limit, sortOrder]);
 
   useEffect(() => {
-    if (categoryId) {
-      dispatch(ProductsActions.setSearch(''));
-      dispatch(FetchProductsByCategory({ categoryId: Number(categoryId) }));
-    }
     if (categoryId && brandId) {
       dispatch(ProductsActions.setSearch(''));
       dispatch(
@@ -82,7 +83,12 @@ const ProductsPage = memo((props: ProductsPageProps) => {
           <div ref={topRef} />
           <ProductsPageHeading />
           <ProductsListSorting />
-          <ProductList />
+          <ProductList
+            products={products}
+            isLoading={isLoading}
+            _inited={_inited}
+            limit={limit}
+          />
           <Paginate topRef={topRef} />
         </Page>
       </DynamicModuleLoader>

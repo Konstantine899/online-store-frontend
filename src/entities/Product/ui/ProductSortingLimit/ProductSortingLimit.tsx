@@ -8,14 +8,14 @@ import {
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
-import { FetchProductsByBrand } from '../../model/services/FetchProductsByBrand';
+import { fetchProductsByBrand } from '../../model/services/fetchProductsByBrand';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
-import { FetchProductsByCategory } from '../../model/services/FetchProductsByCategory';
+import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
 import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { selectLimit } from '../../model/selectors/selectProducts';
@@ -42,8 +42,8 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    if (categoryId) dispatch(FetchProductsByCategory({ categoryId }));
-    if (brandId) dispatch(FetchProductsByBrand({ brandId }));
+    if (categoryId) dispatch(fetchProductsByCategory({ categoryId }));
+    if (brandId) dispatch(fetchProductsByBrand({ brandId }));
     if (categoryId && brandId) {
       dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
     }

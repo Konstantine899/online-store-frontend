@@ -1,0 +1,55 @@
+import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { createSelector } from '@reduxjs/toolkit';
+
+export const selectProductsByCategoryState = (state: StateSchema) => {
+  return state.productsByCategoryPage?.productsByCategory;
+};
+
+export const selectProductsByCategory = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.rows ?? [];
+  },
+);
+
+export const selectProductsByCategoryIsLoading = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.isLoading ?? false;
+  },
+);
+
+export const selectProductsByCategoryInited = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?._inited ?? false;
+  },
+);
+
+export const selectProductsByCategoryCount = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.count ?? 0;
+  },
+);
+
+export const selectProductsByCategorySort = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.sortingOrder ?? 'asc';
+  },
+);
+
+export const selectProductsByCategoryCurrentPage = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.metaData?.currentPage ?? 1;
+  },
+);
+
+export const selectProductsByCategoryLimit = createSelector(
+  selectProductsByCategoryState,
+  (state) => {
+    return state?.metaData?.limit ?? 5;
+  },
+);
