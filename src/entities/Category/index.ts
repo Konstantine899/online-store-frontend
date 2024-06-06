@@ -1,3 +1,6 @@
+// api
+export { useCategory } from './api/categoryApi';
+
 //ui
 export { CategoriesBurgerMenu } from './ui/CategoriesBurgerMenu/CategoriesBurgerMenu';
 export { CategoriesPopular } from './ui/CategoriesPopular/CategoriesPopular';

@@ -8,6 +8,7 @@ import {
   FetchProductsByBrandAndCategory,
   ProductList,
   ProductsActions,
+  selectCount,
   selectCurrentPage,
   selectLimit,
   selectProducts,
@@ -22,10 +23,10 @@ import {
 import { brandReducers } from '@/entities/Brand';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { ProductsPageHeading } from '../ProductsPageHeading/ProductsPageHeading';
 import { Paginate } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 import { productsPageReducers } from '../../model/slices';
+import { PageHeading } from '@/entities/PageHeading';
 
 const reducers: ReducersList = {
   productsPage: productsPageReducers,
@@ -50,6 +51,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const isLoading = useSelector(selectProductsIsLoading);
   const _inited = useSelector(selectProductsInited);
   const limit = useSelector(selectLimit);
+  const count = useSelector(selectCount);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(Number(currentPage)));
@@ -81,7 +83,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
       <DynamicModuleLoader reducers={reducers}>
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
           <div ref={topRef} />
-          <ProductsPageHeading />
+          <PageHeading count={count} />
           <ProductsListSorting />
           <ProductList
             products={products}

@@ -9,11 +9,13 @@ import {
   ProductList,
   ProductsActions,
   selectProductsByCategory,
+  selectProductsByCategoryCount,
   selectProductsByCategoryInited,
   selectProductsByCategoryIsLoading,
   selectProductsByCategoryLimit,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { PageHeading } from '@/entities/PageHeading';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -27,8 +29,7 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   const isLoading = useSelector(selectProductsByCategoryIsLoading);
   const _inited = useSelector(selectProductsByCategoryInited);
   const limit = useSelector(selectProductsByCategoryLimit);
-
-  console.log(products);
+  const count = useSelector(selectProductsByCategoryCount);
 
   useEffect(() => {
     dispatch(ProductsActions.setSearch(''));
@@ -37,6 +38,7 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
 
   return (
     <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
+      <PageHeading count={count} />
       <ProductList
         _inited={_inited}
         products={products}

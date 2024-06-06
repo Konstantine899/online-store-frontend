@@ -21,4 +21,4 @@ const categoryApi = rtkApi.injectEndpoints({
 });
 
 export const useCategories = categoryApi.useCategoriesQuery;
-export const useCategory = categoryApi.useCategoryQuery;
+export const useCategory = categoryApi.useLazyCategoryQuery;

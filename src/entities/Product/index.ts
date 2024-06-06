@@ -65,6 +65,6 @@ export {
 } from './model/selectors/selectProductsByCategoryState';
 
 // types
-export type { ProductsSchema } from './model/types/ProductsSchema';
+export type { ProductsSchema, Product } from './model/types/ProductsSchema';
 export type { ProductDetailsSchema } from './model/types/ProductDetailsSchema';
 export type { ProductsByCategoryCarouselSchema } from './model/types/ProductsByCategoryCarouselSchema';
