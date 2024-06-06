@@ -17,6 +17,7 @@ export interface TabBrandProps {
   className?: string;
 }
 
+/* @deprecated */
 export const ProductTabBrand = memo((props: TabBrandProps) => {
   const { className } = props;
   const categoryId = useSelector(selectCategoryId);

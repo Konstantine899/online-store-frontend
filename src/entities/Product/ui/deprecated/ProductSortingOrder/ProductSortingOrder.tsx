@@ -1,9 +1,9 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './ProductSortingOrder.module.scss';
-import { fetchProductsByBrand } from '../../model/services/fetchProductsByBrand';
-import { selectSortOrder } from '../../model/selectors/selectProducts';
-import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { fetchProductsByBrand } from '../../../model/services/fetchProductsByBrand';
+import { selectSortOrder } from '../../../model/selectors/selectProducts';
+import { ProductsActions } from '../../../model/slices/ProductsSlice';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import {
   Select,
@@ -16,14 +16,15 @@ import { ISortOrder } from '@/shared/types/ISortOrder';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
-import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
-import { fetchProducts } from '../../model/services/fetchProducts';
-import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
+import { fetchProductsByCategory } from '../../../model/services/fetchProductsByCategory';
+import { fetchProducts } from '../../../model/services/fetchProducts';
+import { FetchProductsByBrandAndCategory } from '../../../model/services/FetchProductsByBrandAndCategory';
 
 interface SortingOrderProps {
   className?: string;
 }
 
+/*deprecated*/
 export const ProductSortingOrder = memo((props: SortingOrderProps) => {
   const { className } = props;
 

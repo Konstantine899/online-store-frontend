@@ -8,22 +8,23 @@ import {
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
-import { fetchProductsByBrand } from '../../model/services/fetchProductsByBrand';
-import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { fetchProductsByBrand } from '../../../model/services/fetchProductsByBrand';
+import { ProductsActions } from '../../../model/slices/ProductsSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
-import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
-import { FetchProductsByBrandAndCategory } from '../../model/services/FetchProductsByBrandAndCategory';
-import { fetchProducts } from '../../model/services/fetchProducts';
-import { selectLimit } from '../../model/selectors/selectProducts';
+import { fetchProductsByCategory } from '../../../model/services/fetchProductsByCategory';
+import { FetchProductsByBrandAndCategory } from '../../../model/services/FetchProductsByBrandAndCategory';
+import { fetchProducts } from '../../../model/services/fetchProducts';
+import { selectLimit } from '../../../model/selectors/selectProducts';
 
 interface SortingLimitProps {
   className?: string;
 }
 
+/* @deprecated */
 export const ProductSortingLimit = memo((props: SortingLimitProps) => {
   const { className } = props;
 

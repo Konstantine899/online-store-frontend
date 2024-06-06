@@ -3,14 +3,15 @@ export { ProductList } from './ui/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
-export { ProductSortingLimit } from './ui/ProductSortingLimit/ProductSortingLimit';
-export { ProductSortingOrder } from './ui/ProductSortingOrder/ProductSortingOrder';
-export { ProductTabBrand } from './ui/ProductTabBrand/ProductTabBrand';
+export { ProductSortingLimit } from '@/entities/Product/ui/deprecated/ProductSortingLimit/ProductSortingLimit';
+export { ProductSortingOrder } from '@/entities/Product/ui/deprecated/ProductSortingOrder/ProductSortingOrder';
+export { ProductTabBrand } from '@/entities/Product/ui/deprecated/ProductTabBrand/ProductTabBrand';
 export { ProductPreview } from './ui/ProductPreview/ProductPreview';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 export { ProductPopular } from './ui/ProductPopular/ProductPopular';
+export { ProductsSortOrder } from '@/entities/Product/ui/ProductsSortOrder/ProductsSortOrder';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';

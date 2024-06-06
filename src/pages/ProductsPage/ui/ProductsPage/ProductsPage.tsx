@@ -27,6 +27,7 @@ import { Paginate } from '@/entities/Paginate';
 import { useSelector } from 'react-redux';
 import { productsPageReducers } from '../../model/slices';
 import { PageHeading } from '@/entities/PageHeading';
+import { ProductsFilters } from '@/features/ProductsFilters';
 
 const reducers: ReducersList = {
   productsPage: productsPageReducers,
@@ -84,7 +85,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
         <Page className={classNames(cls.ProductsPage, {}, [className])}>
           <div ref={topRef} />
           <PageHeading count={count} />
-          <ProductsListSorting />
+          <ProductsFilters />
           <ProductList
             products={products}
             isLoading={isLoading}
