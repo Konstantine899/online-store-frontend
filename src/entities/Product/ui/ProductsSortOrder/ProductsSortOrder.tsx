@@ -9,16 +9,22 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import {
+  fetchProducts,
+  ProductsActions,
+  selectSortOrder,
+} from '@/entities/Product';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
 
 interface ProductsSortOrderProps {
   className?: string;
-  sortOrder: ISortOrder;
-  onSortingOrder: () => void;
-  onChangeSortingOrder: (value: ISortOrder) => void;
 }
 
 export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
-  const { className, sortOrder, onSortingOrder, onChangeSortingOrder } = props;
+  const { className } = props;
+  const sortOrder = useSelector(selectSortOrder);
+  const dispatch = useAppDispatch();
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
@@ -29,17 +35,18 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   );
 
   const fetchSortingOrder = useCallback(() => {
-    onSortingOrder();
-  }, [onSortingOrder]);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const debounceFilterOrder = useDebounce(fetchSortingOrder, 500);
 
   const onChange = useCallback(
     (value: ISortOrder) => {
-      onChangeSortingOrder(value);
+      dispatch(ProductsActions.setSortingOrder(value));
+      dispatch(ProductsActions.setPage(1));
       debounceFilterOrder();
     },
-    [debounceFilterOrder, onChangeSortingOrder],
+    [debounceFilterOrder, dispatch],
   );
 
   return (

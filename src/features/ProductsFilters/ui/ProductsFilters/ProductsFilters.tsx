@@ -19,18 +19,8 @@ interface ProductsFiltersProps {
 
 export const ProductsFilters = memo((props: ProductsFiltersProps) => {
   const { className } = props;
-  const sortOrder = useSelector(selectSortOrder);
   const limit = useSelector(selectLimit);
   const dispatch = useAppDispatch();
-
-  const onSortedList = () => {
-    dispatch(fetchProducts());
-  };
-
-  const onSortedActions = (value: ISortOrder) => {
-    dispatch(ProductsActions.setSortingOrder(value));
-    dispatch(ProductsActions.setPage(1));
-  };
 
   const onProductsLimit = () => {
     dispatch(fetchProducts());
@@ -43,11 +33,7 @@ export const ProductsFilters = memo((props: ProductsFiltersProps) => {
 
   return (
     <div className={classNames(cls.ProductsFilters, {}, [className])}>
-      <ProductsSortOrder
-        sortOrder={sortOrder}
-        onSortingOrder={onSortedList}
-        onChangeSortingOrder={onSortedActions}
-      />
+      <ProductsSortOrder />
       <ProductsLimit
         limit={`${limit}` as ISortLimit}
         onProductsLimit={onProductsLimit}
