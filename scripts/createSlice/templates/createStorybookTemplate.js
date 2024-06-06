@@ -13,7 +13,7 @@ module.exports = function (layer, componentName) {
   
   export const Primary: Story = {
   args: {},
-  render: () => <${componentName} />,
+  render: (args) => <${componentName} {...args}/>,
 };
   `;
 };
