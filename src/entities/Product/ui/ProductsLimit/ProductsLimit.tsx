@@ -1,31 +1,28 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback, useMemo } from 'react';
 import cls from './ProductsLimit.module.scss';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
   Select,
   SelectOptions,
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { ISortLimit, ISortOrder } from '@/shared/types/ISortOrder';
+import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import {
-  fetchProducts,
-  fetchProductsByBrand,
-  FetchProductsByBrandAndCategory,
-  fetchProductsByCategory,
-  ProductsActions,
-} from '@/entities/Product';
+import { selectLimit } from '../../model/selectors/selectProducts';
+import { fetchProducts } from '../../model/services/fetchProducts';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
 
 interface ProductsLimitProps {
   className?: string;
-  onProductsLimit: () => void;
-  onChangeLimit: (value: ISortLimit) => void;
-  limit: ISortLimit;
 }
 
 export const ProductsLimit = memo((props: ProductsLimitProps) => {
-  const { className, onProductsLimit, onChangeLimit, limit } = props;
+  const { className } = props;
+  const dispatch = useAppDispatch();
+  const limit = useSelector(selectLimit);
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
     () => [
@@ -37,17 +34,18 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    onProductsLimit();
-  }, [onProductsLimit]);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
   const onChange = useCallback(
     (value: ISortLimit) => {
-      onChangeLimit(value);
+      dispatch(ProductsActions.setLimit(Number(value)));
+      dispatch(ProductsActions.setPage(1));
       debounceLimitOrder();
     },
-    [debounceLimitOrder, onChangeLimit],
+    [debounceLimitOrder, dispatch],
   );
 
   return (

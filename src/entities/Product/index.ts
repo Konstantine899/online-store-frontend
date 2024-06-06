@@ -1,4 +1,5 @@
 //ui
+export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { ProductList } from './ui/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';

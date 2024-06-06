@@ -1,6 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback, useMemo } from 'react';
 import cls from './ProductsSortOrder.module.scss';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
 import {
   Select,
   SelectOptions,
@@ -9,13 +11,9 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import {
-  fetchProducts,
-  ProductsActions,
-  selectSortOrder,
-} from '@/entities/Product';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
+import { selectSortOrder } from '../../model/selectors/selectProducts';
+import { fetchProducts } from '../../model/services/fetchProducts';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
 
 interface ProductsSortOrderProps {
   className?: string;

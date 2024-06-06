@@ -2,7 +2,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, MutableRefObject, Suspense, useEffect, useRef } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { ProductsListSorting } from '../ProductsListSorting/ProductsListSorting';
 import {
   fetchProducts,
   FetchProductsByBrandAndCategory,

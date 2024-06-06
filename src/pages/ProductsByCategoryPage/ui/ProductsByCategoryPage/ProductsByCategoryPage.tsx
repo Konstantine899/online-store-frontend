@@ -6,13 +6,13 @@ import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
 import {
   fetchProductsByCategory,
-  ProductList,
   ProductsActions,
   selectProductsByCategory,
   selectProductsByCategoryCount,
   selectProductsByCategoryInited,
   selectProductsByCategoryIsLoading,
   selectProductsByCategoryLimit,
+  ProductList,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageHeading } from '@/entities/PageHeading';
