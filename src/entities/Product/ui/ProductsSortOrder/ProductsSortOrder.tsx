@@ -13,12 +13,12 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 interface ProductsSortOrderProps {
   className?: string;
   sortOrder: ISortOrder;
-  onSortedList: () => void;
-  onActions: (value: ISortOrder) => void;
+  onSortingOrder: () => void;
+  onChangeSortingOrder: (value: ISortOrder) => void;
 }
 
 export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
-  const { className, sortOrder, onSortedList, onActions } = props;
+  const { className, sortOrder, onSortingOrder, onChangeSortingOrder } = props;
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
@@ -28,18 +28,18 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
     [],
   );
 
-  const fetchSortedList = useCallback(() => {
-    onSortedList();
-  }, [onSortedList]);
+  const fetchSortingOrder = useCallback(() => {
+    onSortingOrder();
+  }, [onSortingOrder]);
 
-  const debounceFilterOrder = useDebounce(fetchSortedList, 500);
+  const debounceFilterOrder = useDebounce(fetchSortingOrder, 500);
 
   const onChange = useCallback(
     (value: ISortOrder) => {
-      onActions(value);
+      onChangeSortingOrder(value);
       debounceFilterOrder();
     },
-    [debounceFilterOrder, onActions],
+    [debounceFilterOrder, onChangeSortingOrder],
   );
 
   return (
