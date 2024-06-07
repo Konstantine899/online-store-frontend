@@ -5,18 +5,18 @@ import {
   fetchProductsByCategoryAndBrand,
   ProductList,
   ProductsActions,
-} from '@/entities/Product';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
-import {
   selectProductsByCategoryAndBrand,
+  selectProductsByCategoryAndBrandCount,
   selectProductsByCategoryAndBrandInited,
   selectProductsByCategoryAndBrandIsLoading,
   selectProductsByCategoryAndBrandLimit,
 } from '@/entities/Product';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
 import { Page } from '@/widgets/Page';
+import { PageHeading } from '@/entities/PageHeading';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -31,6 +31,7 @@ const ProductsByCategoryAndBrandPage = memo(
     const isLoading = useSelector(selectProductsByCategoryAndBrandIsLoading);
     const _inited = useSelector(selectProductsByCategoryAndBrandInited);
     const products = useSelector(selectProductsByCategoryAndBrand);
+    const count = useSelector(selectProductsByCategoryAndBrandCount);
 
     useEffect(() => {
       dispatch(ProductsActions.setSearch(''));
@@ -48,6 +49,7 @@ const ProductsByCategoryAndBrandPage = memo(
           className,
         ])}
       >
+        <PageHeading count={count} />
         <ProductsByCategoryAndBrandFilters />
         <ProductList
           _inited={_inited}
