@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProductsByCategory } from '../services/fetchProductsByCategory';
 import { ProductsSchema } from '../types/ProductsSchema';
+import { ISortOrder } from '@/shared/types/ISortOrder';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -23,7 +24,20 @@ const initialState: ProductsSchema = {
 export const ProductsByCategorySlice = createSlice({
   name: 'ProductsByCategorySlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state: ProductsSchema, action: PayloadAction<number>) => {
+      state.metaData.currentPage = action.payload;
+    },
+    setLimit: (state: ProductsSchema, action: PayloadAction<number>) => {
+      state.metaData.limit = action.payload;
+    },
+    setSortingOrder: (
+      state: ProductsSchema,
+      action: PayloadAction<ISortOrder>,
+    ) => {
+      state.sortingOrder = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductsByCategory.pending, (state: ProductsSchema) => {

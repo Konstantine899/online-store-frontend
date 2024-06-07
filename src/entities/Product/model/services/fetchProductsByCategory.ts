@@ -3,10 +3,10 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { ProductsSchema } from '../types/ProductsSchema';
 import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
 import {
-  selectCurrentPage,
-  selectLimit,
-  selectSortOrder,
-} from '../../model/selectors/selectProducts';
+  selectProductsByCategoryCurrentPage,
+  selectProductsByCategoryLimit,
+  selectProductsByCategorySort,
+} from '../selectors/selectProductsByCategoryState';
 
 interface FetchProductsByCategoryProps {
   categoryId: number;
@@ -19,9 +19,9 @@ export const fetchProductsByCategory = createAsyncThunk<
 >('fetchProductsByCategory', async ({ categoryId }, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
-    const limit = selectLimit(getState());
-    const page = selectCurrentPage(getState());
-    const sort = selectSortOrder(getState());
+    const limit = selectProductsByCategoryLimit(getState());
+    const page = selectProductsByCategoryCurrentPage(getState());
+    const sort = selectProductsByCategorySort(getState());
 
     const response = await extra.api.get<ProductsSchema>(
       getRouteListProductsByCategory(`${categoryId}`),
@@ -36,6 +36,7 @@ export const fetchProductsByCategory = createAsyncThunk<
     if (!response.data) {
       throw new Error();
     }
+    console.log(response.data);
     return response.data;
   } catch (error) {
     return rejectWithValue(`${error}`);

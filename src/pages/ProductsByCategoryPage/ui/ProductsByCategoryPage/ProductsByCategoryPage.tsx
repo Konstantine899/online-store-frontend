@@ -16,6 +16,7 @@ import {
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageHeading } from '@/entities/PageHeading';
+import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -39,6 +40,7 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   return (
     <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
       <PageHeading count={count} />
+      <ProductsByCategoryFilters />
       <ProductList
         _inited={_inited}
         products={products}

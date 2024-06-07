@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product, ProductsSchema } from '../types/ProductsSchema';
+import { ProductsSchema } from '../types/ProductsSchema';
 import { fetchProductsByBrand } from '../services/fetchProductsByBrand';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { fetchProducts } from '../services/fetchProducts';
@@ -36,17 +36,6 @@ export const ProductsSlice = createSlice({
     setSearch: (state: ProductsSchema, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
-    setProductsListIsLoading: (
-      state: ProductsSchema,
-      action: PayloadAction<boolean>,
-    ) => {
-      state.isLoading = action.payload;
-    },
-
-    setRows: (state: ProductsSchema, action: PayloadAction<Product[]>) => {
-      state.rows = action.payload;
-    },
-
     setSortingOrder: (
       state: ProductsSchema,
       action: PayloadAction<ISortOrder>,

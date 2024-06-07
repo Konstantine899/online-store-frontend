@@ -13,6 +13,7 @@ export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 export { ProductPopular } from './ui/ProductPopular/ProductPopular';
 export { ProductsSortOrder } from '@/entities/Product/ui/ProductsSortOrder/ProductsSortOrder';
+export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
