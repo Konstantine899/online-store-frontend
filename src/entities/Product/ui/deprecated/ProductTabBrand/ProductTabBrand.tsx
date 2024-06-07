@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductTabBrand.module.scss';
-import { Brand, brandReducers } from '@/entities/Brand';
+import { BrandTabs, brandReducers } from '@/entities/Brand';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -26,7 +26,7 @@ export const ProductTabBrand = memo((props: TabBrandProps) => {
     return (
       <DynamicModuleLoader reducers={asyncBrandReducer}>
         <div className={classNames(cls.TabBrand, {}, [className])}>
-          <Brand />
+          <BrandTabs />
         </div>
       </DynamicModuleLoader>
     );

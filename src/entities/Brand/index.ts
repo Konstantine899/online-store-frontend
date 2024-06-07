@@ -1,5 +1,5 @@
 // ui
-export { Brand } from './ui/Brand/Brand';
+export { BrandTabs } from './ui/BrandTabs/BrandTabs';
 
 // slices
 export { BrandActions } from './model/slices/BrandSlice';

@@ -5,9 +5,11 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { productsByCategoryAndBrandPageReducers } from '../../models/slices';
+import { brandReducers } from '@/entities/Brand';
 
 const reducers: ReducersList = {
   productsByCategoryAndBrandPage: productsByCategoryAndBrandPageReducers,
+  brand: brandReducers,
 };
 
 const ProductsByCategoryAndBrandPageLazy = lazy(

@@ -2,9 +2,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandFilters.module.scss';
 import {
-  ProductsByCategoryAndBrandSortOrder,
   ProductsByCategoryAndBrandLimit,
+  ProductsByCategoryAndBrandSortOrder,
 } from '@/entities/Product';
+import { BrandTabs } from '@/entities/Brand';
 
 interface ProductsByCategoryAndBrandFiltersProps {
   className?: string;
@@ -22,6 +23,7 @@ export const ProductsByCategoryAndBrandFilters = memo(
       >
         <ProductsByCategoryAndBrandSortOrder />
         <ProductsByCategoryAndBrandLimit />
+        <BrandTabs />
       </div>
     );
   },

@@ -37,7 +37,7 @@ const ProductsByCategoryAndBrandPage = memo(
       dispatch(
         fetchProductsByCategoryAndBrand({
           brandId: Number(brandId),
-          categoryId: Number(brandId),
+          categoryId: Number(categoryId),
         }),
       );
     }, [categoryId, brandId, dispatch]);
