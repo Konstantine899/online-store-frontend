@@ -16,7 +16,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
 import { fetchProductsByCategory } from '../../../model/services/fetchProductsByCategory';
-import { FetchProductsByBrandAndCategory } from '../../../model/services/FetchProductsByBrandAndCategory';
+import { fetchProductsByCategoryAndBrand } from '../../../model/services/fetchProductsByCategoryAndBrand';
 import { fetchProducts } from '../../../model/services/fetchProducts';
 import { selectLimit } from '../../../model/selectors/selectProducts';
 
@@ -46,7 +46,7 @@ export const ProductSortingLimit = memo((props: SortingLimitProps) => {
     if (categoryId) dispatch(fetchProductsByCategory({ categoryId }));
     if (brandId) dispatch(fetchProductsByBrand({ brandId }));
     if (categoryId && brandId) {
-      dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
+      dispatch(fetchProductsByCategoryAndBrand({ categoryId, brandId }));
     }
     if (categoryId == 0) {
       dispatch(fetchProducts());

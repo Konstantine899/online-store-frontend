@@ -3,28 +3,28 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { ProductsSchema } from '../types/ProductsSchema';
 import {
-  selectCurrentPage,
-  selectLimit,
-  selectSortOrder,
-} from '../selectors/selectProducts';
+  selectProductsByCategoryAndBrandLimit,
+  selectProductsByCategoryAndBrandCurrentPage,
+  selectProductsByCategoryAndBrandSort,
+} from '../selectors/selectProductsByCategoryAndBrand';
 
 interface FetchProductsByBrandAndCategoryProps {
   brandId: number;
   categoryId: number;
 }
 
-export const FetchProductsByBrandAndCategory = createAsyncThunk<
+export const fetchProductsByCategoryAndBrand = createAsyncThunk<
   ProductsSchema,
   FetchProductsByBrandAndCategoryProps,
   ThunkAPIConfig<string>
 >(
-  'FetchProductsByBrandAndCategory',
+  'fetchProductsByCategoryAndBrand',
   async ({ brandId, categoryId }, thunkAPI) => {
     const { rejectWithValue, extra, getState } = thunkAPI;
     try {
-      const limit = selectLimit(getState());
-      const page = selectCurrentPage(getState());
-      const sort = selectSortOrder(getState());
+      const limit = selectProductsByCategoryAndBrandLimit(getState());
+      const page = selectProductsByCategoryAndBrandCurrentPage(getState());
+      const sort = selectProductsByCategoryAndBrandSort(getState());
 
       const response = await extra.api.get<ProductsSchema>(
         getRouteListProductsByBrandAndByCategory(`${brandId}`, `${categoryId}`),

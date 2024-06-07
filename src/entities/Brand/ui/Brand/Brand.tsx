@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { memo } from 'react';
 import cls from './Brand.module.scss';
 import {
-  FetchProductsByBrandAndCategory,
+  fetchProductsByCategoryAndBrand,
   ProductsActions,
 } from '@/entities/Product';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
@@ -31,7 +31,7 @@ export const Brand = memo((props: BrandProps) => {
   const handleClick = (tab: TabItem) => {
     dispatch(BrandActions.setBrandId(tab.id));
     dispatch(ProductsActions.setPage(1));
-    dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId: tab.id }));
+    dispatch(fetchProductsByCategoryAndBrand({ categoryId, brandId: tab.id }));
     navigate(
       getRouteListProductsByBrandAndByCategory(`${tab.id}`, `${categoryId}`),
     );

@@ -4,7 +4,7 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   fetchProducts,
-  FetchProductsByBrandAndCategory,
+  fetchProductsByCategoryAndBrand,
   ProductList,
   ProductsActions,
   selectCount,
@@ -63,7 +63,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     if (categoryId && brandId) {
       dispatch(ProductsActions.setSearch(''));
       dispatch(
-        FetchProductsByBrandAndCategory({
+        fetchProductsByCategoryAndBrand({
           brandId: Number(brandId),
           categoryId: Number(categoryId),
         }),

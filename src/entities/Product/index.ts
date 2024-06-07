@@ -31,12 +31,16 @@ export {
   ProductsByCategoryReducer,
   ProductsByCategoryActions,
 } from './model/slices/ProductsByCategorySlice';
+export {
+  ProductsByCategoryAndBrandActions,
+  ProductsByCategoryAndBrandReducer,
+} from './model/slices/ProductsByCategoryAndBrandSlice';
 
 //services
 export { fetchProducts } from './model/services/fetchProducts';
 export { fetchProductsByBrand } from './model/services/fetchProductsByBrand';
 export { fetchProductsByCategory } from './model/services/fetchProductsByCategory';
-export { FetchProductsByBrandAndCategory } from './model/services/FetchProductsByBrandAndCategory';
+export { fetchProductsByCategoryAndBrand } from './model/services/fetchProductsByCategoryAndBrand';
 export { fetchProductDetails } from './model/services/fetchProductDetails';
 export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 
@@ -66,7 +70,18 @@ export {
   selectProductsByCategoryInited,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
-} from './model/selectors/selectProductsByCategoryState';
+} from './model/selectors/selectProductsByCategory';
+
+export {
+  selectProductsByCategoryAndBrandIsLoading,
+  selectProductsByCategoryAndBrandLimit,
+  selectProductsByCategoryAndBrandInited,
+  selectProductsByCategoryAndBrand,
+  selectProductsByCategoryAndBrandCurrentPage,
+  selectProductsByCategoryAndBrandCount,
+  selectProductsByCategoryAndBrandSort,
+  selectProductsByCategoryAndBrandState,
+} from './model/selectors/selectProductsByCategoryAndBrand';
 
 // types
 export type { ProductsSchema, Product } from './model/types/ProductsSchema';

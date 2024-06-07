@@ -5,7 +5,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
   fetchProducts,
   fetchProductsByBrand,
-  FetchProductsByBrandAndCategory,
+  fetchProductsByCategoryAndBrand,
   fetchProductsByCategory,
   ProductsActions,
   selectCurrentPage,
@@ -51,7 +51,7 @@ export const Paginate = memo((props: PaginateProps) => {
     if (brandId && categoryId) {
       topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
-      dispatch(FetchProductsByBrandAndCategory({ brandId, categoryId }));
+      dispatch(fetchProductsByCategoryAndBrand({ brandId, categoryId }));
     }
     if (categoryId == 0 && brandId == 0) {
       topRef.current?.scrollIntoView({ behavior: 'smooth' });

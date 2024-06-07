@@ -19,6 +19,7 @@ import { ProductsPageSchema } from '@/pages/ProductsPage';
 import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
 import { MainPageSchema } from '@/pages/MainPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
+import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 
 export interface StateSchema {
   auth: AuthSchema;
@@ -30,6 +31,7 @@ export interface StateSchema {
   loginForm?: LoginSchema;
   productsPage?: ProductsPageSchema;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
+  productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
   productDetailsPage?: ProductDetailsPageSchema;
   brand?: BrandSchema;
   category?: CategorySchema;

@@ -18,7 +18,7 @@ import { selectBrandId } from '@/entities/Brand';
 import { selectCategoryId } from '@/entities/Category';
 import { fetchProductsByCategory } from '../../../model/services/fetchProductsByCategory';
 import { fetchProducts } from '../../../model/services/fetchProducts';
-import { FetchProductsByBrandAndCategory } from '../../../model/services/FetchProductsByBrandAndCategory';
+import { fetchProductsByCategoryAndBrand } from '../../../model/services/fetchProductsByCategoryAndBrand';
 
 interface SortingOrderProps {
   className?: string;
@@ -45,7 +45,7 @@ export const ProductSortingOrder = memo((props: SortingOrderProps) => {
     if (categoryId) return dispatch(fetchProductsByCategory({ categoryId }));
     if (brandId) return dispatch(fetchProductsByBrand({ brandId }));
     if (categoryId && brandId) {
-      dispatch(FetchProductsByBrandAndCategory({ categoryId, brandId }));
+      dispatch(fetchProductsByCategoryAndBrand({ categoryId, brandId }));
     }
     dispatch(fetchProducts());
   }, [brandId, categoryId, dispatch]);

@@ -16,7 +16,7 @@ import { fetchProductsByCategory } from '../../model/services/fetchProductsByCat
 import {
   selectProductsByCategory,
   selectProductsByCategoryLimit,
-} from '../../model/selectors/selectProductsByCategoryState';
+} from '../../model/selectors/selectProductsByCategory';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
 
 interface ProductsByCategoryLimitProps {

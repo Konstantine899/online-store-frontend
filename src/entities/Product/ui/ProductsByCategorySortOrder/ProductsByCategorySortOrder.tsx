@@ -17,7 +17,7 @@ import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategory
 import {
   selectProductsByCategory,
   selectProductsByCategorySort,
-} from '../../model/selectors/selectProductsByCategoryState';
+} from '../../model/selectors/selectProductsByCategory';
 
 interface ProductsByCategorySortOrderProps {
   className?: string;

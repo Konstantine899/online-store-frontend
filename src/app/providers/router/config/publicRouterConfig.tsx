@@ -31,6 +31,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import { MainPage } from '@/pages/MainPage';
 import { ProductsByCategoryPage } from '@/pages/ProductsByCategoryPage';
+import { ProductsByCategoryAndBrandPage } from '@/pages/ProductsByCategoryAndBrandPage';
 
 export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   [publicRouter.MAIN]: {
@@ -96,7 +97,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
     path: getRouteListProductsByBrandAndByCategory(':brandId', ':categoryId'),
-    element: <ProductsPage />,
+    element: <ProductsByCategoryAndBrandPage />,
   },
   [publicRouter.GET_RATING]: {
     path: getRouteRating(':productId'),

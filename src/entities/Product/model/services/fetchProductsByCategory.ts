@@ -6,7 +6,7 @@ import {
   selectProductsByCategoryCurrentPage,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
-} from '../selectors/selectProductsByCategoryState';
+} from '../selectors/selectProductsByCategory';
 
 interface FetchProductsByCategoryProps {
   categoryId: number;
