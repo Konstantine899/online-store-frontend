@@ -1,10 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, MutableRefObject, Suspense, useEffect, useRef } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   fetchProducts,
-  fetchProductsByCategoryAndBrand,
   ProductList,
   ProductsActions,
   selectCount,
@@ -15,25 +14,15 @@ import {
   selectProductsIsLoading,
   selectSortOrder,
 } from '@/entities/Product';
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { brandReducers } from '@/entities/Brand';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { Paginate } from '@/entities/Paginate';
+import { useSearchParams } from 'react-router-dom';
+// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
+import { Paginate } from '@/entities/deprecated/Paginate';
 import { useSelector } from 'react-redux';
-import { productsPageReducers } from '../../model/slices';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
 
-const reducers: ReducersList = {
-  productsPage: productsPageReducers,
-  brand: brandReducers,
-};
-
-interface ProductsPageProps {
+export interface ProductsPageProps {
   className?: string;
 }
 
@@ -41,10 +30,8 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const topRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [URLSearchParams] = useSearchParams();
   const paramSearch = URLSearchParams.get('search');
-  const { categoryId, brandId } = useParams();
   const currentPage = useSelector(selectCurrentPage);
   const sortOrder = useSelector(selectSortOrder);
   const products = useSelector(selectProducts);
@@ -57,44 +44,22 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     dispatch(ProductsActions.setPage(Number(currentPage)));
     dispatch(ProductsActions.setLimit(limit));
     dispatch(ProductsActions.setSortingOrder(sortOrder));
-  }, [categoryId, currentPage, dispatch, limit, sortOrder]);
-
-  useEffect(() => {
-    if (categoryId && brandId) {
-      dispatch(ProductsActions.setSearch(''));
-      dispatch(
-        fetchProductsByCategoryAndBrand({
-          brandId: Number(brandId),
-          categoryId: Number(categoryId),
-        }),
-      );
-    }
-    if (!categoryId) {
-      dispatch(fetchProducts());
-    }
-    if (paramSearch) {
-      dispatch(ProductsActions.setSearch(paramSearch));
-      dispatch(fetchProducts());
-    }
-  }, [brandId, categoryId, dispatch, paramSearch]);
+    if (paramSearch) dispatch(ProductsActions.setSearch(paramSearch));
+    dispatch(fetchProducts());
+  }, [currentPage, dispatch, limit, paramSearch, sortOrder]);
 
   return (
-    <Suspense fallback={''}>
-      <DynamicModuleLoader reducers={reducers}>
-        <Page className={classNames(cls.ProductsPage, {}, [className])}>
-          <div ref={topRef} />
-          <PageHeading count={count} />
-          <ProductsFilters />
-          <ProductList
-            products={products}
-            isLoading={isLoading}
-            _inited={_inited}
-            limit={limit}
-          />
-          <Paginate topRef={topRef} />
-        </Page>
-      </DynamicModuleLoader>
-    </Suspense>
+    <Page className={classNames(cls.ProductsPage, {}, [className])}>
+      <PageHeading count={count} />
+      <ProductsFilters />
+      <ProductList
+        products={products}
+        isLoading={isLoading}
+        _inited={_inited}
+        limit={limit}
+      />
+      <Paginate />
+    </Page>
   );
 });
 

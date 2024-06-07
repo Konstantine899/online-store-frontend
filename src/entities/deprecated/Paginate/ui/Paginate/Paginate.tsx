@@ -22,11 +22,10 @@ import { selectBrandId } from '@/entities/Brand';
 
 interface PaginateProps {
   className?: string;
-  topRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export const Paginate = memo((props: PaginateProps) => {
-  const { className, topRef } = props;
+  const { className } = props;
 
   const dispatch = useAppDispatch();
 
@@ -39,22 +38,18 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const onPageChange = (pageNumber: number) => () => {
     if (brandId && categoryId == 0) {
-      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProductsByBrand({ brandId }));
     }
     if (categoryId && brandId == 0) {
-      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProductsByCategory({ categoryId }));
     }
     if (brandId && categoryId) {
-      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProductsByCategoryAndBrand({ brandId, categoryId }));
     }
     if (categoryId == 0 && brandId == 0) {
-      topRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(ProductsActions.setPage(pageNumber));
       dispatch(fetchProducts());
     }
