@@ -15,6 +15,8 @@ import {
   selectProductsByCategoryAndBrandLimit,
 } from '@/entities/Product';
 import { useParams } from 'react-router-dom';
+import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
+import { Page } from '@/widgets/Page';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -41,18 +43,19 @@ const ProductsByCategoryAndBrandPage = memo(
     }, [categoryId, brandId, dispatch]);
 
     return (
-      <div
+      <Page
         className={classNames(cls.ProductsByCategoryAndBrandPage, {}, [
           className,
         ])}
       >
+        <ProductsByCategoryAndBrandFilters />
         <ProductList
           _inited={_inited}
           products={products}
           limit={limit}
           isLoading={isLoading}
         />
-      </div>
+      </Page>
     );
   },
 );

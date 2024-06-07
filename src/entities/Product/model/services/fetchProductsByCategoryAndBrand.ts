@@ -21,6 +21,7 @@ export const fetchProductsByCategoryAndBrand = createAsyncThunk<
   'fetchProductsByCategoryAndBrand',
   async ({ brandId, categoryId }, thunkAPI) => {
     const { rejectWithValue, extra, getState } = thunkAPI;
+    console.log(brandId, categoryId);
     try {
       const limit = selectProductsByCategoryAndBrandLimit(getState());
       const page = selectProductsByCategoryAndBrandCurrentPage(getState());
