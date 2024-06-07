@@ -16,6 +16,7 @@ export { ProductsSortOrder } from '@/entities/Product/ui/ProductsSortOrder/Produ
 export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 export { ProductsByCategoryLimit } from './ui/ProductsByCategoryLimit/ProductsByCategoryLimit';
 export { ProductsByCategoryAndBrandSortOrder } from './ui/ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
+export { ProductsByCategoryAndBrandLimit } from './ui/ProductsByCategoryAndBrandLimit/ProductsByCategoryAndBrandLimit';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
