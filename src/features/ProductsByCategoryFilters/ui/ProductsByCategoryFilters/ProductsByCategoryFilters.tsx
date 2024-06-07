@@ -5,6 +5,7 @@ import {
   ProductsByCategorySortOrder,
   ProductsByCategoryLimit,
 } from '@/entities/Product';
+import { BrandTabs } from '@/entities/Brand';
 
 interface ProductsByCategoryFiltersProps {
   className?: string;
@@ -20,6 +21,7 @@ export const ProductsByCategoryFilters = memo(
       >
         <ProductsByCategorySortOrder />
         <ProductsByCategoryLimit />
+        <BrandTabs />
       </div>
     );
   },
