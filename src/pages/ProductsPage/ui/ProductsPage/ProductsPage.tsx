@@ -21,6 +21,7 @@ import { Paginate } from '@/entities/deprecated/Paginate';
 import { useSelector } from 'react-redux';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
+import { ProductsPaginate } from '@/features/ProductsPaginate';
 
 export interface ProductsPageProps {
   className?: string;
@@ -58,7 +59,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
         _inited={_inited}
         limit={limit}
       />
-      <Paginate />
+      <ProductsPaginate />
     </Page>
   );
 });

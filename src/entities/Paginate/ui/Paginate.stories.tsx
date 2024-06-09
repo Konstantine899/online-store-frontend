@@ -3,7 +3,7 @@
   import { Paginate } from './Paginate';
   
   const meta: Meta<typeof Paginate> = {
-  title: 'features/Paginate',   
+  title: 'entities/Paginate',   
   component: Paginate,
 };
   
