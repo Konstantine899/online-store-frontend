@@ -1,8 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import cls from './PageHeading.module.scss';
-import { useSelector } from 'react-redux';
-import { selectCategoryId, useCategory } from '@/entities/Category';
+import { useCategory } from '@/entities/Category';
+import { useParams } from 'react-router';
 
 interface PageHeadingProps {
   className?: string;
@@ -11,11 +11,11 @@ interface PageHeadingProps {
 
 export const PageHeading = memo((props: PageHeadingProps) => {
   const { className, count } = props;
-  const categoryId = useSelector(selectCategoryId);
+  const { categoryId } = useParams();
   const [fetchCategory, { data }] = useCategory();
 
   useEffect(() => {
-    fetchCategory(categoryId);
+    fetchCategory(`${categoryId}`);
   }, [categoryId, fetchCategory]);
 
   if (count > 0) {

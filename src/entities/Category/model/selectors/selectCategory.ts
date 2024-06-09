@@ -6,5 +6,5 @@ export const selectCategory = (state: StateSchema) => {
 };
 
 export const selectCategoryId = createSelector(selectCategory, (state) => {
-  return state?.id ?? JSON.parse(localStorage.getItem(`categoryId`) as string);
+  return state?.id ?? 0;
 });
