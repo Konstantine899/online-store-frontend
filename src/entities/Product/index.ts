@@ -69,6 +69,7 @@ export {
   selectProductsByCategoryInited,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
+  selectProductsByCategoryLastPage,
 } from './model/selectors/selectProductsByCategory';
 
 export {

@@ -17,6 +17,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
+import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -47,6 +48,7 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
         limit={limit}
         isLoading={isLoading}
       />
+      <ProductsByCategoryPaginate />
     </Page>
   );
 });
