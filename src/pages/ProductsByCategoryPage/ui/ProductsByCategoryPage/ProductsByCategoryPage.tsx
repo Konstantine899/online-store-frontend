@@ -18,7 +18,7 @@ import { PageHeading } from '@/entities/PageHeading';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 import { useParams } from 'react-router';
-import { CategoryActions, selectCategoryId } from '@/entities/Category';
+import { CategoryActions } from '@/entities/Category';
 
 export interface ProductsByCategoryPageProps {
   className?: string;

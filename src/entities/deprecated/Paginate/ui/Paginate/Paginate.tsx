@@ -1,12 +1,12 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, MutableRefObject } from 'react';
+import { memo } from 'react';
 import cls from './Paginate.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
   fetchProducts,
   fetchProductsByBrand,
-  fetchProductsByCategoryAndBrand,
   fetchProductsByCategory,
+  fetchProductsByCategoryAndBrand,
   ProductsActions,
   selectCurrentPage,
   selectLastPage,

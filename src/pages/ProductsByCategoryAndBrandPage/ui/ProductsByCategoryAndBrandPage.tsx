@@ -17,6 +17,7 @@ import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
 import { Page } from '@/widgets/Page';
 import { PageHeading } from '@/entities/PageHeading';
+import { ProductsByCategoryAndBrandPaginate } from '@/features/ProductsByCategoryAndBrandPaginate';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -57,6 +58,7 @@ const ProductsByCategoryAndBrandPage = memo(
           limit={limit}
           isLoading={isLoading}
         />
+        <ProductsByCategoryAndBrandPaginate />
       </Page>
     );
   },

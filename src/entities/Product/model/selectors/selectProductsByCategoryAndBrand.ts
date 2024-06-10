@@ -47,6 +47,13 @@ export const selectProductsByCategoryAndBrandCurrentPage = createSelector(
   },
 );
 
+export const selectProductsByCategoryAndBrandLastPage = createSelector(
+  selectProductsByCategoryAndBrandState,
+  (state) => {
+    return state?.metaData?.lastPage ?? 1;
+  },
+);
+
 export const selectProductsByCategoryAndBrandLimit = createSelector(
   selectProductsByCategoryAndBrandState,
   (state) => {

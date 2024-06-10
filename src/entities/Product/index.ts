@@ -81,6 +81,7 @@ export {
   selectProductsByCategoryAndBrandCount,
   selectProductsByCategoryAndBrandSort,
   selectProductsByCategoryAndBrandState,
+  selectProductsByCategoryAndBrandLastPage,
 } from './model/selectors/selectProductsByCategoryAndBrand';
 
 // types
