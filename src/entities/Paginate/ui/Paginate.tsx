@@ -17,6 +17,7 @@ export const Paginate = memo((props: PaginateProps) => {
 
   const onClick = useCallback(
     (pageNumber: number) => () => {
+      if (pageNumber !== pageNumber) return; // проверка на NaN если число не равно само себе, то NaN
       onPageChange(pageNumber);
     },
     [onPageChange],
