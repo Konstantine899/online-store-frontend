@@ -35,15 +35,12 @@ export const ProductSearch = memo((props: SearchProps) => {
 
   const productSearchChangeHandler = useCallback(
     (search: string) => {
+      navigate(getRouteListProducts());
       dispatch(ProductsActions.setSearch(search));
       dispatch(ProductsActions.setPage(1));
     },
-    [dispatch],
+    [dispatch, navigate],
   );
-
-  const onNavigate = useCallback(() => {
-    navigate(getRouteListProducts());
-  }, [navigate]);
 
   return (
     <Search
@@ -51,7 +48,6 @@ export const ProductSearch = memo((props: SearchProps) => {
       fetchData={onChangeFetchProducts}
       onSearch={productSearchChangeHandler}
       search={search}
-      navigate={onNavigate}
       placeholder={'Найти товары'}
       theme={InputTheme.WITHOUT_OUTLINE}
     />

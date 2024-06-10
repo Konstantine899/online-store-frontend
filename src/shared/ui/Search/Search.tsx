@@ -10,30 +10,20 @@ interface SearchProps {
   onSearch: (value: string) => void;
   theme: InputTheme;
   search: string;
-  navigate: () => void;
   placeholder: string;
 }
 
 export const Search = memo((props: SearchProps) => {
-  const {
-    className,
-    onSearch,
-    fetchData,
-    search,
-    navigate,
-    placeholder,
-    theme,
-  } = props;
+  const { className, onSearch, fetchData, search, placeholder, theme } = props;
 
   const onFetchData = () => {
-    navigate?.();
     fetchData?.();
   };
 
   const debounce = useDebounce(onFetchData, 1000);
 
   const onChangeSearch = (value: string) => {
-    onSearch?.(value);
+    onSearch(value);
     debounce();
   };
 
