@@ -16,8 +16,6 @@ import {
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSearchParams } from 'react-router-dom';
-// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
-import { Paginate } from '@/entities/deprecated/Paginate';
 import { useSelector } from 'react-redux';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
