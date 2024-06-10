@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { memo } from 'react';
 import cls from './BrandTabs.module.scss';
 import {
@@ -10,7 +9,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
 import { useGetBrandsByCategory } from '../../api/brandApi';
-import { selectBrandId } from '../../model/selectors/selectBrand';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 
@@ -21,8 +19,7 @@ interface BrandProps {
 export const BrandTabs = memo((props: BrandProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-  const brandId = useSelector(selectBrandId);
-  const { categoryId } = useParams();
+  const { categoryId, brandId } = useParams();
   const navigate = useNavigate();
   const { data: brands, isSuccess } = useGetBrandsByCategory(`${categoryId}`);
 
@@ -30,7 +27,7 @@ export const BrandTabs = memo((props: BrandProps) => {
     navigate(
       getRouteListProductsByBrandAndByCategory(`${tab.id}`, `${categoryId}`),
     );
-    dispatch(BrandActions.setBrandId(brandId));
+    dispatch(BrandActions.setBrandId(Number(tab.id)));
     dispatch(ProductsByCategoryAndBrandActions.setPage(1));
     dispatch(
       fetchProductsByCategoryAndBrand({
@@ -43,7 +40,7 @@ export const BrandTabs = memo((props: BrandProps) => {
   if (isSuccess) {
     return (
       <div className={classNames(cls.BrandWrapper, {}, [className])}>
-        {<Tabs id={brandId} tabs={brands} onTabClick={handleClick} />}
+        {<Tabs id={Number(brandId)} tabs={brands} onTabClick={handleClick} />}
       </div>
     );
   }
