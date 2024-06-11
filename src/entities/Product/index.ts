@@ -1,3 +1,6 @@
+// api
+export { useProducts } from './api/productApi/productApi';
+
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { ProductList } from './ui/ProductList/ProductList';
@@ -36,7 +39,6 @@ export {
 } from './model/slices/ProductsByCategoryAndBrandSlice';
 
 //services
-export { fetchProducts } from './model/services/fetchProducts';
 export { fetchProductsByBrand } from './model/services/fetchProductsByBrand';
 export { fetchProductsByCategory } from './model/services/fetchProductsByCategory';
 export { fetchProductsByCategoryAndBrand } from './model/services/fetchProductsByCategoryAndBrand';

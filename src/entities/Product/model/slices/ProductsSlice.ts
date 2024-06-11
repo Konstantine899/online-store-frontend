@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsSchema } from '../types/ProductsSchema';
-import { fetchProductsByBrand } from '../services/fetchProductsByBrand';
 import { ISortOrder } from '@/shared/types/ISortOrder';
-import { fetchProducts } from '../services/fetchProducts';
 
 const initialState: ProductsSchema = {
   rows: [],
@@ -41,59 +39,6 @@ export const ProductsSlice = createSlice({
     ) => {
       state.sortingOrder = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProducts.pending, (state: ProductsSchema) => {
-        state.isLoading = true;
-        state.rows = [];
-        state.error = undefined;
-        state._inited = false;
-      })
-      .addCase(
-        fetchProducts.fulfilled,
-        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
-          state.isLoading = false;
-          state.rows = action.payload.rows;
-          state.count = action.payload.count;
-          state.metaData = action.payload.metaData;
-          state._inited = true;
-        },
-      )
-      .addCase(
-        fetchProducts.rejected,
-        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
-          state.isLoading = false;
-          state.rows = [];
-          state.error = action.payload;
-          state._inited = false;
-        },
-      )
-      .addCase(fetchProductsByBrand.pending, (state: ProductsSchema) => {
-        state.isLoading = true;
-        state.error = undefined;
-        state.rows = [];
-        state._inited = false;
-      })
-      .addCase(
-        fetchProductsByBrand.fulfilled,
-        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
-          state.isLoading = false;
-          state.rows = action.payload.rows;
-          state.count = action.payload.count;
-          state.metaData = action.payload.metaData;
-          state._inited = true;
-        },
-      )
-      .addCase(
-        fetchProductsByBrand.rejected,
-        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
-          state.isLoading = false;
-          state.rows = [];
-          state.error = action.payload;
-          state._inited = false;
-        },
-      );
   },
 });
 

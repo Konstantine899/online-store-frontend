@@ -12,8 +12,8 @@ import {
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectProductsSortOrder } from '../../model/selectors/selectProducts';
-import { fetchProducts } from '../../model/services/fetchProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { useProducts } from '../../api/productApi/productApi';
 
 interface ProductsSortOrderProps {
   className?: string;
@@ -21,8 +21,9 @@ interface ProductsSortOrderProps {
 
 export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   const { className } = props;
-  const sortOrder = useSelector(selectProductsSortOrder);
   const dispatch = useAppDispatch();
+  const sort = useSelector(selectProductsSortOrder);
+  const [fetchProducts] = useProducts();
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
     () => [
@@ -33,8 +34,8 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   );
 
   const fetchSortingOrder = useCallback(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    fetchProducts({ sort });
+  }, [fetchProducts, sort]);
 
   const debounceFilterOrder = useDebounce(fetchSortingOrder, 500);
 
@@ -52,7 +53,7 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
       <Select<ISortOrder>
         options={selectOptions}
         label={'По'}
-        active={sortOrder}
+        active={sort}
         onChange={onChange}
         WrapperWidth={WrapperWidth.XL}
         SelectWidth={SelectWidth.XL}

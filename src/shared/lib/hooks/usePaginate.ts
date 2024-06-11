@@ -9,14 +9,14 @@ const range = (start: number, end: number) => {
 };
 
 interface UsePaginateProps {
-  lastPage: number;
-  currentPage: number;
+  lastPage: number | undefined;
+  currentPage: number | undefined;
   siblingCount?: number;
 }
 
 export const usePaginate = ({
-  lastPage,
-  currentPage,
+  lastPage = 1,
+  currentPage = 1,
   siblingCount = 3,
 }: UsePaginateProps) => {
   return useMemo(() => {

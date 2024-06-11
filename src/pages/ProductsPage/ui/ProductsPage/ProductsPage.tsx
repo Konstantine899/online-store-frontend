@@ -3,19 +3,14 @@ import { memo, useEffect } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
-  fetchProducts,
   ProductList,
-  ProductsActions,
-  selectProducts,
-  selectProductsCount,
   selectProductsCurrentPage,
-  selectProductsInited,
-  selectProductsIsLoading,
   selectProductsLimit,
+  selectProductsSearch,
   selectProductsSortOrder,
+  useProducts,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
@@ -29,37 +24,34 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
 
   const dispatch = useAppDispatch();
-  const [URLSearchParams] = useSearchParams();
-  const paramSearch = URLSearchParams.get('search');
+  const search = useSelector(selectProductsSearch);
   const currentPage = useSelector(selectProductsCurrentPage);
   const sortOrder = useSelector(selectProductsSortOrder);
-  const products = useSelector(selectProducts);
-  const isLoading = useSelector(selectProductsIsLoading);
-  const _inited = useSelector(selectProductsInited);
   const limit = useSelector(selectProductsLimit);
-  const count = useSelector(selectProductsCount);
+  const [fetchProducts, { data, isSuccess, isLoading }] = useProducts();
 
   useEffect(() => {
-    dispatch(ProductsActions.setPage(Number(currentPage)));
-    dispatch(ProductsActions.setLimit(limit));
-    dispatch(ProductsActions.setSortingOrder(sortOrder));
-    if (paramSearch) dispatch(ProductsActions.setSearch(paramSearch));
-    dispatch(fetchProducts());
-  }, [currentPage, dispatch, limit, paramSearch, sortOrder]);
+    fetchProducts({ search, page: currentPage, limit, sort: sortOrder });
+  }, [currentPage, dispatch, fetchProducts, limit, search, sortOrder]);
 
-  return (
-    <Page className={classNames(cls.ProductsPage, {}, [className])}>
-      <PageHeading count={count} />
-      <ProductsFilters />
-      <ProductList
-        products={products}
-        isLoading={isLoading}
-        _inited={_inited}
-        limit={limit}
-      />
-      <ProductsPaginate />
-    </Page>
-  );
+  if (data && isSuccess) {
+    return (
+      <Page className={classNames(cls.ProductsPage, {}, [className])}>
+        <PageHeading count={data.count} />
+        <ProductsFilters />
+        <ProductList
+          products={data.rows}
+          isLoading={isLoading}
+          _inited={isSuccess}
+          limit={limit}
+        />
+        <ProductsPaginate
+          currentPage={data.metaData.currentPage}
+          lastPage={data.metaData.lastPage}
+        />
+      </Page>
+    );
+  }
 });
 
 export default ProductsPage;

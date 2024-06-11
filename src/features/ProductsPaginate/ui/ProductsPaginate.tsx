@@ -2,29 +2,24 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
-import {
-  fetchProducts,
-  ProductsActions,
-  selectProductsCurrentPage,
-  selectProductsLastPage,
-} from '@/entities/Product';
+import { ProductsActions, useProducts } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
-import { useSelector } from 'react-redux';
 
 interface ProductsPaginateProps {
   className?: string;
+  currentPage: number;
+  lastPage: number;
 }
 
 export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
-  const { className } = props;
+  const { className, lastPage, currentPage } = props;
   const dispatch = useAppDispatch();
-  const currentPage = useSelector(selectProductsCurrentPage); // текущая страница
-  const lastPage = useSelector(selectProductsLastPage); // последняя страница
+  const [fetchProducts] = useProducts();
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
-    dispatch(fetchProducts());
+    fetchProducts({ page: pageNumber });
   };
 
   const paginationRange = usePaginate({

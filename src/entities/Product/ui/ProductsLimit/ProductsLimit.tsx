@@ -12,8 +12,8 @@ import {
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectProductsLimit } from '../../model/selectors/selectProducts';
-import { fetchProducts } from '../../model/services/fetchProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { useProducts } from '../../api/productApi/productApi';
 
 interface ProductsLimitProps {
   className?: string;
@@ -23,6 +23,7 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
   const limit = useSelector(selectProductsLimit);
+  const [fetchProducts] = useProducts();
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
     () => [
@@ -34,8 +35,8 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
   );
 
   const fetchProductsList = useCallback(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    fetchProducts({ limit });
+  }, [fetchProducts, limit]);
 
   const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
