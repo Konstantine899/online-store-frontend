@@ -3,7 +3,7 @@ import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema
 import { ProductsSchema } from '../types/ProductsSchema';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 
-import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
+import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 import {
   selectProductsCurrentPage,
   selectProductsLimit,
@@ -25,12 +25,9 @@ export const fetchProducts = createAsyncThunk<
     addQueryParams({
       search: `${search}`,
     });
-    const response = await extra.api.get<ProductsSchema>(
-      getRouteListProducts(),
-      {
-        params: { search, page, limit, sort },
-      },
-    );
+    const response = await extra.api.get<ProductsSchema>(getRouteProducts(), {
+      params: { search, page, limit, sort },
+    });
     if (!response.data) {
       throw new Error();
     }

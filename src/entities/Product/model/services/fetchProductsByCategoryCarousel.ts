@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 import { ProductsSchema } from '../types/ProductsSchema';
-import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
+import { getRouteProductsByCategory } from '@/shared/consts/router/publicRouter';
 import { CategoryActions } from '@/entities/Category';
 
 interface IFetchProductsByCategoryCarousel {
@@ -18,7 +18,7 @@ export const fetchProductsByCategoryCarousel = createAsyncThunk<
   localStorage.setItem(`categoryId`, JSON.stringify(categoryId));
   try {
     const response = await extra.api.get<ProductsSchema>(
-      getRouteListProductsByCategory(`${categoryId}`),
+      getRouteProductsByCategory(`${categoryId}`),
       {
         params: { limit: 20 },
       },

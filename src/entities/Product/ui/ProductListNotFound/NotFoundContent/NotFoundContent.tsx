@@ -3,7 +3,7 @@ import { memo } from 'react';
 import cls from './NotFoundContent.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
 import {
-  getRouteListProducts,
+  getRouteProducts,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
 import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
@@ -28,7 +28,7 @@ export const NotFoundContent = memo((props: NotFoundContentProps) => {
         <Icon Svg={ArrowRightIcon} className={cls.ArrowRightIcon} />
       </AppLink>
       <AppLink
-        to={getRouteListProducts()}
+        to={getRouteProducts()}
         theme={AppLinkTheme.PRIMARY}
         className={cls.link}
       >

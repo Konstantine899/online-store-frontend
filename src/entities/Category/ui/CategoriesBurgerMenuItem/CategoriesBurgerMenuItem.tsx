@@ -7,7 +7,7 @@ import { fetchProductsByCategory, ProductsActions } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
 import { selectCategoryId } from '../../model/selectors/selectCategory';
-import { getRouteListProductsByCategory } from '@/shared/consts/router/publicRouter';
+import { getRouteProductsByCategory } from '@/shared/consts/router/publicRouter';
 import { BrandActions } from '@/entities/Brand';
 import { ICategory } from '../../model/types/ICategory';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
     dispatch(fetchProductsByCategory({ categoryId }));
-    navigate(getRouteListProductsByCategory(`${categoryId}`));
+    navigate(getRouteProductsByCategory(`${categoryId}`));
     onClose?.();
   };
 

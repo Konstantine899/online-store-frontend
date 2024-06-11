@@ -14,11 +14,11 @@ import {
   getRouteGuestMakePayment,
   getRouteIncreaseInTheQuantityInTheCart,
   getRouteCategories,
-  getRouteListProductProperty,
-  getRouteListProducts,
-  getRouteListProductsByBrand,
-  getRouteListProductsByBrandAndByCategory,
-  getRouteListProductsByCategory,
+  getRouteProductProperties,
+  getRouteProducts,
+  getRouteProductsByBrand,
+  getRouteProductsByBrandAndByCategory,
+  getRouteProductsByCategory,
   getRouteMain,
   getRouteProduct,
   getRouteRating,
@@ -77,26 +77,26 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     path: getRouterProductProperty(':productId', ':id'),
   },
   [publicRouter.GET_LIST_PRODUCT_PROPERTY]: {
-    path: getRouteListProductProperty(':productId'),
+    path: getRouteProductProperties(':productId'),
   },
   [publicRouter.GET_PRODUCT]: {
     path: getRouteProduct(':id'),
     element: <ProductDetailsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT]: {
-    path: getRouteListProducts(),
+    path: getRouteProducts(),
     element: <ProductsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID]: {
-    path: getRouteListProductsByBrand(':brandId'),
+    path: getRouteProductsByBrand(':brandId'),
     element: <ProductsPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_CATEGORY_ID]: {
-    path: getRouteListProductsByCategory(':categoryId'),
+    path: getRouteProductsByCategory(':categoryId'),
     element: <ProductsByCategoryPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
-    path: getRouteListProductsByBrandAndByCategory(':brandId', ':categoryId'),
+    path: getRouteProductsByBrandAndByCategory(':brandId', ':categoryId'),
     element: <ProductsByCategoryAndBrandPage />,
   },
   [publicRouter.GET_RATING]: {

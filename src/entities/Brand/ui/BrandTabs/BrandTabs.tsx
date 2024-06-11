@@ -10,7 +10,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { BrandActions } from '../../model/slices/BrandSlice';
 import { useGetBrandsByCategory } from '../../api/brandApi';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
+import { getRouteProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 
 interface BrandProps {
   className?: string;
@@ -25,7 +25,7 @@ export const BrandTabs = memo((props: BrandProps) => {
 
   const handleClick = (tab: TabItem) => {
     navigate(
-      getRouteListProductsByBrandAndByCategory(`${tab.id}`, `${categoryId}`),
+      getRouteProductsByBrandAndByCategory(`${tab.id}`, `${categoryId}`),
     );
     dispatch(BrandActions.setBrandId(Number(tab.id)));
     dispatch(ProductsByCategoryAndBrandActions.setPage(1));

@@ -10,7 +10,7 @@ import { Search } from '@/shared/ui/Search/Search';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { addQueryParams } from '@/shared/url/addQueryParams';
 import { useNavigate } from 'react-router-dom';
-import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
+import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 import cls from './ProductSearch.module.scss';
 import { InputTheme } from '@/shared/ui/Input/Input';
 
@@ -35,7 +35,7 @@ export const ProductSearch = memo((props: SearchProps) => {
 
   const productSearchChangeHandler = useCallback(
     (search: string) => {
-      navigate(getRouteListProducts());
+      navigate(getRouteProducts());
       dispatch(ProductsActions.setSearch(search));
       dispatch(ProductsActions.setPage(1));
     },

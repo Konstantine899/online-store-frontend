@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { getRouteListProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
+import { getRouteProductsByBrandAndByCategory } from '@/shared/consts/router/publicRouter';
 import { ProductsSchema } from '../types/ProductsSchema';
 import {
   selectProductsByCategoryAndBrandLimit,
@@ -27,7 +27,7 @@ export const fetchProductsByCategoryAndBrand = createAsyncThunk<
       const sort = selectProductsByCategoryAndBrandSort(getState());
 
       const response = await extra.api.get<ProductsSchema>(
-        getRouteListProductsByBrandAndByCategory(`${brandId}`, `${categoryId}`),
+        getRouteProductsByBrandAndByCategory(`${brandId}`, `${categoryId}`),
         {
           params: {
             limit,

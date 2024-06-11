@@ -62,18 +62,18 @@ export const getRouteGuestMakePayment = () => `/payment/guest/make-payment`;
 export const getRouterProductProperty = (productId: string, id: string) =>
   `/product-property/product_id/${productId}/get-property/${id}`;
 
-export const getRouteListProductProperty = (productId: string) =>
+export const getRouteProductProperties = (productId: string) =>
   `/product-property/product_id/${productId}/properties`;
 export const getRouteProduct = (id: string) => `/product/one/${id}`;
-export const getRouteListProducts = () => `/product/all`;
+export const getRouteProducts = () => `/product/all`;
 
-export const getRouteListProductsByBrand = (brandId: string) =>
+export const getRouteProductsByBrand = (brandId: string) =>
   `/product/all/brandId/${brandId}`;
 
-export const getRouteListProductsByCategory = (categoryId: string) =>
+export const getRouteProductsByCategory = (categoryId: string) =>
   `/product/all/categoryId/${categoryId}`;
 
-export const getRouteListProductsByBrandAndByCategory = (
+export const getRouteProductsByBrandAndByCategory = (
   brandId: string,
   categoryId: string,
 ) => `/product/all/brandId/${brandId}/categoryId/${categoryId}`;
