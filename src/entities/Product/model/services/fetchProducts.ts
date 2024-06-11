@@ -5,10 +5,10 @@ import { addQueryParams } from '@/shared/url/addQueryParams';
 
 import { getRouteListProducts } from '@/shared/consts/router/publicRouter';
 import {
-  selectCurrentPage,
-  selectLimit,
-  selectSearch,
-  selectSortOrder,
+  selectProductsCurrentPage,
+  selectProductsLimit,
+  selectProductsSearch,
+  selectProductsSortOrder,
 } from '../selectors/selectProducts';
 
 export const fetchProducts = createAsyncThunk<
@@ -18,10 +18,10 @@ export const fetchProducts = createAsyncThunk<
 >('fetchProducts', async (_, thunkAPI) => {
   const { rejectWithValue, extra, getState } = thunkAPI;
   try {
-    const limit = selectLimit(getState());
-    const page = selectCurrentPage(getState());
-    const search = selectSearch(getState());
-    const sort = selectSortOrder(getState());
+    const limit = selectProductsLimit(getState());
+    const page = selectProductsCurrentPage(getState());
+    const search = selectProductsSearch(getState());
+    const sort = selectProductsSortOrder(getState());
     addQueryParams({
       search: `${search}`,
     });

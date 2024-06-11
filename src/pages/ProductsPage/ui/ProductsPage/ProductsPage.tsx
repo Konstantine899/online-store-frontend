@@ -6,13 +6,13 @@ import {
   fetchProducts,
   ProductList,
   ProductsActions,
-  selectCount,
-  selectCurrentPage,
-  selectLimit,
   selectProducts,
+  selectProductsCount,
+  selectProductsCurrentPage,
   selectProductsInited,
   selectProductsIsLoading,
-  selectSortOrder,
+  selectProductsLimit,
+  selectProductsSortOrder,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSearchParams } from 'react-router-dom';
@@ -31,13 +31,13 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   const dispatch = useAppDispatch();
   const [URLSearchParams] = useSearchParams();
   const paramSearch = URLSearchParams.get('search');
-  const currentPage = useSelector(selectCurrentPage);
-  const sortOrder = useSelector(selectSortOrder);
+  const currentPage = useSelector(selectProductsCurrentPage);
+  const sortOrder = useSelector(selectProductsSortOrder);
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectProductsIsLoading);
   const _inited = useSelector(selectProductsInited);
-  const limit = useSelector(selectLimit);
-  const count = useSelector(selectCount);
+  const limit = useSelector(selectProductsLimit);
+  const count = useSelector(selectProductsCount);
 
   useEffect(() => {
     dispatch(ProductsActions.setPage(Number(currentPage)));

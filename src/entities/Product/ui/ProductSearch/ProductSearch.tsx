@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { fetchProducts } from '../../model/services/fetchProducts';
-import { selectSearch } from '../../model/selectors/selectProducts';
+import { selectProductsSearch } from '../../model/selectors/selectProducts';
 import { BrandActions } from '@/entities/Brand';
 import { CategoryActions } from '@/entities/Category';
 import { Search } from '@/shared/ui/Search/Search';
@@ -24,7 +24,7 @@ export const ProductSearch = memo((props: SearchProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const search = useSelector(selectSearch);
+  const search = useSelector(selectProductsSearch);
 
   const onChangeFetchProducts = useCallback(() => {
     dispatch(BrandActions.setBrandId(0));

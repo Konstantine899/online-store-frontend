@@ -11,7 +11,7 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { selectLimit } from '../../model/selectors/selectProducts';
+import { selectProductsLimit } from '../../model/selectors/selectProducts';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 
@@ -22,7 +22,7 @@ interface ProductsLimitProps {
 export const ProductsLimit = memo((props: ProductsLimitProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-  const limit = useSelector(selectLimit);
+  const limit = useSelector(selectProductsLimit);
 
   const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
     () => [

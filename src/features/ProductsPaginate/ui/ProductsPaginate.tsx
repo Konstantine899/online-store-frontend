@@ -5,10 +5,8 @@ import { Paginate } from '@/entities/Paginate';
 import {
   fetchProducts,
   ProductsActions,
-  selectCurrentPage,
-  selectLastPage,
-  selectNextPage,
-  selectPreviosPage,
+  selectProductsCurrentPage,
+  selectProductsLastPage,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
@@ -21,8 +19,8 @@ interface ProductsPaginateProps {
 export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-  const currentPage = useSelector(selectCurrentPage); // текущая страница
-  const lastPage = useSelector(selectLastPage); // последняя страница
+  const currentPage = useSelector(selectProductsCurrentPage); // текущая страница
+  const lastPage = useSelector(selectProductsLastPage); // последняя страница
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));

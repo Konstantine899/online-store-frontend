@@ -11,7 +11,7 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { selectSortOrder } from '../../model/selectors/selectProducts';
+import { selectProductsSortOrder } from '../../model/selectors/selectProducts';
 import { fetchProducts } from '../../model/services/fetchProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 
@@ -21,7 +21,7 @@ interface ProductsSortOrderProps {
 
 export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   const { className } = props;
-  const sortOrder = useSelector(selectSortOrder);
+  const sortOrder = useSelector(selectProductsSortOrder);
   const dispatch = useAppDispatch();
 
   const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(

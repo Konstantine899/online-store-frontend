@@ -24,34 +24,58 @@ export const selectProductsInited = createSelector(
   },
 );
 
-export const selectSearch = createSelector(selectProductsState, (state) => {
-  return state?.search ?? '';
-});
-export const selectSortOrder = createSelector(selectProductsState, (state) => {
-  return state?.sortingOrder ?? 'asc';
-});
+export const selectProductsSearch = createSelector(
+  selectProductsState,
+  (state) => {
+    return state?.search ?? '';
+  },
+);
+export const selectProductsSortOrder = createSelector(
+  selectProductsState,
+  (state) => {
+    return state?.sortingOrder ?? 'asc';
+  },
+);
 
-export const selectCount = createSelector(selectProductsState, (state) => {
-  return state?.count ?? 0;
-});
+export const selectProductsCount = createSelector(
+  selectProductsState,
+  (state) => {
+    return state?.count ?? 0;
+  },
+);
 
 // MetaData
 
-export const selectMetaData = (state: StateSchema) => {
+export const selectProductsMetaData = (state: StateSchema) => {
   return state?.productsPage?.products?.metaData;
 };
-export const selectLimit = createSelector(selectMetaData, (state) => {
-  return state?.limit ?? 5;
-});
-export const selectCurrentPage = createSelector(selectMetaData, (state) => {
-  return state?.currentPage ?? 1;
-});
-export const selectNextPage = createSelector(selectMetaData, (state) => {
-  return state?.nextPage ?? 0;
-});
-export const selectPreviosPage = createSelector(selectMetaData, (state) => {
-  return state?.previousPage ?? 0;
-});
-export const selectLastPage = createSelector(selectMetaData, (state) => {
-  return state?.lastPage ?? 0;
-});
+export const selectProductsLimit = createSelector(
+  selectProductsMetaData,
+  (state) => {
+    return state?.limit ?? 5;
+  },
+);
+export const selectProductsCurrentPage = createSelector(
+  selectProductsMetaData,
+  (state) => {
+    return state?.currentPage ?? 1;
+  },
+);
+export const selectProductsNextPage = createSelector(
+  selectProductsMetaData,
+  (state) => {
+    return state?.nextPage ?? 0;
+  },
+);
+export const selectProductsPreviosPage = createSelector(
+  selectProductsMetaData,
+  (state) => {
+    return state?.previousPage ?? 0;
+  },
+);
+export const selectProductsLastPage = createSelector(
+  selectProductsMetaData,
+  (state) => {
+    return state?.lastPage ?? 0;
+  },
+);

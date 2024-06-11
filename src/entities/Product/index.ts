@@ -45,19 +45,19 @@ export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 
 // selectors
 export {
-  selectLastPage,
-  selectSortOrder,
-  selectSearch,
+  selectProductsLastPage,
+  selectProductsSortOrder,
+  selectProductsSearch,
   selectProductsInited,
-  selectCount,
+  selectProductsCount,
   selectProductsState,
   selectProducts,
   selectProductsIsLoading,
-  selectLimit,
-  selectCurrentPage,
-  selectNextPage,
-  selectPreviosPage,
-  selectMetaData,
+  selectProductsLimit,
+  selectProductsCurrentPage,
+  selectProductsNextPage,
+  selectProductsPreviosPage,
+  selectProductsMetaData,
 } from '@/entities/Product/model/selectors/selectProducts';
 
 export {
