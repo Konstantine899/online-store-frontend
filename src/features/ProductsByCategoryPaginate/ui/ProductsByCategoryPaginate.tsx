@@ -2,33 +2,31 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
-import {
-  fetchProductsByCategory,
-  ProductsActions,
-  ProductsByCategoryActions,
-  selectProductsByCategoryCurrentPage,
-  selectProductsByCategoryLastPage,
-} from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
+import {
+  ProductsByCategoryActions,
+  useProductsByCategory,
+} from '@/entities/Product';
 
 interface ProductsByCategoryPaginateProps {
   className?: string;
+  currentPage: number;
+  lastPage: number;
 }
 
 export const ProductsByCategoryPaginate = memo(
   (props: ProductsByCategoryPaginateProps) => {
-    const { className } = props;
+    const { className, lastPage, currentPage } = props;
     const dispatch = useAppDispatch();
     const categoryId = useSelector(selectCategoryId);
-    const currentPage = useSelector(selectProductsByCategoryCurrentPage);
-    const lastPage = useSelector(selectProductsByCategoryLastPage);
+    const [fetchProductsByCategory] = useProductsByCategory();
 
     const onPageChange = (pageNumber: number) => {
       dispatch(ProductsByCategoryActions.setPage(pageNumber));
-      dispatch(fetchProductsByCategory({ categoryId }));
+      fetchProductsByCategory({ categoryId, page: pageNumber });
     };
 
     const paginationRange = usePaginate({

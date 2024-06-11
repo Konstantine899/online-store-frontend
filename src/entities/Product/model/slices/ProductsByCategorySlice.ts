@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchProductsByCategory } from '../services/fetchProductsByCategory';
 import { ProductsSchema } from '../types/ProductsSchema';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 
@@ -37,34 +36,6 @@ export const ProductsByCategorySlice = createSlice({
     ) => {
       state.sortingOrder = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProductsByCategory.pending, (state: ProductsSchema) => {
-        state.isLoading = true;
-        state.error = undefined;
-        state.rows = [];
-        state._inited = false;
-      })
-      .addCase(
-        fetchProductsByCategory.fulfilled,
-        (state: ProductsSchema, action: PayloadAction<ProductsSchema>) => {
-          state.isLoading = false;
-          state.rows = action.payload.rows;
-          state.count = action.payload.count;
-          state.metaData = action.payload.metaData;
-          state._inited = true;
-        },
-      )
-      .addCase(
-        fetchProductsByCategory.rejected,
-        (state: ProductsSchema, action: PayloadAction<string | undefined>) => {
-          state.isLoading = false;
-          state.rows = [];
-          state.error = action.payload;
-          state._inited = false;
-        },
-      );
   },
 });
 

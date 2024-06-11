@@ -4,21 +4,19 @@ import cls from './ProductsByCategoryPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { useSelector } from 'react-redux';
 import {
-  fetchProductsByCategory,
   ProductList,
-  ProductsActions,
-  selectProductsByCategory,
   selectProductsByCategoryCount,
-  selectProductsByCategoryInited,
+  selectProductsByCategoryCurrentPage,
   selectProductsByCategoryIsLoading,
   selectProductsByCategoryLimit,
+  selectProductsByCategorySort,
+  useProductsByCategory,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageHeading } from '@/entities/PageHeading';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 import { useParams } from 'react-router';
-import { CategoryActions } from '@/entities/Category';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -28,31 +26,41 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   const { className } = props;
   const { categoryId } = useParams();
   const dispatch = useAppDispatch();
-  const products = useSelector(selectProductsByCategory);
   const isLoading = useSelector(selectProductsByCategoryIsLoading);
-  const _inited = useSelector(selectProductsByCategoryInited);
   const limit = useSelector(selectProductsByCategoryLimit);
+  const sort = useSelector(selectProductsByCategorySort);
+  const page = useSelector(selectProductsByCategoryCurrentPage);
   const count = useSelector(selectProductsByCategoryCount);
+  const [fetchProductsByCategory, { data, isSuccess }] =
+    useProductsByCategory();
 
   useEffect(() => {
-    dispatch(ProductsActions.setSearch(''));
-    dispatch(CategoryActions.setCategoryId(Number(categoryId)));
-    dispatch(fetchProductsByCategory({ categoryId: Number(categoryId) }));
-  }, [categoryId, dispatch]);
+    fetchProductsByCategory({
+      categoryId: Number(categoryId),
+      limit,
+      sort,
+      page,
+    });
+  }, [categoryId, dispatch, fetchProductsByCategory, limit, page, sort]);
 
-  return (
-    <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
-      <PageHeading count={count} />
-      <ProductsByCategoryFilters />
-      <ProductList
-        _inited={_inited}
-        products={products}
-        limit={limit}
-        isLoading={isLoading}
-      />
-      <ProductsByCategoryPaginate />
-    </Page>
-  );
+  if (data && isSuccess) {
+    return (
+      <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
+        <PageHeading count={count} />
+        <ProductsByCategoryFilters />
+        <ProductList
+          _inited={isSuccess}
+          products={data.rows}
+          limit={limit}
+          isLoading={isLoading}
+        />
+        <ProductsByCategoryPaginate
+          lastPage={data.metaData.lastPage}
+          currentPage={data.metaData.currentPage}
+        />
+      </Page>
+    );
+  }
 });
 
 export default ProductsByCategoryPage;

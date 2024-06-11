@@ -3,7 +3,7 @@ import { memo } from 'react';
 import cls from './CategoriesBurgerMenuItem.module.scss';
 import { CategoriesBurgerMenuItemIcon } from '../CategoriesBurgerMenuItemIcon/CategoriesBurgerMenuItemIcon';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchProductsByCategory, ProductsActions } from '@/entities/Product';
+import { ProductsActions, useProductsByCategory } from '@/entities/Product';
 import { useSelector } from 'react-redux';
 import { CategoryActions } from '../../model/slices/CategorySlice';
 import { selectCategoryId } from '../../model/selectors/selectCategory';
@@ -23,12 +23,13 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
   const dispatch = useAppDispatch();
   const categoryId = useSelector(selectCategoryId);
   const navigate = useNavigate();
+  const [fetchProductsByCategory] = useProductsByCategory();
 
   const onHandleClick = (categoryId: number) => () => {
     dispatch(ProductsActions.setPage(1));
     dispatch(CategoryActions.setCategoryId(categoryId));
     dispatch(BrandActions.setBrandId(0));
-    dispatch(fetchProductsByCategory({ categoryId }));
+    fetchProductsByCategory({ categoryId });
     navigate(getRouteProductsByCategory(`${categoryId}`));
     onClose?.();
   };

@@ -12,12 +12,9 @@ import {
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
-import {
-  selectProductsByCategory,
-  selectProductsByCategorySort,
-} from '../../model/selectors/selectProductsByCategory';
+import { selectProductsByCategorySort } from '../../model/selectors/selectProductsByCategory';
+import { useProductsByCategory } from '../../api/productsByCategoryApi';
 
 interface ProductsByCategorySortOrderProps {
   className?: string;
@@ -27,9 +24,9 @@ export const ProductsByCategorySortOrder = memo(
   (props: ProductsByCategorySortOrderProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
-    const products = useSelector(selectProductsByCategory);
     const categoryId = useSelector(selectCategoryId);
-    const setOrder = useSelector(selectProductsByCategorySort);
+    const sort = useSelector(selectProductsByCategorySort);
+    const [fetchProductsByCategory] = useProductsByCategory();
 
     const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
       () => [
@@ -40,8 +37,8 @@ export const ProductsByCategorySortOrder = memo(
     );
 
     const fetchProductsList = useCallback(() => {
-      dispatch(fetchProductsByCategory({ categoryId }));
-    }, [categoryId, dispatch]);
+      fetchProductsByCategory({ categoryId, sort });
+    }, [categoryId, fetchProductsByCategory, sort]);
 
     const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
@@ -51,23 +48,19 @@ export const ProductsByCategorySortOrder = memo(
       debounceFilterOrder();
     };
 
-    if (products.length > 0) {
-      return (
-        <div
-          className={classNames(cls.ProductsByCategorySortOrder, {}, [
-            className,
-          ])}
-        >
-          <Select<ISortOrder>
-            options={selectOptions}
-            label={'По'}
-            active={setOrder}
-            onChange={onChange}
-            WrapperWidth={WrapperWidth.XL}
-            SelectWidth={SelectWidth.XL}
-          />
-        </div>
-      );
-    }
+    return (
+      <div
+        className={classNames(cls.ProductsByCategorySortOrder, {}, [className])}
+      >
+        <Select<ISortOrder>
+          options={selectOptions}
+          label={'По'}
+          active={sort}
+          onChange={onChange}
+          WrapperWidth={WrapperWidth.XL}
+          SelectWidth={SelectWidth.XL}
+        />
+      </div>
+    );
   },
 );

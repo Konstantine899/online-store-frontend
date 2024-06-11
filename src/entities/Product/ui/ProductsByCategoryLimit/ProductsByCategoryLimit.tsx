@@ -12,12 +12,9 @@ import {
 } from '@/shared/ui/Select/Select/Select';
 import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { fetchProductsByCategory } from '../../model/services/fetchProductsByCategory';
-import {
-  selectProductsByCategory,
-  selectProductsByCategoryLimit,
-} from '../../model/selectors/selectProductsByCategory';
+import { selectProductsByCategoryLimit } from '../../model/selectors/selectProductsByCategory';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
+import { useProductsByCategory } from '../../api/productsByCategoryApi';
 
 interface ProductsByCategoryLimitProps {
   className?: string;
@@ -29,8 +26,8 @@ export const ProductsByCategoryLimit = memo(
 
     const dispatch = useAppDispatch();
     const limit = useSelector(selectProductsByCategoryLimit);
-    const products = useSelector(selectProductsByCategory);
     const categoryId = useSelector(selectCategoryId);
+    const [fetchProductsByCategory] = useProductsByCategory();
 
     const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
       () => [
@@ -42,8 +39,8 @@ export const ProductsByCategoryLimit = memo(
     );
 
     const fetchProductsList = useCallback(() => {
-      dispatch(fetchProductsByCategory({ categoryId }));
-    }, [categoryId, dispatch]);
+      fetchProductsByCategory({ categoryId, limit });
+    }, [categoryId, fetchProductsByCategory, limit]);
 
     const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
@@ -53,21 +50,17 @@ export const ProductsByCategoryLimit = memo(
       debounceLimitOrder();
     };
 
-    if (products.length > 0) {
-      return (
-        <div
-          className={classNames(cls.ProductsByCategoryLimit, {}, [className])}
-        >
-          <Select
-            options={selectOptions}
-            active={`${limit}` as ISortLimit}
-            onChange={onChange}
-            label={'Показывать по'}
-            WrapperWidth={WrapperWidth.XL}
-            SelectWidth={SelectWidth.M}
-          />
-        </div>
-      );
-    }
+    return (
+      <div className={classNames(cls.ProductsByCategoryLimit, {}, [className])}>
+        <Select
+          options={selectOptions}
+          active={`${limit}` as ISortLimit}
+          onChange={onChange}
+          label={'Показывать по'}
+          WrapperWidth={WrapperWidth.XL}
+          SelectWidth={SelectWidth.M}
+        />
+      </div>
+    );
   },
 );
