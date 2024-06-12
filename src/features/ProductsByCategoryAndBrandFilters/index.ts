@@ -1,2 +1,1 @@
 export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBrandFilters/ProductsByCategoryAndBrandFilters';
-  export type { ProductsByCategoryAndBrandFiltersSchema } from './model/types/ProductsByCategoryAndBrandFiltersSchema';
