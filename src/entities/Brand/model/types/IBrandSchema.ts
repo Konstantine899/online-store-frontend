@@ -1,5 +1,5 @@
 import { IBrand } from './IBrand';
 
-export interface BrandSchema {
+export interface IBrandSchema {
   brand: IBrand;
 }

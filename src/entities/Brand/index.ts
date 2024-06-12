@@ -9,5 +9,5 @@ export { brandReducers } from './model/slices';
 export { selectBrandId } from './model/selectors/selectBrand';
 
 // types
-export type { BrandSchema } from './model/types/BrandSchema';
+export type { IBrandSchema } from './model/types/IBrandSchema';
 export type { IBrand } from './model/types/IBrand';

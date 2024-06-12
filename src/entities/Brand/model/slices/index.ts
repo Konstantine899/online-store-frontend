@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { BrandSchema } from '../types/BrandSchema';
+import { IBrandSchema } from '../types/IBrandSchema';
 import { BrandReducer } from '../slices/BrandSlice';
 
-export const brandReducers = combineReducers<BrandSchema>({
+export const brandReducers = combineReducers<IBrandSchema>({
   brand: BrandReducer,
 });
