@@ -12,5 +12,5 @@ type Story = StoryObj<typeof ProductSpecification>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <ProductSpecification title={'Основные'} />,
+  render: (args) => <ProductSpecification {...args} />,
 };

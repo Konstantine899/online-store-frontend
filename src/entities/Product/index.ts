@@ -5,6 +5,7 @@ export {
   useProductsByCategory,
   useFetchProductsByCategoryCarousel,
 } from './api/productsApi';
+export { useProduct } from './api/productApi';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
@@ -12,7 +13,7 @@ export { ProductList } from './ui/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
-export { ProductPreview } from './ui/ProductPreview/ProductPreview';
+export { Product } from './ui/ProductPreview/Product';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
@@ -36,9 +37,6 @@ export {
   ProductsByCategoryAndBrandActions,
   ProductsByCategoryAndBrandReducer,
 } from './model/slices/ProductsByCategoryAndBrandSlice';
-
-//services
-export { fetchProductDetails } from './model/services/fetchProductDetails';
 
 // selectors
 export {
@@ -77,4 +75,4 @@ export {
 
 // types
 export type { IProductsSchema, TProduct } from './model/types/IProductsSchema';
-export type { IProductSchema } from './model/types/IProductSchema';
+export type { IProduct } from './model/types/IProduct';

@@ -1,5 +1,5 @@
 import { ISortOrder } from '@/shared/types/ISortOrder';
-import { IProduct } from '../types/IProduct';
+import { IProduct } from './IProduct';
 
 export interface IMetaData {
   totalCount: number;

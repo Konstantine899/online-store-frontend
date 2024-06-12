@@ -3,24 +3,23 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
-  fetchProductDetails,
+  Product,
   ProductHeading,
-  ProductPreview,
   ProductSpecification,
 } from '@/entities/Product';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
 import { brandReducers } from '@/entities/Brand';
 import { categoryReducers } from '@/entities/Category';
 import { RatingReducer } from '@/entities/Rating';
 import { productDetailsPageReducers } from '../model/slices';
+import { useProduct } from '@/entities/Product';
 
 const ProductDetailsPageAsyncReducer: ReducersList = {
-  productDetailsPage: productDetailsPageReducers,
+  productPage: productDetailsPageReducers,
   brand: brandReducers,
   category: categoryReducers,
   rating: RatingReducer,
@@ -33,22 +32,31 @@ interface ProductDetailsPageProps {
 export const ProductPage = memo((props: ProductDetailsPageProps) => {
   const { className } = props;
 
-  const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
+  const [fetchProduct, { data, isSuccess, isLoading }] = useProduct();
 
   useEffect(() => {
-    dispatch(fetchProductDetails({ id: Number(id) }));
-  }, [dispatch, id]);
+    fetchProduct({ productId: Number(id) });
+  }, [fetchProduct, id]);
 
-  return (
-    <Suspense fallback={''}>
-      <DynamicModuleLoader reducers={ProductDetailsPageAsyncReducer}>
-        <Page className={classNames(cls.ProductDetailsPage, {}, [className])}>
-          <ProductHeading />
-          <ProductPreview />
-          <ProductSpecification title={`Характеристики`} />
-        </Page>
-      </DynamicModuleLoader>
-    </Suspense>
-  );
+  if (data && isSuccess) {
+    return (
+      <Suspense fallback={''}>
+        <DynamicModuleLoader reducers={ProductDetailsPageAsyncReducer}>
+          <Page className={classNames(cls.ProductDetailsPage, {}, [className])}>
+            <ProductHeading name={data.name} />
+            <Product
+              product={data}
+              isLoading={isLoading}
+              isSuccess={isSuccess}
+            />
+            <ProductSpecification
+              title={`Характеристики`}
+              properties={data.properties}
+            />
+          </Page>
+        </DynamicModuleLoader>
+      </Suspense>
+    );
+  }
 });

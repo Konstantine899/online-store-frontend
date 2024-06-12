@@ -30,7 +30,7 @@ export interface StateSchema {
   productsPage?: ProductsPageSchema;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
   productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
-  productDetailsPage?: ProductPageSchema;
+  productPage?: ProductPageSchema;
   brand?: IBrandSchema;
   category?: ICategorySchema;
   rating?: IRatingSchema;
