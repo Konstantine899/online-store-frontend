@@ -1,4 +1,7 @@
-export type { AuthSchema, Auth } from '@/entities/Auth/model/types/AuthSchema';
+export type {
+  IAuthSchema,
+  IAuth,
+} from '@/entities/Auth/model/types/IAuthSchema';
 export {
   AuthActions,
   AuthReducer,

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Auth, setUserData } from '@/entities/Auth';
+import { IAuth, setUserData } from '@/entities/Auth';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 import { LoginValidationErrors } from '@/shared/types/LoginValidationErrors';
 
@@ -9,7 +9,7 @@ interface loginByEmailProps {
 }
 
 export const loginByEmail = createAsyncThunk<
-  Auth,
+  IAuth,
   loginByEmailProps,
   ThunkAPIConfig<string | LoginValidationErrors[]>
 >('LoginSlice', async ({ email, password }, thunkAPI) => {

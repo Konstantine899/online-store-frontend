@@ -1,18 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Auth, AuthSchema } from '../types/AuthSchema';
+import { IAuth, IAuthSchema } from '../types/IAuthSchema';
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
 
-const initialState: AuthSchema = {};
+const initialState: IAuthSchema = {};
 
 export const AuthSlice = createSlice({
   name: 'Auth',
   initialState,
   reducers: {
-    setAuthData: (state: AuthSchema, action: PayloadAction<Auth>) => {
+    setAuthData: (state: IAuthSchema, action: PayloadAction<IAuth>) => {
       state.authData = action.payload;
     },
     initAuthData: (state) => {

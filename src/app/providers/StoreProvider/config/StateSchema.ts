@@ -1,7 +1,7 @@
 import { UserSchema } from '@/entities/User';
 import { RegistrationSchema } from '@/features/Registration';
 import { LoginSchema } from '@/features/Login';
-import { AuthSchema } from '@/entities/Auth';
+import { IAuthSchema } from '@/entities/Auth';
 import {
   AnyAction,
   CombinedState,
@@ -21,7 +21,7 @@ import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 
 export interface StateSchema {
-  auth: AuthSchema;
+  auth: IAuthSchema;
   user: UserSchema;
   scroll: ScrollSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
