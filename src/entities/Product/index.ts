@@ -45,11 +45,9 @@ export {
   selectProductsLastPage,
   selectProductsSortOrder,
   selectProductsSearch,
-  selectProductsInited,
   selectProductsCount,
   selectProductsState,
   selectProducts,
-  selectProductsIsLoading,
   selectProductsLimit,
   selectProductsCurrentPage,
   selectProductsNextPage,
@@ -58,21 +56,17 @@ export {
 } from '@/entities/Product/model/selectors/selectProducts';
 
 export {
-  selectProductsByCategoryIsLoading,
   selectProductsByCategoryState,
   selectProductsByCategoryCount,
   selectProductsByCategory,
   selectProductsByCategoryCurrentPage,
-  selectProductsByCategoryInited,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
   selectProductsByCategoryLastPage,
 } from './model/selectors/selectProductsByCategory';
 
 export {
-  selectProductsByCategoryAndBrandIsLoading,
   selectProductsByCategoryAndBrandLimit,
-  selectProductsByCategoryAndBrandInited,
   selectProductsByCategoryAndBrand,
   selectProductsByCategoryAndBrandCurrentPage,
   selectProductsByCategoryAndBrandCount,

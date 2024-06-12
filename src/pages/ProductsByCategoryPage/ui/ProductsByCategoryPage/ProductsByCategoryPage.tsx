@@ -7,7 +7,6 @@ import {
   ProductList,
   selectProductsByCategoryCount,
   selectProductsByCategoryCurrentPage,
-  selectProductsByCategoryIsLoading,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
   useProductsByCategory,
@@ -26,12 +25,11 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   const { className } = props;
   const { categoryId } = useParams();
   const dispatch = useAppDispatch();
-  const isLoading = useSelector(selectProductsByCategoryIsLoading);
   const limit = useSelector(selectProductsByCategoryLimit);
   const sort = useSelector(selectProductsByCategorySort);
   const page = useSelector(selectProductsByCategoryCurrentPage);
   const count = useSelector(selectProductsByCategoryCount);
-  const [fetchProductsByCategory, { data, isSuccess }] =
+  const [fetchProductsByCategory, { data, isSuccess, isLoading }] =
     useProductsByCategory();
 
   useEffect(() => {

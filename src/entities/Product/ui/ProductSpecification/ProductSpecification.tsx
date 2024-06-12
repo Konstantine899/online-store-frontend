@@ -3,7 +3,7 @@ import { memo } from 'react';
 import cls from './ProductSpecification.module.scss';
 import { useSelector } from 'react-redux';
 import { selectProperties } from '../../model/selectors/selectProductDetails';
-import { IProductProperty } from '@/entities/Product/model/types/IProduct';
+import { IProductProperty } from '../../model/types/IProduct';
 
 interface ProductDetailsInfoProps {
   className?: string;

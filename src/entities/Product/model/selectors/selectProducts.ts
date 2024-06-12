@@ -10,20 +10,6 @@ export const selectProducts = createSelector(
   (state) => state?.rows ?? [],
 );
 
-export const selectProductsIsLoading = createSelector(
-  selectProductsState,
-  (state) => {
-    return state?.isLoading ?? false;
-  },
-);
-
-export const selectProductsInited = createSelector(
-  selectProductsState,
-  (state) => {
-    return state?._inited ?? false;
-  },
-);
-
 export const selectProductsSearch = createSelector(
   selectProductsState,
   (state) => {

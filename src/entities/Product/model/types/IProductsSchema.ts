@@ -1,5 +1,5 @@
 import { ISortOrder } from '@/shared/types/ISortOrder';
-import { IProduct } from '@/entities/Product/model/types/IProduct';
+import { IProduct } from '../types/IProduct';
 
 export interface IMetaData {
   totalCount: number;
@@ -18,7 +18,4 @@ export interface IProductsSchema {
   rows: TProduct[];
   search: string;
   sortOrder: ISortOrder;
-  isLoading: boolean;
-  error?: string;
-  _inited: boolean;
 }

@@ -15,9 +15,6 @@ const initialState: IProductsSchema = {
   },
   search: '',
   sortOrder: 'asc',
-  isLoading: false,
-  error: undefined,
-  _inited: false,
 };
 
 export const ProductsByCategoryAndBrandSlice = createSlice({

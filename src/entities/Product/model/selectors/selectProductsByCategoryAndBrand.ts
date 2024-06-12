@@ -12,20 +12,6 @@ export const selectProductsByCategoryAndBrand = createSelector(
   },
 );
 
-export const selectProductsByCategoryAndBrandIsLoading = createSelector(
-  selectProductsByCategoryAndBrandState,
-  (state) => {
-    return state?.isLoading || false;
-  },
-);
-
-export const selectProductsByCategoryAndBrandInited = createSelector(
-  selectProductsByCategoryAndBrandState,
-  (state) => {
-    return state?._inited || false;
-  },
-);
-
 export const selectProductsByCategoryAndBrandCount = createSelector(
   selectProductsByCategoryAndBrandState,
   (state) => {
