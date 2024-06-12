@@ -7,13 +7,11 @@ import {
 import { productDetailsPageReducers } from '../model/slices/index';
 import { brandReducers } from '@/entities/Brand';
 import { categoryReducers } from '@/entities/Category';
-import { RatingReducer } from '@/entities/Rating';
 
 const reducers: ReducersList = {
   productPage: productDetailsPageReducers,
   brand: brandReducers,
   category: categoryReducers,
-  rating: RatingReducer,
 };
 
 const ProductPageLazy = lazy(() => import('./ProductPage'));

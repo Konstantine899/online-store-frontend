@@ -1,8 +1,9 @@
-export {
-  RatingReducer,
-  RatingActions,
-} from '../Rating/model/slices/RatingSlice';
+// api
+export { useRating } from './api/ratingApi';
+
+// selectors
 export { selectRating } from './model/selectors/selectRating';
 export { selectVotes } from './model/selectors/selectVotes';
-export { fetchRating } from './model/services/fetchRating';
+
+// types
 export type { IRatingSchema } from './model/types/IRatingSchema';

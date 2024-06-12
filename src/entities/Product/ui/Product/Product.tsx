@@ -2,10 +2,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import cls from './Product.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { fetchRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
 import { IProduct } from '../../model/types/IProduct';
+import { useRating } from '@/entities/Rating';
 
 interface ProductDetailsProps {
   className?: string;
@@ -18,10 +18,11 @@ export const Product = memo((props: ProductDetailsProps) => {
   const { className, product, isLoading, isSuccess } = props;
 
   const dispatch = useAppDispatch();
+  const [fetchRating] = useRating();
 
   useEffect(() => {
-    dispatch(fetchRating({ productId: product.id }));
-  }, [dispatch, product.id]);
+    fetchRating({ productId: product.id });
+  }, [dispatch, fetchRating, product.id]);
 
   if (isLoading) {
     return (
