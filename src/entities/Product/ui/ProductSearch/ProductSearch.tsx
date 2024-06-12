@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 import cls from './ProductSearch.module.scss';
 import { InputTheme } from '@/shared/ui/Input/Input';
-import { useProducts } from '../../api/productApi/productApi';
+import { useProducts } from '../../api/productsApi';
 
 interface SearchProps {
   className?: string;

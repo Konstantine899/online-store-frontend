@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ProductsSchema } from '../../model/types/ProductsSchema';
+import { ProductsSchema } from '../model/types/ProductsSchema';
 import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 
@@ -10,7 +10,7 @@ interface IProductParams {
   sort?: ISortOrder;
 }
 
-const productApi = rtkApi.injectEndpoints({
+const productsApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     products: build.query<ProductsSchema, IProductParams>({
       query: (args: IProductParams) => {
@@ -24,4 +24,4 @@ const productApi = rtkApi.injectEndpoints({
   }),
 });
 
-export const useProducts = productApi.useLazyProductsQuery;
+export const useProducts = productsApi.useLazyProductsQuery;

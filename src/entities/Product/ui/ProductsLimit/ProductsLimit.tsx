@@ -13,7 +13,7 @@ import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectProductsLimit } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
-import { useProducts } from '../../api/productApi/productApi';
+import { useProducts } from '../../api/productsApi';
 
 interface ProductsLimitProps {
   className?: string;

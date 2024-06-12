@@ -1,5 +1,5 @@
 // api
-export { useProducts } from './api/productApi/productApi';
+export { useProducts } from './api/productsApi';
 export { useProductsByCategory } from './api/productsByCategoryApi';
 
 //ui
