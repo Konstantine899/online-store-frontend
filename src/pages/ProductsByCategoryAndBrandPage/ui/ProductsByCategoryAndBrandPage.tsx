@@ -2,14 +2,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
-  fetchProductsByCategoryAndBrand,
   ProductList,
   ProductsActions,
-  selectProductsByCategoryAndBrand,
-  selectProductsByCategoryAndBrandCount,
-  selectProductsByCategoryAndBrandInited,
-  selectProductsByCategoryAndBrandIsLoading,
+  selectProductsByCategoryAndBrandCurrentPage,
   selectProductsByCategoryAndBrandLimit,
+  selectProductsByCategoryAndBrandSort,
+  useProductsByCategoryAndBrand,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -29,38 +27,52 @@ const ProductsByCategoryAndBrandPage = memo(
     const dispatch = useAppDispatch();
     const { brandId, categoryId } = useParams();
     const limit = useSelector(selectProductsByCategoryAndBrandLimit);
-    const isLoading = useSelector(selectProductsByCategoryAndBrandIsLoading);
-    const _inited = useSelector(selectProductsByCategoryAndBrandInited);
-    const products = useSelector(selectProductsByCategoryAndBrand);
-    const count = useSelector(selectProductsByCategoryAndBrandCount);
+    const sort = useSelector(selectProductsByCategoryAndBrandSort);
+    const page = useSelector(selectProductsByCategoryAndBrandCurrentPage);
+    const [fetchProductsByCategoryAndBrand, { data, isSuccess, isLoading }] =
+      useProductsByCategoryAndBrand();
 
     useEffect(() => {
       dispatch(ProductsActions.setSearch(''));
-      dispatch(
-        fetchProductsByCategoryAndBrand({
-          brandId: Number(brandId),
-          categoryId: Number(categoryId),
-        }),
-      );
-    }, [categoryId, brandId, dispatch]);
+      fetchProductsByCategoryAndBrand({
+        brandId: Number(brandId),
+        categoryId: Number(categoryId),
+        sort,
+        page,
+        limit,
+      });
+    }, [
+      categoryId,
+      brandId,
+      dispatch,
+      fetchProductsByCategoryAndBrand,
+      sort,
+      page,
+      limit,
+    ]);
 
-    return (
-      <Page
-        className={classNames(cls.ProductsByCategoryAndBrandPage, {}, [
-          className,
-        ])}
-      >
-        <PageHeading count={count} />
-        <ProductsByCategoryAndBrandFilters />
-        <ProductList
-          _inited={_inited}
-          products={products}
-          limit={limit}
-          isLoading={isLoading}
-        />
-        <ProductsByCategoryAndBrandPaginate />
-      </Page>
-    );
+    if (data && isSuccess) {
+      return (
+        <Page
+          className={classNames(cls.ProductsByCategoryAndBrandPage, {}, [
+            className,
+          ])}
+        >
+          <PageHeading count={data.count} />
+          <ProductsByCategoryAndBrandFilters />
+          <ProductList
+            _inited={isSuccess}
+            products={data.rows}
+            limit={limit}
+            isLoading={isLoading}
+          />
+          <ProductsByCategoryAndBrandPaginate
+            currentPage={data.metaData.currentPage}
+            lastPage={data.metaData.lastPage}
+          />
+        </Page>
+      );
+    }
   },
 );
 

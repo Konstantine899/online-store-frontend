@@ -12,12 +12,9 @@ import {
 import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
-import {
-  selectProductsByCategoryAndBrand,
-  selectProductsByCategoryAndBrandSort,
-} from '../../model/selectors/selectProductsByCategoryAndBrand';
-import { fetchProductsByCategoryAndBrand } from '../../model/services/fetchProductsByCategoryAndBrand';
+import { selectProductsByCategoryAndBrandSort } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
+import { useProductsByCategoryAndBrand } from '../../api/productsByCategoryAndBrandApi';
 
 interface ProductsByCategoryAndBrandSortOrderProps {
   className?: string;
@@ -27,9 +24,9 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
   (props: ProductsByCategoryAndBrandSortOrderProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
-    const products = useSelector(selectProductsByCategoryAndBrand);
     const sortOrder = useSelector(selectProductsByCategoryAndBrandSort);
     const { brandId, categoryId } = useParams();
+    const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
     const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
       () => [
@@ -40,13 +37,11 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
     );
 
     const fetchProductsList = useCallback(() => {
-      dispatch(
-        fetchProductsByCategoryAndBrand({
-          categoryId: Number(categoryId),
-          brandId: Number(brandId),
-        }),
-      );
-    }, [brandId, categoryId, dispatch]);
+      fetchProductsByCategoryAndBrand({
+        categoryId: Number(categoryId),
+        brandId: Number(brandId),
+      });
+    }, [brandId, categoryId, fetchProductsByCategoryAndBrand]);
 
     const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
@@ -56,23 +51,21 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
       debounceFilterOrder();
     };
 
-    if (products.length > 0) {
-      return (
-        <div
-          className={classNames(cls.ProductsByCategoryAndBrandSortOrder, {}, [
-            className,
-          ])}
-        >
-          <Select<ISortOrder>
-            options={selectOptions}
-            label={'По'}
-            active={sortOrder}
-            onChange={onChange}
-            WrapperWidth={WrapperWidth.XL}
-            SelectWidth={SelectWidth.XL}
-          />
-        </div>
-      );
-    }
+    return (
+      <div
+        className={classNames(cls.ProductsByCategoryAndBrandSortOrder, {}, [
+          className,
+        ])}
+      >
+        <Select<ISortOrder>
+          options={selectOptions}
+          label={'По'}
+          active={sortOrder}
+          onChange={onChange}
+          WrapperWidth={WrapperWidth.XL}
+          SelectWidth={SelectWidth.XL}
+        />
+      </div>
+    );
   },
 );

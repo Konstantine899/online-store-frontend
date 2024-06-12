@@ -3,7 +3,7 @@ import { getRouteProductsByCategory } from '@/shared/consts/router/publicRouter'
 import { ProductsSchema } from '../model/types/ProductsSchema';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 
-interface IProductsByCategoryProps {
+interface IProductsByCategoryParams {
   categoryId: number;
   page?: number;
   limit?: number;
@@ -14,7 +14,7 @@ const productsByCategoryApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     fetchProductsByCategory: build.query<
       ProductsSchema,
-      IProductsByCategoryProps
+      IProductsByCategoryParams
     >({
       query: ({ categoryId, limit, sort, page }) => {
         return {

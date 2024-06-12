@@ -1,6 +1,7 @@
 // api
 export { useProducts } from './api/productsApi';
 export { useProductsByCategory } from './api/productsByCategoryApi';
+export { useProductsByCategoryAndBrand } from './api/productsByCategoryAndBrandApi';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
@@ -40,8 +41,6 @@ export {
 } from './model/slices/ProductsByCategoryAndBrandSlice';
 
 //services
-export { fetchProductsByBrand } from './model/services/fetchProductsByBrand';
-export { fetchProductsByCategoryAndBrand } from './model/services/fetchProductsByCategoryAndBrand';
 export { fetchProductDetails } from './model/services/fetchProductDetails';
 export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 

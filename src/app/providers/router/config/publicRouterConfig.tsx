@@ -17,7 +17,7 @@ import {
   getRouteProductProperties,
   getRouteProducts,
   getRouteProductsByBrand,
-  getRouteProductsByBrandAndByCategory,
+  getRouteProductsByCategoryAndBrand,
   getRouteProductsByCategory,
   getRouteMain,
   getRouteProduct,
@@ -96,7 +96,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     element: <ProductsByCategoryPage />,
   },
   [publicRouter.GET_LIST_PRODUCT_BY_BRAND_ID_AND_CATEGORY_ID]: {
-    path: getRouteProductsByBrandAndByCategory(':brandId', ':categoryId'),
+    path: getRouteProductsByCategoryAndBrand(':brandId', ':categoryId'),
     element: <ProductsByCategoryAndBrandPage />,
   },
   [publicRouter.GET_RATING]: {

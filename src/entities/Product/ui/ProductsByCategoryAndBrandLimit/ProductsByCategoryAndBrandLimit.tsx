@@ -15,7 +15,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 import { selectProductsByCategoryAndBrandLimit } from '../../model/selectors/selectProductsByCategoryAndBrand';
-import { fetchProductsByCategoryAndBrand } from '../../model/services/fetchProductsByCategoryAndBrand';
+import { useProductsByCategoryAndBrand } from '../../api/productsByCategoryAndBrandApi';
 
 interface ProductsByCategoryAndBrandLimitProps {
   className?: string;
@@ -28,6 +28,7 @@ export const ProductsByCategoryAndBrandLimit = memo(
     const dispatch = useAppDispatch();
     const limit = useSelector(selectProductsByCategoryAndBrandLimit);
     const { brandId, categoryId } = useParams();
+    const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
     const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
       () => [
@@ -39,13 +40,11 @@ export const ProductsByCategoryAndBrandLimit = memo(
     );
 
     const fetchProductsList = useCallback(() => {
-      dispatch(
-        fetchProductsByCategoryAndBrand({
-          categoryId: Number(categoryId),
-          brandId: Number(brandId),
-        }),
-      );
-    }, [brandId, categoryId, dispatch]);
+      fetchProductsByCategoryAndBrand({
+        categoryId: Number(categoryId),
+        brandId: Number(brandId),
+      });
+    }, [brandId, categoryId, fetchProductsByCategoryAndBrand]);
 
     const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 

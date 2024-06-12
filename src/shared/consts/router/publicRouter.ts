@@ -73,7 +73,7 @@ export const getRouteProductsByBrand = (brandId: string) =>
 export const getRouteProductsByCategory = (categoryId: string) =>
   `/product/all/categoryId/${categoryId}`;
 
-export const getRouteProductsByBrandAndByCategory = (
+export const getRouteProductsByCategoryAndBrand = (
   brandId: string,
   categoryId: string,
 ) => `/product/all/brandId/${brandId}/categoryId/${categoryId}`;
