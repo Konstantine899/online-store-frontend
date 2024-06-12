@@ -82,6 +82,5 @@ export {
 } from './model/selectors/selectProductsByCategoryAndBrand';
 
 // types
-export type { ProductsSchema, Product } from './model/types/ProductsSchema';
-export type { ProductDetailsSchema } from './model/types/ProductDetailsSchema';
-export type { ProductsByCategoryCarouselSchema } from './model/types/ProductsByCategoryCarouselSchema';
+export type { IProductsSchema, TProduct } from './model/types/IProductsSchema';
+export type { IProductSchema } from './model/types/IProductSchema';

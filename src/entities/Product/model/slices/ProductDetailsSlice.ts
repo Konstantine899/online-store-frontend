@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductDetailsSchema } from '../types/ProductDetailsSchema';
-import { IProductDetails } from '../types/IProductDetails';
+import { IProductSchema } from '../types/IProductSchema';
+import { IProduct } from '../types/IProduct';
 import { fetchProductDetails } from '../services/fetchProductDetails';
 
-const initialState: ProductDetailsSchema = {
-  productDetails: {
+const initialState: IProductSchema = {
+  product: {
     id: 0,
     name: '',
     properties: [],
@@ -25,35 +25,29 @@ export const ProductDetailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProductDetails.pending, (state: ProductDetailsSchema) => {
+      .addCase(fetchProductDetails.pending, (state: IProductSchema) => {
         state.isLoading = true;
         state.error = undefined;
         state._inited = false;
       })
       .addCase(
         fetchProductDetails.fulfilled,
-        (
-          state: ProductDetailsSchema,
-          action: PayloadAction<IProductDetails>,
-        ) => {
+        (state: IProductSchema, action: PayloadAction<IProduct>) => {
           state.isLoading = false;
-          state.productDetails.id = action.payload.id;
-          state.productDetails.name = action.payload.name;
-          state.productDetails.price = action.payload.price;
-          state.productDetails.rating = action.payload.rating;
-          state.productDetails.brand_id = action.payload.brand_id;
-          state.productDetails.category_id = action.payload.category_id;
-          state.productDetails.image = action.payload.image;
-          state.productDetails.properties = action.payload.properties;
+          state.product.id = action.payload.id;
+          state.product.name = action.payload.name;
+          state.product.price = action.payload.price;
+          state.product.rating = action.payload.rating;
+          state.product.brand_id = action.payload.brand_id;
+          state.product.category_id = action.payload.category_id;
+          state.product.image = action.payload.image;
+          state.product.properties = action.payload.properties;
           state._inited = true;
         },
       )
       .addCase(
         fetchProductDetails.rejected,
-        (
-          state: ProductDetailsSchema,
-          action: PayloadAction<string | undefined>,
-        ) => {
+        (state: IProductSchema, action: PayloadAction<string | undefined>) => {
           state.isLoading = false;
           state.error = action.payload;
           state._inited = false;

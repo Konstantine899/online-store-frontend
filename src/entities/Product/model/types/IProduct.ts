@@ -5,7 +5,7 @@ export interface IProductProperty {
   product_id: number;
 }
 
-export interface IProductDetails {
+export interface IProduct {
   id: number;
   name: string;
   price: number;

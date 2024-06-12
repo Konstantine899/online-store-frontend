@@ -1,19 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
-import { IProductDetails } from '../types/IProductDetails';
+import { IProduct } from '../types/IProduct';
 
 interface fetchProductDetailsProps {
   id: number;
 }
 
 export const fetchProductDetails = createAsyncThunk<
-  IProductDetails,
+  IProduct,
   fetchProductDetailsProps,
   ThunkAPIConfig<string>
 >('fetchProductDetails', async ({ id }, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI;
   try {
-    const response = await extra.api.get<IProductDetails>(`/product/one/${id}`);
+    const response = await extra.api.get<IProduct>(`/product/one/${id}`);
     if (!response.data) {
       throw new Error();
     }

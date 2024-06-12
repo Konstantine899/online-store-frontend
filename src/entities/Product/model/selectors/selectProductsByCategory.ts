@@ -36,7 +36,7 @@ export const selectProductsByCategoryCount = createSelector(
 export const selectProductsByCategorySort = createSelector(
   selectProductsByCategoryState,
   (state) => {
-    return state?.sortingOrder ?? 'asc';
+    return state?.sortOrder ?? 'asc';
   },
 );
 

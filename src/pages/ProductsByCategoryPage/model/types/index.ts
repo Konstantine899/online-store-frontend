@@ -1,5 +1,5 @@
-import { ProductsSchema } from '@/entities/Product';
+import { IProductsSchema } from '@/entities/Product';
 
 export interface ProductsByCategoryPageSchema {
-  productsByCategory: ProductsSchema;
+  productsByCategory: IProductsSchema;
 }

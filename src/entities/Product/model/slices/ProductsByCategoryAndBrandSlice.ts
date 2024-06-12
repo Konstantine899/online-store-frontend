@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductsSchema } from '../types/ProductsSchema';
+import { IProductsSchema } from '../types/IProductsSchema';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 
-const initialState: ProductsSchema = {
+const initialState: IProductsSchema = {
   rows: [],
   count: 0,
   metaData: {
@@ -14,7 +14,7 @@ const initialState: ProductsSchema = {
     limit: 5,
   },
   search: '',
-  sortingOrder: 'asc',
+  sortOrder: 'asc',
   isLoading: false,
   error: undefined,
   _inited: false,
@@ -24,17 +24,17 @@ export const ProductsByCategoryAndBrandSlice = createSlice({
   name: 'ProductsByCategoryAndBrandSlice',
   initialState,
   reducers: {
-    setPage: (state: ProductsSchema, action: PayloadAction<number>) => {
+    setPage: (state: IProductsSchema, action: PayloadAction<number>) => {
       state.metaData.currentPage = action.payload;
     },
-    setLimit: (state: ProductsSchema, action: PayloadAction<number>) => {
+    setLimit: (state: IProductsSchema, action: PayloadAction<number>) => {
       state.metaData.limit = action.payload;
     },
     setSortingOrder: (
-      state: ProductsSchema,
+      state: IProductsSchema,
       action: PayloadAction<ISortOrder>,
     ) => {
-      state.sortingOrder = action.payload;
+      state.sortOrder = action.payload;
     },
   },
 });

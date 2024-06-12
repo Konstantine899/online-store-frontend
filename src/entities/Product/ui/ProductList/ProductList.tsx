@@ -4,12 +4,12 @@ import cls from './ProductList.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
-import { Product } from '../../model/types/ProductsSchema';
+import { TProduct } from '../../model/types/IProductsSchema';
 
 interface ProductProps {
   className?: string;
   _inited: boolean;
-  products: Product[];
+  products: TProduct[];
   limit: number;
   isLoading: boolean;
 }

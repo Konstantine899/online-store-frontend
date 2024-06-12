@@ -4,13 +4,13 @@ import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { Product } from '../../model/types/ProductsSchema';
+import { TProduct } from '../../model/types/IProductsSchema';
 import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
 import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 
 interface ProductCardProps {
   className?: string;
-  product: Product;
+  product: TProduct;
 }
 
 export const ProductCard = memo((props: ProductCardProps) => {

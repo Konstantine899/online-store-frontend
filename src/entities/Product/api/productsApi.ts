@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ProductsSchema } from '../model/types/ProductsSchema';
+import { IProductsSchema } from '../model/types/IProductsSchema';
 import {
   getRouteProducts,
   getRouteProductsByCategory,
@@ -18,7 +18,7 @@ interface IProductParams {
 
 const productsApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    products: build.query<ProductsSchema, IProductParams>({
+    products: build.query<IProductsSchema, IProductParams>({
       query: (args: IProductParams) => {
         const { search, sort, page, limit } = args;
         return {
@@ -27,7 +27,7 @@ const productsApi = rtkApi.injectEndpoints({
         };
       },
     }),
-    fetchProductsByCategory: build.query<ProductsSchema, IProductParams>({
+    fetchProductsByCategory: build.query<IProductsSchema, IProductParams>({
       query: ({ categoryId, limit, sort, page }) => {
         return {
           url: getRouteProductsByCategory(`${categoryId}`),
@@ -36,7 +36,7 @@ const productsApi = rtkApi.injectEndpoints({
       },
     }),
     fetchProductsByCategoryAndBrand: build.query<
-      ProductsSchema,
+      IProductsSchema,
       IProductParams
     >({
       query: (arg) => {
@@ -51,7 +51,7 @@ const productsApi = rtkApi.injectEndpoints({
       },
     }),
     fetchProductsByCategoryCarousel: build.query<
-      ProductsSchema,
+      IProductsSchema,
       IProductParams
     >({
       query: ({ categoryId }) => {

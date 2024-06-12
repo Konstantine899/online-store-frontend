@@ -3,6 +3,7 @@ import { memo } from 'react';
 import cls from './ProductSpecification.module.scss';
 import { useSelector } from 'react-redux';
 import { selectProperties } from '../../model/selectors/selectProductDetails';
+import { IProductProperty } from '@/entities/Product/model/types/IProduct';
 
 interface ProductDetailsInfoProps {
   className?: string;
@@ -18,7 +19,7 @@ export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
       <div className={cls.productSpecificationsTitle}>{title}</div>
       <table className={cls.productSpecificationsTable}>
         <tbody>
-          {properties.map((property) => (
+          {properties.map((property: IProductProperty) => (
             <tr key={property.id}>
               <td>{property.name}</td>
               <td>{property.value}</td>

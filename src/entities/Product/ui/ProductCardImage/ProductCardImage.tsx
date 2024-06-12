@@ -4,11 +4,11 @@ import cls from './ProductCardImage.module.scss';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 import { ProductImage } from '../ProductImage/ProductImage';
 import { AppLink } from '@/shared/ui/AppLink';
-import { Product } from '../../model/types/ProductsSchema';
+import { TProduct } from '../../model/types/IProductsSchema';
 
 interface ProductCardImageProps {
   className?: string;
-  product: Product;
+  product: TProduct;
 }
 
 export const ProductCardImage = memo((props: ProductCardImageProps) => {

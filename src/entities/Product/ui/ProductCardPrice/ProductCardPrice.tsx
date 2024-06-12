@@ -1,11 +1,11 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductCardPrice.module.scss';
-import { Product } from '../../model/types/ProductsSchema';
+import { TProduct } from '../../model/types/IProductsSchema';
 
 interface ProductCardPriceProps {
   className?: string;
-  product: Product;
+  product: TProduct;
 }
 
 export const ProductCardPrice = memo((props: ProductCardPriceProps) => {

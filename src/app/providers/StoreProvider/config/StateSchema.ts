@@ -16,7 +16,7 @@ import { RatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsPageSchema } from '@/pages/ProductsPage';
-import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
+import { ProductPageSchema } from '@/pages/ProductPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 
@@ -30,7 +30,7 @@ export interface StateSchema {
   productsPage?: ProductsPageSchema;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
   productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
-  productDetailsPage?: ProductDetailsPageSchema;
+  productDetailsPage?: ProductPageSchema;
   brand?: BrandSchema;
   category?: CategorySchema;
   rating?: RatingSchema;

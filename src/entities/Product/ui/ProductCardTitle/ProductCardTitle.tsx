@@ -3,11 +3,11 @@ import { memo } from 'react';
 import cls from './ProductCardTitle.module.scss';
 import { getRouteProduct } from '@/shared/consts/router/publicRouter';
 import { AppLink, AppLinkFontSizeSize } from '@/shared/ui/AppLink/AppLink';
-import { Product } from '../../model/types/ProductsSchema';
+import { TProduct } from '../../model/types/IProductsSchema';
 
 interface ProductCardTitleProps {
   className?: string;
-  product: Product;
+  product: TProduct;
 }
 
 export const ProductCardTitle = memo((props: ProductCardTitleProps) => {

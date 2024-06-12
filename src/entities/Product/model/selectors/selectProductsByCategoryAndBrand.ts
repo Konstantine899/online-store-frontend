@@ -36,7 +36,7 @@ export const selectProductsByCategoryAndBrandCount = createSelector(
 export const selectProductsByCategoryAndBrandSort = createSelector(
   selectProductsByCategoryAndBrandState,
   (state) => {
-    return state?.sortingOrder || 'asc';
+    return state?.sortOrder || 'asc';
   },
 );
 

@@ -33,7 +33,7 @@ export const selectProductsSearch = createSelector(
 export const selectProductsSortOrder = createSelector(
   selectProductsState,
   (state) => {
-    return state?.sortingOrder ?? 'asc';
+    return state?.sortOrder ?? 'asc';
   },
 );
 
