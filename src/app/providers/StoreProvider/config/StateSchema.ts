@@ -17,7 +17,6 @@ import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsPageSchema } from '@/pages/ProductsPage';
 import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage';
-import { MainPageSchema } from '@/pages/MainPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 
@@ -25,7 +24,6 @@ export interface StateSchema {
   auth: AuthSchema;
   user: UserSchema;
   scroll: ScrollSchema;
-  mainPage: MainPageSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   registrationForm?: RegistrationSchema;
   loginForm?: LoginSchema;

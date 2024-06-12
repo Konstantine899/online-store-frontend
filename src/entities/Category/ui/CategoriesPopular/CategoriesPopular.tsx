@@ -6,10 +6,15 @@ import { TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { Card } from '@/shared/ui/Card';
 import { CardTheme } from '@/shared/ui/Card/Card';
-import { getRouteImage } from '@/shared/consts/router/publicRouter';
+import {
+  getRouteImage,
+  getRouteProductsByCategory,
+} from '@/shared/consts/router/publicRouter';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
 import { ICategory } from '../../model/types/ICategory';
 import { useCategories } from '../../api/categoryApi';
+import { useFetchProductsByCategoryCarousel } from '@/entities/Product';
+import { useNavigate } from 'react-router-dom';
 
 interface CategoriesPopularProps {
   className?: string;
@@ -17,8 +22,15 @@ interface CategoriesPopularProps {
 
 export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
   const { className } = props;
-
+  const navigate = useNavigate();
   const { isSuccess, data: categories } = useCategories();
+  const [fetchProductsByCategoryCarousel] =
+    useFetchProductsByCategoryCarousel();
+
+  const getCategory = (categoryId: number) => () => {
+    navigate(getRouteProductsByCategory(`${categoryId}`));
+    fetchProductsByCategoryCarousel({ categoryId });
+  };
 
   if (isSuccess) {
     return (
@@ -34,6 +46,7 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
               key={category.id}
               theme={CardTheme.OUTLINED}
               className={cls.CategoryCard}
+              onClick={getCategory(category.id)}
             >
               <KitImage
                 src={getRouteImage(category.image)}

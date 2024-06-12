@@ -7,7 +7,6 @@ import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
 import { ScrollReducer } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { mainPageReducers } from '@/pages/MainPage';
 
 export function createReduxStore(
   initialState: StateSchema,
@@ -18,7 +17,6 @@ export function createReduxStore(
     auth: AuthReducer,
     user: UserReducer,
     scroll: ScrollReducer,
-    mainPage: mainPageReducers,
     [rtkApi.reducerPath]: rtkApi.reducer,
   };
 

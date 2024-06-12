@@ -3,6 +3,7 @@ export {
   useProducts,
   useProductsByCategoryAndBrand,
   useProductsByCategory,
+  useFetchProductsByCategoryCarousel,
 } from './api/productsApi';
 
 //ui
@@ -15,7 +16,6 @@ export { ProductPreview } from './ui/ProductPreview/ProductPreview';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
-export { ProductPopular } from './ui/ProductPopular/ProductPopular';
 export { ProductsSortOrder } from '@/entities/Product/ui/ProductsSortOrder/ProductsSortOrder';
 export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 export { ProductsByCategoryLimit } from './ui/ProductsByCategoryLimit/ProductsByCategoryLimit';
@@ -25,14 +25,9 @@ export { ProductsByCategoryAndBrandLimit } from './ui/ProductsByCategoryAndBrand
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
 export {
-  ProductsCarouselActions,
-  ProductsCarouselReducer,
-} from './model/slices/ProductsCarouselSlice';
-export {
   ProductDetailsReducer,
   ProductDetailsPageActions,
 } from './model/slices/ProductDetailsSlice';
-export { ProductsByCategoryCarouselReducer } from './model/slices/ProductsByCategoryCarouselSlice';
 export {
   ProductsByCategoryReducer,
   ProductsByCategoryActions,
@@ -44,7 +39,6 @@ export {
 
 //services
 export { fetchProductDetails } from './model/services/fetchProductDetails';
-export { fetchProductsCarousel } from './model/services/fetchProductsCarousel';
 
 // selectors
 export {

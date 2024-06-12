@@ -50,6 +50,17 @@ const productsApi = rtkApi.injectEndpoints({
         };
       },
     }),
+    fetchProductsByCategoryCarousel: build.query<
+      ProductsSchema,
+      IProductParams
+    >({
+      query: ({ categoryId }) => {
+        return {
+          url: getRouteProductsByCategory(`${categoryId}`),
+          params: { limit: 20 },
+        };
+      },
+    }),
   }),
 });
 
@@ -60,3 +71,6 @@ export const useProductsByCategory =
 
 export const useProductsByCategoryAndBrand =
   productsApi.useLazyFetchProductsByCategoryAndBrandQuery;
+
+export const useFetchProductsByCategoryCarousel =
+  productsApi.useLazyFetchProductsByCategoryCarouselQuery;
