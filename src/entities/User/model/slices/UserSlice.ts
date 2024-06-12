@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User, UserSchema } from '../types/UserSchema';
+import { IUser, IUserSchema } from '../types/IUserSchema';
 import { ACCESS_TOKEN_KEY } from '@/shared/consts/localstorage';
 import { jwtDecode } from 'jwt-decode';
 
-const initialState: UserSchema = {};
+const initialState: IUserSchema = {};
 
 export const UserSlice = createSlice({
   name: 'User',
   initialState,
   reducers: {
-    setUserData: (state: UserSchema, action: PayloadAction<User>) => {
+    setUserData: (state: IUserSchema, action: PayloadAction<IUser>) => {
       state.userData = action.payload;
     },
     initUserData: (state) => {
@@ -18,7 +18,7 @@ export const UserSlice = createSlice({
       );
 
       if (accessToken) {
-        state.userData = jwtDecode<User>(accessToken);
+        state.userData = jwtDecode<IUser>(accessToken);
       }
     },
     removeUserData: (state) => {

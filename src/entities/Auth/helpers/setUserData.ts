@@ -3,7 +3,7 @@ import {
   REFRESH_TOKEN_KEY,
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
-import { UserActions, User } from '@/entities/User';
+import { UserActions, IUser } from '@/entities/User';
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
@@ -31,7 +31,7 @@ export const setUserData = (
   localStorage.setItem(TOKEN_TYPE_KEY, JSON.stringify(data.type));
   localStorage.setItem(ACCESS_TOKEN_KEY, JSON.stringify(data.accessToken));
   localStorage.setItem(REFRESH_TOKEN_KEY, JSON.stringify(data.refreshToken));
-  const decoded = jwtDecode<User>(data.accessToken);
+  const decoded = jwtDecode<IUser>(data.accessToken);
 
   // Полученные данные о пользователе сохраняю в state
   thunkAPI.dispatch(AuthActions.setAuthData(data));

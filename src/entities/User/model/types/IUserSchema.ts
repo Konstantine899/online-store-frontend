@@ -1,17 +1,17 @@
-export interface Role {
+export interface IRole {
   id: number;
   role: string;
   description: string;
 }
 
-export interface User {
+export interface IUser {
   id: number;
-  roles: Role[];
+  roles: IRole[];
   iat: number;
   exp: number;
   sub: string;
 }
 
-export interface UserSchema {
-  userData?: User;
+export interface IUserSchema {
+  userData?: IUser;
 }
