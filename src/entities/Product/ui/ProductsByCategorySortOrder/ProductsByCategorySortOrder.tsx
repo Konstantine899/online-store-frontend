@@ -14,7 +14,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
 import { selectProductsByCategorySort } from '../../model/selectors/selectProductsByCategory';
-import { useProductsByCategory } from '../../api/productsByCategoryApi';
+import { useProductsByCategory } from '../../api/productsApi';
 
 interface ProductsByCategorySortOrderProps {
   className?: string;

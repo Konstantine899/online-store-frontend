@@ -14,7 +14,7 @@ import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectProductsByCategoryLimit } from '../../model/selectors/selectProductsByCategory';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
-import { useProductsByCategory } from '../../api/productsByCategoryApi';
+import { useProductsByCategory } from '../../api/productsApi';
 
 interface ProductsByCategoryLimitProps {
   className?: string;

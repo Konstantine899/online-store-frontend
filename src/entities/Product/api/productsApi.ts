@@ -1,9 +1,15 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsSchema } from '../model/types/ProductsSchema';
-import { getRouteProducts } from '@/shared/consts/router/publicRouter';
+import {
+  getRouteProducts,
+  getRouteProductsByCategory,
+  getRouteProductsByCategoryAndBrand,
+} from '@/shared/consts/router/publicRouter';
 import { ISortOrder } from '@/shared/types/ISortOrder';
 
 interface IProductParams {
+  categoryId?: number;
+  brandId?: number;
   search?: string;
   limit?: number;
   page?: number;
@@ -21,7 +27,36 @@ const productsApi = rtkApi.injectEndpoints({
         };
       },
     }),
+    fetchProductsByCategory: build.query<ProductsSchema, IProductParams>({
+      query: ({ categoryId, limit, sort, page }) => {
+        return {
+          url: getRouteProductsByCategory(`${categoryId}`),
+          params: { page, limit, sort },
+        };
+      },
+    }),
+    fetchProductsByCategoryAndBrand: build.query<
+      ProductsSchema,
+      IProductParams
+    >({
+      query: (arg) => {
+        const { categoryId, brandId, page, limit, sort } = arg;
+        return {
+          url: getRouteProductsByCategoryAndBrand(
+            `${brandId}`,
+            `${categoryId}`,
+          ),
+          params: { page, limit, sort },
+        };
+      },
+    }),
   }),
 });
 
 export const useProducts = productsApi.useLazyProductsQuery;
+
+export const useProductsByCategory =
+  productsApi.useLazyFetchProductsByCategoryQuery;
+
+export const useProductsByCategoryAndBrand =
+  productsApi.useLazyFetchProductsByCategoryAndBrandQuery;

@@ -1,7 +1,9 @@
 // api
-export { useProducts } from './api/productsApi';
-export { useProductsByCategory } from './api/productsByCategoryApi';
-export { useProductsByCategoryAndBrand } from './api/productsByCategoryAndBrandApi';
+export {
+  useProducts,
+  useProductsByCategoryAndBrand,
+  useProductsByCategory,
+} from './api/productsApi';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';

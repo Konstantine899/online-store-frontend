@@ -14,7 +14,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { selectProductsByCategoryAndBrandSort } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
-import { useProductsByCategoryAndBrand } from '../../api/productsByCategoryAndBrandApi';
+import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 
 interface ProductsByCategoryAndBrandSortOrderProps {
   className?: string;

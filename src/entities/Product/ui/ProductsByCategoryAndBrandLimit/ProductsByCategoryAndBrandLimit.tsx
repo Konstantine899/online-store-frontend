@@ -15,7 +15,7 @@ import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 import { selectProductsByCategoryAndBrandLimit } from '../../model/selectors/selectProductsByCategoryAndBrand';
-import { useProductsByCategoryAndBrand } from '../../api/productsByCategoryAndBrandApi';
+import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 
 interface ProductsByCategoryAndBrandLimitProps {
   className?: string;
