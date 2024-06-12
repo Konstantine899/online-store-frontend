@@ -5,4 +5,4 @@ export {
 export { selectRating } from './model/selectors/selectRating';
 export { selectVotes } from './model/selectors/selectVotes';
 export { fetchRating } from './model/services/fetchRating';
-export type { RatingSchema } from './model/types/RatingSchema';
+export type { IRatingSchema } from './model/types/IRatingSchema';

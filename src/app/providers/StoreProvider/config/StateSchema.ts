@@ -12,7 +12,7 @@ import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { IBrandSchema } from '@/entities/Brand';
 import { ICategorySchema } from '@/entities/Category';
-import { RatingSchema } from '@/entities/Rating';
+import { IRatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsPageSchema } from '@/pages/ProductsPage';
@@ -33,7 +33,7 @@ export interface StateSchema {
   productDetailsPage?: ProductPageSchema;
   brand?: IBrandSchema;
   category?: ICategorySchema;
-  rating?: RatingSchema;
+  rating?: IRatingSchema;
 }
 
 // Конструкция, с помощью которой достаю ключи. Которые являются названиями reducers

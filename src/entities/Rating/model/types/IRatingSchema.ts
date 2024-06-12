@@ -4,7 +4,7 @@ export interface IRating {
   rating: number;
 }
 
-export interface RatingSchema {
+export interface IRatingSchema {
   rating: IRating;
   isLoading: boolean;
   error?: string;

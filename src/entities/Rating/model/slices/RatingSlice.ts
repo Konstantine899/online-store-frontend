@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRating, RatingSchema } from '../types/RatingSchema';
+import { IRating, IRatingSchema } from '../types/IRatingSchema';
 import { fetchRating } from '../services/fetchRating';
 
-const initialState: RatingSchema = {
+const initialState: IRatingSchema = {
   rating: { rating: 0, ratingsSum: 0, votes: 0 },
   isLoading: false,
   error: undefined,
@@ -14,13 +14,13 @@ export const RatingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRating.pending, (state: RatingSchema) => {
+      .addCase(fetchRating.pending, (state: IRatingSchema) => {
         state.error = undefined;
         state.isLoading = true;
       })
       .addCase(
         fetchRating.fulfilled,
-        (state: RatingSchema, action: PayloadAction<IRating>) => {
+        (state: IRatingSchema, action: PayloadAction<IRating>) => {
           state.isLoading = false;
           state.rating.rating = action.payload.rating;
           state.rating.ratingsSum = action.payload.ratingsSum;
