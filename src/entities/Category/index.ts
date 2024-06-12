@@ -16,5 +16,5 @@ export {
 } from './model/selectors/selectCategory';
 
 // types
-export type { CategorySchema } from './model/types/CategorySchema';
+export type { ICategorySchema } from './model/types/ICategorySchema';
 export type { ICategory } from './model/types/ICategory';

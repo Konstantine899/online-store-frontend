@@ -1,5 +1,5 @@
 import { ICategory } from './ICategory';
 
-export interface CategorySchema {
+export interface ICategorySchema {
   category: ICategory;
 }

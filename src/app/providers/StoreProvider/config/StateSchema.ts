@@ -11,7 +11,7 @@ import {
 import { ReducersMapObject } from 'redux';
 import { AxiosInstance } from 'axios';
 import { IBrandSchema } from '@/entities/Brand';
-import { CategorySchema } from '@/entities/Category';
+import { ICategorySchema } from '@/entities/Category';
 import { RatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
@@ -32,7 +32,7 @@ export interface StateSchema {
   productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
   productDetailsPage?: ProductPageSchema;
   brand?: IBrandSchema;
-  category?: CategorySchema;
+  category?: ICategorySchema;
   rating?: RatingSchema;
 }
 
