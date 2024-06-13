@@ -6,14 +6,22 @@ import {
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
 
-const initialState: IAuthSchema = {};
+const initialState: IAuthSchema = {
+  authData: {
+    type: ``,
+    refreshToken: ``,
+    accessToken: ``,
+  },
+};
 
 export const AuthSlice = createSlice({
   name: 'Auth',
   initialState,
   reducers: {
     setAuthData: (state: IAuthSchema, action: PayloadAction<IAuth>) => {
-      state.authData = action.payload;
+      state.authData.type = action.payload.type;
+      state.authData.accessToken = action.payload.accessToken;
+      state.authData.refreshToken = action.payload.refreshToken;
     },
     initAuthData: (state) => {
       const type = JSON.parse(localStorage.getItem(TOKEN_TYPE_KEY) as string);
@@ -30,7 +38,9 @@ export const AuthSlice = createSlice({
       localStorage.removeItem(TOKEN_TYPE_KEY);
       localStorage.removeItem(ACCESS_TOKEN_KEY);
       localStorage.removeItem(REFRESH_TOKEN_KEY);
-      state.authData = undefined;
+      state.authData.type = ``;
+      state.authData.accessToken = ``;
+      state.authData.refreshToken = ``;
     },
   },
 });

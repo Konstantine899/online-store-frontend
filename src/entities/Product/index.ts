@@ -13,7 +13,7 @@ export { ProductList } from './ui/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
-export { Product } from './ui/ProductPreview/Product';
+export { Product } from './ui/Product/Product';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductCardPrice } from './ui/ProductCardPrice/ProductCardPrice';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';

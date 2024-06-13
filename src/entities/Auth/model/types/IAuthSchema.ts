@@ -5,5 +5,5 @@ export interface IAuth {
 }
 
 export interface IAuthSchema {
-  authData?: IAuth;
+  authData: IAuth;
 }
