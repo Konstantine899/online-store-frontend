@@ -5,6 +5,10 @@ type PasswordValidationProps =
   | string
   | LoginValidationErrors[]
   | RegistrationValidationErrors[];
+
+/**
+ * @deprecated
+ */
 export const getPasswordValidationErrors = (error: PasswordValidationProps) => {
   return (
     error instanceof Array &&

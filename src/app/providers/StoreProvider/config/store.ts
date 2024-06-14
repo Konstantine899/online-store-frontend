@@ -2,7 +2,7 @@ import { CombinedState, configureStore, Reducer } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { ReducersMapObject } from 'redux';
 import { UserReducer } from '@/entities/User';
-import { AuthReducer } from '@/entities/Auth';
+import { AuthReducer } from '@/entities/deprecated/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
 import { ScrollReducer } from '@/features/Scroll';

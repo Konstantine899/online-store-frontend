@@ -7,10 +7,13 @@ import { UserActions, IUser } from '@/entities/User';
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
-import { IAuth } from '../model/types/IAuthSchema';
+import { IAuth } from '@/entities/deprecated/Auth/model/types/IAuthSchema';
 import { LoginValidationErrors } from '@/shared/types/LoginValidationErrors';
-import { AuthActions } from '../model/slices/AuthSlice';
+import { AuthActions } from '@/entities/deprecated/Auth/model/slices/AuthSlice';
 
+/**
+ * @deprecated
+ */
 export const setUserData = (
   data: IAuth,
   thunkAPI: GetThunkAPI<{

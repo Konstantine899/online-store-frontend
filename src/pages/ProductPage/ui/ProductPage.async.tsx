@@ -3,7 +3,7 @@ import { ProductDetailsPageProps } from './ProductPage';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { productDetailsPageReducers } from '../model/slices/index';
 import { brandReducers } from '@/entities/Brand';
 import { categoryReducers } from '@/entities/Category';

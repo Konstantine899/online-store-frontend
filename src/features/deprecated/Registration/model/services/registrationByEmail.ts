@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IAuth, setUserData } from '@/entities/Auth';
+import { IAuth, setUserData } from '@/entities/deprecated/Auth';
 import { ThunkAPIConfig } from '@/app/providers/StoreProvider/config/StateSchema';
 import { RegistrationValidationErrors } from '@/shared/types/RegistrationValidationErrors';
 

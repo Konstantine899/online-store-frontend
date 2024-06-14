@@ -3,7 +3,7 @@ import { LoginFormProps } from './LoginForm';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { LoginReducer } from '@/features/deprecated/Login/model/slices/LoginSlice';
 
 const reducers: ReducersList = {

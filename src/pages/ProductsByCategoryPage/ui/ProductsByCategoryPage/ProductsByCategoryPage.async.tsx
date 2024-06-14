@@ -3,7 +3,7 @@ import { ProductsByCategoryPageProps } from './ProductsByCategoryPage';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { productsByCategoryReducers } from '../../model/slices';
 
 export const ProductsByCategoryLazy = lazy(

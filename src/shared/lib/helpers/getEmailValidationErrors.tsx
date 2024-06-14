@@ -6,6 +6,9 @@ type EmailValidationProps =
   | LoginValidationErrors[]
   | RegistrationValidationErrors[];
 
+/**
+ * @deprecated
+ */
 export const getEmailValidationErrors = (error: EmailValidationProps) => {
   return (
     error instanceof Array &&

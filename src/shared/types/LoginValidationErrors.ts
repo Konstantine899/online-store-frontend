@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export interface LoginValidationErrors {
   status: number;
   property: string;

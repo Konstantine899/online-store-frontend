@@ -4,7 +4,7 @@ import cls from './CategoriesList.module.scss';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { Overlay } from '@/shared/ui/Overlay';
 import { CategoriesButtonClose } from '../CategoriesButtonClose/CategoriesButtonClose';
 import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/CategoriesBurgerMenuItem';

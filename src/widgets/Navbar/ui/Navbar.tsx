@@ -18,7 +18,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { selectUserRole, UserActions } from '@/entities/User';
-import { AuthActions } from '@/entities/Auth';
+import { AuthActions } from '@/entities/deprecated/Auth';
 import { useNavigate } from 'react-router';
 import { AppLinkFontSizeSize, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import {

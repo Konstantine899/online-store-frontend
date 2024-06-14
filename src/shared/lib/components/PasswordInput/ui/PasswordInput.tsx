@@ -10,6 +10,9 @@ interface PasswordInputProps {
   onChangePassword?: (value: string) => void;
 }
 
+/**
+ * @deprecated
+ */
 export const PasswordInput = memo((props: PasswordInputProps) => {
   const { password, onChangePassword, htmlFor, label } = props;
   const [isViewPassword, setIsViewPassword] = useState(false);

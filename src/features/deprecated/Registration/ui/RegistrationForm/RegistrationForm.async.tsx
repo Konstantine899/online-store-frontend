@@ -3,7 +3,7 @@ import { RegistrationFormProps } from './RegistrationForm';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { RegistrationReducer } from '@/features/deprecated/Registration/model/slices/RegistrationSlice';
 
 const reducers: ReducersList = {

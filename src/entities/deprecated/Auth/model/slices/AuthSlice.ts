@@ -13,7 +13,9 @@ const initialState: IAuthSchema = {
     accessToken: ``,
   },
 };
-
+/**
+ * @deprecated
+ */
 export const AuthSlice = createSlice({
   name: 'Auth',
   initialState,
