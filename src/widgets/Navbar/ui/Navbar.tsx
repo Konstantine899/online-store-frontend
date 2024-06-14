@@ -8,11 +8,13 @@ import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { LoginActions, LoginModal } from '@/features/Login';
+// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
+import { LoginActions, LoginModal } from '@/features/deprecated/Login';
+// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
 import {
   RegistrationModal,
   RegistrationActions,
-} from '@/features/Registration';
+} from '@/features/deprecated/Registration';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { selectUserRole, UserActions } from '@/entities/User';

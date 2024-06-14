@@ -1,0 +1,28 @@
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { memo } from 'react';
+import cls from './RegistrationModal.module.scss';
+import { Modal } from '@/shared/ui/Modal/Modal';
+import { RegistrationFormAsync as RegistrationForm } from '../RegistrationForm/RegistrationForm.async';
+
+interface RegistrationModalProps {
+  className?: string;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+/**
+ * @deprecated
+ */
+export const RegistrationModal = memo((props: RegistrationModalProps) => {
+  const { className, onClose, isOpen } = props;
+  return (
+    <Modal
+      className={classNames(cls.RegistrationModal, {}, [className])}
+      isOpen={isOpen}
+      onClose={onClose}
+      lazy
+    >
+      <RegistrationForm onClose={onClose} />
+    </Modal>
+  );
+});

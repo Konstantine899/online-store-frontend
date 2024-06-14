@@ -1,6 +1,6 @@
 import { IUserSchema } from '@/entities/User';
-import { RegistrationSchema } from '@/features/Registration';
-import { LoginSchema } from '@/features/Login';
+import { RegistrationSchema } from '@/features/deprecated/Registration';
+import { LoginSchema } from '@/features/deprecated/Login';
 import { IAuthSchema } from '@/entities/Auth';
 import {
   AnyAction,
