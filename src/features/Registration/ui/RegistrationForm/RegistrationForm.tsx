@@ -4,10 +4,7 @@ import cls from './RegistrationForm.module.scss';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
-import {
-  RegistrationActions,
-  RegistrationReducer,
-} from '../../model/slices/RegistrationSlice';
+import { RegistrationActions } from '../../model/slices/RegistrationSlice';
 import {
   selectRegistrationEmail,
   selectRegistrationError,
@@ -18,15 +15,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { PasswordInput } from '@/shared/lib/components/PasswordInput';
-
-const initialAsyncReducersRegistrationForm: ReducersList = {
-  registrationForm: RegistrationReducer,
-};
 
 export interface RegistrationFormProps {
   className?: string;
@@ -70,52 +59,47 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
   const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
-    <DynamicModuleLoader
-      reducers={initialAsyncReducersRegistrationForm}
-      removeAfterUnmount
-    >
-      <div className={classNames(cls.RegistrationForm, {}, [className])}>
-        {typeof error === 'string' && (
-          <label className={cls.errorLabel}>{error}</label>
-        )}
-        {emailValidationErrors && (
-          <label className={cls.errorLabel}>{emailValidationErrors}</label>
-        )}
-        <div className={cls.group}>
-          <Input
-            type="text"
-            className={cls.input}
-            value={email}
-            onChange={onChangeEmail}
-            label={'email'}
-            htmlFor={'email'}
-            required
-            theme={InputTheme.OUTLINE_BOTTOM}
-          />
-        </div>
-
-        {passwordValidationErrors && (
-          <label className={cls.errorLabel}>{passwordValidationErrors}</label>
-        )}
-
-        <div className={cls.group}>
-          <PasswordInput
-            label={'пароль'}
-            htmlFor={'пароль'}
-            password={password}
-            onChangePassword={onChangePassword}
-          />
-        </div>
-        <Button
-          className={cls.Btn}
-          onClick={onRegistrationClick}
-          theme={ButtonTheme.OUTLINE}
-          disabled={isLoading}
-        >
-          Регистрация
-        </Button>
+    <div className={classNames(cls.RegistrationForm, {}, [className])}>
+      {typeof error === 'string' && (
+        <label className={cls.errorLabel}>{error}</label>
+      )}
+      {emailValidationErrors && (
+        <label className={cls.errorLabel}>{emailValidationErrors}</label>
+      )}
+      <div className={cls.group}>
+        <Input
+          type="text"
+          className={cls.input}
+          value={email}
+          onChange={onChangeEmail}
+          label={'email'}
+          htmlFor={'email'}
+          required
+          theme={InputTheme.OUTLINE_BOTTOM}
+        />
       </div>
-    </DynamicModuleLoader>
+
+      {passwordValidationErrors && (
+        <label className={cls.errorLabel}>{passwordValidationErrors}</label>
+      )}
+
+      <div className={cls.group}>
+        <PasswordInput
+          label={'пароль'}
+          htmlFor={'пароль'}
+          password={password}
+          onChangePassword={onChangePassword}
+        />
+      </div>
+      <Button
+        className={cls.Btn}
+        onClick={onRegistrationClick}
+        theme={ButtonTheme.OUTLINE}
+        disabled={isLoading}
+      >
+        Регистрация
+      </Button>
+    </div>
   );
 });
 
