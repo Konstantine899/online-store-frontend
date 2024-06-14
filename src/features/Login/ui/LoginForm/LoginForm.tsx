@@ -7,10 +7,6 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
 import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
-import {
-  DynamicModuleLoader,
-  ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 import { PasswordInput } from '@/shared/lib/components/PasswordInput';
 import {
@@ -21,9 +17,6 @@ import {
 } from '../../model/selectors/selectLogin';
 import { loginByEmail } from '../../model/services/loginByEmail';
 import { LoginActions } from '../../model/slices/LoginSlice';
-import { LoginReducer } from '../../model/slices/LoginSlice';
-
-const initialAsyncReducersLoginForm: ReducersList = { loginForm: LoginReducer };
 
 export interface LoginFormProps {
   className?: string;
@@ -67,56 +60,51 @@ const LoginForm = memo((props: LoginFormProps) => {
   const passwordValidationErrors = getPasswordValidationErrors(error);
 
   return (
-    <DynamicModuleLoader
-      reducers={initialAsyncReducersLoginForm}
-      removeAfterUnmount
-    >
-      <div className={classNames(cls.LoginForm, {}, [className])}>
-        {error === 'Не корректный email' && (
-          <label className={cls.errorLabel}>{error}</label>
-        )}
-        {emailValidationErrors && (
-          <label className={cls.errorLabel}>{emailValidationErrors}</label>
-        )}
+    <div className={classNames(cls.LoginForm, {}, [className])}>
+      {error === 'Не корректный email' && (
+        <label className={cls.errorLabel}>{error}</label>
+      )}
+      {emailValidationErrors && (
+        <label className={cls.errorLabel}>{emailValidationErrors}</label>
+      )}
 
-        <div className={cls.group}>
-          <Input
-            type="text"
-            label={'Email'}
-            htmlFor={'Email'}
-            className={cls.loginInput}
-            value={email}
-            required
-            onChange={onChangeEmail}
-            theme={InputTheme.OUTLINE_BOTTOM}
-          />
-        </div>
-
-        {error === 'Не корректный пароль' && (
-          <label className={cls.errorLabel}>{error}</label>
-        )}
-        {passwordValidationErrors && (
-          <label className={cls.errorLabel}>{passwordValidationErrors}</label>
-        )}
-
-        <div className={cls.group}>
-          <PasswordInput
-            label={'Пароль'}
-            htmlFor={'Password'}
-            password={password}
-            onChangePassword={onChangePassword}
-          />
-        </div>
-        <Button
-          className={cls.Btn}
-          onClick={onAuthClick}
-          theme={ButtonTheme.OUTLINE}
-          disabled={isLoading}
-        >
-          Войти
-        </Button>
+      <div className={cls.group}>
+        <Input
+          type="text"
+          label={'Email'}
+          htmlFor={'Email'}
+          className={cls.loginInput}
+          value={email}
+          required
+          onChange={onChangeEmail}
+          theme={InputTheme.OUTLINE_BOTTOM}
+        />
       </div>
-    </DynamicModuleLoader>
+
+      {error === 'Не корректный пароль' && (
+        <label className={cls.errorLabel}>{error}</label>
+      )}
+      {passwordValidationErrors && (
+        <label className={cls.errorLabel}>{passwordValidationErrors}</label>
+      )}
+
+      <div className={cls.group}>
+        <PasswordInput
+          label={'Пароль'}
+          htmlFor={'Password'}
+          password={password}
+          onChangePassword={onChangePassword}
+        />
+      </div>
+      <Button
+        className={cls.Btn}
+        onClick={onAuthClick}
+        theme={ButtonTheme.OUTLINE}
+        disabled={isLoading}
+      >
+        Войти
+      </Button>
+    </div>
   );
 });
 
