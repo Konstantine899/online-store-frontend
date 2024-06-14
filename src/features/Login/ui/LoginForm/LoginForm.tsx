@@ -5,13 +5,10 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getEmailValidationErrors } from '@/shared/lib/helpers/getEmailValidationErrors';
-import { getPasswordValidationErrors } from '@/shared/lib/helpers/getPasswordValidationErrors';
 
 import { PasswordInput } from '@/shared/lib/components/PasswordInput';
 import {
   selectLoginEmail,
-  selectLoginError,
   selectLoginIsLoading,
   selectLoginPassword,
 } from '../../model/selectors/selectLogin';
@@ -30,7 +27,6 @@ const LoginForm = memo((props: LoginFormProps) => {
   const email = useSelector(selectLoginEmail);
   const password = useSelector(selectLoginPassword);
   const isLoading = useSelector(selectLoginIsLoading);
-  const error = useSelector(selectLoginError);
 
   const onChangeEmail = useCallback(
     (value: string) => {
@@ -55,19 +51,8 @@ const LoginForm = memo((props: LoginFormProps) => {
     }
   }, [dispatch, email, onChangeEmail, onChangePassword, onClose, password]);
 
-  const emailValidationErrors = getEmailValidationErrors(error);
-
-  const passwordValidationErrors = getPasswordValidationErrors(error);
-
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
-      {error === 'Не корректный email' && (
-        <label className={cls.errorLabel}>{error}</label>
-      )}
-      {emailValidationErrors && (
-        <label className={cls.errorLabel}>{emailValidationErrors}</label>
-      )}
-
       <div className={cls.group}>
         <Input
           type="text"
@@ -80,13 +65,6 @@ const LoginForm = memo((props: LoginFormProps) => {
           theme={InputTheme.OUTLINE_BOTTOM}
         />
       </div>
-
-      {error === 'Не корректный пароль' && (
-        <label className={cls.errorLabel}>{error}</label>
-      )}
-      {passwordValidationErrors && (
-        <label className={cls.errorLabel}>{passwordValidationErrors}</label>
-      )}
 
       <div className={cls.group}>
         <PasswordInput

@@ -17,8 +17,3 @@ export const selectLoginIsLoading = createSelector(
   selectSchemaLogin,
   (state) => state?.isLoading ?? false,
 );
-
-export const selectLoginError = createSelector(
-  selectSchemaLogin,
-  (state) => state?.error ?? '',
-);
