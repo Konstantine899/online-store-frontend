@@ -9,12 +9,12 @@ import {
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { ISortOrder } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { selectProductsByCategoryAndBrandSort } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
+import { TSortOrder } from '../../model/types/IProductsSchema';
 
 interface ProductsByCategoryAndBrandSortOrderProps {
   className?: string;
@@ -28,7 +28,7 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
     const { brandId, categoryId } = useParams();
     const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
-    const selectOptions = useMemo<SelectOptions<ISortOrder>[]>(
+    const selectOptions = useMemo<SelectOptions<TSortOrder>[]>(
       () => [
         { value: 'asc', content: 'возрастанию' },
         { value: 'desc', content: 'убыванию' },
@@ -45,7 +45,7 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
 
     const debounceFilterOrder = useDebounce(fetchProductsList, 500);
 
-    const onChange = (value: ISortOrder) => {
+    const onChange = (value: TSortOrder) => {
       dispatch(ProductsByCategoryAndBrandActions.setSortingOrder(value));
       dispatch(ProductsByCategoryAndBrandActions.setPage(1));
       debounceFilterOrder();
@@ -57,7 +57,7 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
           className,
         ])}
       >
-        <Select<ISortOrder>
+        <Select<TSortOrder>
           options={selectOptions}
           label={'По'}
           active={sortOrder}

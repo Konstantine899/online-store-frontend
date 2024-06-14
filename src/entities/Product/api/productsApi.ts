@@ -1,11 +1,10 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { IProductsSchema } from '../model/types/IProductsSchema';
+import { IProductsSchema, TSortOrder } from '../model/types/IProductsSchema';
 import {
   getRouteProducts,
   getRouteProductsByCategory,
   getRouteProductsByCategoryAndBrand,
 } from '@/shared/consts/router/publicRouter';
-import { ISortOrder } from '@/shared/types/ISortOrder';
 
 interface IProductParams {
   categoryId?: number;
@@ -13,7 +12,7 @@ interface IProductParams {
   search?: string;
   limit?: number;
   page?: number;
-  sort?: ISortOrder;
+  sort?: TSortOrder;
 }
 
 const productsApi = rtkApi.injectEndpoints({

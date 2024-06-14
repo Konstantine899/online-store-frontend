@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IProductsSchema } from '../types/IProductsSchema';
-import { ISortOrder } from '@/shared/types/ISortOrder';
+import { IProductsSchema, TSortOrder } from '../types/IProductsSchema';
 
 const initialState: IProductsSchema = {
   rows: [],
@@ -29,7 +28,7 @@ export const ProductsByCategorySlice = createSlice({
     },
     setSortingOrder: (
       state: IProductsSchema,
-      action: PayloadAction<ISortOrder>,
+      action: PayloadAction<TSortOrder>,
     ) => {
       state.sortOrder = action.payload;
     },

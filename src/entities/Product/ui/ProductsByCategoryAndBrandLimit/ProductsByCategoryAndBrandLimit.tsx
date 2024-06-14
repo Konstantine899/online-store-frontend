@@ -10,12 +10,12 @@ import {
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 import { selectProductsByCategoryAndBrandLimit } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
+import { TSortLimit } from '../../model/types/IProductsSchema';
 
 interface ProductsByCategoryAndBrandLimitProps {
   className?: string;
@@ -30,7 +30,7 @@ export const ProductsByCategoryAndBrandLimit = memo(
     const { brandId, categoryId } = useParams();
     const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
-    const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
+    const selectOptions = useMemo<SelectOptions<TSortLimit>[]>(
       () => [
         { value: `5`, content: '5' },
         { value: `10`, content: '10' },
@@ -48,7 +48,7 @@ export const ProductsByCategoryAndBrandLimit = memo(
 
     const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
-    const onChange = (value: ISortLimit) => {
+    const onChange = (value: TSortLimit) => {
       dispatch(ProductsByCategoryAndBrandActions.setLimit(Number(value)));
       dispatch(ProductsByCategoryAndBrandActions.setPage(1));
       debounceLimitOrder();
@@ -62,7 +62,7 @@ export const ProductsByCategoryAndBrandLimit = memo(
       >
         <Select
           options={selectOptions}
-          active={`${limit}` as ISortLimit}
+          active={`${limit}` as TSortLimit}
           onChange={onChange}
           label={'Показывать по'}
           WrapperWidth={WrapperWidth.XL}

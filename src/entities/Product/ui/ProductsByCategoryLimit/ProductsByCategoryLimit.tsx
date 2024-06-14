@@ -10,11 +10,11 @@ import {
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { ISortLimit } from '@/shared/types/ISortOrder';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { selectProductsByCategoryLimit } from '../../model/selectors/selectProductsByCategory';
 import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
 import { useProductsByCategory } from '../../api/productsApi';
+import { TSortLimit } from '../../model/types/IProductsSchema';
 
 interface ProductsByCategoryLimitProps {
   className?: string;
@@ -29,7 +29,7 @@ export const ProductsByCategoryLimit = memo(
     const categoryId = useSelector(selectCategoryId);
     const [fetchProductsByCategory] = useProductsByCategory();
 
-    const selectOptions = useMemo<SelectOptions<ISortLimit>[]>(
+    const selectOptions = useMemo<SelectOptions<TSortLimit>[]>(
       () => [
         { value: `5`, content: '5' },
         { value: `10`, content: '10' },
@@ -44,7 +44,7 @@ export const ProductsByCategoryLimit = memo(
 
     const debounceLimitOrder = useDebounce(fetchProductsList, 500);
 
-    const onChange = (value: ISortLimit) => {
+    const onChange = (value: TSortLimit) => {
       dispatch(ProductsByCategoryActions.setLimit(Number(value)));
       dispatch(ProductsByCategoryActions.setPage(1));
       debounceLimitOrder();
@@ -54,7 +54,7 @@ export const ProductsByCategoryLimit = memo(
       <div className={classNames(cls.ProductsByCategoryLimit, {}, [className])}>
         <Select
           options={selectOptions}
-          active={`${limit}` as ISortLimit}
+          active={`${limit}` as TSortLimit}
           onChange={onChange}
           label={'Показывать по'}
           WrapperWidth={WrapperWidth.XL}
