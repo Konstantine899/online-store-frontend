@@ -1,40 +1,41 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect, useState } from 'react';
-import cls from './LoginForm.module.scss';
-import { useLogin } from '../../../api/loginApi';
-import { Input, InputTheme } from '@/shared/ui/Input/Input';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { useSelector } from 'react-redux';
-import {
-  selectAuthError,
-  selectEmail,
-  selectPassword,
-} from '../../../model/selectors/selectAuth';
-import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
-import EyeOpen from '@/shared/assets/icons/eye-open.svg';
+import cls from './AuthForm.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { AuthActions } from '../../../model/slices/AuthSlice';
+import { useSelector } from 'react-redux';
+import { selectEmail, selectPassword } from '../../model/selectors/selectAuth';
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
   TOKEN_TYPE_KEY,
 } from '@/shared/consts/localstorage';
+import { AuthActions } from '../../model/slices/AuthSlice';
 import { UserActions } from '@/entities/User';
+import { IAuth } from '../../model/types/IAuthSchema';
+import EyeOpen from '@/shared/assets/icons/eye-open.svg';
+import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
+import { Input, InputTheme } from '@/shared/ui/Input/Input';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { QueryStatus } from '@reduxjs/toolkit/query';
 
-export interface LoginFormProps {
+export interface IAuthFormProps {
   className?: string;
-  onClose?: () => void;
+  onClose: () => void;
+  fetch: ({ email, password }: { email: string; password: string }) => void;
+  isSuccess: boolean;
+  isLoading: boolean;
+  data: IAuth | undefined;
+  status: QueryStatus;
 }
 
-const LoginForm = memo((props: LoginFormProps) => {
-  const { className, onClose } = props;
+const AuthForm = memo((props: IAuthFormProps) => {
+  const { className, onClose, fetch, isSuccess, isLoading, data, status } =
+    props;
   const dispatch = useAppDispatch();
   const email = useSelector(selectEmail);
   const password = useSelector(selectPassword);
-  const error = useSelector(selectAuthError);
-  const [fetchLogin, { data, isLoading, isSuccess, status, isError }] =
-    useLogin();
-  const [isViewPassword, setIsViewPassword] = useState(false);
+
+  const [viewPassword, setViewPassword] = useState(false);
 
   useEffect(() => {
     if (isSuccess && data) {
@@ -56,10 +57,10 @@ const LoginForm = memo((props: LoginFormProps) => {
   }, [dispatch, onClose, status]);
 
   const onViewPassword = () => {
-    setIsViewPassword(!isViewPassword);
+    setViewPassword(!viewPassword);
   };
 
-  const eyeSvgIcon = isViewPassword ? EyeOpen : EyeClosed;
+  const eyeSvgIcon = viewPassword ? EyeOpen : EyeClosed;
 
   const onEmail = (email: string) => {
     dispatch(AuthActions.setEmail(email));
@@ -69,16 +70,16 @@ const LoginForm = memo((props: LoginFormProps) => {
   };
 
   const onClick = () => {
-    fetchLogin({ email, password });
+    fetch({ email, password });
   };
 
   return (
-    <div className={classNames(cls.LoginForm, {}, [className])}>
+    <div className={classNames(cls.AuthForm, {}, [className])}>
       <div className={cls.group}>
         <Input
           type="text"
-          label={'Email'}
-          htmlFor={'Email'}
+          label={'email'}
+          htmlFor={'email'}
           value={email}
           required
           onChange={onEmail}
@@ -87,9 +88,9 @@ const LoginForm = memo((props: LoginFormProps) => {
       </div>
       <div className={cls.group}>
         <Input
-          type={isViewPassword ? 'text' : 'password'}
-          label={'Пароль'}
-          htmlFor={'Password'}
+          type={viewPassword ? 'text' : 'password'}
+          label={'пароль'}
+          htmlFor={'password'}
           value={password}
           required
           onChange={onPassword}
@@ -110,4 +111,4 @@ const LoginForm = memo((props: LoginFormProps) => {
   );
 });
 
-export default LoginForm;
+export default AuthForm;

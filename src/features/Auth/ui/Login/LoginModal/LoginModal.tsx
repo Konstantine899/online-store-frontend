@@ -1,8 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './LoginModal.module.scss';
-import { LoginFormAsync as LoginForm } from '../LoginForm/LoginForm.async';
+import { AuthFormAsync as AuthFormAsync } from '../../AuthForm/AuthForm.async';
 import { Modal } from '@/shared/ui/Modal/Modal';
+import { useLogin } from '../../../api/loginApi';
 
 interface LoginModalProps {
   className?: string;
@@ -13,6 +14,9 @@ interface LoginModalProps {
 export const LoginModal = memo((props: LoginModalProps) => {
   const { className, onClose, isOpen } = props;
 
+  const [fetchLogin, { data, isLoading, isSuccess, status, isError }] =
+    useLogin();
+
   return (
     <Modal
       isOpen={isOpen}
@@ -20,7 +24,14 @@ export const LoginModal = memo((props: LoginModalProps) => {
       lazy
       className={classNames(cls.LoginModal, {}, [className])}
     >
-      <LoginForm onClose={onClose} />
+      <AuthFormAsync
+        onClose={onClose}
+        status={status}
+        isSuccess={isSuccess}
+        data={data}
+        isLoading={isLoading}
+        fetch={fetchLogin}
+      />
     </Modal>
   );
 });

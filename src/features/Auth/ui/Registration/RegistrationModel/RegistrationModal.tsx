@@ -1,8 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './RegistrationModel.module.scss';
-import { RegistrationFormAsync as RegistrationForm } from '../RegistrationForm/RegistrationForm.async';
+import { AuthFormAsync as AuthForm } from '../../AuthForm/AuthForm.async';
 import { Modal } from '@/shared/ui/Modal/Modal';
+import { useRegistration } from '../../../api/registrationApi';
 
 interface RegistrationModelProps {
   className?: string;
@@ -12,6 +13,8 @@ interface RegistrationModelProps {
 
 export const RegistrationModal = memo((props: RegistrationModelProps) => {
   const { className, onClose, isOpen } = props;
+  const [fetchRegistration, { data, isLoading, status, isSuccess }] =
+    useRegistration();
 
   return (
     <Modal
@@ -20,7 +23,14 @@ export const RegistrationModal = memo((props: RegistrationModelProps) => {
       lazy
       className={classNames(cls.RegistrationModel, {}, [className])}
     >
-      <RegistrationForm onClose={onClose} />
+      <AuthForm
+        onClose={onClose}
+        fetch={fetchRegistration}
+        data={data}
+        isLoading={isLoading}
+        isSuccess={isSuccess}
+        status={status}
+      />
     </Modal>
   );
 });

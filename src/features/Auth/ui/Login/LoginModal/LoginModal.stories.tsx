@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LoginModal } from './LoginModal';
 
 const meta: Meta<typeof LoginModal> = {
-  title: 'features/LoginModal',
+  title: 'features/Auth/LoginModal',
   component: LoginModal,
 };
 
