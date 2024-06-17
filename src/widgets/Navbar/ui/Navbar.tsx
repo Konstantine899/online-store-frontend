@@ -8,24 +8,16 @@ import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
-import { LoginActions, LoginModal } from '@/features/deprecated/Login';
-// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
-import {
-  RegistrationModal,
-  RegistrationActions,
-} from '@/features/deprecated/Registration';
+import { AuthActions, LoginModal, RegistrationModal } from '@/features/Auth';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { selectUserRole, UserActions } from '@/entities/User';
-import { AuthActions } from '@/entities/deprecated/Auth';
-import { useNavigate } from 'react-router';
 import { AppLinkFontSizeSize, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import {
   getRouteCart,
   getRouteMain,
 } from '@/shared/consts/router/publicRouter';
-import { ProductSearch, ProductsActions } from '@/entities/Product';
+import { ProductsActions, ProductSearch } from '@/entities/Product';
 
 interface NavbarProps {
   className?: string;
@@ -38,7 +30,6 @@ export const Navbar = memo((props: NavbarProps) => {
   const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const authData = useSelector(selectUserRole);
 
@@ -47,28 +38,22 @@ export const Navbar = memo((props: NavbarProps) => {
   }, []);
 
   const onCloseLoginModal = useCallback(() => {
-    dispatch(LoginActions.resetValidationErrors(undefined));
-    dispatch(LoginActions.setEmail(''));
-    dispatch(LoginActions.setPassword(''));
     setIsOpenLoginModal(false);
-    navigate(getRouteMain());
-  }, [dispatch, navigate]);
+  }, []);
 
   const onShowRegistrationModal = useCallback(() => {
     setIsOpenRegistrationModal(true);
   }, []);
 
   const onCloseRegistrationModal = useCallback(() => {
-    dispatch(RegistrationActions.resetValidationErrors(undefined));
-    dispatch(RegistrationActions.setEmail(''));
-    dispatch(RegistrationActions.setPassword(''));
+    dispatch(AuthActions.setEmail(''));
+    dispatch(AuthActions.setPassword(''));
     setIsOpenRegistrationModal(false);
-    navigate(getRouteMain());
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   const onLogout = () => {
-    dispatch(UserActions.removeUserData());
     dispatch(AuthActions.removeAuthData());
+    dispatch(UserActions.removeUserData());
   };
 
   const toMainPage = () => {

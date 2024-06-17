@@ -1,7 +1,6 @@
 import { IUserSchema } from '@/entities/User';
-import { RegistrationSchema } from '@/features/deprecated/Registration';
-import { LoginSchema } from '@/features/deprecated/Login';
-import { IAuthSchema } from '@/entities/deprecated/Auth';
+// eslint-disable-next-line feature-slised-design-bak-plugin/public-api
+import { IAuthSchema } from '@/features/Auth';
 import {
   AnyAction,
   CombinedState,
@@ -21,12 +20,10 @@ import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 
 export interface StateSchema {
-  auth: IAuthSchema;
   user: IUserSchema;
   scroll: ScrollSchema;
+  auth: IAuthSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-  registrationForm?: RegistrationSchema;
-  loginForm?: LoginSchema;
   productsPage?: ProductsPageSchema;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
   productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;

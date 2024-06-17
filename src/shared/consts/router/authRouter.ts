@@ -1,6 +1,8 @@
 export enum authRouter {
   REFRESH = 'refresh',
   CHECK = 'check',
+  REGISTRATION = 'registration',
+  LOGIN = 'login',
   LOGOUT = 'logout',
   USER_GET_ORDER_LIST = 'user_get_order_list',
   USER_GET_ORDER = 'user_get_order',
@@ -12,6 +14,8 @@ export enum authRouter {
 
 export const getRouteRefreshToken = () => `/auth/refresh`;
 export const getRouteAuthCheck = () => `/auth/check`;
+export const getRouteRegistration = () => `/auth/registration`;
+export const getRouteLogin = () => `/auth/login`;
 export const getRouteLogout = () => `/auth/logout`;
 export const getRouteUserGetOrderList = () => `/order/user/get-all-order`;
 export const getRouteUserGetOrder = (orderId: string) =>
