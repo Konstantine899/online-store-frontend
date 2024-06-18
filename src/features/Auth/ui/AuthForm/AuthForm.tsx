@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './AuthForm.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -12,12 +12,10 @@ import {
 import { AuthActions } from '../../model/slices/AuthSlice';
 import { UserActions } from '@/entities/User';
 import { IAuth } from '../../model/types/IAuthSchema';
-import EyeOpen from '@/shared/assets/icons/eye-open.svg';
-import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
-import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { QueryStatus } from '@reduxjs/toolkit/query';
 import { EmailInput } from '../EmailInput/EmailInput';
+import { PasswordInput } from '../PasswordInput/PasswordInput';
 
 export interface IAuthFormProps {
   className?: string;
@@ -35,8 +33,6 @@ const AuthForm = memo((props: IAuthFormProps) => {
   const dispatch = useAppDispatch();
   const email = useSelector(selectEmail);
   const password = useSelector(selectPassword);
-
-  const [viewPassword, setViewPassword] = useState(false);
 
   useEffect(() => {
     if (isSuccess && data) {
@@ -57,16 +53,6 @@ const AuthForm = memo((props: IAuthFormProps) => {
     }
   }, [dispatch, onClose, status]);
 
-  const onViewPassword = () => {
-    setViewPassword(!viewPassword);
-  };
-
-  const eyeSvgIcon = viewPassword ? EyeOpen : EyeClosed;
-
-  const onPassword = (password: string) => {
-    dispatch(AuthActions.setPassword(password));
-  };
-
   const onClick = () => {
     fetch({ email, password });
   };
@@ -74,19 +60,7 @@ const AuthForm = memo((props: IAuthFormProps) => {
   return (
     <div className={classNames(cls.AuthForm, {}, [className])}>
       <EmailInput />
-      <div className={cls.group}>
-        <Input
-          type={viewPassword ? 'text' : 'password'}
-          label={'пароль'}
-          htmlFor={'password'}
-          value={password}
-          required
-          onChange={onPassword}
-          Svg={eyeSvgIcon}
-          onViewPassword={onViewPassword}
-          theme={InputTheme.OUTLINE_BOTTOM}
-        />
-      </div>
+      <PasswordInput />
       <Button
         className={cls.Btn}
         theme={ButtonTheme.OUTLINE}
