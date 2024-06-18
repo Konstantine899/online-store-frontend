@@ -17,6 +17,7 @@ import EyeClosed from '@/shared/assets/icons/closed_eye.svg';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { QueryStatus } from '@reduxjs/toolkit/query';
+import { EmailInput } from '../EmailInput/EmailInput';
 
 export interface IAuthFormProps {
   className?: string;
@@ -62,9 +63,6 @@ const AuthForm = memo((props: IAuthFormProps) => {
 
   const eyeSvgIcon = viewPassword ? EyeOpen : EyeClosed;
 
-  const onEmail = (email: string) => {
-    dispatch(AuthActions.setEmail(email));
-  };
   const onPassword = (password: string) => {
     dispatch(AuthActions.setPassword(password));
   };
@@ -75,17 +73,7 @@ const AuthForm = memo((props: IAuthFormProps) => {
 
   return (
     <div className={classNames(cls.AuthForm, {}, [className])}>
-      <div className={cls.group}>
-        <Input
-          type="text"
-          label={'email'}
-          htmlFor={'email'}
-          value={email}
-          required
-          onChange={onEmail}
-          theme={InputTheme.OUTLINE_BOTTOM}
-        />
-      </div>
+      <EmailInput />
       <div className={cls.group}>
         <Input
           type={viewPassword ? 'text' : 'password'}
