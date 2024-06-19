@@ -14,6 +14,9 @@ import { QueryStatus } from '@reduxjs/toolkit/query';
 import { EmailInput } from '../EmailInput/EmailInput';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
+import { useSelector } from 'react-redux';
+import { selectEmailErrors } from '@/features/Auth/model/selectors/selectAuth';
+import { EmailErrors } from '@/features/Auth/ui/EmailErrors/EmailErrors';
 
 export interface IAuthFormProps {
   className?: string;
@@ -21,13 +24,22 @@ export interface IAuthFormProps {
   fetch: ({ email, password }: { email: string; password: string }) => void;
   isSuccess: boolean;
   isLoading: boolean;
+  isError: boolean;
   data: IAuth | undefined;
   status: QueryStatus;
 }
 
 const AuthForm = memo((props: IAuthFormProps) => {
-  const { className, onClose, fetch, isSuccess, isLoading, data, status } =
-    props;
+  const {
+    className,
+    onClose,
+    fetch,
+    isSuccess,
+    isLoading,
+    data,
+    status,
+    isError,
+  } = props;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -48,6 +60,7 @@ const AuthForm = memo((props: IAuthFormProps) => {
 
   return (
     <div className={classNames(cls.AuthForm, {}, [className])}>
+      {isError && <EmailErrors />}
       <EmailInput />
       <PasswordInput />
       <SendButton isLoading={isLoading} fetch={fetch} />

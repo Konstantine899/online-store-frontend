@@ -13,7 +13,7 @@ interface RegistrationModelProps {
 
 export const RegistrationModal = memo((props: RegistrationModelProps) => {
   const { className, onClose, isOpen } = props;
-  const [fetchRegistration, { data, isLoading, status, isSuccess }] =
+  const [fetchRegistration, { data, isLoading, status, isSuccess, isError }] =
     useRegistration();
 
   return (
@@ -29,6 +29,7 @@ export const RegistrationModal = memo((props: RegistrationModelProps) => {
         data={data}
         isLoading={isLoading}
         isSuccess={isSuccess}
+        isError={isError}
         status={status}
       />
     </Modal>

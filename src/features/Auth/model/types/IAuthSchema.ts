@@ -6,6 +6,18 @@ export interface IAuth {
   refreshToken: string;
 }
 
+export enum AuthErrorProperty {
+  EMAIL = 'email',
+  PASSWORD = 'password',
+}
+
+export interface IAuthErrorData {
+  status: number;
+  property: string;
+  messages: string[];
+  value: string;
+}
+
 export interface IAuthSchema {
   auth: IAuth;
   email: string;
