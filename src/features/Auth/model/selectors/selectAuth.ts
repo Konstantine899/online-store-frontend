@@ -29,7 +29,7 @@ export const selectAuthError = createSelector(
   },
 );
 
-export const selectEmailErrors = createSelector(
+export const selectEmailValidationErrors = createSelector(
   selectAuthError,
   (errors: IAuthErrorData[]) => {
     let messages: string[] = [];

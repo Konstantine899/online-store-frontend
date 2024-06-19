@@ -14,10 +14,8 @@ import { QueryStatus } from '@reduxjs/toolkit/query';
 import { EmailInput } from '../EmailInput/EmailInput';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
-import { useSelector } from 'react-redux';
-import { selectEmailErrors } from '@/features/Auth/model/selectors/selectAuth';
-import { EmailErrors } from '@/features/Auth/ui/EmailErrors/EmailErrors';
-import { PasswordValidationErrors } from '@/features/Auth/ui/PasswordValidationErrors/PasswordValidationErrors';
+import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
+import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
 
 export interface IAuthFormProps {
   className?: string;
@@ -61,7 +59,7 @@ const AuthForm = memo((props: IAuthFormProps) => {
 
   return (
     <div className={classNames(cls.AuthForm, {}, [className])}>
-      {isError && <EmailErrors />}
+      {isError && <EmailValidationErrors />}
       <EmailInput />
       {isError && <PasswordValidationErrors />}
       <PasswordInput />
