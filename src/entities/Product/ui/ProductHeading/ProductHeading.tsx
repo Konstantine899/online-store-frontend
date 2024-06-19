@@ -16,3 +16,5 @@ export const ProductHeading = memo((props: ProductHeadingProps) => {
     </div>
   );
 });
+
+ProductHeading.displayName = `ProductHeading`;

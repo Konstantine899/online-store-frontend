@@ -31,3 +31,5 @@ export const ProductRating = memo((props: ProductRatingProps) => {
     </div>
   );
 });
+
+ProductRating.displayName = `ProductRating`;

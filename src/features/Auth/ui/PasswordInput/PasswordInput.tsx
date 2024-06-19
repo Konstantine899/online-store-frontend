@@ -46,3 +46,5 @@ export const PasswordInput = memo((props: PasswordInputProps) => {
     </div>
   );
 });
+
+PasswordInput.displayName = `PasswordInput`;

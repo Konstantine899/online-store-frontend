@@ -29,3 +29,5 @@ export const PageHeading = memo((props: PageHeadingProps) => {
     );
   }
 });
+
+PageHeading.displayName = `PageHeading`;

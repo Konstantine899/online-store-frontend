@@ -71,3 +71,5 @@ export const CategoriesBurgerMenuItemIcon = memo((props: CategoryIconProps) => {
     </div>
   );
 });
+
+CategoriesBurgerMenuItemIcon.displayName = `CategoriesBurgerMenuItemIcon`;

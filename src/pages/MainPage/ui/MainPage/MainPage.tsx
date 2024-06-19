@@ -8,6 +8,8 @@ interface MainPageProps {
   className?: string;
 }
 
+const ROOT: string = 'MainPage';
+
 export const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
@@ -19,3 +21,5 @@ export const MainPage = memo((props: MainPageProps) => {
     </Suspense>
   );
 });
+
+MainPage.displayName = ROOT;

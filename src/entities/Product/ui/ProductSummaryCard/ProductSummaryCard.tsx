@@ -36,3 +36,5 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
     </Card>
   );
 });
+
+ProductSummaryCard.displayName = `ProductSummaryCard`;

@@ -17,3 +17,5 @@ export const ProductCardPrice = memo((props: ProductCardPriceProps) => {
     </div>
   );
 });
+
+ProductCardPrice.displayName = `ProductCardPrice`;

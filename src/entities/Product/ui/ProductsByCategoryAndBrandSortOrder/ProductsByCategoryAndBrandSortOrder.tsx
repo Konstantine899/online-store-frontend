@@ -69,3 +69,5 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
     );
   },
 );
+
+ProductsByCategoryAndBrandSortOrder.displayName = `ProductsByCategoryAndBrandSortOrder`;

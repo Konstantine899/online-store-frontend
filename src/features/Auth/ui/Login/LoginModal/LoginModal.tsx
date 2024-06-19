@@ -36,3 +36,5 @@ export const LoginModal = memo((props: LoginModalProps) => {
     </Modal>
   );
 });
+
+LoginModal.displayName = `LoginModal`;

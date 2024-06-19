@@ -64,3 +64,5 @@ export const CategoriesList = memo((props: CategoryProps) => {
     );
   }
 });
+
+CategoriesList.displayName = `CategoriesList`;

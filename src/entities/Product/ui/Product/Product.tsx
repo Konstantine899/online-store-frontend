@@ -41,3 +41,5 @@ export const Product = memo((props: ProductDetailsProps) => {
     );
   }
 });
+
+Product.displayName = `Product`;

@@ -26,3 +26,5 @@ export const Loader = memo((props: LoaderProps) => {
     </div>
   );
 });
+
+Loader.displayName = `Loader`;

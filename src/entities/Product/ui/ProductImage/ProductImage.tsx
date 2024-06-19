@@ -23,3 +23,5 @@ export const ProductImage = memo((props: ProductImageProps) => {
     />
   );
 });
+
+ProductImage.displayName = `ProductImage`;

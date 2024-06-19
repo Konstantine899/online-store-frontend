@@ -18,3 +18,5 @@ export const PageError = memo((props: PageErrorProps) => {
     </div>
   );
 });
+
+PageError.displayName = `PageError`;

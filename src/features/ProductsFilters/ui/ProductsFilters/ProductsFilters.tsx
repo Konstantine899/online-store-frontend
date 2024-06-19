@@ -17,3 +17,5 @@ export const ProductsFilters = memo((props: ProductsFiltersProps) => {
     </div>
   );
 });
+
+ProductsFilters.displayName = `ProductsFilters`;

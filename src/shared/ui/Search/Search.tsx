@@ -38,3 +38,5 @@ export const Search = memo((props: SearchProps) => {
     />
   );
 });
+
+Search.displayName = `Search`;

@@ -13,3 +13,5 @@ export const NotFoundPage = memo((props: NotFoundPageProps) => {
     <div className={classNames(cls.NotFoundPage, {}, [className])}>{}</div>
   );
 });
+
+NotFoundPage.displayName = `NotFoundPage`;

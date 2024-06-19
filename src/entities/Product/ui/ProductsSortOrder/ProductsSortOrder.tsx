@@ -61,3 +61,5 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
     </div>
   );
 });
+
+ProductsSortOrder.displayName = `ProductsSortOrder`;

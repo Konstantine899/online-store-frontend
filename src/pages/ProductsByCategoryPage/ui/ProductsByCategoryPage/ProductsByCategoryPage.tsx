@@ -61,4 +61,6 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   }
 });
 
+ProductsByCategoryPage.displayName = `ProductsByCategoryPage`;
+
 export default ProductsByCategoryPage;

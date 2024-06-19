@@ -64,3 +64,5 @@ export const ProductsByCategoryLimit = memo(
     );
   },
 );
+
+ProductsByCategoryLimit.displayName = `ProductsByCategoryLimit`;

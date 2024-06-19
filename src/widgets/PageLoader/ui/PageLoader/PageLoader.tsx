@@ -16,3 +16,5 @@ export const PageLoader = memo((props: PageLoaderProps) => {
     </div>
   );
 });
+
+PageLoader.displayName = `PageLoader`;

@@ -48,3 +48,5 @@ export const ProductsByCategoryPaginate = memo(
     );
   },
 );
+
+ProductsByCategoryPaginate.displayName = `ProductsByCategoryPaginate`;

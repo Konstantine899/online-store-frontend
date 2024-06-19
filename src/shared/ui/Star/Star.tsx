@@ -26,3 +26,5 @@ export const Star = memo((props: StarProps) => {
     />
   );
 });
+
+Star.displayName = `Star`;

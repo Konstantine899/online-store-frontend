@@ -68,4 +68,6 @@ const AuthForm = memo((props: IAuthFormProps) => {
   );
 });
 
+AuthForm.displayName = `AuthForm`;
+
 export default AuthForm;

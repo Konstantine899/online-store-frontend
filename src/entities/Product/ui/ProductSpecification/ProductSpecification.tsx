@@ -28,3 +28,5 @@ export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
     </div>
   );
 });
+
+ProductSpecification.displayName = `ProductSpecification`;

@@ -72,3 +72,5 @@ export const ProductsByCategoryAndBrandLimit = memo(
     );
   },
 );
+
+ProductsByCategoryAndBrandLimit.displayName = `ProductsByCategoryAndBrandLimit`;

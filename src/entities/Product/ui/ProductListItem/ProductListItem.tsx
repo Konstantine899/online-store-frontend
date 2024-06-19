@@ -17,3 +17,5 @@ export const ProductListItem = memo((props: ProductListItemProps) => {
     </div>
   );
 });
+
+ProductListItem.displayName = `ProductListItem`;

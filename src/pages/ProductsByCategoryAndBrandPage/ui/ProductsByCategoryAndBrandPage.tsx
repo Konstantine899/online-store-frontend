@@ -76,4 +76,6 @@ const ProductsByCategoryAndBrandPage = memo(
   },
 );
 
+ProductsByCategoryAndBrandPage.displayName = `ProductsByCategoryAndBrandPage`;
+
 export default ProductsByCategoryAndBrandPage;

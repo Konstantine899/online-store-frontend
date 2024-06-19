@@ -20,3 +20,5 @@ export const ProductVotes = memo((props: ProductVotesProps) => {
     </div>
   );
 });
+
+ProductVotes.displayName = `ProductVotes`;

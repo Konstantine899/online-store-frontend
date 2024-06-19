@@ -47,3 +47,5 @@ export const KitImage = memo((props: ImageProps) => {
 
   return <img className={className} src={src} alt={alt} {...otherProps} />;
 });
+
+KitImage.displayName = `KitImage`;

@@ -17,3 +17,5 @@ export const NotFoundImage = memo((props: NotFoundImageProps) => {
     </div>
   );
 });
+
+NotFoundImage.displayName = `NotFoundImage`;

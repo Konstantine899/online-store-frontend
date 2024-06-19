@@ -29,3 +29,5 @@ export const SendButton = memo((props: SendButtonProps) => {
     </Button>
   );
 });
+
+SendButton.displayName = `SendButton`;

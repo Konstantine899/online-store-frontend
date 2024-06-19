@@ -92,3 +92,5 @@ export const Modal = memo((props: ModalProps) => {
     </Portal>
   );
 });
+
+Modal.displayName = `Modal`;

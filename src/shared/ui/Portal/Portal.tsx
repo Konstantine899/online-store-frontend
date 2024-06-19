@@ -11,3 +11,5 @@ export const Portal = memo((props: PortalProps) => {
 
   return createPortal(children, element);
 });
+
+Portal.displayName = `Portal`;

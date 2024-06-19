@@ -23,3 +23,5 @@ export const ProductCardTitle = memo((props: ProductCardTitleProps) => {
     </AppLink>
   );
 });
+
+ProductCardTitle.displayName = `ProductCardTitle`;

@@ -27,3 +27,5 @@ export const HedgehogImage = memo((props: HedgehogImageProps) => {
     </div>
   );
 });
+
+HedgehogImage.displayName = `HedgehogImage`;

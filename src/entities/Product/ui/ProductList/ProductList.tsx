@@ -43,3 +43,5 @@ export const ProductList = memo((props: ProductProps) => {
     </div>
   );
 });
+
+ProductList.displayName = `ProductList`;

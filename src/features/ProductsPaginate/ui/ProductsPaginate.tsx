@@ -38,3 +38,5 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
     </div>
   );
 });
+
+ProductsPaginate.displayName = `ProductsPaginate`;

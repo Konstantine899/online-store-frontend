@@ -26,3 +26,5 @@ export const Thumb = memo((props: ThumbProps) => {
     />
   );
 });
+
+Thumb.displayName = `Thumb`;

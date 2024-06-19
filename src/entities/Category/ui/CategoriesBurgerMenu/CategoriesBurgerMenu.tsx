@@ -34,3 +34,5 @@ export const CategoriesBurgerMenu = memo((props: BurgerMenuButtonProps) => {
     </>
   );
 });
+
+CategoriesBurgerMenu.displayName = `CategoriesBurgerMenu`;

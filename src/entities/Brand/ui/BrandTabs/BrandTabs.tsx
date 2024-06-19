@@ -42,3 +42,5 @@ export const BrandTabs = memo((props: BrandProps) => {
     );
   }
 });
+
+BrandTabs.displayName = `BrandTabs`;

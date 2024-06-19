@@ -26,3 +26,5 @@ export const ProductsByCategoryFilters = memo(
     );
   },
 );
+
+ProductsByCategoryFilters.displayName = `ProductsByCategoryFilters`;

@@ -18,3 +18,5 @@ export const Icon = memo((props: IconProps) => {
     <Svg className={classNames(cls.Icon, {}, [className])} {...otherProps} />
   );
 });
+
+Icon.displayName = `Icon`;

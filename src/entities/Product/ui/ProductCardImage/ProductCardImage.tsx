@@ -23,3 +23,5 @@ export const ProductCardImage = memo((props: ProductCardImageProps) => {
     </AppLink>
   );
 });
+
+ProductCardImage.displayName = `ProductCardImage`;

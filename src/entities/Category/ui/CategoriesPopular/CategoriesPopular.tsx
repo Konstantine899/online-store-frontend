@@ -64,3 +64,5 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
     );
   }
 });
+
+CategoriesPopular.displayName = `CategoriesPopular`;

@@ -12,3 +12,5 @@ export const NotFoundMessage = memo((props: NotFoundMessageProps) => {
 
   return <p className={classNames(cls.message, {}, [className])}>{message}</p>;
 });
+
+NotFoundMessage.displayName = `NotFoundMessage`;

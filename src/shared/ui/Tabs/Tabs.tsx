@@ -38,3 +38,5 @@ export const Tabs = memo((props: TabsProps) => {
     </div>
   );
 });
+
+Tabs.displayName = `Tabs`;

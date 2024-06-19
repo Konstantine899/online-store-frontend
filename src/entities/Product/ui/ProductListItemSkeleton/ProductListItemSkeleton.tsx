@@ -29,3 +29,5 @@ export const ProductListItemSkeleton = memo(
     );
   },
 );
+
+ProductListItemSkeleton.displayName = `ProductListItemSkeleton`;

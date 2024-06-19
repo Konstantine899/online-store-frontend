@@ -47,3 +47,5 @@ export const CategoriesBurgerMenuItem = memo((props: BurgerMenuItemProps) => {
     </li>
   );
 });
+
+CategoriesBurgerMenuItem.displayName = `CategoriesBurgerMenuItem`;

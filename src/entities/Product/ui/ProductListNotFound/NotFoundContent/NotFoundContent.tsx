@@ -38,3 +38,5 @@ export const NotFoundContent = memo((props: NotFoundContentProps) => {
     </div>
   );
 });
+
+NotFoundContent.displayName = `NotFoundContent`;

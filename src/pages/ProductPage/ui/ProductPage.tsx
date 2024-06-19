@@ -38,4 +38,6 @@ const ProductPage = memo((props: ProductDetailsPageProps) => {
   }
 });
 
+ProductPage.displayName = `ProductPage`;
+
 export default ProductPage;

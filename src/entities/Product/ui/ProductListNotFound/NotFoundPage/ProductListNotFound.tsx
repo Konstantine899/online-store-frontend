@@ -29,3 +29,5 @@ export const ProductListNotFound = memo((props: NotFoundPageProps) => {
     </div>
   );
 });
+
+ProductListNotFound.displayName = `ProductListNotFound`;

@@ -17,3 +17,5 @@ export const Overlay = memo((props: OverlayProps) => {
     />
   );
 });
+
+Overlay.displayName = `Overlay`;

@@ -31,3 +31,5 @@ export const PasswordValidationErrors = memo(
     );
   },
 );
+
+PasswordValidationErrors.displayName = `PasswordValidationErrors`;

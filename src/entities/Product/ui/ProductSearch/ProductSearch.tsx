@@ -52,3 +52,5 @@ export const ProductSearch = memo((props: SearchProps) => {
     />
   );
 });
+
+ProductSearch.displayName = `ProductSearch`;

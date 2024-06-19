@@ -87,3 +87,5 @@ export const Paginate = memo((props: PaginateProps) => {
     </div>
   );
 });
+
+Paginate.displayName = `Paginate`;

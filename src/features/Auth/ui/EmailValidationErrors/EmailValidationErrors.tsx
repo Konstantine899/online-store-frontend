@@ -27,3 +27,5 @@ export const EmailValidationErrors = memo((props: EmailErrorsProps) => {
     </div>
   );
 });
+
+EmailValidationErrors.displayName = 'EmailValidationErrors';

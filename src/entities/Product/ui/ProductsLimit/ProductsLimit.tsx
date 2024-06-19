@@ -62,3 +62,5 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
     </div>
   );
 });
+
+ProductsLimit.displayName = `ProductsLimit`;

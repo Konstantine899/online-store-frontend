@@ -54,4 +54,6 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   }
 });
 
+ProductsPage.displayName = `ProductsPage`;
+
 export default ProductsPage;

@@ -34,3 +34,5 @@ export const EmailInput = memo((props: EmailInputProps) => {
     </div>
   );
 });
+
+EmailInput.displayName = `EmailInput`;

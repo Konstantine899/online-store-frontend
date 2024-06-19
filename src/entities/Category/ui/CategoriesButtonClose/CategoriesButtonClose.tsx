@@ -25,3 +25,5 @@ export const CategoriesButtonClose = memo((props: ButtonCloseProps) => {
     </Button>
   );
 });
+
+CategoriesButtonClose.displayName = `CategoriesButtonClose`;
