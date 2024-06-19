@@ -41,3 +41,16 @@ export const selectEmailErrors = createSelector(
     return messages;
   },
 );
+
+export const selectPasswordValidationErrors = createSelector(
+  selectAuthError,
+  (errors: IAuthErrorData[]) => {
+    let messages: string[] = [];
+    errors.forEach((value: IAuthErrorData) => {
+      if (value.property === AuthErrorProperty.PASSWORD) {
+        messages = value.messages;
+      }
+    });
+    return messages;
+  },
+);
