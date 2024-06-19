@@ -3,13 +3,16 @@
     flex-flow: row wrap;
     gap: 8px;
     cursor: pointer;
-}
+};
 
 .Tab {
+    display: flex;
+    align-items: center;
     padding: 5px 10px;
+    height: 34px;
 
     &:hover{
         background-color: #cb11ab;
         color: white;
-    }
-}
+    };
+};
