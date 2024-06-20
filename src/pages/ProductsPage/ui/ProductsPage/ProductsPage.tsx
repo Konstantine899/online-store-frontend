@@ -9,13 +9,12 @@ import {
   selectProductsSearch,
   selectProductsSortOrder,
   useProducts,
+  ProductsCount,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
 import { ProductsPaginate } from '@/features/ProductsPaginate';
-import { ProductsCount } from '@/entities/Product/ui/ProductsCount/ProductsCount';
 
 export interface ProductsPageProps {
   className?: string;

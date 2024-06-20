@@ -9,13 +9,12 @@ import {
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
   useProductsByCategory,
+  ProductsByCategoryCount,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 import { useParams } from 'react-router';
-import { ProductsByCategoryCount } from '@/entities/Product/ui/ProductsByCategoryCount/ProductsByCategoryCount';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
