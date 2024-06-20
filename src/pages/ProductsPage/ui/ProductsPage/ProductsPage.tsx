@@ -12,7 +12,7 @@ import {
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { PageHeading } from '@/entities/PageHeading';
+import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
 import { ProductsPaginate } from '@/features/ProductsPaginate';
 

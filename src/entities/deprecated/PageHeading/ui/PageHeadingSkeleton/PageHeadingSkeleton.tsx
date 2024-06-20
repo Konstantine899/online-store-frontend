@@ -3,10 +3,16 @@ import { memo } from 'react';
 import cls from './PageHeadingSkeleton.module.scss';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
+/**
+ * @deprecated
+ */
 interface PageHeadingSkeletonProps {
   className?: string;
 }
 
+/**
+ * @deprecated
+ */
 export const PageHeadingSkeleton = memo((props: PageHeadingSkeletonProps) => {
   const { className } = props;
 

@@ -11,7 +11,7 @@ import {
   useProductsByCategory,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { PageHeading } from '@/entities/PageHeading';
+import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 import { useParams } from 'react-router';

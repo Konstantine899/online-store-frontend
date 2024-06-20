@@ -5,13 +5,19 @@ import { useCategory } from '@/entities/Category';
 import { useParams } from 'react-router';
 import { Text } from '@/shared/ui/Text';
 import { TextSize, TextTheme } from '@/shared/ui/Text/Text';
-import { PageHeadingSkeleton } from '../PageHeadingSkeleton/PageHeadingSkeleton';
+import { PageHeadingSkeleton } from '@/entities/deprecated/PageHeading/ui/PageHeadingSkeleton/PageHeadingSkeleton';
 
+/**
+ * @deprecated
+ */
 interface PageHeadingProps {
   className?: string;
   count: number;
 }
 
+/**
+ * @deprecated
+ */
 export const PageHeading = memo((props: PageHeadingProps) => {
   const { className, count } = props;
   const { categoryId } = useParams();
