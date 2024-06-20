@@ -3,13 +3,13 @@ import { memo, useEffect } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
-  ProductList,
+  Products,
+  ProductsCount,
   selectProductsCurrentPage,
   selectProductsLimit,
   selectProductsSearch,
   selectProductsSortOrder,
   useProducts,
-  ProductsCount,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -39,10 +39,10 @@ const ProductsPage = memo((props: ProductsPageProps) => {
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
         <ProductsCount count={data.count} />
         <ProductsFilters />
-        <ProductList
+        <Products
           products={data.rows}
           isLoading={isLoading}
-          _inited={isSuccess}
+          isSuccess={isSuccess}
           limit={limit}
         />
         <ProductsPaginate
