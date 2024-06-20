@@ -9,7 +9,7 @@ export { useProduct } from './api/productApi';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
-export { ProductList } from './ui/ProductList/ProductList';
+export { ProductList } from '@/entities/Product/ui/deprecated/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';

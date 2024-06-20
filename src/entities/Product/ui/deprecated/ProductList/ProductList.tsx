@@ -1,10 +1,10 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductList.module.scss';
-import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { ProductListItemSkeleton } from '../ProductListItemSkeleton/ProductListItemSkeleton';
-import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
-import { TProduct } from '../../model/types/IProductsSchema';
+import { ProductListItem } from '../../ProductListItem/ProductListItem';
+import { ProductListItemSkeleton } from '../../ProductListItemSkeleton/ProductListItemSkeleton';
+import { ProductListNotFound } from '../../ProductListNotFound/ProductListNotFound';
+import { TProduct } from '../../../model/types/IProductsSchema';
 
 interface ProductProps {
   className?: string;
@@ -20,6 +20,9 @@ const getSkeletons = (quantity: number) => {
     .map((_, index) => <ProductListItemSkeleton key={index} />);
 };
 
+/**
+ * @deprecated
+ */
 export const ProductList = memo((props: ProductProps) => {
   const { className, limit, products, isLoading, _inited } = props;
 
