@@ -4,6 +4,8 @@ import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
   ProductList,
   ProductsActions,
+  ProductsByCategoryAndBrandLimit,
+  ProductsByCategoryAndBrandSortOrder,
   selectProductsByCategoryAndBrandCurrentPage,
   selectProductsByCategoryAndBrandLimit,
   selectProductsByCategoryAndBrandSort,
@@ -12,10 +14,10 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
 import { Page } from '@/widgets/Page';
 import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsByCategoryAndBrandPaginate } from '@/features/ProductsByCategoryAndBrandPaginate';
+import { BrandTabs } from '@/entities/Brand';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -59,7 +61,9 @@ const ProductsByCategoryAndBrandPage = memo(
           ])}
         >
           <PageHeading count={data.count} />
-          <ProductsByCategoryAndBrandFilters />
+          <ProductsByCategoryAndBrandSortOrder />
+          <ProductsByCategoryAndBrandLimit />
+          <BrandTabs />
           <ProductList
             _inited={isSuccess}
             products={data.rows}
