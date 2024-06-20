@@ -3,6 +3,9 @@ import { memo, useEffect } from 'react';
 import cls from './PageHeading.module.scss';
 import { useCategory } from '@/entities/Category';
 import { useParams } from 'react-router';
+import { Text } from '@/shared/ui/Text';
+import { TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { PageHeadingSkeleton } from '../PageHeadingSkeleton/PageHeadingSkeleton';
 
 interface PageHeadingProps {
   className?: string;
@@ -12,19 +15,37 @@ interface PageHeadingProps {
 export const PageHeading = memo((props: PageHeadingProps) => {
   const { className, count } = props;
   const { categoryId } = useParams();
-  const [fetchCategory, { data }] = useCategory();
+  const [fetchCategory, { data, isSuccess, isLoading }] = useCategory();
 
   useEffect(() => {
     fetchCategory(`${categoryId}`);
   }, [categoryId, fetchCategory]);
 
-  if (count > 0) {
+  if (isLoading) {
+    return <PageHeadingSkeleton />;
+  }
+
+  if (data && isSuccess) {
     return (
       <div className={classNames(cls.PageHeading, {}, [className])}>
-        <h1>
-          {!data?.id ? `Все товары` : `${data?.name}`}
-          <span>{`(${count})`}</span>
-        </h1>
+        {!data?.id ? (
+          <Text
+            text={`Все товары`}
+            theme={TextTheme.INVERTED}
+            size={TextSize.XL}
+          />
+        ) : (
+          <Text
+            text={`${data?.name}`}
+            theme={TextTheme.INVERTED}
+            size={TextSize.XL}
+          />
+        )}
+        <Text
+          text={`(${count})`}
+          theme={TextTheme.INVERTED}
+          size={TextSize.XL}
+        />
       </div>
     );
   }
