@@ -5,20 +5,6 @@ export const selectProductsByCategoryState = (state: StateSchema) => {
   return state.productsByCategoryPage?.productsByCategory;
 };
 
-export const selectProductsByCategory = createSelector(
-  selectProductsByCategoryState,
-  (state) => {
-    return state?.rows ?? [];
-  },
-);
-
-export const selectProductsByCategoryCount = createSelector(
-  selectProductsByCategoryState,
-  (state) => {
-    return state?.count ?? 0;
-  },
-);
-
 export const selectProductsByCategorySort = createSelector(
   selectProductsByCategoryState,
   (state) => {

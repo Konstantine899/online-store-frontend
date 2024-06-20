@@ -5,7 +5,6 @@ import { Page } from '@/widgets/Page';
 import { useSelector } from 'react-redux';
 import {
   ProductList,
-  selectProductsByCategoryCount,
   selectProductsByCategoryCurrentPage,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
@@ -28,7 +27,6 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   const limit = useSelector(selectProductsByCategoryLimit);
   const sort = useSelector(selectProductsByCategorySort);
   const page = useSelector(selectProductsByCategoryCurrentPage);
-  const count = useSelector(selectProductsByCategoryCount);
   const [fetchProductsByCategory, { data, isSuccess, isLoading }] =
     useProductsByCategory();
 
@@ -44,7 +42,7 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   if (data && isSuccess) {
     return (
       <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
-        <PageHeading count={count} />
+        <PageHeading count={data.count} />
         <ProductsByCategoryFilters />
         <ProductList
           _inited={isSuccess}

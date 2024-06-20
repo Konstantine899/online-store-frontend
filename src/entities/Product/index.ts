@@ -55,8 +55,6 @@ export {
 
 export {
   selectProductsByCategoryState,
-  selectProductsByCategoryCount,
-  selectProductsByCategory,
   selectProductsByCategoryCurrentPage,
   selectProductsByCategoryLimit,
   selectProductsByCategorySort,
