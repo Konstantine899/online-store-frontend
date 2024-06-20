@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { PageHeading } from '@/entities/deprecated/PageHeading';
 import { ProductsFilters } from '@/features/ProductsFilters';
 import { ProductsPaginate } from '@/features/ProductsPaginate';
+import { ProductsCount } from '@/entities/Product/ui/ProductsCount/ProductsCount';
 
 export interface ProductsPageProps {
   className?: string;
@@ -37,7 +38,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   if (data && isSuccess) {
     return (
       <Page className={classNames(cls.ProductsPage, {}, [className])}>
-        <PageHeading count={data.count} />
+        <ProductsCount count={data.count} />
         <ProductsFilters />
         <ProductList
           products={data.rows}
