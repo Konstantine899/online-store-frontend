@@ -15,6 +15,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 import { useParams } from 'react-router';
+import { ProductsByCategory } from '@/entities/Product/ui/ProductsByCategory/ProductsByCategory';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -44,8 +45,8 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
       <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
         <ProductsByCategoryCount count={data.count} />
         <ProductsByCategoryFilters />
-        <ProductList
-          _inited={isSuccess}
+        <ProductsByCategory
+          isSuccess={isSuccess}
           products={data.rows}
           limit={limit}
           isLoading={isLoading}
