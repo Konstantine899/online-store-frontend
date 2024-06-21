@@ -2,13 +2,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
-  ProductList,
   ProductsActions,
+  ProductsByCategoryAndBrandCount,
   selectProductsByCategoryAndBrandCurrentPage,
   selectProductsByCategoryAndBrandLimit,
   selectProductsByCategoryAndBrandSort,
   useProductsByCategoryAndBrand,
-  ProductsByCategoryAndBrandCount,
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -16,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
 import { Page } from '@/widgets/Page';
 import { ProductsByCategoryAndBrandPaginate } from '@/features/ProductsByCategoryAndBrandPaginate';
+import { ProductsByCategoryAndBrand } from '@/entities/Product';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -60,8 +60,8 @@ const ProductsByCategoryAndBrandPage = memo(
         >
           <ProductsByCategoryAndBrandCount count={data.count} />
           <ProductsByCategoryAndBrandFilters />
-          <ProductList
-            _inited={isSuccess}
+          <ProductsByCategoryAndBrand
+            isSuccess={isSuccess}
             products={data.rows}
             limit={limit}
             isLoading={isLoading}
