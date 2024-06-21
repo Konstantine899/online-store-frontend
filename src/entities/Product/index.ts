@@ -7,6 +7,12 @@ export {
 } from './api/productsApi';
 export { useProduct } from './api/productApi';
 
+// lib
+export {
+  useProductsContext,
+  ProductsProvider,
+} from './lib/contexts/ProductsContext';
+
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { Products } from './ui/Products/Products';

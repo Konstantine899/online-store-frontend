@@ -3,21 +3,19 @@ import { memo } from 'react';
 import cls from './Products.module.scss';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { TProduct } from '../../model/types/IProductsSchema';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
+import { useProductsContext } from '../../lib/contexts/ProductsContext';
 
 interface ProductsProps {
   className?: string;
-  isSuccess: boolean;
-  products: TProduct[];
-  limit: number;
-  isLoading: boolean;
 }
 
 export const Products = memo((props: ProductsProps) => {
-  const { className, limit, products, isLoading, isSuccess } = props;
+  const { className } = props;
 
-  if (isSuccess && products.length == 0) {
+  const { products, isLoading, isSuccess } = useProductsContext();
+
+  if (isSuccess && products?.rows.length == 0) {
     return (
       <div className={classNames(cls.ProductListError, {}, [className])}>
         <ProductListNotFound
@@ -30,10 +28,12 @@ export const Products = memo((props: ProductsProps) => {
   return (
     <div className={classNames(cls.Products, {}, [className])}>
       {isSuccess &&
-        products.map((product) => (
+        products?.rows.map((product) => (
           <ProductListItem key={product.id} product={product} />
         ))}
-      {isLoading && getProductsSkeletons(limit)}
+      {isLoading && products && getProductsSkeletons(products?.metaData.limit)}
     </div>
   );
 });
+
+Products.displayName = `Products`;

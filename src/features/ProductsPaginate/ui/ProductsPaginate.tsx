@@ -2,20 +2,23 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
-import { ProductsActions, useProducts } from '@/entities/Product';
+import {
+  ProductsActions,
+  useProducts,
+  useProductsContext,
+} from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 
 interface ProductsPaginateProps {
   className?: string;
-  currentPage: number;
-  lastPage: number;
 }
 
 export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
-  const { className, lastPage, currentPage } = props;
+  const { className } = props;
   const dispatch = useAppDispatch();
   const [fetchProducts] = useProducts();
+  const { products, isSuccess } = useProductsContext();
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
@@ -23,20 +26,22 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   };
 
   const paginationRange = usePaginate({
-    currentPage,
-    lastPage,
+    currentPage: products?.metaData.currentPage,
+    lastPage: products?.metaData.lastPage,
   });
 
-  return (
-    <div className={classNames(cls.ProductsPaginate, {}, [className])}>
-      <Paginate
-        onPageChange={onPageChange}
-        paginationRange={paginationRange}
-        currentPage={currentPage}
-        lastPage={lastPage}
-      />
-    </div>
-  );
+  if (isSuccess && products) {
+    return (
+      <div className={classNames(cls.ProductsPaginate, {}, [className])}>
+        <Paginate
+          onPageChange={onPageChange}
+          paginationRange={paginationRange}
+          currentPage={products.metaData.currentPage}
+          lastPage={products.metaData.lastPage}
+        />
+      </div>
+    );
+  }
 });
 
 ProductsPaginate.displayName = `ProductsPaginate`;

@@ -1,18 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import {
-  Products,
-  ProductsCount,
-  selectProductsCurrentPage,
-  selectProductsLimit,
-  selectProductsSearch,
-  selectProductsSortOrder,
-  useProducts,
-} from '@/entities/Product';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
+import { Products, ProductsCount } from '@/entities/Product';
 import { ProductsFilters } from '@/features/ProductsFilters';
 import { ProductsPaginate } from '@/features/ProductsPaginate';
 
@@ -23,35 +13,14 @@ export interface ProductsPageProps {
 const ProductsPage = memo((props: ProductsPageProps) => {
   const { className } = props;
 
-  const dispatch = useAppDispatch();
-  const search = useSelector(selectProductsSearch);
-  const currentPage = useSelector(selectProductsCurrentPage);
-  const sortOrder = useSelector(selectProductsSortOrder);
-  const limit = useSelector(selectProductsLimit);
-  const [fetchProducts, { data, isSuccess, isLoading }] = useProducts();
-
-  useEffect(() => {
-    fetchProducts({ search, page: currentPage, limit, sort: sortOrder });
-  }, [currentPage, dispatch, fetchProducts, limit, search, sortOrder]);
-
-  if (data && isSuccess) {
-    return (
-      <Page className={classNames(cls.ProductsPage, {}, [className])}>
-        <ProductsCount count={data.count} />
-        <ProductsFilters />
-        <Products
-          products={data.rows}
-          isLoading={isLoading}
-          isSuccess={isSuccess}
-          limit={limit}
-        />
-        <ProductsPaginate
-          currentPage={data.metaData.currentPage}
-          lastPage={data.metaData.lastPage}
-        />
-      </Page>
-    );
-  }
+  return (
+    <Page className={classNames(cls.ProductsPage, {}, [className])}>
+      <ProductsCount />
+      <ProductsFilters />
+      <Products />
+      <ProductsPaginate />
+    </Page>
+  );
 });
 
 ProductsPage.displayName = `ProductsPage`;
