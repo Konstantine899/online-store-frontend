@@ -5,17 +5,18 @@ import { useCategory } from '@/entities/Category';
 import { useParams } from 'react-router';
 import { Text } from '@/shared/ui/Text';
 import { TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
 
 interface ProductsByCategoryCountProps {
   className?: string;
-  count: number;
 }
 
 export const ProductsByCategoryCount = memo(
   (props: ProductsByCategoryCountProps) => {
-    const { className, count } = props;
+    const { className } = props;
     const { categoryId } = useParams();
     const [fetchCategory, { data: category }] = useCategory();
+    const { productsByCategory } = useProductsByCategoryContext();
 
     useEffect(() => {
       fetchCategory(`${categoryId}`);
@@ -29,7 +30,7 @@ export const ProductsByCategoryCount = memo(
           size={TextSize.XL}
         />
         <Text
-          text={`(${count})`}
+          text={`(${productsByCategory?.count})`}
           theme={TextTheme.INVERTED}
           size={TextSize.XL}
         />

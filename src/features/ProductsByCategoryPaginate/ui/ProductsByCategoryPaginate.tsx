@@ -9,20 +9,21 @@ import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import {
   ProductsByCategoryActions,
   useProductsByCategory,
+  useProductsByCategoryContext,
 } from '@/entities/Product';
 
 interface ProductsByCategoryPaginateProps {
   className?: string;
-  currentPage: number;
-  lastPage: number;
 }
 
 export const ProductsByCategoryPaginate = memo(
   (props: ProductsByCategoryPaginateProps) => {
-    const { className, lastPage, currentPage } = props;
+    const { className } = props;
     const dispatch = useAppDispatch();
     const categoryId = useSelector(selectCategoryId);
     const [fetchProductsByCategory] = useProductsByCategory();
+    const { productsByCategory, isLoading, isSuccess } =
+      useProductsByCategoryContext();
 
     const onPageChange = (pageNumber: number) => {
       dispatch(ProductsByCategoryActions.setPage(pageNumber));
@@ -30,22 +31,26 @@ export const ProductsByCategoryPaginate = memo(
     };
 
     const paginationRange = usePaginate({
-      currentPage,
-      lastPage,
+      currentPage: productsByCategory?.metaData.currentPage,
+      lastPage: productsByCategory?.metaData.lastPage,
     });
 
-    return (
-      <div
-        className={classNames(cls.ProductsByCategoryPaginate, {}, [className])}
-      >
-        <Paginate
-          onPageChange={onPageChange}
-          paginationRange={paginationRange}
-          currentPage={currentPage}
-          lastPage={lastPage}
-        />
-      </div>
-    );
+    if (isSuccess && productsByCategory) {
+      return (
+        <div
+          className={classNames(cls.ProductsByCategoryPaginate, {}, [
+            className,
+          ])}
+        >
+          <Paginate
+            onPageChange={onPageChange}
+            paginationRange={paginationRange}
+            currentPage={productsByCategory.metaData.currentPage}
+            lastPage={productsByCategory.metaData.lastPage}
+          />
+        </div>
+      );
+    }
   },
 );
 

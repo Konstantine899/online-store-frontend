@@ -12,10 +12,15 @@ export {
   useProductsContext,
   ProductsProvider,
 } from './lib/contexts/ProductsContext';
+export {
+  useProductsByCategoryContext,
+  ProductsByCategoryProvider,
+} from './lib/contexts/ProductsByCategoryContext';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { Products } from './ui/Products/Products';
+export { ProductsByCategory } from './ui/ProductsByCategory/ProductsByCategory';
 export { ProductList } from '@/entities/Product/ui/deprecated/ProductList/ProductList';
 export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';

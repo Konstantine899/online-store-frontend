@@ -3,21 +3,18 @@ import { memo } from 'react';
 import cls from './ProductsByCategory.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { TProduct } from '../../model/types/IProductsSchema';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
+import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
 
 interface ProductsByCategoryProps {
   className?: string;
-  isSuccess: boolean;
-  products: TProduct[];
-  limit: number;
-  isLoading: boolean;
 }
 
 export const ProductsByCategory = memo((props: ProductsByCategoryProps) => {
-  const { className, limit, products, isLoading, isSuccess } = props;
-
-  if (isSuccess && products.length == 0) {
+  const { className } = props;
+  const { productsByCategory, isLoading, isSuccess } =
+    useProductsByCategoryContext();
+  if (isSuccess && productsByCategory?.rows.length == 0) {
     return (
       <div className={classNames(cls.ProductsByCategoryError, {}, [className])}>
         <ProductListNotFound
@@ -30,10 +27,10 @@ export const ProductsByCategory = memo((props: ProductsByCategoryProps) => {
   return (
     <div className={classNames(cls.ProductsByCategory, {}, [className])}>
       {isSuccess &&
-        products.map((product) => (
+        productsByCategory?.rows.map((product) => (
           <ProductListItem key={product.id} product={product} />
         ))}
-      {isLoading && getProductsSkeletons(limit)}
+      {isLoading && getProductsSkeletons(productsByCategory?.metaData.limit)}
     </div>
   );
 });
