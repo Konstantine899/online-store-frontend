@@ -3,22 +3,20 @@ import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrand.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { TProduct } from '../../model/types/IProductsSchema';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
+import { useProductsByCategoryAndBrandContext } from '../../lib/contexts/ProductsByCategoryAndBrandContext';
 
 interface ProductsByCategoryAndBrandProps {
   className?: string;
-  isSuccess: boolean;
-  products: TProduct[];
-  limit: number;
-  isLoading: boolean;
 }
 
 export const ProductsByCategoryAndBrand = memo(
   (props: ProductsByCategoryAndBrandProps) => {
-    const { className, limit, products, isLoading, isSuccess } = props;
+    const { className } = props;
+    const { productsByCategoryAndBrand, isSuccess, isLoading } =
+      useProductsByCategoryAndBrandContext();
 
-    if (isSuccess && products.length == 0) {
+    if (isSuccess && productsByCategoryAndBrand?.rows.length == 0) {
       return (
         <div
           className={classNames(cls.ProductsByCategoryAndBrandError, {}, [
@@ -37,10 +35,11 @@ export const ProductsByCategoryAndBrand = memo(
         className={classNames(cls.ProductsByCategoryAndBrand, {}, [className])}
       >
         {isSuccess &&
-          products.map((product) => (
+          productsByCategoryAndBrand?.rows.map((product) => (
             <ProductListItem key={product.id} product={product} />
           ))}
-        {isLoading && getProductsSkeletons(limit)}
+        {isLoading &&
+          getProductsSkeletons(productsByCategoryAndBrand?.metaData.limit)}
       </div>
     );
   },

@@ -9,6 +9,8 @@ import {
   selectProductsByCategorySort,
 } from '../../model/selectors/selectProductsByCategory';
 import { useProductsByCategory } from '../../api/productsApi';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 
 interface IProps {
   children: ReactNode;
@@ -30,6 +32,7 @@ export const useProductsByCategoryContext = () =>
 
 export const ProductsByCategoryProvider = ({ children }: IProps) => {
   const { categoryId } = useParams();
+  const dispatch = useAppDispatch();
   const limit = useSelector(selectProductsByCategoryLimit);
   const sort = useSelector(selectProductsByCategorySort);
   const page = useSelector(selectProductsByCategoryCurrentPage);
@@ -37,13 +40,14 @@ export const ProductsByCategoryProvider = ({ children }: IProps) => {
     useProductsByCategory();
 
   useEffect(() => {
+    dispatch(ProductsActions.setSearch(''));
     fetchProductsByCategory({
       categoryId: Number(categoryId),
       limit,
       sort,
       page,
     });
-  }, [categoryId, fetchProductsByCategory, limit, page, sort]);
+  }, [categoryId, dispatch, fetchProductsByCategory, limit, page, sort]);
 
   return (
     <ProductsByCategoryContext.Provider

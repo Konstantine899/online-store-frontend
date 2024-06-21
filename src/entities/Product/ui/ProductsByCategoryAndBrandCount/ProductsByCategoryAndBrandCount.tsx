@@ -4,17 +4,19 @@ import cls from './ProductsByCategoryAndBrandCount.module.scss';
 import { useParams } from 'react-router';
 import { useCategory } from '@/entities/Category';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { useProductsByCategoryAndBrandContext } from '../../lib/contexts/ProductsByCategoryAndBrandContext';
 
 interface ProductsByCategoryAndBrandCountProps {
   className?: string;
-  count: number;
 }
 
 export const ProductsByCategoryAndBrandCount = memo(
   (props: ProductsByCategoryAndBrandCountProps) => {
-    const { className, count } = props;
+    const { className } = props;
     const { categoryId } = useParams();
     const [fetchCategory, { data: category }] = useCategory();
+    const { productsByCategoryAndBrand } =
+      useProductsByCategoryAndBrandContext();
 
     useEffect(() => {
       fetchCategory(`${categoryId}`);
@@ -32,7 +34,7 @@ export const ProductsByCategoryAndBrandCount = memo(
           size={TextSize.XL}
         />
         <Text
-          text={`(${count})`}
+          text={`(${productsByCategoryAndBrand?.count})`}
           theme={TextTheme.INVERTED}
           size={TextSize.XL}
         />
