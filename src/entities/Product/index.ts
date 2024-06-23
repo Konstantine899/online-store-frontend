@@ -66,13 +66,9 @@ export {
   selectProductsLastPage,
   selectProductsSortOrder,
   selectProductsSearch,
-  selectProductsCount,
   selectProductsState,
-  selectProducts,
   selectProductsLimit,
   selectProductsCurrentPage,
-  selectProductsNextPage,
-  selectProductsPreviosPage,
   selectProductsMetaData,
 } from '@/entities/Product/model/selectors/selectProducts';
 

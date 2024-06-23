@@ -5,11 +5,6 @@ export const selectProductsState = (state: StateSchema) => {
   return state.productsPage?.products;
 };
 
-export const selectProducts = createSelector(
-  selectProductsState,
-  (state) => state?.rows ?? [],
-);
-
 export const selectProductsSearch = createSelector(
   selectProductsState,
   (state) => {
@@ -23,15 +18,7 @@ export const selectProductsSortOrder = createSelector(
   },
 );
 
-export const selectProductsCount = createSelector(
-  selectProductsState,
-  (state) => {
-    return state?.count ?? 0;
-  },
-);
-
 // MetaData
-
 export const selectProductsMetaData = (state: StateSchema) => {
   return state?.productsPage?.products?.metaData;
 };
@@ -47,18 +34,7 @@ export const selectProductsCurrentPage = createSelector(
     return state?.currentPage ?? 1;
   },
 );
-export const selectProductsNextPage = createSelector(
-  selectProductsMetaData,
-  (state) => {
-    return state?.nextPage ?? 0;
-  },
-);
-export const selectProductsPreviosPage = createSelector(
-  selectProductsMetaData,
-  (state) => {
-    return state?.previousPage ?? 0;
-  },
-);
+
 export const selectProductsLastPage = createSelector(
   selectProductsMetaData,
   (state) => {
