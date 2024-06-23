@@ -20,6 +20,10 @@ export {
   ProductsByCategoryAndBrandProvider,
   useProductsByCategoryAndBrandContext,
 } from './lib/contexts/ProductsByCategoryAndBrandContext';
+export {
+  ProductProvider,
+  useProductContext,
+} from './lib/contexts/ProductContext';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';

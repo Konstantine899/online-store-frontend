@@ -1,20 +1,23 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductHeading.module.scss';
+import { useProductContext } from '../../lib/contexts/ProductContext';
 
 interface ProductHeadingProps {
   className?: string;
-  name: string;
 }
 
 export const ProductHeading = memo((props: ProductHeadingProps) => {
-  const { className, name } = props;
+  const { className } = props;
+  const { product, isSuccess } = useProductContext();
 
-  return (
-    <div className={classNames(cls.ProductHeading, {}, [className])}>
-      <h1>{name}</h1>
-    </div>
-  );
+  if (isSuccess && product) {
+    return (
+      <div className={classNames(cls.ProductHeading, {}, [className])}>
+        <h1>{product.name}</h1>
+      </div>
+    );
+  }
 });
 
 ProductHeading.displayName = `ProductHeading`;

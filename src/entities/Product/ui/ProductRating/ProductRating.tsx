@@ -2,8 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductRating.module.scss';
 import { Star, StarSize } from '@/shared/ui/Star/Star';
-import { selectRating } from '@/entities/Rating';
-import { useSelector } from 'react-redux';
+import { useProductContext } from '../../lib/contexts/ProductContext';
 
 interface ProductRatingProps {
   className?: string;
@@ -11,25 +10,30 @@ interface ProductRatingProps {
 
 export const ProductRating = memo((props: ProductRatingProps) => {
   const { className } = props;
-  const rating = useSelector(selectRating);
-  const inverted = rating == 0;
-  return (
-    <div
-      className={
-        rating == 0
-          ? cls.ProductRatingWrapperInverted
-          : cls.ProductRatingWrapper
-      }
-    >
-      <p className={cls.rating}>{rating}</p>
-      <Star
-        size={StarSize.S}
-        className={classNames(cls.Star, { [cls.inverted]: inverted }, [
-          className,
-        ])}
-      />
-    </div>
-  );
+
+  const { product, isSuccess } = useProductContext();
+
+  const inverted = product?.rating == 0;
+
+  if (isSuccess && product) {
+    return (
+      <div
+        className={
+          product.rating == 0
+            ? cls.ProductRatingWrapperInverted
+            : cls.ProductRatingWrapper
+        }
+      >
+        <p className={cls.rating}>{product.rating}</p>
+        <Star
+          size={StarSize.S}
+          className={classNames(cls.Star, { [cls.inverted]: inverted }, [
+            className,
+          ])}
+        />
+      </div>
+    );
+  }
 });
 
 ProductRating.displayName = `ProductRating`;
