@@ -10,6 +10,8 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
+import { useNavigate } from 'react-router-dom';
+import { getRouteProductsByCategoryAndBrand } from '@/shared/consts/router/publicRouter';
 
 interface ProductsByCategoryAndBrandPaginateProps {
   className?: string;
@@ -20,12 +22,16 @@ export const ProductsByCategoryAndBrandPaginate = memo(
     const { className } = props;
     const dispatch = useAppDispatch();
     const { categoryId, brandId } = useParams();
+    const navigate = useNavigate();
     const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
     const { productsByCategoryAndBrand, isSuccess } =
       useProductsByCategoryAndBrandContext();
 
     const onPageChange = (pageNumber: number) => {
       dispatch(ProductsByCategoryAndBrandActions.setPage(pageNumber));
+      navigate(
+        getRouteProductsByCategoryAndBrand(`${brandId}`, `${categoryId}`),
+      );
       fetchProductsByCategoryAndBrand({
         brandId: Number(brandId),
         categoryId: Number(categoryId),
