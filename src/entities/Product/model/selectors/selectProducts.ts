@@ -2,7 +2,7 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectProductsState = (state: StateSchema) => {
-  return state.productsPage?.products;
+  return state?.products;
 };
 
 export const selectProductsSearch = createSelector(
@@ -20,7 +20,7 @@ export const selectProductsSortOrder = createSelector(
 
 // MetaData
 export const selectProductsMetaData = (state: StateSchema) => {
-  return state?.productsPage?.products?.metaData;
+  return state?.products?.metaData;
 };
 export const selectProductsLimit = createSelector(
   selectProductsMetaData,

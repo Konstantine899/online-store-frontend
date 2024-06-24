@@ -14,17 +14,17 @@ import { ICategorySchema } from '@/entities/Category';
 import { IRatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/features/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ProductsPageSchema } from '@/pages/ProductsPage';
 import { ProductPageSchema } from '@/pages/ProductPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
+import { IProductsSchema } from '@/entities/Product';
 
 export interface StateSchema {
   user: IUserSchema;
   scroll: ScrollSchema;
   auth: IAuthSchema;
+  products: IProductsSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-  productsPage?: ProductsPageSchema;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
   productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
   productPage?: ProductPageSchema;
