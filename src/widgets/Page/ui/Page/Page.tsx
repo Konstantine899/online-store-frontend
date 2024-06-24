@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import cls from './Page.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { selectScrollPosition, ScrollActions } from '@/features/Scroll';
+import { ScrollActions, selectScrollPosition } from '@/features/Scroll';
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
@@ -24,7 +24,11 @@ export const Page = memo((props: PageProps) => {
   );
 
   useInitialEffect(() => {
-    ref.current.scrollTop = scrollPosition;
+    const position = setTimeout(() => {
+      ref.current.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+      ref.current.scrollTop = scrollPosition;
+    }, 500);
+    return () => clearTimeout(position);
   });
 
   const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
