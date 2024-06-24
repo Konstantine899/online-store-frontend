@@ -80,7 +80,7 @@ export const publicRouterConfig: Record<publicRouter, RouteProps> = {
     path: getRouteProductProperties(':productId'),
   },
   [publicRouter.GET_PRODUCT]: {
-    path: getRouteProduct(':id'),
+    path: getRouteProduct(':productId'),
     element: <ProductPage />,
   },
   [publicRouter.GET_LIST_PRODUCT]: {

@@ -5,7 +5,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
 import { ProductImage } from '../ProductImage/ProductImage';
-import { IProduct } from '../../model/types/IProduct';
 import { useProductContext } from '../../lib/contexts/ProductContext';
 
 interface ProductDetailsProps {

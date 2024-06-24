@@ -21,12 +21,12 @@ const ProductContext = createContext<IProductContext>({
 export const useProductContext = () => useContext(ProductContext);
 
 export const ProductProvider = ({ children }: IProps) => {
-  const { id } = useParams<{ id: string }>();
+  const { productId } = useParams<{ productId: string }>();
   const [fetchProduct, { data, isLoading, isSuccess }] = useProduct();
 
   useEffect(() => {
-    fetchProduct({ productId: Number(id) });
-  }, [fetchProduct, id]);
+    fetchProduct({ productId: Number(productId) });
+  }, [fetchProduct, productId]);
 
   return (
     <ProductContext.Provider value={{ product: data, isSuccess, isLoading }}>
