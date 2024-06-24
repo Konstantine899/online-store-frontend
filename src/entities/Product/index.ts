@@ -82,9 +82,7 @@ export {
 
 export {
   selectProductsByCategoryAndBrandLimit,
-  selectProductsByCategoryAndBrand,
   selectProductsByCategoryAndBrandCurrentPage,
-  selectProductsByCategoryAndBrandCount,
   selectProductsByCategoryAndBrandSort,
   selectProductsByCategoryAndBrandState,
   selectProductsByCategoryAndBrandLastPage,

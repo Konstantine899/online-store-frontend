@@ -5,20 +5,6 @@ export const selectProductsByCategoryAndBrandState = (state: StateSchema) => {
   return state.productsByCategoryAndBrandPage?.productsByCategoryAndBrandPage;
 };
 
-export const selectProductsByCategoryAndBrand = createSelector(
-  selectProductsByCategoryAndBrandState,
-  (state) => {
-    return state?.rows || [];
-  },
-);
-
-export const selectProductsByCategoryAndBrandCount = createSelector(
-  selectProductsByCategoryAndBrandState,
-  (state) => {
-    return state?.count ?? 0;
-  },
-);
-
 export const selectProductsByCategoryAndBrandSort = createSelector(
   selectProductsByCategoryAndBrandState,
   (state) => {
