@@ -1,9 +1,8 @@
 // api
 export { useRating } from './api/ratingApi';
 
-// selectors
-export { selectRating } from './model/selectors/selectRating';
-export { selectVotes } from './model/selectors/selectVotes';
+// lib
+export { transformVotes } from './lib/helpers/transformVotes';
 
 // types
 export type { IRatingSchema } from './model/types/IRatingSchema';

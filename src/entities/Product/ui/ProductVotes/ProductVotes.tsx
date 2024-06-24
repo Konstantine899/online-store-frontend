@@ -1,9 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductVotes.module.scss';
 import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
-import { selectVotes } from '@/entities/Rating';
-import { useSelector } from 'react-redux';
+import { useRating, transformVotes } from '@/entities/Rating';
+import { useParams } from 'react-router';
 
 interface ProductVotesProps {
   className?: string;
@@ -11,14 +11,21 @@ interface ProductVotesProps {
 
 export const ProductVotes = memo((props: ProductVotesProps) => {
   const { className } = props;
-  const votes = useSelector(selectVotes);
+  const { productId } = useParams<{ productId: string }>();
+  const [fetchRating, { data, isSuccess }] = useRating();
 
-  return (
-    <div className={classNames(cls.ProductVotesWrapper, {}, [className])}>
-      <Thumb size={ThumbSize.M} className={cls.Thumb} />
-      <p className={cls.votes}>{votes}</p>
-    </div>
-  );
+  useEffect(() => {
+    fetchRating({ productId: Number(productId) });
+  }, [fetchRating, productId]);
+
+  if (isSuccess && data) {
+    return (
+      <div className={classNames(cls.ProductVotesWrapper, {}, [className])}>
+        <Thumb size={ThumbSize.M} className={cls.Thumb} />
+        <p className={cls.votes}>{transformVotes(`${data.votes}`)}</p>
+      </div>
+    );
+  }
 });
 
 ProductVotes.displayName = `ProductVotes`;
