@@ -1,5 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import {
+  memo,
+  MutableRefObject,
+  ReactNode,
+  UIEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import cls from './Page.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ScrollActions, selectScrollPosition } from '@/features/Scroll';
@@ -16,13 +24,24 @@ interface PageProps {
 
 export const Page = memo((props: PageProps) => {
   const { className, children } = props;
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
   const ref = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
   const dispatch = useAppDispatch();
   const scrollPosition = useSelector((state: StateSchema) =>
     selectScrollPosition(state, pathname),
   );
 
+  const [pathKey, setPathKey] = useState(key);
+
+  // Сбрасываю позицию scroll при переходе на другую категорию
+  useEffect(() => {
+    if (pathKey !== key) {
+      setPathKey(key);
+      ref.current.scrollTop = 0;
+    }
+  }, [key, pathKey]);
+
+  // восстанавливаю позицию scroll после перезагрузки страницы
   useInitialEffect(() => {
     const position = setTimeout(() => {
       ref.current.scrollTo({ top: scrollPosition, behavior: 'smooth' });
