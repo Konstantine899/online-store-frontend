@@ -9,6 +9,8 @@ import {
 } from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
+import { useNavigate } from 'react-router-dom';
+import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 
 interface ProductsPaginateProps {
   className?: string;
@@ -17,11 +19,13 @@ interface ProductsPaginateProps {
 export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [fetchProducts] = useProducts();
   const { products, isSuccess } = useProductsContext();
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
+    navigate(getRouteProducts());
     fetchProducts({ page: pageNumber });
   };
 
