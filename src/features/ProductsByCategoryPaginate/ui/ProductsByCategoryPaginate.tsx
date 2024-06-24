@@ -11,6 +11,8 @@ import {
   useProductsByCategory,
   useProductsByCategoryContext,
 } from '@/entities/Product';
+import { useNavigate } from 'react-router-dom';
+import { getRouteProductsByCategory } from '@/shared/consts/router/publicRouter';
 
 interface ProductsByCategoryPaginateProps {
   className?: string;
@@ -21,12 +23,13 @@ export const ProductsByCategoryPaginate = memo(
     const { className } = props;
     const dispatch = useAppDispatch();
     const categoryId = useSelector(selectCategoryId);
+    const navigate = useNavigate();
     const [fetchProductsByCategory] = useProductsByCategory();
-    const { productsByCategory, isLoading, isSuccess } =
-      useProductsByCategoryContext();
+    const { productsByCategory, isSuccess } = useProductsByCategoryContext();
 
     const onPageChange = (pageNumber: number) => {
       dispatch(ProductsByCategoryActions.setPage(pageNumber));
+      navigate(getRouteProductsByCategory(`${categoryId}`));
       fetchProductsByCategory({ categoryId, page: pageNumber });
     };
 
