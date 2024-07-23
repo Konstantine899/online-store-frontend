@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
-import { IProductsSchema } from '../../model/types/IProductsSchema';
+import { IProductsSchema, TSortLimit } from '../../model/types/IProductsSchema';
 import { useProducts } from '../../api/productsApi';
 import {
   selectProductsCurrentPage,
@@ -9,6 +9,8 @@ import {
   selectProductsSearch,
   selectProductsSortOrder,
 } from '../../model/selectors/selectProducts';
+import { useSearchParams } from 'react-router-dom';
+import { LIMIT } from '@/shared/consts/urlParams';
 
 interface IProps {
   children: ReactNode;
@@ -33,10 +35,14 @@ export const ProductsProvider = ({ children }: IProps) => {
   const page = useSelector(selectProductsCurrentPage);
   const sort = useSelector(selectProductsSortOrder);
   const limit = useSelector(selectProductsLimit);
+  const [searchParams] = useSearchParams();
+  const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
+
+  const isLimit = urlParamLimit ? urlParamLimit : limit;
 
   useEffect(() => {
-    fetchProducts({ search, limit, sort, page });
-  }, [fetchProducts, limit, page, search, sort]);
+    fetchProducts({ search, limit: Number(isLimit), sort, page });
+  }, [fetchProducts, isLimit, page, search, sort]);
 
   return (
     <ProductsContext.Provider value={{ products: data, isSuccess, isLoading }}>
