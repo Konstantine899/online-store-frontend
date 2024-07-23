@@ -8,9 +8,9 @@ import { useParams } from 'react-router';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useNavigate } from 'react-router-dom';
 import { getRouteProductsByCategoryAndBrand } from '@/shared/consts/router/publicRouter';
-import { useProductsByCategoryAndBrand } from '../../../api/productsApi';
-import { useProductsByCategoryAndBrandContext } from '../../../lib/contexts/ProductsByCategoryAndBrandContext';
-import { ProductsByCategoryAndBrandActions } from '../../../model/slices/ProductsByCategoryAndBrandSlice';
+import { useProductsByCategoryAndBrand } from '../../api/productsApi';
+import { useProductsByCategoryAndBrandContext } from '../../lib/contexts/ProductsByCategoryAndBrandContext';
+import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 
 interface ProductsByCategoryAndBrandPaginateProps {
   className?: string;

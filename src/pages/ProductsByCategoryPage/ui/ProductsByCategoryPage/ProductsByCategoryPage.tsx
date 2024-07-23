@@ -5,8 +5,8 @@ import { Page } from '@/widgets/Page';
 import {
   ProductsByCategoryCount,
   ProductsByCategory,
+  ProductsByCategoryFilters,
 } from '@/entities/Product';
-import { ProductsByCategoryFilters } from '@/features/ProductsByCategoryFilters';
 import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 
 export interface ProductsByCategoryPageProps {

@@ -45,8 +45,9 @@ export { ProductsByCategoryAndBrandLimit } from './ui/ProductsByCategoryAndBrand
 export { ProductsCount } from './ui/ProductsCount/ProductsCount';
 export { ProductsByCategoryCount } from './ui/ProductsByCategoryCount/ProductsByCategoryCount';
 export { ProductsByCategoryAndBrandCount } from './ui/ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
-export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBrandFilters/ui/ProductsByCategoryAndBrandFilters';
-export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBrandPaginate/ui/ProductsByCategoryAndBrandPaginate';
+export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBrandFilters/ProductsByCategoryAndBrandFilters';
+export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBrandPaginate/ProductsByCategoryAndBrandPaginate';
+export { ProductsByCategoryFilters } from './ui/ProductsByCategoryFilters/ProductsByCategoryFilters';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
