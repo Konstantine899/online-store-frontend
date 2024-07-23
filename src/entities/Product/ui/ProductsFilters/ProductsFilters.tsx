@@ -1,7 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsFilters.module.scss';
-import { ProductsLimit, ProductsSortOrder } from '@/entities/Product';
+import { ProductsSortOrder } from '../ProductsSortOrder/ProductsSortOrder';
+import { ProductsLimit } from '../ProductsLimit/ProductsLimit';
 
 interface ProductsFiltersProps {
   className?: string;

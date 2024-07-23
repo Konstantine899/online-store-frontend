@@ -49,6 +49,7 @@ export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBra
 export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBrandPaginate/ProductsByCategoryAndBrandPaginate';
 export { ProductsByCategoryFilters } from './ui/ProductsByCategoryFilters/ProductsByCategoryFilters';
 export { ProductsByCategoryPaginate } from './ui/ProductsByCategoryPaginate/ProductsByCategoryPaginate';
+export { ProductsFilters } from './ui/ProductsFilters/ProductsFilters';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';
