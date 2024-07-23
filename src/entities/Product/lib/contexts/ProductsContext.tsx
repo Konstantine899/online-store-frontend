@@ -1,7 +1,11 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
-import { IProductsSchema, TSortLimit } from '../../model/types/IProductsSchema';
+import {
+  IProductsSchema,
+  TSortLimit,
+  TSortOrder,
+} from '../../model/types/IProductsSchema';
 import { useProducts } from '../../api/productsApi';
 import {
   selectProductsCurrentPage,
@@ -10,7 +14,7 @@ import {
   selectProductsSortOrder,
 } from '../../model/selectors/selectProducts';
 import { useSearchParams } from 'react-router-dom';
-import { LIMIT } from '@/shared/consts/urlParams';
+import { LIMIT, SORT } from '@/shared/consts/urlParams';
 
 interface IProps {
   children: ReactNode;
@@ -37,12 +41,14 @@ export const ProductsProvider = ({ children }: IProps) => {
   const limit = useSelector(selectProductsLimit);
   const [searchParams] = useSearchParams();
   const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
+  const urlParamSortOrder = searchParams.get(SORT) as TSortOrder;
 
   const isLimit = urlParamLimit ? urlParamLimit : limit;
+  const isSortOrder = urlParamSortOrder ? urlParamSortOrder : sort;
 
   useEffect(() => {
-    fetchProducts({ search, limit: Number(isLimit), sort, page });
-  }, [fetchProducts, isLimit, page, search, sort]);
+    fetchProducts({ search, limit: Number(isLimit), sort: isSortOrder, page });
+  }, [fetchProducts, isLimit, page, search, isSortOrder]);
 
   return (
     <ProductsContext.Provider value={{ products: data, isSuccess, isLoading }}>

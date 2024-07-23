@@ -14,6 +14,8 @@ import { selectProductsSortOrder } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useProducts } from '../../api/productsApi';
 import { TSortOrder } from '../../model/types/IProductsSchema';
+import { useSearchParams } from 'react-router-dom';
+import { SORT } from '@/shared/consts/urlParams';
 
 interface ProductsSortOrderProps {
   className?: string;
@@ -24,6 +26,8 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   const dispatch = useAppDispatch();
   const sort = useSelector(selectProductsSortOrder);
   const [fetchProducts] = useProducts();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlParamSortOrder = searchParams.get(SORT) as TSortOrder;
 
   const selectOptions = useMemo<SelectOptions<TSortOrder>[]>(
     () => [
@@ -39,21 +43,31 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
 
   const debounceFilterOrder = useDebounce(fetchSortingOrder, 500);
 
+  const addSortOrderToUrlParam = useCallback(
+    (sort: TSortOrder) => {
+      searchParams.set(SORT, sort);
+      setSearchParams(searchParams);
+    },
+    [searchParams, setSearchParams],
+  );
+
   const onChange = useCallback(
     (value: TSortOrder) => {
       dispatch(ProductsActions.setSortingOrder(value));
       dispatch(ProductsActions.setPage(1));
+      addSortOrderToUrlParam(value);
       debounceFilterOrder();
     },
-    [debounceFilterOrder, dispatch],
+    [addSortOrderToUrlParam, debounceFilterOrder, dispatch],
   );
+  const isSortOrder = urlParamSortOrder ? urlParamSortOrder : sort;
 
   return (
     <div className={classNames(cls.ProductsSortOrder, {}, [className])}>
       <Select<TSortOrder>
         options={selectOptions}
         label={'По'}
-        active={sort}
+        active={isSortOrder}
         onChange={onChange}
         WrapperWidth={WrapperWidth.XL}
         SelectWidth={SelectWidth.XL}
