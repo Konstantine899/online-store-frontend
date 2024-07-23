@@ -50,6 +50,7 @@ export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBr
 export { ProductsByCategoryFilters } from './ui/ProductsByCategoryFilters/ProductsByCategoryFilters';
 export { ProductsByCategoryPaginate } from './ui/ProductsByCategoryPaginate/ProductsByCategoryPaginate';
 export { ProductsFilters } from './ui/ProductsFilters/ProductsFilters';
+export { ProductsPaginate } from './ui/ProductsPaginate/ProductsPaginate';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';

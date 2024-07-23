@@ -2,15 +2,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
-import {
-  ProductsActions,
-  useProducts,
-  useProductsContext,
-} from '@/entities/Product';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useNavigate } from 'react-router-dom';
 import { getRouteProducts } from '@/shared/consts/router/publicRouter';
+import { useProducts } from '../../api/productsApi';
+import { useProductsContext } from '../../lib/contexts/ProductsContext';
+import { ProductsActions } from '../../model/slices/ProductsSlice';
 
 interface ProductsPaginateProps {
   className?: string;
