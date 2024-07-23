@@ -5,7 +5,7 @@ import { UserReducer } from '@/entities/User';
 import { AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
-import { ScrollReducer } from '@/features/Scroll';
+import { ScrollReducer } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsReducer } from '@/entities/Product';
 

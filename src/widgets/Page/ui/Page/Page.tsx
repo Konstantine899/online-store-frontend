@@ -10,7 +10,7 @@ import {
 } from 'react';
 import cls from './Page.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { ScrollActions, selectScrollPosition } from '@/features/Scroll';
+import { ScrollActions, selectScrollPosition } from '@/entities/Scroll';
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';

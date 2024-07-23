@@ -12,7 +12,7 @@ import { AxiosInstance } from 'axios';
 import { IBrandSchema } from '@/entities/Brand';
 import { ICategorySchema } from '@/entities/Category';
 import { IRatingSchema } from '@/entities/Rating';
-import { ScrollSchema } from '@/features/Scroll';
+import { ScrollSchema } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductPageSchema } from '@/pages/ProductPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
