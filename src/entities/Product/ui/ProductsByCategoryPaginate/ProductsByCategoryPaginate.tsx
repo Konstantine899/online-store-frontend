@@ -6,13 +6,12 @@ import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
-import {
-  ProductsByCategoryActions,
-  useProductsByCategory,
-  useProductsByCategoryContext,
-} from '@/entities/Product';
+
 import { useNavigate } from 'react-router-dom';
 import { getRouteProductsByCategory } from '@/shared/consts/router/publicRouter';
+import { useProductsByCategory } from '../../api/productsApi';
+import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
+import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategorySlice';
 
 interface ProductsByCategoryPaginateProps {
   className?: string;

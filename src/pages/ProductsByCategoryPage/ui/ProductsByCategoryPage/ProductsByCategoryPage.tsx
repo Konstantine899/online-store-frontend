@@ -6,8 +6,8 @@ import {
   ProductsByCategoryCount,
   ProductsByCategory,
   ProductsByCategoryFilters,
+  ProductsByCategoryPaginate,
 } from '@/entities/Product';
-import { ProductsByCategoryPaginate } from '@/features/ProductsByCategoryPaginate';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
