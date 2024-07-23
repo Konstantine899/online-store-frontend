@@ -5,9 +5,9 @@ import {
   ProductsByCategoryAndBrand,
   ProductsByCategoryAndBrandCount,
   ProductsByCategoryAndBrandFilters,
+  ProductsByCategoryAndBrandPaginate,
 } from '@/entities/Product';
 import { Page } from '@/widgets/Page';
-import { ProductsByCategoryAndBrandPaginate } from '@/features/ProductsByCategoryAndBrandPaginate';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;

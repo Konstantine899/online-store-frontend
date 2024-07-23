@@ -2,16 +2,15 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
-import {
-  ProductsByCategoryAndBrandActions,
-  useProductsByCategoryAndBrand,
-  useProductsByCategoryAndBrandContext,
-} from '@/entities/Product';
+
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useParams } from 'react-router';
 import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useNavigate } from 'react-router-dom';
 import { getRouteProductsByCategoryAndBrand } from '@/shared/consts/router/publicRouter';
+import { useProductsByCategoryAndBrand } from '../../../api/productsApi';
+import { useProductsByCategoryAndBrandContext } from '../../../lib/contexts/ProductsByCategoryAndBrandContext';
+import { ProductsByCategoryAndBrandActions } from '../../../model/slices/ProductsByCategoryAndBrandSlice';
 
 interface ProductsByCategoryAndBrandPaginateProps {
   className?: string;
