@@ -1,11 +1,10 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandFilters.module.scss';
-import {
-  ProductsByCategoryAndBrandLimit,
-  ProductsByCategoryAndBrandSortOrder,
-} from '@/entities/Product';
+
 import { BrandTabs } from '@/entities/Brand';
+import { ProductsByCategoryAndBrandSortOrder } from '../../ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
+import { ProductsByCategoryAndBrandLimit } from '../../ProductsByCategoryAndBrandLimit/ProductsByCategoryAndBrandLimit';
 
 interface ProductsByCategoryAndBrandFiltersProps {
   className?: string;

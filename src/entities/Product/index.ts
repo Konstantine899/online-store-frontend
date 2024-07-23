@@ -45,6 +45,7 @@ export { ProductsByCategoryAndBrandLimit } from './ui/ProductsByCategoryAndBrand
 export { ProductsCount } from './ui/ProductsCount/ProductsCount';
 export { ProductsByCategoryCount } from './ui/ProductsByCategoryCount/ProductsByCategoryCount';
 export { ProductsByCategoryAndBrandCount } from './ui/ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
+export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBrandFilters/ui/ProductsByCategoryAndBrandFilters';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';

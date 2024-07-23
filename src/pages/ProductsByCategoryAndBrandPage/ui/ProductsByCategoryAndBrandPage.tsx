@@ -4,8 +4,8 @@ import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
   ProductsByCategoryAndBrand,
   ProductsByCategoryAndBrandCount,
+  ProductsByCategoryAndBrandFilters,
 } from '@/entities/Product';
-import { ProductsByCategoryAndBrandFilters } from '@/features/ProductsByCategoryAndBrandFilters';
 import { Page } from '@/widgets/Page';
 import { ProductsByCategoryAndBrandPaginate } from '@/features/ProductsByCategoryAndBrandPaginate';
 
