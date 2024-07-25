@@ -1,6 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectProductsLimit } from '../../model/selectors/selectProducts';
 import { TSortLimit } from '../../model/types/IProductsSchema';
 import { SelectOptions } from '@/shared/ui/Select/Select/Select';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
@@ -10,16 +8,20 @@ import { LIMIT } from '@/shared/consts/urlParams';
 interface UseProductsLimit {
   onFetchCb: (limit: number) => void;
   onChangeCb: (value: TSortLimit) => void;
+  limit: number;
 }
 
-export function useProductsLimit({ onFetchCb, onChangeCb }: UseProductsLimit): {
+export function useProductsLimit({
+  onFetchCb,
+  onChangeCb,
+  limit,
+}: UseProductsLimit): {
   selectOptions: SelectOptions<TSortLimit>[];
   onChange: (value: TSortLimit) => void;
   limit: TSortLimit;
 } {
   const [searchParams, setSearchParams] = useSearchParams();
   const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
-  const limit = useSelector(selectProductsLimit);
 
   const selectOptions = useMemo<SelectOptions<TSortLimit>[]>(
     () => [

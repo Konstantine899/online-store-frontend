@@ -11,6 +11,8 @@ import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useProducts } from '../../api/productsApi';
 import { TSortLimit } from '../../model/types/IProductsSchema';
 import { useProductsLimit } from '../../lib/hooks/useProductsLimit';
+import { useSelector } from 'react-redux';
+import { selectProductsLimit } from '../../model/selectors/selectProducts';
 
 interface ProductsLimitProps {
   className?: string;
@@ -19,11 +21,13 @@ interface ProductsLimitProps {
 export const ProductsLimit = memo((props: ProductsLimitProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
+  const productsLimit = useSelector(selectProductsLimit);
   const [fetchProducts] = useProducts();
 
   const { onChange, selectOptions, limit } = useProductsLimit({
     onFetchCb: fetchCb,
     onChangeCb: onChangeCb,
+    limit: productsLimit,
   });
 
   function fetchCb(limit: number) {
