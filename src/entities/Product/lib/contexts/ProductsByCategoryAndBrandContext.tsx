@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
-import { IProductsSchema } from '../../model/types/IProductsSchema';
+import { IProductsSchema, TSortLimit } from '../../model/types/IProductsSchema';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
@@ -11,6 +11,7 @@ import {
 } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { LIMIT } from '@/shared/consts/urlParams';
 
 interface IProps {
   children: ReactNode;
@@ -39,6 +40,10 @@ export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
   const page = useSelector(selectProductsByCategoryAndBrandCurrentPage);
   const [fetchProductsByCategoryAndBrand, { data, isSuccess, isLoading }] =
     useProductsByCategoryAndBrand();
+  const [searchParams] = useSearchParams();
+  const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
+
+  const isLimit = urlParamLimit ? urlParamLimit : limit;
 
   useEffect(() => {
     dispatch(ProductsActions.setSearch(''));
@@ -47,7 +52,7 @@ export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
       categoryId: Number(categoryId),
       sort,
       page,
-      limit,
+      limit: Number(isLimit),
     });
   }, [
     categoryId,
@@ -56,7 +61,7 @@ export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
     fetchProductsByCategoryAndBrand,
     sort,
     page,
-    limit,
+    isLimit,
   ]);
 
   return (
