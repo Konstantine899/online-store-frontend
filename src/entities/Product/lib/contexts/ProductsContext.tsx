@@ -1,11 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
-import {
-  IProductsSchema,
-  TSortLimit,
-  TSortOrder,
-} from '../../model/types/IProductsSchema';
+import { IProductsSchema, TSortOrder } from '../../model/types/IProductsSchema';
 import { useProducts } from '../../api/productsApi';
 import {
   selectProductsCurrentPage,
@@ -13,8 +9,9 @@ import {
   selectProductsSortOrder,
 } from '../../model/selectors/selectProducts';
 import { useSearchParams } from 'react-router-dom';
-import { LIMIT, SORT } from '@/shared/consts/urlParams';
+import { SORT } from '@/shared/consts/urlParams';
 import { useAddSearchToUrlParam } from '../hooks/useAddSearchToUrlParam';
+import { useAddLimitToUrlParam } from '../hooks/useAddLimitToUrlParam';
 
 interface IProps {
   children: ReactNode;
@@ -37,25 +34,24 @@ export const ProductsProvider = ({ children }: IProps) => {
   const [fetchProducts, { data, isSuccess, isLoading }] = useProducts();
   const page = useSelector(selectProductsCurrentPage);
   const sort = useSelector(selectProductsSortOrder);
-  const limit = useSelector(selectProductsLimit);
+  const limitFromState = useSelector(selectProductsLimit);
   const [searchParams] = useSearchParams();
-  const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
   const urlParamSortOrder = searchParams.get(SORT) as TSortOrder;
 
-  const isLimit = urlParamLimit ? urlParamLimit : limit;
   const isSortOrder = urlParamSortOrder ? urlParamSortOrder : sort;
 
   const { search, addSearchToUrlParam } = useAddSearchToUrlParam();
+  const { limit } = useAddLimitToUrlParam(limitFromState);
 
   useEffect(() => {
     fetchProducts({
       search,
-      limit: Number(isLimit),
+      limit: Number(limit),
       sort: isSortOrder,
       page,
     });
     addSearchToUrlParam(search);
-  }, [fetchProducts, isLimit, page, search, isSortOrder, addSearchToUrlParam]);
+  }, [fetchProducts, limit, page, search, isSortOrder, addSearchToUrlParam]);
 
   return (
     <ProductsContext.Provider value={{ products: data, isSuccess, isLoading }}>

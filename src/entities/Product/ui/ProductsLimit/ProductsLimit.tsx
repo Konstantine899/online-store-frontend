@@ -27,7 +27,7 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
   const { onChange, selectOptions, limit } = useProductsLimit({
     onFetchCb: fetchCb,
     onChangeCb: onChangeCb,
-    limit: productsLimit,
+    limitFromState: productsLimit,
   });
 
   function fetchCb(limit: number) {
