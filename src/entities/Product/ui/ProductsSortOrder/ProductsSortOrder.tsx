@@ -12,8 +12,6 @@ import { selectProductsSortOrder } from '../../model/selectors/selectProducts';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useProducts } from '../../api/productsApi';
 import { TSortOrder } from '../../model/types/IProductsSchema';
-import { useSearchParams } from 'react-router-dom';
-import { SORT } from '@/shared/consts/urlParams';
 import { useProductsSortOrder } from '../../lib/hooks/useProductsSortOrder';
 
 interface ProductsSortOrderProps {
@@ -25,13 +23,11 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
   const dispatch = useAppDispatch();
   const sortOrder = useSelector(selectProductsSortOrder);
   const [fetchProducts] = useProducts();
-  const [searchParams] = useSearchParams();
-  const urlParamSortOrder = searchParams.get(SORT) as TSortOrder;
 
   const { sort, selectOptions, onChange } = useProductsSortOrder({
     onFetchCb,
     onChangeCb,
-    sort: sortOrder,
+    sortFromState: sortOrder,
   });
 
   function onFetchCb() {
@@ -43,14 +39,12 @@ export const ProductsSortOrder = memo((props: ProductsSortOrderProps) => {
     dispatch(ProductsActions.setPage(1));
   }
 
-  const isSortOrder = urlParamSortOrder ? urlParamSortOrder : sort;
-
   return (
     <div className={classNames(cls.ProductsSortOrder, {}, [className])}>
       <Select<TSortOrder>
         options={selectOptions}
         label={'По'}
-        active={isSortOrder}
+        active={sort}
         onChange={onChange}
         WrapperWidth={WrapperWidth.XL}
         SelectWidth={SelectWidth.XL}

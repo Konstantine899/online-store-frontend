@@ -2,27 +2,23 @@ import { TSortOrder } from '../../model/types/IProductsSchema';
 import { useCallback, useMemo } from 'react';
 import { SelectOptions } from '@/shared/ui/Select/Select/Select';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { SORT } from '@/shared/consts/urlParams';
-import { useSearchParams } from 'react-router-dom';
+import { useAddSortOrderToUrlParam } from '../hooks/useAddSortOrderToUrlParam';
 
 interface IUseProductsSortOrder {
   onFetchCb: (sort: TSortOrder) => void;
   onChangeCb: (value: TSortOrder) => void;
-  sort: TSortOrder;
+  sortFromState: TSortOrder;
 }
 
 export function useProductsSortOrder({
   onFetchCb,
   onChangeCb,
-  sort,
+  sortFromState,
 }: IUseProductsSortOrder): {
   selectOptions: SelectOptions<TSortOrder>[];
   onChange: (value: TSortOrder) => void;
   sort: TSortOrder;
 } {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const urlParamSortOrder = searchParams.get(SORT) as TSortOrder;
-
   const selectOptions = useMemo<SelectOptions<TSortOrder>[]>(
     () => [
       { value: 'asc', content: 'возрастанию' },
@@ -31,19 +27,14 @@ export function useProductsSortOrder({
     [],
   );
 
+  const { sort, addSortOrderToUrlParam } =
+    useAddSortOrderToUrlParam(sortFromState);
+
   const fetch = useCallback(() => {
-    onFetchCb(sort);
-  }, [onFetchCb, sort]);
+    onFetchCb(sortFromState);
+  }, [onFetchCb, sortFromState]);
 
   const debounce = useDebounce(fetch, 500);
-
-  const addSortOrderToUrlParam = useCallback(
-    (sort: TSortOrder) => {
-      searchParams.set(SORT, sort);
-      setSearchParams(searchParams);
-    },
-    [searchParams, setSearchParams],
-  );
 
   const onChange = useCallback(
     (value: TSortOrder) => {
@@ -53,7 +44,6 @@ export function useProductsSortOrder({
     },
     [addSortOrderToUrlParam, debounce, onChangeCb],
   );
-  const isSortOrder = urlParamSortOrder ? urlParamSortOrder : sort;
 
-  return { selectOptions, onChange, sort: isSortOrder };
+  return { selectOptions, onChange, sort };
 }

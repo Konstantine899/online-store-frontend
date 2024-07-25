@@ -30,7 +30,7 @@ export const ProductsByCategorySortOrder = memo(
     const [fetchProductsByCategory] = useProductsByCategory();
 
     const { onChange, selectOptions, sort } = useProductsSortOrder({
-      sort: productsByCategorySortOrder,
+      sortFromState: productsByCategorySortOrder,
       onFetchCb,
       onChangeCb,
     });

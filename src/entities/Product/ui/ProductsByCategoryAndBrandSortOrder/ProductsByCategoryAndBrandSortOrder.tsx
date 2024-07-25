@@ -28,7 +28,7 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
     const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
     const { sort, selectOptions, onChange } = useProductsSortOrder({
-      sort: sortOrder,
+      sortFromState: sortOrder,
       onFetchCb,
       onChangeCb,
     });
