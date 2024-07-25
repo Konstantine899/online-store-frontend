@@ -1,20 +1,19 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback, useMemo } from 'react';
+import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandSortOrder.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
   Select,
-  SelectOptions,
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { useParams } from 'react-router-dom';
 import { selectProductsByCategoryAndBrandSort } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { ProductsByCategoryAndBrandActions } from '../../model/slices/ProductsByCategoryAndBrandSlice';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 import { TSortOrder } from '../../model/types/IProductsSchema';
+import { useProductsSortOrder } from '../../lib/hooks/useProductsSortOrder';
 
 interface ProductsByCategoryAndBrandSortOrderProps {
   className?: string;
@@ -28,28 +27,23 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
     const { brandId, categoryId } = useParams();
     const [fetchProductsByCategoryAndBrand] = useProductsByCategoryAndBrand();
 
-    const selectOptions = useMemo<SelectOptions<TSortOrder>[]>(
-      () => [
-        { value: 'asc', content: 'возрастанию' },
-        { value: 'desc', content: 'убыванию' },
-      ],
-      [],
-    );
+    const { sort, selectOptions, onChange } = useProductsSortOrder({
+      sort: sortOrder,
+      onFetchCb,
+      onChangeCb,
+    });
 
-    const fetchProductsList = useCallback(() => {
+    function onFetchCb() {
       fetchProductsByCategoryAndBrand({
         categoryId: Number(categoryId),
         brandId: Number(brandId),
       });
-    }, [brandId, categoryId, fetchProductsByCategoryAndBrand]);
+    }
 
-    const debounceFilterOrder = useDebounce(fetchProductsList, 500);
-
-    const onChange = (value: TSortOrder) => {
+    function onChangeCb(value: TSortOrder) {
       dispatch(ProductsByCategoryAndBrandActions.setSortingOrder(value));
       dispatch(ProductsByCategoryAndBrandActions.setPage(1));
-      debounceFilterOrder();
-    };
+    }
 
     return (
       <div
@@ -60,7 +54,7 @@ export const ProductsByCategoryAndBrandSortOrder = memo(
         <Select<TSortOrder>
           options={selectOptions}
           label={'По'}
-          active={sortOrder}
+          active={sort}
           onChange={onChange}
           WrapperWidth={WrapperWidth.XL}
           SelectWidth={SelectWidth.XL}
