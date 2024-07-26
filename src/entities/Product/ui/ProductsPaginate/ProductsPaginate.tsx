@@ -9,6 +9,13 @@ import { getRouteProducts } from '@/shared/consts/router/publicRouter';
 import { useProducts } from '../../api/productsApi';
 import { useProductsContext } from '../../lib/contexts/ProductsContext';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
+import { useSelector } from 'react-redux';
+import { useAddSortOrderToUrlParam } from '../../lib/hooks/useAddSortOrderToUrlParam';
+import { useAddLimitToUrlParam } from '../../lib/hooks/useAddLimitToUrlParam';
+import {
+  selectProductsLimit,
+  selectProductsSortOrder,
+} from '../../model/selectors/selectProducts';
 
 interface ProductsPaginateProps {
   className?: string;
@@ -20,11 +27,19 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   const navigate = useNavigate();
   const [fetchProducts] = useProducts();
   const { products, isSuccess } = useProductsContext();
+  const sortFromState = useSelector(selectProductsSortOrder);
+  const limitFromState = useSelector(selectProductsLimit);
+
+  const { sort, addSortOrderToUrlParam } =
+    useAddSortOrderToUrlParam(sortFromState);
+  const { limit, addLimitToUrlParam } = useAddLimitToUrlParam(limitFromState);
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
     navigate(getRouteProducts());
     fetchProducts({ page: pageNumber });
+    addSortOrderToUrlParam(sort);
+    addLimitToUrlParam(Number(limit));
   };
 
   const paginationRange = usePaginate({
