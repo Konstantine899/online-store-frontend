@@ -11,6 +11,7 @@ import {
 import { useAddSearchToUrlParam } from '../hooks/useAddSearchToUrlParam';
 import { useAddLimitToUrlParam } from '../hooks/useAddLimitToUrlParam';
 import { useAddSortOrderToUrlParam } from '../hooks/useAddSortOrderToUrlParam';
+import { useAddCurrentPageToUrlParam } from '../hooks/useAddCurrentPageToUrlParam';
 
 interface IProps {
   children: ReactNode;
@@ -31,13 +32,14 @@ export const useProductsContext = () => useContext(ProductsContext);
 
 export const ProductsProvider = ({ children }: IProps) => {
   const [fetchProducts, { data, isSuccess, isLoading }] = useProducts();
-  const page = useSelector(selectProductsCurrentPage);
+  const pageFromState = useSelector(selectProductsCurrentPage);
   const sortFromState = useSelector(selectProductsSortOrder);
   const limitFromState = useSelector(selectProductsLimit);
 
   const { search, addSearchToUrlParam } = useAddSearchToUrlParam();
   const { limit } = useAddLimitToUrlParam(limitFromState);
   const { sort } = useAddSortOrderToUrlParam(sortFromState);
+  const { page } = useAddCurrentPageToUrlParam(pageFromState);
 
   useEffect(() => {
     fetchProducts({

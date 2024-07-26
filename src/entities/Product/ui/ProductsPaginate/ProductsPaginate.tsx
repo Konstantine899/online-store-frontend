@@ -16,6 +16,7 @@ import {
   selectProductsLimit,
   selectProductsSortOrder,
 } from '../../model/selectors/selectProducts';
+import { useAddCurrentPageToUrlParam } from '../../lib/hooks/useAddCurrentPageToUrlParam';
 
 interface ProductsPaginateProps {
   className?: string;
@@ -30,9 +31,14 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   const sortFromState = useSelector(selectProductsSortOrder);
   const limitFromState = useSelector(selectProductsLimit);
 
+  const currentPage = products ? products.metaData.currentPage : 1;
+  const lastPage = products ? products.metaData.lastPage : 1;
+
   const { sort, addSortOrderToUrlParam } =
     useAddSortOrderToUrlParam(sortFromState);
   const { limit, addLimitToUrlParam } = useAddLimitToUrlParam(limitFromState);
+  const { page, addCurrentPageToUrlParam } =
+    useAddCurrentPageToUrlParam(currentPage);
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
@@ -40,11 +46,12 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
     fetchProducts({ page: pageNumber });
     addSortOrderToUrlParam(sort);
     addLimitToUrlParam(Number(limit));
+    addCurrentPageToUrlParam(pageNumber);
   };
 
   const paginationRange = usePaginate({
-    currentPage: products?.metaData.currentPage,
-    lastPage: products?.metaData.lastPage,
+    currentPage,
+    lastPage,
   });
 
   if (isSuccess && products) {
