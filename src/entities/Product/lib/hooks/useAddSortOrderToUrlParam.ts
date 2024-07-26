@@ -1,6 +1,6 @@
 import { TSortOrder } from '../../model/types/IProductsSchema';
 import { useSearchParams } from 'react-router-dom';
-import { SORT } from '@/shared/consts/urlParams';
+import { PAGE, SORT } from '@/shared/consts/urlParams';
 import { useCallback } from 'react';
 
 interface IUseAddSortOrderToUrlParamResponse {
@@ -17,6 +17,8 @@ export function useAddSortOrderToUrlParam(
   const addSortOrderToUrlParam = useCallback(
     (sort: TSortOrder) => {
       searchParams.set(SORT, sort);
+      setSearchParams(searchParams);
+      searchParams.delete(PAGE);
       setSearchParams(searchParams);
     },
     [searchParams, setSearchParams],
