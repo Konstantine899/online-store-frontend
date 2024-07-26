@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { LIMIT } from '@/shared/consts/urlParams';
+import { LIMIT, PAGE } from '@/shared/consts/urlParams';
 import { TSortLimit } from '../../model/types/IProductsSchema';
 import { useCallback } from 'react';
 
@@ -19,7 +19,11 @@ export function useAddLimitToUrlParam(
       if (limit > 5) {
         searchParams.set(LIMIT, `${limit}`);
         setSearchParams(searchParams);
+        searchParams.delete(PAGE);
+        setSearchParams(searchParams);
       } else {
+        searchParams.delete(PAGE);
+        setSearchParams(searchParams);
         searchParams.delete(LIMIT);
         setSearchParams(searchParams);
       }
