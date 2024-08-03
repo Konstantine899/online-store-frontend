@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
-import { IProductsSchema, TSortLimit } from '../../model/types/IProductsSchema';
+import { IProductsSchema } from '../../model/types/IProductsSchema';
 
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
@@ -11,7 +11,9 @@ import {
 } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
-import { LIMIT } from '@/shared/consts/urlParams';
+import { useAddLimitToUrlParam } from '../hooks/useAddLimitToUrlParam';
+import { useAddSortOrderToUrlParam } from '../hooks/useAddSortOrderToUrlParam';
+import { useAddCurrentPageToUrlParam } from '../hooks/useAddCurrentPageToUrlParam';
 
 interface IProps {
   children: ReactNode;
@@ -35,15 +37,17 @@ export const useProductsByCategoryAndBrandContext = () =>
 export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
   const { brandId, categoryId } = useParams();
   const dispatch = useAppDispatch();
-  const limit = useSelector(selectProductsByCategoryAndBrandLimit);
-  const sort = useSelector(selectProductsByCategoryAndBrandSort);
-  const page = useSelector(selectProductsByCategoryAndBrandCurrentPage);
+  const limitFromState = useSelector(selectProductsByCategoryAndBrandLimit);
+  const sortFromState = useSelector(selectProductsByCategoryAndBrandSort);
+  const pageFromState = useSelector(
+    selectProductsByCategoryAndBrandCurrentPage,
+  );
   const [fetchProductsByCategoryAndBrand, { data, isSuccess, isLoading }] =
     useProductsByCategoryAndBrand();
-  const [searchParams] = useSearchParams();
-  const urlParamLimit = searchParams.get(LIMIT) as TSortLimit;
 
-  const isLimit = urlParamLimit ? urlParamLimit : limit;
+  const { limit } = useAddLimitToUrlParam(limitFromState);
+  const { sort } = useAddSortOrderToUrlParam(sortFromState);
+  const { page } = useAddCurrentPageToUrlParam(pageFromState);
 
   useEffect(() => {
     dispatch(ProductsActions.setSearch(''));
@@ -52,7 +56,7 @@ export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
       categoryId: Number(categoryId),
       sort,
       page,
-      limit: Number(isLimit),
+      limit: Number(limit),
     });
   }, [
     categoryId,
@@ -61,7 +65,7 @@ export const ProductsByCategoryAndBrandProvider = ({ children }: IProps) => {
     fetchProductsByCategoryAndBrand,
     sort,
     page,
-    isLimit,
+    limit,
   ]);
 
   return (
