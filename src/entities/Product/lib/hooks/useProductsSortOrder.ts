@@ -42,8 +42,8 @@ export function useProductsSortOrder({
   const onChange = useCallback(
     (value: TSortOrder) => {
       onChangeCb(value);
-      addSortOrderToUrlParam(value);
       addCurrentPageToUrlParam(1);
+      addSortOrderToUrlParam(value);
       debounce();
     },
     [addCurrentPageToUrlParam, addSortOrderToUrlParam, debounce, onChangeCb],
