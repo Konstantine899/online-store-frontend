@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect } from 'react';
-import { IProductsSchema, TSortLimit } from '../../model/types/IProductsSchema';
+import { IProductsSchema } from '../../model/types/IProductsSchema';
 
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
@@ -11,10 +11,9 @@ import {
 } from '../../model/selectors/selectProductsByCategoryAndBrand';
 import { useProductsByCategoryAndBrand } from '../../api/productsApi';
 import { ProductsActions } from '../../model/slices/ProductsSlice';
-import { LIMIT } from '@/shared/consts/urlParams';
 import { useAddLimitToUrlParam } from '../hooks/useAddLimitToUrlParam';
 import { useAddSortOrderToUrlParam } from '../hooks/useAddSortOrderToUrlParam';
-import { useAddCurrentPageToUrlParam } from '@/entities/Product/lib/hooks/useAddCurrentPageToUrlParam';
+import { useAddCurrentPageToUrlParam } from '../hooks/useAddCurrentPageToUrlParam';
 
 interface IProps {
   children: ReactNode;
