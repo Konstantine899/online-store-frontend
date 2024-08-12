@@ -3,7 +3,6 @@ import { CategoriesList } from './CategoriesList';
 
 const meta: Meta<typeof CategoriesList> = {
   title: 'entities/Category',
-  tags: ['autodocs'],
   component: CategoriesList,
 };
 

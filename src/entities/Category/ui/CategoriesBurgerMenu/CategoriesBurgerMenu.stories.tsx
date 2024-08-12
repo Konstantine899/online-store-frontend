@@ -3,7 +3,6 @@ import { CategoriesBurgerMenu } from './CategoriesBurgerMenu';
 
 const meta: Meta<typeof CategoriesBurgerMenu> = {
   title: 'entities/BurgerMenuButton',
-  tags: ['autodocs'],
   component: CategoriesBurgerMenu,
 };
 

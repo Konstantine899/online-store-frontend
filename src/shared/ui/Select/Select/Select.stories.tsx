@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Select> = {
   title: 'shared/Select',
-  tags: ['autodocs'],
   component: Select,
   args: { onChange: action('onChange') },
 };

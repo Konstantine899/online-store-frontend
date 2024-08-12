@@ -3,7 +3,6 @@ import { ProductListItemSkeleton } from './ProductListItemSkeleton';
 
 const meta: Meta<typeof ProductListItemSkeleton> = {
   title: 'entities/ProductListItemSkeleton',
-  tags: ['autodocs'],
   component: ProductListItemSkeleton,
 };
 

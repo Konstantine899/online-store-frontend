@@ -20,9 +20,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
   features: { storyStoreV7: false },
   webpackFinal: async (
     config: webpack.Configuration,

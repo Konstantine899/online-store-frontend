@@ -3,7 +3,6 @@ import { MainPage } from './MainPage';
 
 const meta: Meta<typeof MainPage> = {
   title: 'pages/MainPage',
-  tags: ['autodocs'],
   component: MainPage,
 };
 

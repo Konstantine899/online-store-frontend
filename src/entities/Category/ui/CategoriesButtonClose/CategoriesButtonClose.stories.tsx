@@ -3,7 +3,6 @@ import { CategoriesButtonClose } from './CategoriesButtonClose';
 
 const meta: Meta<typeof CategoriesButtonClose> = {
   title: 'entities/ButtonClose',
-  tags: ['autodocs'],
   component: CategoriesButtonClose,
 };
 

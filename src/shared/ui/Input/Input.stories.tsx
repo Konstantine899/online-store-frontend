@@ -5,7 +5,6 @@ import EyeOpen from '@/shared/assets/icons/eye-open.svg';
 
 const meta: Meta<typeof Input> = {
   title: 'shared/Input',
-  tags: ['autodocs'],
   component: Input,
   args: { onChange: action('onChange') },
 };

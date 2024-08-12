@@ -3,7 +3,6 @@ import { Overlay } from './Overlay';
 
 const meta: Meta<typeof Overlay> = {
   title: 'shared/Overlay',
-  tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   component: Overlay,
 };

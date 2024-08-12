@@ -3,7 +3,6 @@ import { ProductCard } from './ProductCard';
 
 const meta: Meta<typeof ProductCard> = {
   title: 'entities/ProductCard',
-  tags: ['autodocs'],
   component: ProductCard,
 };
 

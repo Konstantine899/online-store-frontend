@@ -3,7 +3,6 @@ import { Card, CardTheme } from './Card';
 
 const meta: Meta<typeof Card> = {
   title: 'shared/Card',
-  tags: ['autodocs'],
   component: Card,
   args: { children: <div style={{ padding: '5px' }}>Карточка</div> },
 };

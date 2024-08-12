@@ -3,7 +3,6 @@ import { Thumb, ThumbSize } from './Thumb';
 
 const meta: Meta<typeof Thumb> = {
   title: 'shared/Thumb',
-  tags: ['autodocs'],
   component: Thumb,
 };
 

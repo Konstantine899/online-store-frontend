@@ -3,7 +3,6 @@ import { CategoriesPopular } from './CategoriesPopular';
 
 const meta: Meta<typeof CategoriesPopular> = {
   title: 'entities/CategoriesPopular',
-  tags: ['autodocs'],
   component: CategoriesPopular,
 };
 

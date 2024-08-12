@@ -3,7 +3,6 @@ import { Button, ButtonSize, ButtonTheme } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'shared/Button',
-  tags: ['autodocs'],
   component: Button,
 };
 

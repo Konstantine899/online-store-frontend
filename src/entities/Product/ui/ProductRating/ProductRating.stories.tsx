@@ -3,7 +3,6 @@ import { ProductRating } from './ProductRating';
 
 const meta: Meta<typeof ProductRating> = {
   title: 'entities/ProductRating',
-  tags: ['autodocs'],
   component: ProductRating,
 };
 

@@ -3,7 +3,6 @@ import ProductPage from './ProductPage';
 
 const meta: Meta<typeof ProductPage> = {
   title: 'pages/ProductDetailsPage',
-  tags: ['autodocs'],
   component: ProductPage,
 };
 

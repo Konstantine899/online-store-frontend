@@ -6,7 +6,6 @@ import { InputTheme } from '@/shared/ui/Input/Input';
 
 const meta: Meta<typeof Search> = {
   title: 'shared/Search',
-  tags: ['autodocs'],
   component: Search,
   args: {
     onSearch: action('onSearch'),

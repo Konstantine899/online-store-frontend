@@ -3,7 +3,6 @@ import { Text, TextAlign, TextSize, TextTheme } from './Text';
 
 const meta: Meta<typeof Text> = {
   title: 'shared/Text',
-  tags: ['autodocs'],
   component: Text,
   args: {
     title: 'Описание',

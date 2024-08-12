@@ -3,7 +3,6 @@ import { ProductVotes } from './ProductVotes';
 
 const meta: Meta<typeof ProductVotes> = {
   title: 'entities/ProductVotes',
-  tags: ['autodocs'],
   component: ProductVotes,
 };
 
