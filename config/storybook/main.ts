@@ -6,21 +6,34 @@ import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 
 const config: StorybookConfig = {
-  stories: [
-    '../../src/**/*.mdx',
-    '../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-  ],
+  stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-addon-react-router-v6',
+    '@storybook/addon-webpack5-compiler-swc',
+    '@chromatic-com/storybook',
+    'storybook-addon-remix-react-router',
   ],
+
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  features: { storyStoreV7: false },
+
+  swc: () => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime:
+            'automatic' /* После вкл данной опции не требуется import React в каждую stories,
+           он импортироуется автоматически*/,
+        },
+      },
+    },
+  }),
+
   webpackFinal: async (
     config: webpack.Configuration,
   ): Promise<webpack.Configuration> => {

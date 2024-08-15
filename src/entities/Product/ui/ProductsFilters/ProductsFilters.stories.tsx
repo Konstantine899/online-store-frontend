@@ -1,17 +1,15 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { ProductsFilters } from './ProductsFilters';
 
-  import type { Meta, StoryObj } from '@storybook/react';
-  import { ProductsFilters } from './ProductsFilters';
-  
-  const meta: Meta<typeof ProductsFilters> = {
-  title: 'features/ProductsFilters',   
+const meta: Meta<typeof ProductsFilters> = {
+  title: 'features/ProductsFilters',
   component: ProductsFilters,
 };
-  
-  export default meta;
-  type Story = StoryObj<typeof ProductsFilters>;
-  
-  export const Primary: Story = {
+
+export default meta;
+type Story = StoryObj<typeof ProductsFilters>;
+
+export const Primary: Story = {
   args: {},
-  render: (args) => <ProductsFilters {...args}/>,
+  render: (args) => <ProductsFilters {...args} />,
 };
-  

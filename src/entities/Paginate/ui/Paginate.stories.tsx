@@ -1,17 +1,15 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Paginate } from './Paginate';
 
-  import type { Meta, StoryObj } from '@storybook/react';
-  import { Paginate } from './Paginate';
-  
-  const meta: Meta<typeof Paginate> = {
-  title: 'entities/Paginate',   
+const meta: Meta<typeof Paginate> = {
+  title: 'entities/Paginate',
   component: Paginate,
 };
-  
-  export default meta;
-  type Story = StoryObj<typeof Paginate>;
-  
-  export const Primary: Story = {
+
+export default meta;
+type Story = StoryObj<typeof Paginate>;
+
+export const Primary: Story = {
   args: {},
-  render: (args) => <Paginate {...args}/>,
+  render: (args) => <Paginate {...args} />,
 };
-  

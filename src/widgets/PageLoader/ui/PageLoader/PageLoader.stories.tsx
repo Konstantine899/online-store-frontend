@@ -1,17 +1,15 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { PageLoader } from './PageLoader';
 
-  import type { Meta, StoryObj } from '@storybook/react';
-  import { PageLoader } from './PageLoader';
-  
-  const meta: Meta<typeof PageLoader> = {
-  title: 'widgets/PageLoader',   
+const meta: Meta<typeof PageLoader> = {
+  title: 'widgets/PageLoader',
   component: PageLoader,
 };
-  
-  export default meta;
-  type Story = StoryObj<typeof PageLoader>;
-  
-  export const Primary: Story = {
+
+export default meta;
+type Story = StoryObj<typeof PageLoader>;
+
+export const Primary: Story = {
   args: {},
   render: () => <PageLoader />,
 };
-  

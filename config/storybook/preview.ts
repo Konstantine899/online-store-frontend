@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
+import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -12,7 +13,9 @@ const preview: Preview = {
     },
     layout: 'centered',
   },
-  decorators: [StyleDecorator, RouterDecorator],
+
+  decorators: [StyleDecorator, RouterDecorator, StoreDecorator({})],
+  tags: ['autodocs'],
 };
 
 export default preview;
