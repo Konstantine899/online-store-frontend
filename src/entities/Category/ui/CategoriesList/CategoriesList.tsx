@@ -11,6 +11,7 @@ import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/Categories
 import { ICategory } from '../../model/types/ICategory';
 import { categoryReducers } from '../../model/slices';
 import { useCategories } from '../../api/categoryApi';
+import { CategoriesListSkeleton } from '@/entities/Category/ui/CategoriesListSkeleton/CategoriesListSkeleton';
 
 const asyncCategoryListReducer: ReducersList = {
   category: categoryReducers,
@@ -26,7 +27,41 @@ interface CategoryProps {
 export const CategoriesList = memo((props: CategoryProps) => {
   const { className, isOpen, onClose, isClose } = props;
 
-  const { isSuccess, data: categories } = useCategories();
+  const { isLoading, isSuccess, data: categories } = useCategories();
+
+  if (isLoading) {
+    return (
+      <DynamicModuleLoader reducers={asyncCategoryListReducer}>
+        <div
+          className={classNames(
+            cls.CategoriesList,
+            {
+              [cls.opened]: isOpen,
+              [cls.closed]: isClose,
+            },
+            [className],
+          )}
+        >
+          <Overlay onClose={onClose} />
+          <CategoriesButtonClose
+            className={cls.BurgerMenuButtonClose}
+            onClose={onClose}
+          >
+            Закрыть меню
+          </CategoriesButtonClose>
+          <div className={cls.burgerMenuContent}>
+            <ul>
+              {Array(10)
+                .fill(0)
+                .map((_, index) => (
+                  <CategoriesListSkeleton key={index} />
+                ))}
+            </ul>
+          </div>
+        </div>
+      </DynamicModuleLoader>
+    );
+  }
 
   if (isSuccess) {
     return (
