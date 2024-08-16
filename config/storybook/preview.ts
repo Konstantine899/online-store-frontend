@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/react';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize({ onUnhandledRequest: 'bypass' });
 
 const preview: Preview = {
   parameters: {
@@ -14,8 +16,9 @@ const preview: Preview = {
     layout: 'centered',
   },
 
-  decorators: [StyleDecorator, RouterDecorator, StoreDecorator({})],
+  decorators: [StyleDecorator, RouterDecorator],
   tags: ['autodocs'],
+  loaders: [mswLoader],
 };
 
 export default preview;
