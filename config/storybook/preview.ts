@@ -3,7 +3,7 @@ import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorat
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 
-initialize({ onUnhandledRequest: 'bypass' });
+initialize();
 
 const preview: Preview = {
   parameters: {
