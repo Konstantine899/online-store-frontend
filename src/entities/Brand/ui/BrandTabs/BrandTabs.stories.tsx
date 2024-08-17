@@ -12,12 +12,22 @@ const meta: Meta<typeof BrandTabs> = {
 export default meta;
 type Story = StoryObj<typeof BrandTabs>;
 
-export const FetchBrandsByCategory: Story = {
+export const FetchBrandsByCategoryPending: Story = {
   args: {},
   render: () => <BrandTabs />,
   parameters: {
     msw: {
-      handlers: [handlers.brandsListByCategory],
+      handlers: [handlers.brandsListByCategoryPending],
+    },
+  },
+};
+
+export const FetchBrandsByCategorySuccess: Story = {
+  args: {},
+  render: () => <BrandTabs />,
+  parameters: {
+    msw: {
+      handlers: [handlers.brandsListByCategorySuccess],
     },
   },
 };

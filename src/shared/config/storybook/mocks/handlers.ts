@@ -2,10 +2,15 @@ import { http, HttpResponse, delay } from 'msw';
 import { brands, categories } from './mockData';
 
 export const handlers = {
-  brandsListByCategory: http.get(
+  brandsListByCategoryPending: http.get(
     'http://localhost:6006/random%20string/brand/brand_list_by_category/undefined',
     async () => {
-      await delay(2000);
+      await delay('infinite');
+    },
+  ),
+  brandsListByCategorySuccess: http.get(
+    'http://localhost:6006/random%20string/brand/brand_list_by_category/undefined',
+    async () => {
       return HttpResponse.json(brands, { status: 200 });
     },
   ),
