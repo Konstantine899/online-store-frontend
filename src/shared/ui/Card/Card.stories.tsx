@@ -23,3 +23,10 @@ export const OutlineActive: Story = {
   },
   render: (args) => <Card {...args} />,
 };
+
+export const Disabled: Story = {
+  args: {
+    theme: CardTheme.DISABLED,
+  },
+  render: (args) => <Card {...args} />,
+};
