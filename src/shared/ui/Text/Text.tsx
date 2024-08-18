@@ -4,7 +4,9 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
   PRIMARY = 'primary',
+  PRIMARY_DISABLED = 'primary_disabled',
   INVERTED = 'inverted',
+  INVERTED_DISABLED = 'inverted_disabled',
   ERROR = 'error',
 }
 

@@ -10,6 +10,18 @@
     }
 }
 
+.primary_disabled {
+    .title {
+        opacity: .5;
+        color: var(--theme-primary-color);
+    }
+
+    .text {
+        opacity: .5;
+        color: var(--theme-primary-color);
+    }
+}
+
 /* styles for theme inverted */
 
 .inverted {
@@ -18,6 +30,18 @@
     }
 
     .text {
+        color: var(--theme-inverted-color);
+    }
+}
+
+.inverted_disabled {
+    .title {
+        opacity: .5;
+        color: var(--theme-inverted-color);
+    }
+
+    .text {
+        opacity: .5;
         color: var(--theme-inverted-color);
     }
 }
@@ -52,7 +76,7 @@
         font-weight: 900;
     }
 
-    .text{
+    .text {
         font: var(--font-s);
     }
 }
@@ -63,7 +87,7 @@
         font-weight: 900;
     }
 
-    .text{
+    .text {
         font: var(--font-m);
     }
 }
@@ -74,7 +98,7 @@
         font-weight: 900;
     }
 
-    .text{
+    .text {
         font: var(--font-l);
     }
 }
@@ -85,7 +109,7 @@
         font-weight: 900;
     }
 
-    .text{
+    .text {
         font: var(--font-xl);
     }
 }
