@@ -13,7 +13,7 @@ const meta: Meta<typeof Text> = {
 export default meta;
 type Story = StoryObj<typeof Text>;
 
-export const TextThemePrimary: Story = {
+export const Primary: Story = {
   args: {
     theme: TextTheme.PRIMARY,
   },
@@ -26,14 +26,34 @@ export const TextThemePrimary: Story = {
   render: (args) => <Text {...args} />,
 };
 
-export const TextThemeInverted: Story = {
+export const PrimaryDisabled: Story = {
+  args: {
+    theme: TextTheme.PRIMARY_DISABLED,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'monochrome-violet',
+      values: [{ name: 'monochrome-violet', value: '#481173' }],
+    },
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const Inverted: Story = {
   args: {
     theme: TextTheme.INVERTED,
   },
   render: (args) => <Text {...args} />,
 };
 
-export const TextThemeError: Story = {
+export const InvertedDisabled: Story = {
+  args: {
+    theme: TextTheme.INVERTED_DISABLED,
+  },
+  render: (args) => <Text {...args} />,
+};
+
+export const Error: Story = {
   args: {
     theme: TextTheme.ERROR,
   },
