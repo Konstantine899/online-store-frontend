@@ -11,7 +11,7 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-export const Limit: Story = {
+export const Primary: Story = {
   args: {
     options: [
       { value: `5`, content: '5' },
@@ -22,20 +22,6 @@ export const Limit: Story = {
     WrapperWidth: WrapperWidth.XL,
     SelectWidth: SelectWidth.M,
     label: `Показывать по`,
-  },
-  render: (args) => <Select {...args} />,
-};
-
-export const SortingOrder: Story = {
-  args: {
-    options: [
-      { value: 'asc', content: 'возрастанию' },
-      { value: 'desc', content: 'убыванию' },
-    ],
-    active: `asc`,
-    WrapperWidth: WrapperWidth.XL,
-    SelectWidth: SelectWidth.XL,
-    label: `По`,
   },
   render: (args) => <Select {...args} />,
 };
