@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductsByCategoryLimit.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -14,6 +14,7 @@ import { ProductsByCategoryActions } from '../../model/slices/ProductsByCategory
 import { useProductsByCategory } from '../../api/productsApi';
 import { TSortLimit } from '../../model/types/IProductsSchema';
 import { useProductsLimit } from '../../lib/hooks/useProductsLimit';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ProductsByCategoryLimitProps {
   className?: string;
@@ -26,7 +27,12 @@ export const ProductsByCategoryLimit = memo(
     const dispatch = useAppDispatch();
     const productsByCategoryLimit = useSelector(selectProductsByCategoryLimit);
     const categoryId = useSelector(selectCategoryId);
-    const [fetchProductsByCategory] = useProductsByCategory();
+    const [fetchProductsByCategory, { isLoading, isSuccess }] =
+      useProductsByCategory();
+
+    useEffect(() => {
+      fetchProductsByCategory({ categoryId });
+    }, [categoryId, fetchProductsByCategory]);
 
     const { limit, onChange, selectOptions } = useProductsLimit({
       onFetchCb,
@@ -43,18 +49,32 @@ export const ProductsByCategoryLimit = memo(
       dispatch(ProductsByCategoryActions.setPage(1));
     }
 
-    return (
-      <div className={classNames(cls.ProductsByCategoryLimit, {}, [className])}>
-        <Select
-          options={selectOptions}
-          active={`${limit}` as TSortLimit}
-          onChange={onChange}
-          label={'Показывать по'}
-          WrapperWidth={WrapperWidth.XL}
-          SelectWidth={SelectWidth.M}
-        />
-      </div>
-    );
+    if (isLoading) {
+      return (
+        <div
+          className={classNames(cls.ProductsByCategoryLimit, {}, [className])}
+        >
+          <Skeleton width={200} height={32} borderRadius={'10px'} />
+        </div>
+      );
+    }
+
+    if (isSuccess) {
+      return (
+        <div
+          className={classNames(cls.ProductsByCategoryLimit, {}, [className])}
+        >
+          <Select
+            options={selectOptions}
+            active={`${limit}` as TSortLimit}
+            onChange={onChange}
+            label={'Показывать по'}
+            WrapperWidth={WrapperWidth.XL}
+            SelectWidth={SelectWidth.M}
+          />
+        </div>
+      );
+    }
   },
 );
 
