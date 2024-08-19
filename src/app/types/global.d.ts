@@ -7,6 +7,10 @@ declare module '*.scss' {
   export = classNames;
 }
 
+declare module '*.gif';
+declare module '*.png';
+declare module '*.jpeg';
+
 type OptionalRecord<K extends keyof any, T> = {
   [P in K]?: T;
 };
