@@ -11,7 +11,7 @@ import { CategoriesBurgerMenuItem } from '../CategoriesBurgerMenuItem/Categories
 import { ICategory } from '../../model/types/ICategory';
 import { categoryReducers } from '../../model/slices';
 import { useCategories } from '../../api/categoryApi';
-import { CategoriesListSkeleton } from '@/entities/Category/ui/CategoriesListSkeleton/CategoriesListSkeleton';
+import { CategoriesListSkeleton } from '../CategoriesListSkeleton/CategoriesListSkeleton';
 
 const asyncCategoryListReducer: ReducersList = {
   category: categoryReducers,
