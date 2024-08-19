@@ -13,6 +13,8 @@ import { TSortLimit } from '../../model/types/IProductsSchema';
 import { useProductsLimit } from '../../lib/hooks/useProductsLimit';
 import { useSelector } from 'react-redux';
 import { selectProductsLimit } from '../../model/selectors/selectProducts';
+import { useProductsContext } from '../../lib/contexts/ProductsContext';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ProductsLimitProps {
   className?: string;
@@ -23,6 +25,7 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
   const dispatch = useAppDispatch();
   const productsLimit = useSelector(selectProductsLimit);
   const [fetchProducts] = useProducts();
+  const { products, isSuccess, isLoading } = useProductsContext();
 
   const { onChange, selectOptions, limit } = useProductsLimit({
     onFetchCb: fetchCb,
@@ -39,18 +42,28 @@ export const ProductsLimit = memo((props: ProductsLimitProps) => {
     dispatch(ProductsActions.setPage(1));
   }
 
-  return (
-    <div className={classNames(cls.SortingLimit, {}, [className])}>
-      <Select
-        options={selectOptions}
-        active={`${limit}` as TSortLimit}
-        onChange={onChange}
-        label={'Показывать по'}
-        WrapperWidth={WrapperWidth.XL}
-        SelectWidth={SelectWidth.M}
-      />
-    </div>
-  );
+  if (isLoading) {
+    return (
+      <div className={classNames(cls.SortingLimit, {}, [className])}>
+        <Skeleton width={250} height={34} borderRadius={'10px'} />
+      </div>
+    );
+  }
+
+  if (isSuccess && products!.rows.length > 0) {
+    return (
+      <div className={classNames(cls.SortingLimit, {}, [className])}>
+        <Select
+          options={selectOptions}
+          active={`${limit}` as TSortLimit}
+          onChange={onChange}
+          label={'Показывать по'}
+          WrapperWidth={WrapperWidth.XL}
+          SelectWidth={SelectWidth.M}
+        />
+      </div>
+    );
+  }
 });
 
 ProductsLimit.displayName = `ProductsLimit`;
