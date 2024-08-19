@@ -13,7 +13,7 @@ import { ProductsActions } from '../../model/slices/ProductsSlice';
 import { useProducts } from '../../api/productsApi';
 import { TSortOrder } from '../../model/types/IProductsSchema';
 import { useProductsSortOrder } from '../../lib/hooks/useProductsSortOrder';
-import { useProductsContext } from '@/entities/Product';
+import { useProductsContext } from '../../lib/contexts/ProductsContext';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ProductsSortOrderProps {
