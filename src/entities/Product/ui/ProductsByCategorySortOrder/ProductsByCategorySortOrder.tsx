@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductsByCategorySortOrder.module.scss';
 import { useSelector } from 'react-redux';
 import { selectCategoryId } from '@/entities/Category';
@@ -14,6 +14,7 @@ import { selectProductsByCategorySort } from '../../model/selectors/selectProduc
 import { useProductsByCategory } from '../../api/productsApi';
 import { TSortOrder } from '../../model/types/IProductsSchema';
 import { useProductsSortOrder } from '../../lib/hooks/useProductsSortOrder';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ProductsByCategorySortOrderProps {
   className?: string;
@@ -27,7 +28,12 @@ export const ProductsByCategorySortOrder = memo(
     const productsByCategorySortOrder = useSelector(
       selectProductsByCategorySort,
     );
-    const [fetchProductsByCategory] = useProductsByCategory();
+    const [fetchProductsByCategory, { isLoading, isSuccess }] =
+      useProductsByCategory();
+
+    useEffect(() => {
+      fetchProductsByCategory({ categoryId });
+    }, [categoryId, fetchProductsByCategory]);
 
     const { onChange, selectOptions, sort } = useProductsSortOrder({
       sortFromState: productsByCategorySortOrder,
@@ -44,20 +50,36 @@ export const ProductsByCategorySortOrder = memo(
       dispatch(ProductsByCategoryActions.setPage(1));
     }
 
-    return (
-      <div
-        className={classNames(cls.ProductsByCategorySortOrder, {}, [className])}
-      >
-        <Select<TSortOrder>
-          options={selectOptions}
-          label={'По'}
-          active={sort}
-          onChange={onChange}
-          WrapperWidth={WrapperWidth.XL}
-          SelectWidth={SelectWidth.XL}
-        />
-      </div>
-    );
+    if (isLoading) {
+      return (
+        <div
+          className={classNames(cls.ProductsByCategorySortOrder, {}, [
+            className,
+          ])}
+        >
+          <Skeleton width={200} height={32} borderRadius={'10px'} />
+        </div>
+      );
+    }
+
+    if (isSuccess) {
+      return (
+        <div
+          className={classNames(cls.ProductsByCategorySortOrder, {}, [
+            className,
+          ])}
+        >
+          <Select<TSortOrder>
+            options={selectOptions}
+            label={'По'}
+            active={sort}
+            onChange={onChange}
+            WrapperWidth={WrapperWidth.XL}
+            SelectWidth={SelectWidth.XL}
+          />
+        </div>
+      );
+    }
   },
 );
 
