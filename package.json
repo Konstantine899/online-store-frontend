@@ -91,7 +91,7 @@
   },
   "msw": {
     "workerDirectory": [
-      "public"
+      "src\\shared\\assets\\storybook"
     ]
   }
 }

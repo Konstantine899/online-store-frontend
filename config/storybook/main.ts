@@ -7,7 +7,7 @@ import { buildCssLoader } from '../build/loaders/buildCssLoader';
 
 const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  staticDirs: ['../../public'],
+  staticDirs: ['../../src/shared/assets/storybook'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
