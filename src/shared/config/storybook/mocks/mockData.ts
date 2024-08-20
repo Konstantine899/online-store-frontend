@@ -6,12 +6,12 @@ export const brands = [
 ];
 
 export const categories = [
-  { id: 1, name: 'Смартфоны', image: '' },
-  { id: 2, name: 'Стиральные машины', image: '' },
-  { id: 3, name: 'Ноутбуки', image: '' },
-  { id: 4, name: 'Холодильники', image: '' },
-  { id: 5, name: 'Телевизоры', image: '' },
-  { id: 6, name: 'Наушники', image: '' },
+  { id: 1, name: 'Смартфоны', image: 'smartphones.jpg' },
+  { id: 2, name: 'Стиральные машины', image: 'washing-machines.jpg' },
+  { id: 3, name: 'Ноутбуки', image: 'laptops.jpg' },
+  { id: 4, name: 'Холодильники', image: 'refrigerators.png' },
+  { id: 5, name: 'Телевизоры', image: 'tv.png' },
+  { id: 6, name: 'Наушники', image: 'headphones.png' },
 ];
 
 export const products = [
