@@ -15,6 +15,7 @@ import { ICategory } from '../../model/types/ICategory';
 import { useCategories } from '../../api/categoryApi';
 import { useFetchProductsByCategoryCarousel } from '@/entities/Product';
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface CategoriesPopularProps {
   className?: string;
@@ -23,16 +24,39 @@ interface CategoriesPopularProps {
 export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
   const { className } = props;
   const navigate = useNavigate();
-  const { isSuccess, data: categories } = useCategories();
+  const { isSuccess, isLoading, data: categories } = useCategories();
   const [fetchProductsByCategoryCarousel] =
     useFetchProductsByCategoryCarousel();
+
+  const elementsQuantity: number = 4;
 
   const getCategory = (categoryId: number) => () => {
     navigate(getRouteProductsByCategory(`${categoryId}`));
     fetchProductsByCategoryCarousel({ categoryId });
   };
+  
+  if (isLoading) {
+    return (
+      <div className={classNames(cls.CategoriesPopular, {}, [className])}>
+        <Skeleton width={400} height={40} borderRadius={'10px'} />
+        <Carousel elementsQuantity={elementsQuantity} infinite={true} isLoading>
+          {Array(6)
+            .fill(1)
+            .map((_, index: number) => (
+              <Skeleton
+                width={251}
+                height={158}
+                borderRadius={'10px'}
+                key={index}
+                className={cls.CardSkeleton}
+              />
+            ))}
+        </Carousel>
+      </div>
+    );
+  }
 
-  if (isSuccess) {
+  if (isSuccess && categories!.length > 0) {
     return (
       <div className={classNames(cls.CategoriesPopular, {}, [className])}>
         <Text
@@ -40,8 +64,8 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
           theme={TextTheme.INVERTED}
           size={TextSize.XL}
         />
-        <Carousel elementsQuantity={4} infinite={true}>
-          {categories.map((category: ICategory) => (
+        <Carousel elementsQuantity={elementsQuantity} infinite={true}>
+          {categories!.map((category: ICategory) => (
             <Card
               key={category.id}
               theme={CardTheme.OUTLINED}

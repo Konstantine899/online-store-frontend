@@ -2,16 +2,18 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { ReactNode, memo, useEffect, useState } from 'react';
 import cls from './Carousel.module.scss';
 import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 interface CarouselProps {
   className?: string;
   children: ReactNode[];
   elementsQuantity: number;
   infinite: boolean;
+  isLoading?: boolean;
 }
 
 export const Carousel = memo((props: CarouselProps) => {
-  const { className, children, elementsQuantity, infinite } = props;
+  const { className, children, elementsQuantity, infinite, isLoading } = props;
   const [currentElement, setCurrentElement] = useState(
     infinite ? elementsQuantity : 0,
   );
@@ -90,6 +92,28 @@ export const Carousel = memo((props: CarouselProps) => {
     [cls.fourElement]: isFourElement,
     [cls.fiveElement]: isFiveElement,
   };
+
+  if (isLoading) {
+    return (
+      <div className={classNames(cls.Carousel, {}, [className])}>
+        <Skeleton
+          className={cls.ButtonLeft}
+          height={40}
+          width={40}
+          borderRadius={'50%'}
+        />
+        <div className={cls.ContentWrapper}>
+          <div className={classNames(cls.Content, {}, [])}>{children}</div>
+        </div>
+        <Skeleton
+          className={cls.ButtonRight}
+          height={40}
+          width={40}
+          borderRadius={'50%'}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(cls.Carousel, {}, [className])}>
