@@ -10,12 +10,11 @@ import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { ICategory } from '../../model/types/ICategory';
 import { Card } from '@/shared/ui/Card';
 import { CardTheme } from '@/shared/ui/Card/Card';
-import { KitImage } from '@/shared/ui/KitImage/KitImage';
-import { getRouteImage } from '@/shared/consts/router/publicRouter';
 import { categories } from '@/shared/config/storybook/mocks/mockData';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { fn } from '@storybook/test';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 const store: DeepPartial<StateSchema> = {
   rtkApi: { provided: { categories: categories } },
@@ -25,12 +24,35 @@ const meta: Meta<typeof CategoriesPopular> = {
   title: 'entities/CategoriesPopular',
   component: CategoriesPopular,
   decorators: [StoreDecorator(store)],
+  parameters: { layout: 'fullscreen' },
 };
 
 export default meta;
 type Story = StoryObj<typeof CategoriesPopular>;
 
-export const One: Story = {
+export const OnePending: Story = {
+  args: {},
+  render: ({ className }) => (
+    <div className={classNames(cls.CategoriesPopular, {}, [className])}>
+      <Skeleton width={400} height={40} borderRadius={'10px'} />
+      <Carousel elementsQuantity={1} infinite={true} isLoading>
+        {Array(1)
+          .fill(1)
+          .map((_, index: number) => (
+            <Skeleton
+              height={158}
+              borderRadius={'10px'}
+              key={index}
+              className={cls.CardSkeleton}
+            />
+          ))}
+      </Carousel>
+    </div>
+  ),
+  parameters: { msw: { handlers: [handlers.categories] } },
+};
+
+export const OneSuccess: Story = {
   args: {},
   render: ({ className }) => (
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
@@ -64,7 +86,30 @@ export const One: Story = {
   parameters: { msw: { handlers: [handlers.categories] } },
 };
 
-export const Second: Story = {
+export const SecondPending: Story = {
+  args: {},
+  render: ({ className }) => (
+    <div className={classNames(cls.CategoriesPopular, {}, [className])}>
+      <Skeleton width={400} height={40} borderRadius={'10px'} />
+      <Carousel elementsQuantity={2} infinite={true} isLoading>
+        {Array(2)
+          .fill(1)
+          .map((_, index: number) => (
+            <Skeleton
+              width={251}
+              height={158}
+              borderRadius={'10px'}
+              key={index}
+              className={cls.CardSkeleton}
+            />
+          ))}
+      </Carousel>
+    </div>
+  ),
+  parameters: { msw: { handlers: [handlers.categories] } },
+};
+
+export const SecondSuccess: Story = {
   args: {},
   render: ({ className }) => (
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
@@ -98,7 +143,30 @@ export const Second: Story = {
   parameters: { msw: { handlers: [handlers.categories] } },
 };
 
-export const Infinite: Story = {
+export const InfinitePending: Story = {
+  args: {},
+  render: ({ className }) => (
+    <div className={classNames(cls.CategoriesPopular, {}, [className])}>
+      <Skeleton width={400} height={40} borderRadius={'10px'} />
+      <Carousel elementsQuantity={4} infinite={true} isLoading>
+        {Array(6)
+          .fill(1)
+          .map((_, index: number) => (
+            <Skeleton
+              width={251}
+              height={158}
+              borderRadius={'10px'}
+              key={index}
+              className={cls.CardSkeleton}
+            />
+          ))}
+      </Carousel>
+    </div>
+  ),
+  parameters: { msw: { handlers: [handlers.categories] } },
+};
+
+export const InfiniteSuccess: Story = {
   args: {},
   render: ({ className }) => (
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>

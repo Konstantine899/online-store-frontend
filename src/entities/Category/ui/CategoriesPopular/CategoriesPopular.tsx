@@ -34,13 +34,13 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
     navigate(getRouteProductsByCategory(`${categoryId}`));
     fetchProductsByCategoryCarousel({ categoryId });
   };
-  
+
   if (isLoading) {
     return (
       <div className={classNames(cls.CategoriesPopular, {}, [className])}>
         <Skeleton width={400} height={40} borderRadius={'10px'} />
         <Carousel elementsQuantity={elementsQuantity} infinite={true} isLoading>
-          {Array(6)
+          {Array(elementsQuantity)
             .fill(1)
             .map((_, index: number) => (
               <Skeleton
