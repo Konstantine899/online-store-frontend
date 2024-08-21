@@ -4,22 +4,22 @@ import cls from './MainPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { CategoriesPopular } from '@/entities/Category';
 
-interface MainPageProps {
+export interface MainPageProps {
   className?: string;
 }
 
 const ROOT: string = 'MainPage';
 
-export const MainPage = memo((props: MainPageProps) => {
+const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
   return (
-    <Suspense fallback={''}>
-      <Page className={classNames(cls.MainPage, {}, [className])}>
-        <CategoriesPopular />
-      </Page>
-    </Suspense>
+    <Page className={classNames(cls.MainPage, {}, [className])}>
+      <CategoriesPopular />
+    </Page>
   );
 });
+
+export default MainPage;
 
 MainPage.displayName = ROOT;
