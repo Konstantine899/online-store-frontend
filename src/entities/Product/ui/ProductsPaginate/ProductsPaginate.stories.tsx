@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProductsPaginate } from './ProductsPaginate';
 
 const meta: Meta<typeof ProductsPaginate> = {
-  title: 'features/ProductsPaginate',
+  title: 'entities/ProductsPaginate',
   component: ProductsPaginate,
 };
 

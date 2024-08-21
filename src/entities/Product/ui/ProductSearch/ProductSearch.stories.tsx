@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProductSearch } from './ProductSearch';
 
 const meta: Meta<typeof ProductSearch> = {
-  title: 'features/Filters',
+  title: 'entities/ProductSearch',
   component: ProductSearch,
 };
 

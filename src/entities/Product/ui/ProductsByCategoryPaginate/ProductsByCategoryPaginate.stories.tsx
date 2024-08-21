@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProductsByCategoryPaginate } from './ProductsByCategoryPaginate';
 
 const meta: Meta<typeof ProductsByCategoryPaginate> = {
-  title: 'features/ProductsByCategoryPaginate',
+  title: 'entities/ProductsByCategoryPaginate',
   component: ProductsByCategoryPaginate,
 };
 
