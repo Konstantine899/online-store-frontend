@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  reactRouterParameters,
-  withRouter,
-} from 'storybook-addon-remix-react-router';
 import { Navbar } from './Navbar';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
+import { user } from '@/shared/config/storybook/mocks/mockUserData';
 
 const meta: Meta<typeof Navbar> = {
   title: 'widgets/Navbar',
@@ -13,12 +12,12 @@ const meta: Meta<typeof Navbar> = {
 export default meta;
 type Story = StoryObj<typeof Navbar>;
 
-export const Primary: Story = {
+export const Guest: Story = {
   render: () => <Navbar />,
-  decorators: [withRouter],
-  parameters: {
-    reactRouter: reactRouterParameters({
-      routing: { path: '/' },
-    }),
-  },
+  decorators: [StoreDecorator({})],
+};
+
+export const User: Story = {
+  render: () => <Navbar />,
+  decorators: [StoreDecorator({ user })],
 };
