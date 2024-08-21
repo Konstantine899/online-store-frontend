@@ -6,6 +6,7 @@ import {
 } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { brandReducers } from '@/entities/Brand';
 import { ProductsProvider } from '@/entities/Product';
+import { PageLoader } from '@/widgets/PageLoader';
 
 const reducers: ReducersList = {
   brand: brandReducers,
@@ -14,7 +15,7 @@ const reducers: ReducersList = {
 export const ProductsPageLazy = lazy(() => import('./ProductsPage'));
 
 export const ProductsPageAsync = (props: ProductsPageProps) => (
-  <Suspense fallback={''}>
+  <Suspense fallback={<PageLoader />}>
     <DynamicModuleLoader reducers={reducers}>
       <ProductsProvider>
         <ProductsPageLazy {...props} />
