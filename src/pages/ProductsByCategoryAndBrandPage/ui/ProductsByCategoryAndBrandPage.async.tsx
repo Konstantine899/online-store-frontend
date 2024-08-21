@@ -7,6 +7,7 @@ import {
 import { productsByCategoryAndBrandPageReducers } from '../models/slices';
 import { brandReducers } from '@/entities/Brand';
 import { ProductsByCategoryAndBrandProvider } from '@/entities/Product';
+import { PageLoader } from '@/widgets/PageLoader';
 
 const reducers: ReducersList = {
   productsByCategoryAndBrandPage: productsByCategoryAndBrandPageReducers,
@@ -20,7 +21,7 @@ const ProductsByCategoryAndBrandPageLazy = lazy(
 export const ProductsByCategoryAndBrandPageAsync = (
   props: ProductsByCategoryAndBrandPageProps,
 ) => (
-  <Suspense fallback={''}>
+  <Suspense fallback={<PageLoader />}>
     <DynamicModuleLoader reducers={reducers}>
       <ProductsByCategoryAndBrandProvider>
         <ProductsByCategoryAndBrandPageLazy {...props} />
