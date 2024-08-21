@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { classNames } from '../../lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
-export enum AppLinkFontSizeSize {
+export enum AppLinkFontSize {
   S = 'size_s',
   M = 'size_m',
   L = 'size_l',
@@ -18,7 +18,7 @@ export enum AppLinkTheme {
 interface AppLinkProps extends LinkProps {
   className?: string;
   theme?: AppLinkTheme;
-  fontSize?: AppLinkFontSizeSize;
+  fontSize?: AppLinkFontSize;
   children?: ReactNode;
 }
 
@@ -26,7 +26,7 @@ export const AppLink = (props: AppLinkProps) => {
   const {
     children,
     theme = AppLinkTheme.SECONDARY,
-    fontSize = AppLinkFontSizeSize.M,
+    fontSize = AppLinkFontSize.M,
     className,
     to,
     ...otherProps
