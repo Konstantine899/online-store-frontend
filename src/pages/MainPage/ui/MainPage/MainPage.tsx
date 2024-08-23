@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, Suspense } from 'react';
+import { memo } from 'react';
 import cls from './MainPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { CategoriesPopular } from '@/entities/Category';
