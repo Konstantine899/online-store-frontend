@@ -1,17 +1,17 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './EmailInput.module.scss';
+import cls from './InputEmail.module.scss';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { selectEmail } from '../../model/selectors/selectAuth';
 import { AuthActions } from '../../model/slices/AuthSlice';
 
-interface EmailInputProps {
+interface InputEmailProps {
   className?: string;
 }
 
-export const EmailInput = memo((props: EmailInputProps) => {
+export const InputEmail = memo((props: InputEmailProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
   const email = useSelector(selectEmail);
@@ -21,7 +21,7 @@ export const EmailInput = memo((props: EmailInputProps) => {
   };
 
   return (
-    <div className={classNames(cls.EmailInput, {}, [className])}>
+    <div className={classNames(cls.InputEmail, {}, [className])}>
       <Input
         type="text"
         label={'email'}
@@ -35,4 +35,4 @@ export const EmailInput = memo((props: EmailInputProps) => {
   );
 });
 
-EmailInput.displayName = `EmailInput`;
+InputEmail.displayName = `InputEmail`;

@@ -1,23 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EmailInput } from './EmailInput';
+import { InputEmail } from './InputEmail';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
-const meta: Meta<typeof EmailInput> = {
-  title: 'features/Auth/EmailInput',
-  component: EmailInput,
+const meta: Meta<typeof InputEmail> = {
+  title: 'features/Auth/InputEmail',
+  component: InputEmail,
 };
 
 export default meta;
-type Story = StoryObj<typeof EmailInput>;
+type Story = StoryObj<typeof InputEmail>;
 
 export const Primary: Story = {
   args: {},
-  render: (args) => <EmailInput {...args} />,
+  render: (args) => <InputEmail {...args} />,
   decorators: [StoreDecorator({})],
 };
 
 export const Secondary: Story = {
   args: {},
-  render: (args) => <EmailInput {...args} />,
+  render: (args) => <InputEmail {...args} />,
   decorators: [StoreDecorator({ auth: { email: 'test@email.com' } })],
 };

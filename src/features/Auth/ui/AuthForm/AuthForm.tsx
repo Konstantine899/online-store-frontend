@@ -11,7 +11,7 @@ import { AuthActions } from '../../model/slices/AuthSlice';
 import { UserActions } from '@/entities/User';
 import { IAuth } from '../../model/types/IAuthSchema';
 import { QueryStatus } from '@reduxjs/toolkit/query';
-import { EmailInput } from '../EmailInput/EmailInput';
+import { InputEmail } from '../InputEmail/InputEmail';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
 import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
@@ -60,7 +60,7 @@ const AuthForm = memo((props: IAuthFormProps) => {
   return (
     <div className={classNames(cls.AuthForm, {}, [className])}>
       {isError && <EmailValidationErrors />}
-      <EmailInput />
+      <InputEmail />
       {isError && <PasswordValidationErrors />}
       <PasswordInput />
       <SendButton isLoading={isLoading} fetch={fetch} />
