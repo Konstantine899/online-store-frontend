@@ -2,7 +2,7 @@ import { CombinedState, configureStore, Reducer } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { ReducersMapObject } from 'redux';
 import { UserReducer } from '@/entities/User';
-import { AuthReducer } from '@/features/Auth';
+import { AuthModalReducer, AuthReducer } from '@/features/Auth';
 import { createReducerManager } from './reducerManager';
 import { $api } from '@/shared/api/api';
 import { ScrollReducer } from '@/entities/Scroll';
@@ -17,6 +17,7 @@ export function createReduxStore(
     ...asyncReducers, // обязательно разворачиваю asyncReducers до основных
     user: UserReducer,
     auth: AuthReducer,
+    authModal: AuthModalReducer,
     scroll: ScrollReducer,
     products: ProductsReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,

@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
@@ -8,7 +8,12 @@ import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
-import { AuthActions, LoginModal, RegistrationModal } from '@/features/Auth';
+import {
+  AuthActions,
+  AuthModalActions,
+  LoginModal,
+  RegistrationModal,
+} from '@/features/Auth';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { selectUserRole, UserActions } from '@/entities/User';
@@ -26,29 +31,16 @@ interface NavbarProps {
 export const Navbar = memo((props: NavbarProps) => {
   const { className } = props;
 
-  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
-  const [isOpenRegistrationModal, setIsOpenRegistrationModal] = useState(false);
-
   const dispatch = useAppDispatch();
 
   const USER = useSelector(selectUserRole);
 
   const onShowLoginModal = useCallback(() => {
-    setIsOpenLoginModal(true);
-  }, []);
-
-  const onCloseLoginModal = useCallback(() => {
-    setIsOpenLoginModal(false);
-  }, []);
+    dispatch(AuthModalActions.setOpenLoginModal(true));
+  }, [dispatch]);
 
   const onShowRegistrationModal = useCallback(() => {
-    setIsOpenRegistrationModal(true);
-  }, []);
-
-  const onCloseRegistrationModal = useCallback(() => {
-    dispatch(AuthActions.setEmail(''));
-    dispatch(AuthActions.setPassword(''));
-    setIsOpenRegistrationModal(false);
+    dispatch(AuthModalActions.setOpenRegistrationModal(true));
   }, [dispatch]);
 
   const onLogout = () => {
@@ -140,15 +132,9 @@ export const Navbar = memo((props: NavbarProps) => {
           </AppLink>
         </div>
       </div>
-      {isOpenLoginModal && (
-        <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
-      )}
-      {isOpenRegistrationModal && (
-        <RegistrationModal
-          isOpen={isOpenRegistrationModal}
-          onClose={onCloseRegistrationModal}
-        />
-      )}
+
+      <LoginModal />
+      <RegistrationModal />
     </nav>
   );
 });
