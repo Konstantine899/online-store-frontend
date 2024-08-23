@@ -1,9 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './RegistrationModal.module.scss';
-import { AuthFormAsync as AuthForm } from '../../AuthForm/AuthForm.async';
+import { AuthFormAsync as AuthForm } from '../AuthForm/AuthForm.async';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { useRegistration } from '../../../api/registrationApi';
+import { useRegistration } from '../../api/registrationApi';
 
 interface RegistrationModelProps {
   className?: string;

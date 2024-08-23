@@ -12,7 +12,7 @@ import { AuthActions, LoginModal, RegistrationModal } from '@/features/Auth';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { selectUserRole, UserActions } from '@/entities/User';
-import { AppLinkFontSize, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import {
   getRouteCart,
   getRouteMain,
@@ -31,7 +31,7 @@ export const Navbar = memo((props: NavbarProps) => {
 
   const dispatch = useAppDispatch();
 
-  const authData = useSelector(selectUserRole);
+  const USER = useSelector(selectUserRole);
 
   const onShowLoginModal = useCallback(() => {
     setIsOpenLoginModal(true);
@@ -61,7 +61,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(CategoryActions.setCategoryId(0));
   };
 
-  if (authData) {
+  if (USER) {
     return (
       <nav className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.Navbar_content}>
