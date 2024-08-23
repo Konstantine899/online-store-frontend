@@ -55,6 +55,9 @@ export const AuthSlice = createSlice({
       state.email = ``;
       state.password = ``;
     },
+    removeValidationErrors: (state) => {
+      state.error = undefined;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
