@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RegistrationModal } from './RegistrationModal';
 
 const meta: Meta<typeof RegistrationModal> = {
-  title: 'features/Auth/RegistrationModel',
+  title: 'features/RegistrationModel',
   component: RegistrationModal,
 };
 
