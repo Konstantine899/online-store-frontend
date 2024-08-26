@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RegistrationForm } from './RegistrationForm';
+import RegistrationForm from './RegistrationForm';
 
 const meta: Meta<typeof RegistrationForm> = {
   title: 'entities/RegistrationForm',
@@ -11,5 +11,5 @@ type Story = StoryObj<typeof RegistrationForm>;
 
 export const Primary: Story = {
   args: {},
-  render: () => <RegistrationForm />,
+  render: (args) => <RegistrationForm {...args} />,
 };
