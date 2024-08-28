@@ -45,7 +45,7 @@ export const Secondary: Story = {
   ],
 };
 
-export const Error: Story = {
+export const ValidationErrors: Story = {
   args: {},
   render: () => (
     <div className={classNames(cls.LoginForm, {}, [])}>
