@@ -9,7 +9,7 @@ import { SendButton } from '../SendButton/SendButton';
 import { fn } from '@storybook/test';
 import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
 import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
-import { IAuthErrorData } from '../../model/types/IAuthSchema';
+import { IAuthValidate } from '../../model/types/IAuthSchema';
 
 const meta: Meta<typeof LoginForm> = {
   title: 'features/LoginForm',
@@ -79,7 +79,7 @@ export const Error: Story = {
               ],
               value: '',
             },
-          ] as IAuthErrorData[],
+          ] as IAuthValidate[],
         },
       },
     }),

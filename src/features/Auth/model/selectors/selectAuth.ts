@@ -1,9 +1,9 @@
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 import {
-  AuthErrorProperty,
-  IAuthErrorData,
+  AuthValidateProperty,
   IAuthSchema,
+  IAuthValidate,
 } from '../types/IAuthSchema';
 
 export const selectAuth = (state: StateSchema) => state.auth;
@@ -22,19 +22,19 @@ export const selectPassword = createSelector(
   },
 );
 
-export const selectAuthError = createSelector(
+export const selectValidate = createSelector(
   selectAuth,
   (state: IAuthSchema | undefined) => {
-    return (state?.error?.data as IAuthErrorData[]) ?? [];
+    return (state?.error?.data as IAuthValidate[]) ?? [];
   },
 );
 
-export const selectEmailValidationErrors = createSelector(
-  selectAuthError,
-  (errors: IAuthErrorData[]) => {
+export const selectValidateEmail = createSelector(
+  selectValidate,
+  (errors: IAuthValidate[]) => {
     let messages: string[] = [];
-    errors.forEach((value: IAuthErrorData) => {
-      if (value.property === AuthErrorProperty.EMAIL) {
+    errors.forEach((value: IAuthValidate) => {
+      if (value.property === AuthValidateProperty.EMAIL) {
         messages = value.messages;
       }
     });
@@ -42,12 +42,12 @@ export const selectEmailValidationErrors = createSelector(
   },
 );
 
-export const selectPasswordValidationErrors = createSelector(
-  selectAuthError,
-  (errors: IAuthErrorData[]) => {
+export const selectValidatePassword = createSelector(
+  selectValidate,
+  (errors: IAuthValidate[]) => {
     let messages: string[] = [];
-    errors.forEach((value: IAuthErrorData) => {
-      if (value.property === AuthErrorProperty.PASSWORD) {
+    errors.forEach((value: IAuthValidate) => {
+      if (value.property === AuthValidateProperty.PASSWORD) {
         messages = value.messages;
       }
     });

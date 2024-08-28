@@ -6,14 +6,14 @@ export interface IAuth {
   refreshToken: string;
 }
 
-export enum AuthErrorProperty {
+export enum AuthValidateProperty {
   EMAIL = 'email',
   PASSWORD = 'password',
 }
 
-export interface IAuthErrorData {
+export interface IAuthValidate {
   status: number;
-  property: string;
+  property: AuthValidateProperty;
   messages: string[];
   value: string;
 }

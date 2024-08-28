@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './EmailValidationErrors.module.scss';
 import { useSelector } from 'react-redux';
-import { selectEmailValidationErrors } from '../../model/selectors/selectAuth';
+import { selectValidateEmail } from '../../model/selectors/selectAuth';
 import { Text } from '@/shared/ui/Text';
 import { TextTheme } from '@/shared/ui/Text/Text';
 
@@ -12,7 +12,7 @@ interface EmailErrorsProps {
 
 export const EmailValidationErrors = memo((props: EmailErrorsProps) => {
   const { className } = props;
-  const messages = useSelector(selectEmailValidationErrors);
+  const messages = useSelector(selectValidateEmail);
 
   return (
     <div className={classNames(cls.EmailValidationErrors, {}, [className])}>
