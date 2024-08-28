@@ -1,21 +1,21 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './EmailValidationErrors.module.scss';
+import cls from './ValidationPassword.module.scss';
 import { useSelector } from 'react-redux';
-import { selectValidateEmail } from '../../model/selectors/selectAuth';
+import { selectValidatePassword } from '../../model/selectors/selectAuth';
 import { Text } from '@/shared/ui/Text';
 import { TextTheme } from '@/shared/ui/Text/Text';
 
-interface EmailErrorsProps {
+interface ValidationPasswordProps {
   className?: string;
 }
 
-export const EmailValidationErrors = memo((props: EmailErrorsProps) => {
+export const ValidationPassword = memo((props: ValidationPasswordProps) => {
   const { className } = props;
-  const messages = useSelector(selectValidateEmail);
+  const messages = useSelector(selectValidatePassword);
 
   return (
-    <div className={classNames(cls.EmailValidationErrors, {}, [className])}>
+    <div className={classNames(cls.ValidationPassword, {}, [className])}>
       {messages?.map((message: string, index: number) => (
         <Text
           key={index}
@@ -28,4 +28,4 @@ export const EmailValidationErrors = memo((props: EmailErrorsProps) => {
   );
 });
 
-EmailValidationErrors.displayName = 'EmailValidationErrors';
+ValidationPassword.displayName = `ValidationPassword`;

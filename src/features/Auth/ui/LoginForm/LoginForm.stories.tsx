@@ -7,8 +7,8 @@ import { InputEmail } from '../InputEmail/InputEmail';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
 import { fn } from '@storybook/test';
-import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
-import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
+import { ValidationEmail } from '../ValidationEmail/ValidationEmail';
+import { ValidationPassword } from '../ValidationPassword/ValidationPassword';
 import { IAuthValidate } from '../../model/types/IAuthSchema';
 
 const meta: Meta<typeof LoginForm> = {
@@ -49,9 +49,9 @@ export const Error: Story = {
   args: {},
   render: () => (
     <div className={classNames(cls.LoginForm, {}, [])}>
-      <EmailValidationErrors />
+      <ValidationEmail />
       <InputEmail />
-      <PasswordValidationErrors />
+      <ValidationPassword />
       <PasswordInput />
       <SendButton isLoading={false} fetch={fn()} />
     </div>

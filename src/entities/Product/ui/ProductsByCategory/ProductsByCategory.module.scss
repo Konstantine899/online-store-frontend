@@ -1,15 +1,15 @@
 .ProductsByCategory {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  gap: 20px 30px;
-  margin-bottom: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 20px 30px;
+    margin-bottom: 50px;
 };
 
 .ProductsByCategoryError{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: calc(100vh - var(--navbar-height));
-  width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: calc(100vh - var(--navbar-height));
+    width: 100vw;
 };

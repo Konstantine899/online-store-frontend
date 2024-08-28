@@ -5,9 +5,9 @@ import { useRegistration } from '../../api/registrationApi';
 import { setUserData } from '../../lib/helpers/setUserData';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { AuthModalActions } from '../../model/slices/AuthModal';
-import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
+import { ValidationEmail } from '../ValidationEmail/ValidationEmail';
 import { InputEmail } from '../InputEmail/InputEmail';
-import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
+import { ValidationPassword } from '../ValidationPassword/ValidationPassword';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
 import { RegistrationError } from '../RegistrationError/RegistrationError';
@@ -34,9 +34,9 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
     return (
       <div className={classNames(cls.RegistrationForm, {}, [className])}>
         <RegistrationError />
-        <EmailValidationErrors />
+        <ValidationEmail />
         <InputEmail />
-        <PasswordValidationErrors />
+        <ValidationPassword />
         <PasswordInput />
         <SendButton isLoading={isLoading} fetch={fetchRegistration} />
       </div>

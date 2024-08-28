@@ -4,9 +4,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './LoginForm.module.scss';
 import { AuthModalActions } from '../../model/slices/AuthModal';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { EmailValidationErrors } from '../EmailValidationErrors/EmailValidationErrors';
+import { ValidationEmail } from '../ValidationEmail/ValidationEmail';
 import { InputEmail } from '../InputEmail/InputEmail';
-import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
+import { ValidationPassword } from '../ValidationPassword/ValidationPassword';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
 import { setUserData } from '../../lib/helpers/setUserData';
@@ -33,9 +33,9 @@ const LoginForm = memo((props: LoginFormProps) => {
   if (isError) {
     return (
       <div className={classNames(cls.LoginForm, {}, [className])}>
-        <EmailValidationErrors />
+        <ValidationEmail />
         <InputEmail />
-        <PasswordValidationErrors />
+        <ValidationPassword />
         <PasswordInput />
         <SendButton isLoading={isLoading} fetch={fetchLogin} />
       </div>
