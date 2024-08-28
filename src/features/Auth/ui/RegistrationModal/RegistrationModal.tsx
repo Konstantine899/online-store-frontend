@@ -30,7 +30,7 @@ export const RegistrationModal = memo((props: RegistrationModelProps) => {
       isOpen={isOpen}
       onClose={onClose}
       lazy
-      className={classNames(cls.RegistrationModel, {}, [className])}
+      className={classNames(cls.RegistrationModal, {}, [className])}
     >
       <RegistrationForm />
     </Modal>

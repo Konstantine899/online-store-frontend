@@ -24,8 +24,15 @@ export const selectPassword = createSelector(
 
 export const selectValidate = createSelector(
   selectAuth,
-  (state: IAuthSchema | undefined) => {
-    return (state?.error?.data as IAuthValidate[]) ?? [];
+  (state: IAuthSchema) => {
+    return state?.error?.data as IAuthValidate[];
+  },
+);
+
+export const selectAuthError = createSelector(
+  selectAuth,
+  (state: IAuthSchema) => {
+    return state.error?.data as { status: number; message: string };
   },
 );
 
@@ -33,6 +40,7 @@ export const selectValidateEmail = createSelector(
   selectValidate,
   (errors: IAuthValidate[]) => {
     let messages: string[] = [];
+    if (!Array.isArray(errors)) return;
     errors.forEach((value: IAuthValidate) => {
       if (value.property === AuthValidateProperty.EMAIL) {
         messages = value.messages;
@@ -46,6 +54,7 @@ export const selectValidatePassword = createSelector(
   selectValidate,
   (errors: IAuthValidate[]) => {
     let messages: string[] = [];
+    if (!Array.isArray(errors)) return;
     errors.forEach((value: IAuthValidate) => {
       if (value.property === AuthValidateProperty.PASSWORD) {
         messages = value.messages;

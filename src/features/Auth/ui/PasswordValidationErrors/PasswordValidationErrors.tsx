@@ -19,7 +19,7 @@ export const PasswordValidationErrors = memo(
       <div
         className={classNames(cls.PasswordValidationErrors, {}, [className])}
       >
-        {messages.map((message: string, index: number) => (
+        {messages?.map((message: string, index: number) => (
           <Text
             key={index}
             theme={TextTheme.ERROR}

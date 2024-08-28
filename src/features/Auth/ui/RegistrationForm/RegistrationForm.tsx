@@ -10,6 +10,7 @@ import { InputEmail } from '../InputEmail/InputEmail';
 import { PasswordValidationErrors } from '../PasswordValidationErrors/PasswordValidationErrors';
 import { PasswordInput } from '../PasswordInput/PasswordInput';
 import { SendButton } from '../SendButton/SendButton';
+import { RegistrationError } from '../RegistrationError/RegistrationError';
 
 export interface RegistrationFormProps {
   className?: string;
@@ -32,6 +33,7 @@ const RegistrationForm = memo((props: RegistrationFormProps) => {
   if (isError) {
     return (
       <div className={classNames(cls.RegistrationForm, {}, [className])}>
+        <RegistrationError />
         <EmailValidationErrors />
         <InputEmail />
         <PasswordValidationErrors />

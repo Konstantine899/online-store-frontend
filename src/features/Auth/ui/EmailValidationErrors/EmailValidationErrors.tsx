@@ -16,7 +16,7 @@ export const EmailValidationErrors = memo((props: EmailErrorsProps) => {
 
   return (
     <div className={classNames(cls.EmailValidationErrors, {}, [className])}>
-      {messages.map((message: string, index: number) => (
+      {messages?.map((message: string, index: number) => (
         <Text
           key={index}
           theme={TextTheme.ERROR}
