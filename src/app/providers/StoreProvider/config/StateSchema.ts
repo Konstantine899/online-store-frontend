@@ -13,7 +13,6 @@ import { ICategorySchema } from '@/entities/Category';
 import { IRatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
 import { IProduct, IProductsSchema } from '@/entities/Product';
 
 export interface StateSchema {
@@ -23,7 +22,7 @@ export interface StateSchema {
   authModal: IAuthModalSchema;
   products: IProductsSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-  productsByCategoryPage?: ProductsByCategoryPageSchema;
+  productsByCategory?: IProductsSchema;
   productsByCategoryAndBrand?: IProductsSchema;
   product?: IProduct;
   brand?: IBrandSchema;

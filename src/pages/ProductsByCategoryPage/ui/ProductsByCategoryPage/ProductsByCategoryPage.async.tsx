@@ -4,8 +4,10 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { productsByCategoryReducers } from '../../model/slices';
-import { ProductsByCategoryProvider } from '@/entities/Product';
+import {
+  ProductsByCategoryProvider,
+  ProductsByCategoryReducer,
+} from '@/entities/Product';
 import { PageLoader } from '@/widgets/PageLoader';
 
 export const ProductsByCategoryLazy = lazy(
@@ -13,7 +15,7 @@ export const ProductsByCategoryLazy = lazy(
 );
 
 const reducers: ReducersList = {
-  productsByCategoryPage: productsByCategoryReducers,
+  productsByCategory: ProductsByCategoryReducer,
 };
 
 export const ProductsByCategoryAsync = (props: ProductsByCategoryPageProps) => (
