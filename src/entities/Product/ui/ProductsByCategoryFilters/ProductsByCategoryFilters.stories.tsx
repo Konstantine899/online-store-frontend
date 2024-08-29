@@ -23,7 +23,7 @@ export const Pending: Story = {
     msw: {
       handlers: [
         handlers.productsAllByCategoryIdPending,
-        handlers.brandsListByCategoryPending,
+        handlers.handlerBrands.brandsListByCategoryPending,
       ],
     },
   },
@@ -36,7 +36,7 @@ export const Success: Story = {
     msw: {
       handlers: [
         handlers.productsAllByCategoryIdSuccess,
-        handlers.brandsListByCategorySuccess,
+        handlers.handlerBrands.brandsListByCategorySuccess,
       ],
     },
   },

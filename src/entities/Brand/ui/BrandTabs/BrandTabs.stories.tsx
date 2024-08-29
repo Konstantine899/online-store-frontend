@@ -17,7 +17,7 @@ export const FetchBrandsByCategoryPending: Story = {
   render: () => <BrandTabs />,
   parameters: {
     msw: {
-      handlers: [handlers.brandsListByCategoryPending],
+      handlers: [handlers.handlerBrands.brandsListByCategoryPending],
     },
   },
 };
@@ -27,7 +27,7 @@ export const FetchBrandsByCategorySuccess: Story = {
   render: () => <BrandTabs />,
   parameters: {
     msw: {
-      handlers: [handlers.brandsListByCategorySuccess],
+      handlers: [handlers.handlerBrands.brandsListByCategorySuccess],
     },
   },
 };
