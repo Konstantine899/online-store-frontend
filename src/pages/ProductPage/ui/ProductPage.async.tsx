@@ -4,14 +4,13 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { productDetailsPageReducers } from '../model/slices/index';
 import { brandReducers } from '@/entities/Brand';
 import { categoryReducers } from '@/entities/Category';
-import { ProductProvider } from '@/entities/Product';
+import { ProductDetailsReducer, ProductProvider } from '@/entities/Product';
 import { PageLoader } from '@/widgets/PageLoader';
 
 const reducers: ReducersList = {
-  productPage: productDetailsPageReducers,
+  product: ProductDetailsReducer,
   brand: brandReducers,
   category: categoryReducers,
 };

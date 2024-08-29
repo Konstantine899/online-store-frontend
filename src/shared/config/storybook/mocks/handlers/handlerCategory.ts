@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse } from 'msw';
-import { categories } from '@/shared/config/storybook/mocks/mockData';
+import { categories } from '../mockData';
 
 export const handlerCategory = {
   categories: http.get('random%20string/category/categories', async () => {
