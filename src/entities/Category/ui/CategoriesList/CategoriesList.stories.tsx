@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CategoriesList } from './CategoriesList';
-import { handlers } from '@/shared/config/storybook/mocks/handlers';
+import { handlers } from '@/shared/config/storybook/mocks/handlers/handlers';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { fn } from '@storybook/test';
 
@@ -21,5 +21,5 @@ export const FetchCategories: Story = {
     onClose: fn(),
   },
   render: (args) => <CategoriesList {...args} />,
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };

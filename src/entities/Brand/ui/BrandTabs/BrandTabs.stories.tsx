@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BrandTabs } from './BrandTabs';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { handlers } from '@/shared/config/storybook/mocks/handlers';
+import { handlers } from '@/shared/config/storybook/mocks/handlers/handlers';
 
 const meta: Meta<typeof BrandTabs> = {
   title: 'entities/BrandTabs',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProductsByCategoryFilters } from './ProductsByCategoryFilters';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { handlers } from '@/shared/config/storybook/mocks/handlers';
+import { handlers } from '@/shared/config/storybook/mocks/handlers/handlers';
 
 const meta: Meta<typeof ProductsByCategoryFilters> = {
   title: 'entities/ProductsByCategoryFilters',

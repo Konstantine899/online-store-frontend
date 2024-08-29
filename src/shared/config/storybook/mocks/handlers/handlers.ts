@@ -1,5 +1,6 @@
-import { http, HttpResponse, delay } from 'msw';
-import { brands, categories, products } from './mockData';
+import { delay, http, HttpResponse } from 'msw';
+import { brands, products } from '../mockData';
+import { handlerCategory } from './handlerCategory';
 
 export const handlers = {
   brandsListByCategoryPending: http.get(
@@ -14,10 +15,7 @@ export const handlers = {
       return HttpResponse.json(brands, { status: 200 });
     },
   ),
-  categories: http.get('random%20string/category/categories', async () => {
-    await delay(2000);
-    return HttpResponse.json(categories, { status: 200 });
-  }),
+  handlerCategory,
   productsAllByCategoryIdPending: http.get(
     '/random%20string/product/all/categoryId/0',
     async () => {

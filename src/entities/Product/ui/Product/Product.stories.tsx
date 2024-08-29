@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Product } from './Product';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const meta: Meta<typeof Product> = {
-  title: 'entities/ProductDetails',
+  title: 'entities/Product',
   component: Product,
+  decorators: [StoreDecorator({})],
 };
 
 export default meta;

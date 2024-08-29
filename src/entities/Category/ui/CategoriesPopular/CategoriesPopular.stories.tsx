@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CategoriesPopular } from './CategoriesPopular';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { handlers } from '@/shared/config/storybook/mocks/handlers';
+import { handlers } from '@/shared/config/storybook/mocks/handlers/handlers';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CategoriesPopular.module.scss';
 import { Text } from '@/shared/ui/Text';
@@ -49,7 +49,7 @@ export const OnePending: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
 
 export const OneSuccess: Story = {
@@ -83,7 +83,7 @@ export const OneSuccess: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
 
 export const SecondPending: Story = {
@@ -106,7 +106,7 @@ export const SecondPending: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
 
 export const SecondSuccess: Story = {
@@ -140,7 +140,7 @@ export const SecondSuccess: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
 
 export const InfinitePending: Story = {
@@ -163,7 +163,7 @@ export const InfinitePending: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
 
 export const InfiniteSuccess: Story = {
@@ -197,5 +197,5 @@ export const InfiniteSuccess: Story = {
       </Carousel>
     </div>
   ),
-  parameters: { msw: { handlers: [handlers.categories] } },
+  parameters: { msw: { handlers: [handlers.handlerCategory.categories] } },
 };
