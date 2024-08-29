@@ -2,7 +2,7 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectProductsByCategoryAndBrandState = (state: StateSchema) => {
-  return state.productsByCategoryAndBrandPage?.productsByCategoryAndBrandPage;
+  return state.productsByCategoryAndBrand;
 };
 
 export const selectProductsByCategoryAndBrandSort = createSelector(

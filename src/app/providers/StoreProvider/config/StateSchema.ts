@@ -15,7 +15,6 @@ import { ScrollSchema } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductPageSchema } from '@/pages/ProductPage';
 import { ProductsByCategoryPageSchema } from '@/pages/ProductsByCategoryPage';
-import { ProductsByCategoryAndBrandSchema } from '@/pages/ProductsByCategoryAndBrandPage';
 import { IProductsSchema } from '@/entities/Product';
 
 export interface StateSchema {
@@ -26,7 +25,7 @@ export interface StateSchema {
   products: IProductsSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   productsByCategoryPage?: ProductsByCategoryPageSchema;
-  productsByCategoryAndBrandPage?: ProductsByCategoryAndBrandSchema;
+  productsByCategoryAndBrand?: IProductsSchema;
   productPage?: ProductPageSchema;
   brand?: IBrandSchema;
   category?: ICategorySchema;

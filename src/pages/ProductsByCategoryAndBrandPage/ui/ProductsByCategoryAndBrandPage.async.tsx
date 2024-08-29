@@ -4,13 +4,15 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { productsByCategoryAndBrandPageReducers } from '../models/slices';
+import {
+  ProductsByCategoryAndBrandProvider,
+  ProductsByCategoryAndBrandReducer,
+} from '@/entities/Product';
 import { brandReducers } from '@/entities/Brand';
-import { ProductsByCategoryAndBrandProvider } from '@/entities/Product';
 import { PageLoader } from '@/widgets/PageLoader';
 
 const reducers: ReducersList = {
-  productsByCategoryAndBrandPage: productsByCategoryAndBrandPageReducers,
+  productsByCategoryAndBrand: ProductsByCategoryAndBrandReducer,
   brand: brandReducers,
 };
 
