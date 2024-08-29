@@ -22,7 +22,7 @@ export const Pending: Story = {
   parameters: {
     msw: {
       handlers: [
-        handlers.productsAllByCategoryIdPending,
+        handlers.handlerProducts.productsAllByCategoryIdPending,
         handlers.handlerBrands.brandsListByCategoryPending,
       ],
     },
@@ -35,7 +35,7 @@ export const Success: Story = {
   parameters: {
     msw: {
       handlers: [
-        handlers.productsAllByCategoryIdSuccess,
+        handlers.handlerProducts.productsAllByCategoryIdSuccess,
         handlers.handlerBrands.brandsListByCategorySuccess,
       ],
     },
