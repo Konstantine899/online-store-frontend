@@ -30,13 +30,13 @@ export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { Products } from './ui/Products/Products';
 export { ProductsByCategory } from './ui/ProductsByCategory/ProductsByCategory';
 export { ProductsByCategoryAndBrand } from './ui/ProductsByCategoryAndBrand/ProductsByCategoryAndBrand';
-export { ProductCardSkeleton } from './ui/ProductListItemSkeleton/ProductCardSkeleton';
+export { ProductCardSkeleton } from './ui/ProductCardSkeleton/ProductCardSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { Product } from './ui/Product/Product';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
-export { ProductsSortOrder } from '@/entities/Product/ui/ProductsSortOrder/ProductsSortOrder';
+export { ProductsSortOrder } from './ui/ProductsSortOrder/ProductsSortOrder';
 export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 export { ProductsByCategoryLimit } from './ui/ProductsByCategoryLimit/ProductsByCategoryLimit';
 export { ProductsByCategoryAndBrandSortOrder } from './ui/ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
@@ -75,7 +75,7 @@ export {
   selectProductsLimit,
   selectProductsCurrentPage,
   selectProductsMetaData,
-} from '@/entities/Product/model/selectors/selectProducts';
+} from './model/selectors/selectProducts';
 
 export {
   selectProductsByCategoryState,

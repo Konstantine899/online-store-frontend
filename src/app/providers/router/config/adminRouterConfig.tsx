@@ -3,6 +3,7 @@ import {
   adminRouter,
   getAdminCreateProductProperty,
   getAdminListRoles,
+  getAdminRouteAddUserRole,
   getAdminRouteAllOrders,
   getAdminRouteAllOrdersUser,
   getAdminRouteCreateBrand,
@@ -11,25 +12,24 @@ import {
   getAdminRouteCreateProduct,
   getAdminRouteCreateRole,
   getAdminRouteCreateUser,
-  getAdminRouteGetRole,
   getAdminRouteGetListUsers,
+  getAdminRouteGetRole,
+  getAdminRouteGetUser,
   getAdminRouteOrder,
   getAdminRouteRemoveBrand,
   getAdminRouteRemoveCategory,
   getAdminRouteRemoveOrder,
   getAdminRouteRemoveProduct,
   getAdminRouteRemoveProductProperty,
+  getAdminRouteRemoveUser,
+  getAdminRouteRemoveUserRole,
   getAdminRouteUpdateBrand,
   getAdminRouteUpdateCategory,
   getAdminRouteUpdateProduct,
   getAdminRouteUpdateProductProperty,
-  getAdminRouteGetUser,
   getAdminRouteUpdateUser,
-  getAdminRouteRemoveUser,
-  getAdminRouteAddUserRole,
-  getAdminRouteRemoveUserRole,
 } from '@/shared/consts/router/adminRouter';
-import { ProductListNotFound } from '@/entities/Product';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.CREATE_BRAND]: { path: getAdminRouteCreateBrand() },
@@ -75,10 +75,6 @@ export const adminRouterConfig: Record<adminRouter, RouteProps> = {
   [adminRouter.REMOVE_USER_ROLE]: { path: getAdminRouteRemoveUserRole() },
   [adminRouter.NOT_FOUND]: {
     path: '*',
-    element: (
-      <ProductListNotFound
-        message={'К сожалению запрашиваемая вами страница не найдена'}
-      />
-    ),
+    element: <NotFoundPage />,
   },
 };

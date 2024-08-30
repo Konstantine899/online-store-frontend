@@ -12,7 +12,7 @@ import {
   getRouteUserGetOrder,
   getRouteUserGetOrderList,
 } from '@/shared/consts/router/authRouter';
-import { ProductListNotFound } from '@/entities/Product';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const authRouterConfig: Record<authRouter, RouteProps> = {
   [authRouter.REFRESH]: { path: getRouteRefreshToken() },
@@ -29,10 +29,6 @@ export const authRouterConfig: Record<authRouter, RouteProps> = {
   },
   [authRouter.NOT_FOUND]: {
     path: '*',
-    element: (
-      <ProductListNotFound
-        message={'К сожалению запрашиваемая вами страница не найдена'}
-      />
-    ),
+    element: <NotFoundPage />,
   },
 };

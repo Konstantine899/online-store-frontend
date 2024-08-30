@@ -1,4 +1,4 @@
-import { ProductCardSkeleton } from '../../ui/ProductListItemSkeleton/ProductCardSkeleton';
+import { ProductCardSkeleton } from '../../ui/ProductCardSkeleton/ProductCardSkeleton';
 
 export const getProductsSkeletons = () => {
   const urlParams = new URLSearchParams(window.location.search);
