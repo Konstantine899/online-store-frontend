@@ -38,8 +38,7 @@ export const ProductsByCategoryAndBrand = memo(
           productsByCategoryAndBrand?.rows.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        {isLoading &&
-          getProductsSkeletons(productsByCategoryAndBrand?.metaData.limit)}
+        {isLoading && getProductsSkeletons()}
       </div>
     );
   },

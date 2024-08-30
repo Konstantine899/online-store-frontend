@@ -31,7 +31,7 @@ export const Products = memo((props: ProductsProps) => {
         products?.rows.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      {isLoading && products && getProductsSkeletons(products.metaData.limit)}
+      {isLoading && products && getProductsSkeletons()}
     </div>
   );
 });

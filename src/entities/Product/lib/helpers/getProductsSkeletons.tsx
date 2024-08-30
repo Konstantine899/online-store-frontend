@@ -1,7 +1,7 @@
 import { ProductCardSkeleton } from '../../ui/ProductListItemSkeleton/ProductCardSkeleton';
 
-export const getProductsSkeletons = (quantity: number | undefined) => {
-  return new Array(quantity)
+export const getProductsSkeletons = () => {
+  return new Array(5)
     .fill(0)
     .map((_, index) => <ProductCardSkeleton key={index} />);
 };
