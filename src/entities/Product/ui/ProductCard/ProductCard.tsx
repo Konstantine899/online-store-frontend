@@ -2,14 +2,18 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
-import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { TProduct } from '../../model/types/IProductsSchema';
 import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
-import { getRouteProduct } from '@/shared/consts/router/publicRouter';
+import {
+  getRouteImage,
+  getRouteImageNotFound,
+  getRouteProduct,
+} from '@/shared/consts/router/publicRouter';
 import { AppLink, AppLinkFontSize } from '@/shared/ui/AppLink/AppLink';
 import { Text } from '@/shared/ui/Text';
 import { TextTheme } from '@/shared/ui/Text/Text';
+import { KitImage } from '@/shared/ui/KitImage/KitImage';
 
 interface ProductCardProps {
   className?: string;
@@ -26,7 +30,19 @@ export const ProductCard = memo((props: ProductCardProps) => {
       className={classNames(cls.ProductCard, {}, [className])}
     >
       <div className={cls.CardTop}>
-        <ProductCardImage product={product} />
+        <AppLink
+          to={getRouteProduct(`${product.id}`)}
+          className={classNames(cls.CardImage, {}, [className])}
+        >
+          <KitImage
+            className={classNames('', {}, [className])}
+            src={getRouteImage(product.image)}
+            alt={product.image}
+            spareImage={
+              <img src={getRouteImageNotFound()} alt={'not_found_image'} />
+            }
+          />
+        </AppLink>
       </div>
       <div className={cls.CardBottom}>
         <AppLink
