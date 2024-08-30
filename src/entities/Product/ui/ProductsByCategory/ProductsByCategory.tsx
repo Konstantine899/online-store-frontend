@@ -2,9 +2,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategory.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsByCategoryProps {
   className?: string;
@@ -28,7 +28,7 @@ export const ProductsByCategory = memo((props: ProductsByCategoryProps) => {
     <div className={classNames(cls.ProductsByCategory, {}, [className])}>
       {isSuccess &&
         productsByCategory?.rows.map((product) => (
-          <ProductListItem key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       {isLoading && getProductsSkeletons(productsByCategory?.metaData.limit)}
     </div>

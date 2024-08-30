@@ -2,9 +2,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrand.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { ProductListItem } from '../ProductListItem/ProductListItem';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 import { useProductsByCategoryAndBrandContext } from '../../lib/contexts/ProductsByCategoryAndBrandContext';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsByCategoryAndBrandProps {
   className?: string;
@@ -36,7 +36,7 @@ export const ProductsByCategoryAndBrand = memo(
       >
         {isSuccess &&
           productsByCategoryAndBrand?.rows.map((product) => (
-            <ProductListItem key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         {isLoading &&
           getProductsSkeletons(productsByCategoryAndBrand?.metaData.limit)}
