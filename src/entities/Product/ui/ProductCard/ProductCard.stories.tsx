@@ -4,7 +4,6 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductCard.module.scss';
-import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { mockProduct } from '@/shared/config/storybook/mocks/mockProduct';
 import { ProductDetailsReducer } from '../../model/slices/ProductDetailsSlice';
@@ -53,7 +52,11 @@ export const Primary: Story = {
         >
           <Text text={product.name} theme={TextTheme.INVERTED} />
         </AppLink>
-        <ProductCardPrice product={product} />
+        <Text
+          className={cls.CardPrice}
+          text={`${product.price}`}
+          theme={TextTheme.INVERTED}
+        />
         <Button
           className={cls.CardAdd}
           theme={ButtonTheme.OUTLINE}

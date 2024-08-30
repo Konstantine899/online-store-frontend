@@ -4,7 +4,6 @@ import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { TProduct } from '../../model/types/IProductsSchema';
-import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 import {
   getRouteImage,
   getRouteImageNotFound,
@@ -52,7 +51,11 @@ export const ProductCard = memo((props: ProductCardProps) => {
         >
           <Text text={product.name} theme={TextTheme.INVERTED} />
         </AppLink>
-        <ProductCardPrice product={product} />
+        <Text
+          className={cls.CardPrice}
+          text={`${product.price}`}
+          theme={TextTheme.INVERTED}
+        />
         <Button
           className={cls.CardAdd}
           theme={ButtonTheme.OUTLINE}
