@@ -14,6 +14,7 @@ export const ProductsByCategory = memo((props: ProductsByCategoryProps) => {
   const { className } = props;
   const { productsByCategory, isLoading, isSuccess } =
     useProductsByCategoryContext();
+
   if (isSuccess && productsByCategory?.rows.length == 0) {
     return (
       <div className={classNames(cls.ProductsByCategoryError, {}, [className])}>
