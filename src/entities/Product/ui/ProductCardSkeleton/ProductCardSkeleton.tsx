@@ -16,12 +16,12 @@ export const ProductCardSkeleton = memo((props: ProductCardSkeletonProps) => {
     <div className={classNames(cls.ProductCardSkeleton, {}, [className])}>
       <Card theme={CardTheme.OUTLINED} className={cls.cardWrapper}>
         <div className={cls.cardTop}>
-          <Skeleton height={'220px'} width={'100%'} />
+          <Skeleton height={'220px'} width={'100%'} borderRadius={'10px'} />
         </div>
         <div className={cls.cardBottom}>
-          <Skeleton height={'32px'} width={'100%'} />
-          <Skeleton height={'32px'} width={'100%'} />
-          <Skeleton height={'60px'} width={'100%'} />
+          <Skeleton height={'32px'} width={'100%'} borderRadius={'10px'} />
+          <Skeleton height={'32px'} width={'100%'} borderRadius={'10px'} />
+          <Skeleton height={'60px'} width={'100%'} borderRadius={'10px'} />
         </div>
       </Card>
     </div>
