@@ -4,8 +4,12 @@ import cls from './Product.module.scss';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useRating } from '@/entities/Rating';
 import { ProductSummaryCard } from '../ProductSummaryCard/ProductSummaryCard';
-import { ProductImage } from '../ProductImage/ProductImage';
 import { useProductContext } from '../../lib/contexts/ProductContext';
+import {
+  getRouteImage,
+  getRouteImageNotFound,
+} from '@/shared/consts/router/publicRouter';
+import { KitImage } from '@/shared/ui/KitImage/KitImage';
 
 interface ProductDetailsProps {
   className?: string;
@@ -32,7 +36,14 @@ export const Product = memo((props: ProductDetailsProps) => {
     return (
       <div className={classNames(cls.Product, {}, [className])}>
         <div className={cls.imageWrapper}>
-          <ProductImage image={product.image} className={cls.image} />
+          <KitImage
+            className={classNames(cls.image, {}, [className])}
+            src={getRouteImage(product.image)}
+            alt={product.image}
+            spareImage={
+              <img src={getRouteImageNotFound()} alt={'not_found_image'} />
+            }
+          />
         </div>
         <ProductSummaryCard />
       </div>
