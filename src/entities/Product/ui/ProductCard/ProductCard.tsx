@@ -5,8 +5,11 @@ import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { ProductCardImage } from '../ProductCardImage/ProductCardImage';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { TProduct } from '../../model/types/IProductsSchema';
-import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
 import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
+import { getRouteProduct } from '@/shared/consts/router/publicRouter';
+import { AppLink, AppLinkFontSize } from '@/shared/ui/AppLink/AppLink';
+import { Text } from '@/shared/ui/Text';
+import { TextTheme } from '@/shared/ui/Text/Text';
 
 interface ProductCardProps {
   className?: string;
@@ -26,7 +29,13 @@ export const ProductCard = memo((props: ProductCardProps) => {
         <ProductCardImage product={product} />
       </div>
       <div className={cls.CardBottom}>
-        <ProductCardTitle product={product} />
+        <AppLink
+          className={classNames(cls.CardTitle, {}, [className])}
+          to={getRouteProduct(`${product.id}`)}
+          fontSize={AppLinkFontSize.M}
+        >
+          <Text text={product.name} theme={TextTheme.INVERTED} />
+        </AppLink>
         <ProductCardPrice product={product} />
         <Button
           className={cls.CardAdd}

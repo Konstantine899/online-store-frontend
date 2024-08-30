@@ -4,12 +4,15 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductCard.module.scss';
-import { ProductCardTitle } from '../ProductCardTitle/ProductCardTitle';
 import { ProductCardPrice } from '../ProductCardPrice/ProductCardPrice';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { mockProduct } from '@/shared/config/storybook/mocks/mockProduct';
 import { ProductDetailsReducer } from '../../model/slices/ProductDetailsSlice';
 import { ReducersList } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { getRouteProduct } from '@/shared/consts/router/publicRouter';
+import { AppLink, AppLinkFontSize } from '@/shared/ui/AppLink/AppLink';
+import { Text } from '@/shared/ui/Text';
+import { TextTheme } from '@/shared/ui/Text/Text';
 
 const asyncReducers: ReducersList = {
   product: ProductDetailsReducer,
@@ -43,7 +46,13 @@ export const Primary: Story = {
         />
       </div>
       <div className={cls.CardBottom}>
-        <ProductCardTitle product={product} />
+        <AppLink
+          className={classNames(cls.CardTitle, {}, [])}
+          to={getRouteProduct(`${product.id}`)}
+          fontSize={AppLinkFontSize.M}
+        >
+          <Text text={product.name} theme={TextTheme.INVERTED} />
+        </AppLink>
         <ProductCardPrice product={product} />
         <Button
           className={cls.CardAdd}
