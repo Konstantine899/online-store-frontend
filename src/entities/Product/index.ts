@@ -30,7 +30,7 @@ export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { Products } from './ui/Products/Products';
 export { ProductsByCategory } from './ui/ProductsByCategory/ProductsByCategory';
 export { ProductsByCategoryAndBrand } from './ui/ProductsByCategoryAndBrand/ProductsByCategoryAndBrand';
-export { ProductListItemSkeleton } from './ui/ProductListItemSkeleton/ProductListItemSkeleton';
+export { ProductCardSkeleton } from './ui/ProductListItemSkeleton/ProductCardSkeleton';
 export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { Product } from './ui/Product/Product';

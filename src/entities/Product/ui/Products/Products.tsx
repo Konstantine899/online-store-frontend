@@ -4,7 +4,7 @@ import cls from './Products.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
 import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
 import { useProductsContext } from '../../lib/contexts/ProductsContext';
-import { ProductCard } from '@/entities/Product/ui/ProductCard/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsProps {
   className?: string;
