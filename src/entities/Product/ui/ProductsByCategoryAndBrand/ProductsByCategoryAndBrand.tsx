@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrand.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
+import { ProductsNotFound } from '@/entities/Product/ui/ProductsNotFound/ProductsNotFound';
 import { useProductsByCategoryAndBrandContext } from '../../lib/contexts/ProductsByCategoryAndBrandContext';
 import { ProductCard } from '../ProductCard/ProductCard';
 
@@ -23,9 +23,7 @@ export const ProductsByCategoryAndBrand = memo(
             className,
           ])}
         >
-          <ProductListNotFound
-            message={'Извините, но по вашему запросу ничего не найдено'}
-          />
+          <ProductsNotFound />
         </div>
       );
     }

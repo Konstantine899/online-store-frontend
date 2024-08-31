@@ -31,7 +31,7 @@ export { Products } from './ui/Products/Products';
 export { ProductsByCategory } from './ui/ProductsByCategory/ProductsByCategory';
 export { ProductsByCategoryAndBrand } from './ui/ProductsByCategoryAndBrand/ProductsByCategoryAndBrand';
 export { ProductCardSkeleton } from './ui/ProductCardSkeleton/ProductCardSkeleton';
-export { ProductListNotFound } from './ui/ProductListNotFound/ProductListNotFound';
+export { ProductsNotFound } from '@/entities/Product/ui/ProductsNotFound/ProductsNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { Product } from './ui/Product/Product';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';

@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategory.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { ProductListNotFound } from '../ProductListNotFound/ProductListNotFound';
+import { ProductsNotFound } from '@/entities/Product/ui/ProductsNotFound/ProductsNotFound';
 import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
 import { ProductCard } from '../ProductCard/ProductCard';
 
@@ -18,9 +18,7 @@ export const ProductsByCategory = memo((props: ProductsByCategoryProps) => {
   if (isSuccess && productsByCategory?.rows.length == 0) {
     return (
       <div className={classNames(cls.ProductsByCategoryError, {}, [className])}>
-        <ProductListNotFound
-          message={'Извините, но по вашему запросу ничего не найдено'}
-        />
+        <ProductsNotFound />
       </div>
     );
   }
