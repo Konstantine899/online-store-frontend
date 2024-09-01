@@ -7,9 +7,6 @@
 }
 
 .ProductListError{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     height: calc(100vh - var(--navbar-height));
-    width: 100vw;
+    outline: 1px solid red;
 }

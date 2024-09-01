@@ -5,19 +5,11 @@
 
 .CardSkeleton{
     box-shadow: 1px 2px 4px rgb(0 0 0 / 10%);
-
-    //outline: 1px solid red;
-}
-
-.Title{
-    width: 400px;
-    outline: 1px solid red;
 }
 
 .CategoryCard{
     display: flex;
     flex-direction: column;
-    width: 141.5px;
     height: 157.6px;
     cursor: pointer;
 }
