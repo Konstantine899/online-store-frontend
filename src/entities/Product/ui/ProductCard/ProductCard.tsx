@@ -46,7 +46,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
           to={getRouteProduct(`${product.id}`)}
           fontSize={AppLinkFontSize.M}
         >
-          <Text text={product.name} theme={TextTheme.INVERTED} />
+          <Text text={product.name} theme={TextTheme.INVERTED} ellipsis />
         </AppLink>
         <Text
           className={cls.Price}

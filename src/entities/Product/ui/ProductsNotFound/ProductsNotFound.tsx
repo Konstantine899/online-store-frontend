@@ -58,7 +58,11 @@ export const ProductsNotFound = memo((props: ProductsNotFoundProps) => {
               </div>
               <div className={cls.Bottom}>
                 <AppLink to={getRouteProduct(`${product.id}`)}>
-                  <Text theme={TextTheme.INVERTED} text={`${product.name}`} />
+                  <Text
+                    theme={TextTheme.INVERTED}
+                    text={`${product.name}`}
+                    ellipsis
+                  />
                 </AppLink>
                 <Text
                   theme={TextTheme.INVERTED}
