@@ -1,10 +1,11 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductsCount.module.scss';
 import { Text } from '@/shared/ui/Text';
 import { TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { useProductsContext } from '../../lib/contexts/ProductsContext';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { useSearchParams } from 'react-router-dom';
 
 interface ProductsCountProps {
   className?: string;
@@ -13,6 +14,13 @@ interface ProductsCountProps {
 export const ProductsCount = memo((props: ProductsCountProps) => {
   const { className } = props;
   const { products, isSuccess, isLoading } = useProductsContext();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search') || '';
+
+  useEffect(() => {
+    setSearchParams(search);
+  }, [search, setSearchParams]);
 
   if (isLoading) {
     return (
@@ -27,14 +35,13 @@ export const ProductsCount = memo((props: ProductsCountProps) => {
     return (
       <div className={classNames(cls.ProductsCount, {}, [className])}>
         <Text
-          text={`Все товары`}
+          title={search && `Результат поиска`}
+          text={
+            search &&
+            `По запросу "${search}" найдено ${products!.count} товаров`
+          }
           theme={TextTheme.INVERTED}
-          size={TextSize.XL}
-        />
-        <Text
-          text={`(${products?.count})`}
-          theme={TextTheme.INVERTED}
-          size={TextSize.XL}
+          size={TextSize.M}
         />
       </div>
     );
