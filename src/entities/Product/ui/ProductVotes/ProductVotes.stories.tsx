@@ -28,8 +28,58 @@ const meta: Meta<typeof ProductVotes> = {
 export default meta;
 type Story = StoryObj<typeof ProductVotes>;
 
-export const Primary: Story = {
+export const One: Story = {
   args: {},
   render: () => <ProductVotes />,
-  parameters: { msw: { handlers: [handlers.handlerRating.rating] } },
+  parameters: { msw: { handlers: [handlers.handlerVotes.voteOne] } },
+};
+
+export const OneHundred: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: { msw: { handlers: [handlers.handlerVotes.votesOneHundred] } },
+};
+
+export const Thousand: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: { msw: { handlers: [handlers.handlerVotes.votesThousand] } },
+};
+
+export const TenThousand: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: { msw: { handlers: [handlers.handlerVotes.votesTenThousand] } },
+};
+
+export const OneHundredThousand: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: {
+    msw: { handlers: [handlers.handlerVotes.votesOneHundredThousand] },
+  },
+};
+
+export const Million: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: {
+    msw: { handlers: [handlers.handlerVotes.votesMillion] },
+  },
+};
+
+export const TenMillion: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: {
+    msw: { handlers: [handlers.handlerVotes.votesTenMillion] },
+  },
+};
+
+export const OneHundredMillion: Story = {
+  args: {},
+  render: () => <ProductVotes />,
+  parameters: {
+    msw: { handlers: [handlers.handlerVotes.votesOneHundredMillion] },
+  },
 };
