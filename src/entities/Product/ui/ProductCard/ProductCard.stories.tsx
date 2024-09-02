@@ -34,26 +34,27 @@ export const Primary: Story = {
     <Card
       key={product.id}
       theme={CardTheme.OUTLINED}
-      className={classNames(cls.ProductCard, {}, [])}
+      className={classNames(cls.Card, {}, [])}
     >
-      <div className={cls.CardTop}>
-        <img
-          src={product.image}
-          alt={'картинка'}
-          width={`100%`}
-          height={`100%`}
-        />
+      <div className={cls.Top}>
+        <AppLink to={getRouteProduct(`${product.id}`)}>
+          <img
+            src={product.image}
+            width={225}
+            height={220}
+            alt={product.image}
+          />
+        </AppLink>
       </div>
-      <div className={cls.CardBottom}>
+      <div className={cls.Bottom}>
         <AppLink
-          className={classNames(cls.CardTitle, {}, [])}
           to={getRouteProduct(`${product.id}`)}
           fontSize={AppLinkFontSize.M}
         >
-          <Text text={product.name} theme={TextTheme.INVERTED} />
+          <Text text={product.name} theme={TextTheme.INVERTED} ellipsis />
         </AppLink>
         <Text
-          className={cls.CardPrice}
+          className={cls.Price}
           text={`${product.price}`}
           theme={TextTheme.INVERTED}
         />
