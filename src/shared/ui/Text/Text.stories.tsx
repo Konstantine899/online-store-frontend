@@ -46,6 +46,15 @@ export const Inverted: Story = {
   render: (args) => <Text {...args} />,
 };
 
+export const InOneLine: Story = {
+  args: {
+    theme: TextTheme.INVERTED,
+    text: 'Смартфон Huawei nova Y61 EVE-LX9N 4GB/128GB с NFC (полночный черный)',
+    ellipsis: true,
+  },
+  render: (args) => <Text {...args} />,
+};
+
 export const InvertedDisabled: Story = {
   args: {
     theme: TextTheme.INVERTED_DISABLED,

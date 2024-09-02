@@ -30,6 +30,7 @@ interface TextProps {
   theme?: TextTheme;
   align?: TextAlign;
   size?: TextSize;
+  ellipsis?: boolean; // текс в одну строку
   'data-testid'?: string;
 }
 
@@ -50,6 +51,7 @@ export const Text = memo((props: TextProps) => {
     size = TextSize.M,
     theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT,
+    ellipsis = false,
     'data-testid': dataTestId = 'Text',
   } = props;
 
@@ -71,7 +73,10 @@ export const Text = memo((props: TextProps) => {
         </HeaderTag>
       )}
       {text && (
-        <p className={cls.text} data-testid={`${dataTestId}.paragraph`}>
+        <p
+          className={classNames(cls.text, { [cls.ellipsis]: ellipsis }, [])}
+          data-testid={`${dataTestId}.paragraph`}
+        >
           {text}
         </p>
       )}
