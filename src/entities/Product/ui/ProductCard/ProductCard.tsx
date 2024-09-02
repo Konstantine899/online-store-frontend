@@ -1,4 +1,3 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
@@ -13,6 +12,7 @@ import { AppLink, AppLinkFontSize } from '@/shared/ui/AppLink/AppLink';
 import { Text } from '@/shared/ui/Text';
 import { TextTheme } from '@/shared/ui/Text/Text';
 import { KitImage } from '@/shared/ui/KitImage/KitImage';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface ProductCardProps {
   className?: string;
@@ -26,16 +26,14 @@ export const ProductCard = memo((props: ProductCardProps) => {
     <Card
       key={product.id}
       theme={CardTheme.OUTLINED}
-      className={classNames(cls.ProductCard, {}, [className])}
+      className={classNames(cls.Card, {}, [className])}
     >
-      <div className={cls.CardTop}>
-        <AppLink
-          to={getRouteProduct(`${product.id}`)}
-          className={classNames(cls.CardImage, {}, [className])}
-        >
+      <div className={cls.Top}>
+        <AppLink to={getRouteProduct(`${product.id}`)}>
           <KitImage
-            className={classNames('', {}, [className])}
             src={getRouteImage(product.image)}
+            width={225}
+            height={220}
             alt={product.image}
             spareImage={
               <img src={getRouteImageNotFound()} alt={'not_found_image'} />
@@ -43,16 +41,15 @@ export const ProductCard = memo((props: ProductCardProps) => {
           />
         </AppLink>
       </div>
-      <div className={cls.CardBottom}>
+      <div className={cls.Bottom}>
         <AppLink
-          className={classNames(cls.CardTitle, {}, [className])}
           to={getRouteProduct(`${product.id}`)}
           fontSize={AppLinkFontSize.M}
         >
           <Text text={product.name} theme={TextTheme.INVERTED} />
         </AppLink>
         <Text
-          className={cls.CardPrice}
+          className={cls.Price}
           text={`${product.price}`}
           theme={TextTheme.INVERTED}
         />
