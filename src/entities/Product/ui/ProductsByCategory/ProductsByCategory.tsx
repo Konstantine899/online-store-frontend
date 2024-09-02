@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategory.module.scss';
 import { getProductsSkeletons } from '../../lib/helpers/getProductsSkeletons';
-import { ProductsNotFound } from '@/entities/Product/ui/ProductsNotFound/ProductsNotFound';
+import { ProductsNotFound } from '../ProductsNotFound/ProductsNotFound';
 import { useProductsByCategoryContext } from '../../lib/contexts/ProductsByCategoryContext';
 import { ProductCard } from '../ProductCard/ProductCard';
 
