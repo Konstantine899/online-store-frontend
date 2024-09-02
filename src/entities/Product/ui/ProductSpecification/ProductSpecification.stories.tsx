@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProductSpecification } from './ProductSpecification';
 
 const meta: Meta<typeof ProductSpecification> = {
-  title: 'entities/ProductDetailsInfo',
+  title: 'entities/ProductSpecification',
   component: ProductSpecification,
 };
 
