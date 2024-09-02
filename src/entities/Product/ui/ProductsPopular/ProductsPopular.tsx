@@ -1,7 +1,7 @@
 import { memo, useEffect } from 'react';
 import cls from './ProductsPopular.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useProducts } from '@/entities/Product';
+import { useProducts } from '../../api/productsApi';
 import { Carousel } from '@/shared/ui/Carousel/Carousel';
 import { Card } from '@/shared/ui/Card';
 import { AppLink } from '@/shared/ui/AppLink';
