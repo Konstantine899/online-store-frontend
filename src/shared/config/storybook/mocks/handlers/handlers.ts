@@ -1,11 +1,11 @@
 import { handlerCategory } from './handlerCategory';
 import { handlerBrands } from './handlerBrands';
 import { handlerProducts } from './handlerProducts';
-import { handlerRating } from './handlerRating';
+import { handlerVotes } from './handlerVotes';
 
 export const handlers = {
   handlerBrands,
   handlerCategory,
   handlerProducts,
-  handlerRating,
+  handlerVotes,
 };
