@@ -6,3 +6,6 @@ export { transformVotes } from './lib/helpers/transformVotes';
 
 // types
 export type { IRatingSchema } from './model/types/IRatingSchema';
+
+//slices
+export { RatingReducer, RatingActions } from './model/slices/RatingSlice';
