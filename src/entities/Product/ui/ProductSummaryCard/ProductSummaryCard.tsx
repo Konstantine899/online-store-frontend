@@ -1,11 +1,14 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ProductRating } from '../ProductRating/ProductRating';
 import { ProductVotes } from '../ProductVotes/ProductVotes';
 import { useProductContext } from '../../lib/contexts/ProductContext';
+import { useParams } from 'react-router';
+import { useRating } from '@/entities/Rating';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { Star, StarSize } from '@/shared/ui/Star/Star';
 
 interface ProductSummaryCardProps {
   className?: string;
@@ -13,9 +16,20 @@ interface ProductSummaryCardProps {
 
 export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
   const { className } = props;
+  const { productId } = useParams<{ productId: string }>();
+
+  const [fetchRating, { data }] = useRating();
   const { product, isSuccess } = useProductContext();
 
+  useEffect(() => {
+    fetchRating({ productId: Number(productId) });
+  }, [fetchRating, productId]);
+
   if (isSuccess && product) {
+    const isZero = data?.rating == 0;
+
+    const textTheme = isZero ? TextTheme.GRAY : TextTheme.YELLOW;
+
     return (
       <Card
         className={classNames(cls.ProductSummaryCard, {}, [className])}
@@ -29,7 +43,10 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
             В корзину
           </Button>
           <div className={cls.bottom}>
-            <ProductRating />
+            <div className={cls.RatingWrapper}>
+              <Text theme={textTheme} text={`${data?.rating}`} />
+              <Star size={StarSize.S} isZero={isZero} />
+            </div>
             <ProductVotes />
           </div>
         </div>

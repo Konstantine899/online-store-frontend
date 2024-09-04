@@ -2,23 +2,23 @@
 
 .white {
     .title {
-        color: var(--theme-primary-color);
+        color: var(--theme-white-color);
     }
 
     .text {
-        color: var(--theme-primary-color);
+        color: var(--theme-white-color);
     }
 }
 
 .white_disabled {
     .title {
         opacity: .5;
-        color: var(--theme-primary-color);
+        color: var(--theme-white-color);
     }
 
     .text {
         opacity: .5;
-        color: var(--theme-primary-color);
+        color: var(--theme-white-color);
     }
 }
 
@@ -26,23 +26,23 @@
 
 .black {
     .title {
-        color: var(--theme-inverted-color);
+        color: var(--theme-black-color);
     }
 
     .text {
-        color: var(--theme-inverted-color);
+        color: var(--theme-black-color);
     }
 }
 
 .black_disabled {
     .title {
         opacity: .5;
-        color: var(--theme-inverted-color);
+        color: var(--theme-black-color);
     }
 
     .text {
         opacity: .5;
-        color: var(--theme-inverted-color);
+        color: var(--theme-black-color);
     }
 }
 
@@ -50,11 +50,87 @@
 
 .red {
     .title {
-        color: var(--theme-error-color);
+        color: var(--theme-red-color);
     }
 
     .text {
-        color: var(--theme-error-color);
+        color: var(--theme-red-color);
+    }
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.size_s {
+    .title {
+        font: var(--font-m);
+        font-weight: 900;
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
+
+.size_m {
+    .title {
+        font: var(--font-l);
+        font-weight: 900;
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size_l {
+    .title {
+        font: var(--font-l);
+        font-weight: 900;
+    }
+
+    .text {
+        font: var(--font-l);
+    }
+}
+
+.size_xl {
+    .title {
+        font: var(--font-xl);
+        font-weight: 900;
+    }
+
+    .text {
+        font: var(--font-xl);
+    }
+}
+
+.yellow{
+    .title {
+        color: var(--theme-yellow-color);
+    }
+
+    .text {
+        color: var(--theme-yellow-color);
+    }
+}
+
+.gray{
+    .title {
+        color: var(--theme-gray-color);
+    }
+
+    .text {
+        color: var(--theme-gray-color);
     }
 }
 

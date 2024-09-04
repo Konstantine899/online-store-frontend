@@ -1,4 +1,4 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Star.module.scss';
 import StarSvg from '../../assets/icons/star.svg';
@@ -14,14 +14,19 @@ export enum StarSize {
 interface StarProps {
   className?: string;
   size: StarSize;
+  isZero: boolean;
 }
 
 export const Star = memo((props: StarProps) => {
-  const { className, size } = props;
+  const { className, size, isZero = false } = props;
+
+  const mods: Mods = {
+    [cls.inverted]: isZero,
+  };
 
   return (
     <Icon
-      className={classNames(``, {}, [className, cls[size]])}
+      className={classNames(cls.star, mods, [className, cls[size]])}
       Svg={StarSvg}
     />
   );

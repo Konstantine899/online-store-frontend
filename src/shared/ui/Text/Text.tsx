@@ -8,6 +8,8 @@ export enum TextTheme {
   BLACK = 'black',
   BLACK_DISABLED = 'black_disabled',
   RED = 'red',
+  YELLOW = 'yellow',
+  GRAY = 'gray',
 }
 
 export enum TextAlign {
