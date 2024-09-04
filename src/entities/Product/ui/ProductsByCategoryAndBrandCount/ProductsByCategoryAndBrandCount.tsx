@@ -30,12 +30,12 @@ export const ProductsByCategoryAndBrandCount = memo(
       >
         <Text
           text={`${category?.name}`}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.XL}
         />
         <Text
           text={`(${productsByCategoryAndBrand?.count})`}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.XL}
         />
       </div>

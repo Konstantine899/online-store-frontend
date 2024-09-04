@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Text>;
 
 export const Primary: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
   },
   parameters: {
     backgrounds: {
@@ -28,7 +28,7 @@ export const Primary: Story = {
 
 export const PrimaryDisabled: Story = {
   args: {
-    theme: TextTheme.PRIMARY_DISABLED,
+    theme: TextTheme.WHITE_DISABLED,
   },
   parameters: {
     backgrounds: {
@@ -41,14 +41,14 @@ export const PrimaryDisabled: Story = {
 
 export const Inverted: Story = {
   args: {
-    theme: TextTheme.INVERTED,
+    theme: TextTheme.BLACK,
   },
   render: (args) => <Text {...args} />,
 };
 
 export const InOneLine: Story = {
   args: {
-    theme: TextTheme.INVERTED,
+    theme: TextTheme.BLACK,
     text: 'Смартфон Huawei nova Y61 EVE-LX9N 4GB/128GB с NFC (полночный черный)',
     ellipsis: true,
   },
@@ -57,21 +57,21 @@ export const InOneLine: Story = {
 
 export const InvertedDisabled: Story = {
   args: {
-    theme: TextTheme.INVERTED_DISABLED,
+    theme: TextTheme.BLACK_DISABLED,
   },
   render: (args) => <Text {...args} />,
 };
 
 export const Error: Story = {
   args: {
-    theme: TextTheme.ERROR,
+    theme: TextTheme.RED,
   },
   render: (args) => <Text {...args} />,
 };
 
 export const TextAlignLeft: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     align: TextAlign.LEFT,
   },
   parameters: {
@@ -86,7 +86,7 @@ export const TextAlignLeft: Story = {
 
 export const TextAlignCenter: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     align: TextAlign.CENTER,
   },
   parameters: {
@@ -101,7 +101,7 @@ export const TextAlignCenter: Story = {
 
 export const TextAlignRight: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.BLACK,
     align: TextAlign.RIGHT,
   },
   parameters: {
@@ -116,7 +116,7 @@ export const TextAlignRight: Story = {
 
 export const TextSizeS: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     size: TextSize.S,
   },
   parameters: {
@@ -130,7 +130,7 @@ export const TextSizeS: Story = {
 
 export const TextSizeM: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     size: TextSize.M,
   },
   parameters: {
@@ -144,7 +144,7 @@ export const TextSizeM: Story = {
 
 export const TextSizeL: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     size: TextSize.L,
   },
   parameters: {
@@ -158,7 +158,7 @@ export const TextSizeL: Story = {
 
 export const TextSizeXL: Story = {
   args: {
-    theme: TextTheme.PRIMARY,
+    theme: TextTheme.WHITE,
     size: TextSize.XL,
   },
   parameters: {

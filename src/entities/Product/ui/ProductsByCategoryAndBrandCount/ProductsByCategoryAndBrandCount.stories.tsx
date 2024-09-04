@@ -17,8 +17,8 @@ export const Primary: Story = {
   args: {},
   render: () => (
     <div className={classNames(cls.ProductsByCategoryAndBrandCount, {}, [])}>
-      <Text text={`Смартфоны`} theme={TextTheme.INVERTED} size={TextSize.XL} />
-      <Text text={`(10)`} theme={TextTheme.INVERTED} size={TextSize.XL} />
+      <Text text={`Смартфоны`} theme={TextTheme.BLACK} size={TextSize.XL} />
+      <Text text={`(10)`} theme={TextTheme.BLACK} size={TextSize.XL} />
     </div>
   ),
 };

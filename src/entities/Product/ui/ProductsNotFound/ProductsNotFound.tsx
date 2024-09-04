@@ -22,7 +22,7 @@ export const ProductsNotFound = memo((props: ProductsNotFoundProps) => {
   return (
     <div className={classNames(cls.ProductsNotFound, {}, [className])}>
       <Text
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
         size={TextSize.M}
         title={'Результат поиска'}
         text={`По запросу "${search}" найдено ${products.count} товаров`}
@@ -31,7 +31,7 @@ export const ProductsNotFound = memo((props: ProductsNotFoundProps) => {
       <Text
         title={`Популярные товары`}
         size={TextSize.XL}
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
       />
       <ProductsPopular />
     </div>

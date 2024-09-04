@@ -26,12 +26,12 @@ export const ProductsByCategoryCount = memo(
       <div className={classNames(cls.ProductsByCategoryCount, {}, [className])}>
         <Text
           text={`${category?.name}`}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.XL}
         />
         <Text
           text={`(${productsByCategory?.count})`}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.XL}
         />
       </div>

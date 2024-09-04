@@ -58,7 +58,7 @@ export const OneSuccess: Story = {
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
       <Text
         title={'Популярные категории'}
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
         size={TextSize.XL}
       />
       <Carousel elementsQuantity={1} infinite={false}>
@@ -115,7 +115,7 @@ export const SecondSuccess: Story = {
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
       <Text
         title={'Популярные категории'}
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
         size={TextSize.XL}
       />
       <Carousel elementsQuantity={2} infinite={false}>
@@ -172,7 +172,7 @@ export const InfiniteSuccess: Story = {
     <div className={classNames(cls.CategoriesPopular, {}, [className])}>
       <Text
         title={'Популярные категории'}
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
         size={TextSize.XL}
       />
       <Carousel elementsQuantity={4} infinite>

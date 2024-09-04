@@ -22,7 +22,7 @@ export const Primary: Story = {
       <Text
         text={`Характеристики`}
         size={TextSize.XL}
-        theme={TextTheme.INVERTED}
+        theme={TextTheme.BLACK}
         className={cls.Title}
       />
       <table className={cls.Table}>

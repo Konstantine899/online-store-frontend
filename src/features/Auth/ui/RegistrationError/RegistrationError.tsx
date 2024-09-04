@@ -18,7 +18,7 @@ export const RegistrationError = memo((props: RegistrationErrorProps) => {
   return (
     <div className={classNames(cls.RegistrationError, {}, [className])}>
       <Text
-        theme={TextTheme.ERROR}
+        theme={TextTheme.RED}
         text={error?.message}
         size={TextSize.L}
         align={TextAlign.CENTER}

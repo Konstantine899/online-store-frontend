@@ -19,7 +19,7 @@ export const ValidationEmail = memo((props: ValidationEmailProps) => {
       {messages?.map((message: string, index: number) => (
         <Text
           key={index}
-          theme={TextTheme.ERROR}
+          theme={TextTheme.RED}
           text={message}
           className={cls.message}
         />

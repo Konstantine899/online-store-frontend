@@ -51,12 +51,12 @@ export const Primary: Story = {
           to={getRouteProduct(`${product.id}`)}
           fontSize={AppLinkFontSize.M}
         >
-          <Text text={product.name} theme={TextTheme.INVERTED} ellipsis />
+          <Text text={product.name} theme={TextTheme.BLACK} ellipsis />
         </AppLink>
         <Text
           className={cls.Price}
           text={`${product.price}`}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
         />
         <Button
           className={cls.CardAdd}

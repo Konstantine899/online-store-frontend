@@ -3,11 +3,11 @@ import { memo } from 'react';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
-  PRIMARY = 'primary',
-  PRIMARY_DISABLED = 'primary_disabled',
-  INVERTED = 'inverted',
-  INVERTED_DISABLED = 'inverted_disabled',
-  ERROR = 'error',
+  WHITE = 'white',
+  WHITE_DISABLED = 'white_disabled',
+  BLACK = 'black',
+  BLACK_DISABLED = 'black_disabled',
+  RED = 'red',
 }
 
 export enum TextAlign {
@@ -49,7 +49,7 @@ export const Text = memo((props: TextProps) => {
     text,
     title,
     size = TextSize.M,
-    theme = TextTheme.PRIMARY,
+    theme = TextTheme.WHITE,
     align = TextAlign.LEFT,
     ellipsis = false,
     'data-testid': dataTestId = 'Text',

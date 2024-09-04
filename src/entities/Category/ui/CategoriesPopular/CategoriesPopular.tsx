@@ -61,7 +61,7 @@ export const CategoriesPopular = memo((props: CategoriesPopularProps) => {
       <div className={classNames(cls.CategoriesPopular, {}, [className])}>
         <Text
           title={'Популярные категории'}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.XL}
         />
         <Carousel elementsQuantity={elementsQuantity} infinite={true}>

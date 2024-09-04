@@ -40,7 +40,7 @@ export const ProductsCount = memo((props: ProductsCountProps) => {
             search &&
             `По запросу "${search}" найдено ${products!.count} товаров`
           }
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           size={TextSize.M}
         />
       </div>

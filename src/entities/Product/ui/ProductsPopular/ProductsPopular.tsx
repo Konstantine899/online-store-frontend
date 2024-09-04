@@ -56,13 +56,13 @@ export const ProductsPopular = memo((props: ProductsPopularProps) => {
             <div className={cls.Bottom}>
               <AppLink to={getRouteProduct(`${product.id}`)}>
                 <Text
-                  theme={TextTheme.INVERTED}
+                  theme={TextTheme.BLACK}
                   text={`${product.name}`}
                   ellipsis
                 />
               </AppLink>
               <Text
-                theme={TextTheme.INVERTED}
+                theme={TextTheme.BLACK}
                 text={`${product.price}`}
                 className={cls.Price}
               />

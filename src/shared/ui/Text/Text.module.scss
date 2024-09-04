@@ -1,6 +1,6 @@
 /* styles for theme primary */
 
-.primary {
+.white {
     .title {
         color: var(--theme-primary-color);
     }
@@ -10,7 +10,7 @@
     }
 }
 
-.primary_disabled {
+.white_disabled {
     .title {
         opacity: .5;
         color: var(--theme-primary-color);
@@ -24,7 +24,7 @@
 
 /* styles for theme inverted */
 
-.inverted {
+.black {
     .title {
         color: var(--theme-inverted-color);
     }
@@ -34,7 +34,7 @@
     }
 }
 
-.inverted_disabled {
+.black_disabled {
     .title {
         opacity: .5;
         color: var(--theme-inverted-color);
@@ -48,7 +48,7 @@
 
 /* styles for theme error */
 
-.error {
+.red {
     .title {
         color: var(--theme-error-color);
     }

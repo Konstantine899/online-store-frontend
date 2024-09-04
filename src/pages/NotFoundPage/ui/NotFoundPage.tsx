@@ -19,7 +19,7 @@ export const NotFoundPage = memo((props: NotFoundPageProps) => {
         <KitImage src={Reboot} height={300} width={406} />
       </div>
       <Text
-        theme={TextTheme.INVERTED_DISABLED}
+        theme={TextTheme.BLACK_DISABLED}
         title={'Страница не найдена'}
         text={'Что бы найти товары воспользуйтесь поиском'}
         size={TextSize.L}

@@ -20,7 +20,7 @@ export const ProductSpecification = memo((props: ProductDetailsInfoProps) => {
         <Text
           text={`Характеристики`}
           size={TextSize.XL}
-          theme={TextTheme.INVERTED}
+          theme={TextTheme.BLACK}
           className={cls.Title}
         />
         <table className={cls.Table}>
