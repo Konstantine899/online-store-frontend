@@ -3,12 +3,12 @@ import { memo, useEffect } from 'react';
 import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ProductVotes } from '../ProductVotes/ProductVotes';
 import { useProductContext } from '../../lib/contexts/ProductContext';
 import { useParams } from 'react-router';
-import { useRating } from '@/entities/Rating';
+import { transformVotes, useRating } from '@/entities/Rating';
 import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import { Star, StarSize } from '@/shared/ui/Star/Star';
+import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
 
 interface ProductSummaryCardProps {
   className?: string;
@@ -47,7 +47,13 @@ export const ProductSummaryCard = memo((props: ProductSummaryCardProps) => {
               <Text theme={textTheme} text={`${data?.rating}`} />
               <Star size={StarSize.S} isZero={isZero} />
             </div>
-            <ProductVotes />
+            <div className={cls.VotesWrapper}>
+              <Thumb size={ThumbSize.M} />
+              <Text
+                text={transformVotes(`${data?.votes}`)}
+                theme={TextTheme.GRAY}
+              />
+            </div>
           </div>
         </div>
       </Card>

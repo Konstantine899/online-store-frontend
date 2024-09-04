@@ -22,7 +22,7 @@ export const Thumb = memo((props: ThumbProps) => {
   return (
     <Icon
       Svg={ThumbIcon}
-      className={classNames(``, {}, [className, cls[size]])}
+      className={classNames(cls.thumb, {}, [className, cls[size]])}
     />
   );
 });
