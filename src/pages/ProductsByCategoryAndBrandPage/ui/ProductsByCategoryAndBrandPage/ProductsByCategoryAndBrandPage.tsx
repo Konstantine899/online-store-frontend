@@ -3,13 +3,13 @@ import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
   ProductsByCategoryAndBrand,
-  ProductsByCategoryAndBrandLimit,
   ProductsByCategoryAndBrandPaginate,
 } from '@/entities/Product';
 import { Page } from '@/widgets/Page';
 import { ProductsByCategoryAndBrandCount } from '../ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
 import { BrandTabs } from '@/entities/Brand';
 import { ProductsByCategoryAndBrandSortOrder } from '../ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
+import { ProductsByCategoryAndBrandLimit } from '../ProductsByCategoryAndBrandLimit/ProductsByCategoryAndBrandLimit';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
