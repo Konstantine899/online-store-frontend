@@ -25,9 +25,9 @@ export {
   useProductContext,
 } from './lib/contexts/ProductContext';
 export { useProductsSortOrder } from './lib/hooks/useProductsSortOrder';
+export { useProductsLimit } from './lib/hooks/useProductsLimit';
 
 //ui
-export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
 export { Products } from './ui/Products/Products';
 export { ProductsByCategory } from './ui/ProductsByCategory/ProductsByCategory';
 export { ProductsByCategoryAndBrand } from './ui/ProductsByCategoryAndBrand/ProductsByCategoryAndBrand';

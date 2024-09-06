@@ -7,14 +7,17 @@ import {
   SelectWidth,
   WrapperWidth,
 } from '@/shared/ui/Select/Select/Select';
-import { ProductsActions } from '../../model/slices/ProductsSlice';
-import { useProducts } from '../../api/productsApi';
-import { TSortLimit } from '../../model/types/IProductsSchema';
-import { useProductsLimit } from '../../lib/hooks/useProductsLimit';
-import { useSelector } from 'react-redux';
-import { selectProductsLimit } from '../../model/selectors/selectProducts';
-import { useProductsContext } from '../../lib/contexts/ProductsContext';
+
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { useSelector } from 'react-redux';
+import {
+  ProductsActions,
+  selectProductsLimit,
+  useProducts,
+  useProductsContext,
+  useProductsLimit,
+} from '@/entities/Product';
+import { TSortLimit } from '@/entities/Product/model/types/IProductsSchema';
 
 interface ProductsLimitProps {
   className?: string;
