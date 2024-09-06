@@ -3,11 +3,13 @@ import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
   ProductsByCategoryAndBrand,
-  ProductsByCategoryAndBrandFilters,
+  ProductsByCategoryAndBrandLimit,
   ProductsByCategoryAndBrandPaginate,
+  ProductsByCategoryAndBrandSortOrder,
 } from '@/entities/Product';
 import { Page } from '@/widgets/Page';
 import { ProductsByCategoryAndBrandCount } from '../ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
+import { BrandTabs } from '@/entities/Brand';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
@@ -24,7 +26,11 @@ const ProductsByCategoryAndBrandPage = memo(
         ])}
       >
         <ProductsByCategoryAndBrandCount />
-        <ProductsByCategoryAndBrandFilters />
+        <div className={cls.ProductsByCategoryAndBrandFilters}>
+          <ProductsByCategoryAndBrandSortOrder />
+          <ProductsByCategoryAndBrandLimit />
+          <BrandTabs />
+        </div>
         <ProductsByCategoryAndBrand />
         <ProductsByCategoryAndBrandPaginate />
       </Page>
