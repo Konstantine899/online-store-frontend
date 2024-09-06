@@ -4,10 +4,10 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   Products,
-  ProductsCount,
   ProductsFilters,
   ProductsPaginate,
 } from '@/entities/Product';
+import { ProductsCount } from '../ProductsCount/ProductsCount';
 
 export interface ProductsPageProps {
   className?: string;

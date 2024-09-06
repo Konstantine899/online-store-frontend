@@ -41,7 +41,6 @@ export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/Pr
 export { ProductsByCategoryLimit } from './ui/ProductsByCategoryLimit/ProductsByCategoryLimit';
 export { ProductsByCategoryAndBrandSortOrder } from './ui/ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
 export { ProductsByCategoryAndBrandLimit } from './ui/ProductsByCategoryAndBrandLimit/ProductsByCategoryAndBrandLimit';
-export { ProductsCount } from './ui/ProductsCount/ProductsCount';
 export { ProductsByCategoryCount } from './ui/ProductsByCategoryCount/ProductsByCategoryCount';
 export { ProductsByCategoryAndBrandCount } from './ui/ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
 export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBrandFilters/ProductsByCategoryAndBrandFilters';
