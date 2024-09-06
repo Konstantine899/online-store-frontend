@@ -3,11 +3,11 @@ import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
 import {
   ProductsByCategoryAndBrand,
-  ProductsByCategoryAndBrandCount,
   ProductsByCategoryAndBrandFilters,
   ProductsByCategoryAndBrandPaginate,
 } from '@/entities/Product';
 import { Page } from '@/widgets/Page';
+import { ProductsByCategoryAndBrandCount } from '../ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;

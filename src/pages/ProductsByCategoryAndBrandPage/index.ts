@@ -1,1 +1,1 @@
-export { ProductsByCategoryAndBrandPageAsync as ProductsByCategoryAndBrandPage } from './ui/ProductsByCategoryAndBrandPage.async';
+export { ProductsByCategoryAndBrandPageAsync as ProductsByCategoryAndBrandPage } from './ui/ProductsByCategoryAndBrandPage/ProductsByCategoryAndBrandPage.async';
