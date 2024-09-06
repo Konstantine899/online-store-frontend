@@ -6,15 +6,17 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 
 interface QuantitiesProps {
-  className?: string;
-  products?: IProductsSchema;
   isSuccess: boolean;
   isLoading: boolean;
-  search: string;
+  className?: string;
+  products?: IProductsSchema;
+  search?: string;
+  categoryName?: string;
 }
 
 export const Quantities = memo((props: QuantitiesProps) => {
-  const { className, isSuccess, isLoading, products, search } = props;
+  const { className, isSuccess, isLoading, products, search, categoryName } =
+    props;
 
   if (isLoading) {
     return (
@@ -29,10 +31,11 @@ export const Quantities = memo((props: QuantitiesProps) => {
     return (
       <div className={classNames(cls.Quantities, {}, [className])}>
         <Text
-          title={search && `Результат поиска`}
+          title={search ? `Результат поиска` : `${categoryName}`}
           text={
-            search &&
-            `По запросу "${search}" найдено ${products!.count} товаров`
+            search
+              ? `По запросу "${search}" найдено ${products!.count} товаров`
+              : `${products!.count} Товаров`
           }
           theme={TextTheme.BLACK}
           size={TextSize.M}
