@@ -4,10 +4,12 @@ import cls from './ProductsByCategoryPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   ProductsByCategory,
-  ProductsByCategoryFilters,
   ProductsByCategoryPaginate,
+  ProductsByCategorySortOrder,
 } from '@/entities/Product';
 import { ProductsByCategoryCount } from '../ProductsByCategoryCount/ProductsByCategoryCount';
+import { BrandTabs } from '@/entities/Brand';
+import { ProductsByCategoryLimit } from '../ProductsByCategoryLimit/ProductsByCategoryLimit';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
@@ -19,7 +21,11 @@ const ProductsByCategoryPage = memo((props: ProductsByCategoryPageProps) => {
   return (
     <Page className={classNames(cls.ProductsByCategoryPage, {}, [className])}>
       <ProductsByCategoryCount />
-      <ProductsByCategoryFilters />
+      <div className={cls.ProductsByCategoryFilters}>
+        <ProductsByCategorySortOrder />
+        <ProductsByCategoryLimit />
+        <BrandTabs />
+      </div>
       <ProductsByCategory />
       <ProductsByCategoryPaginate />
     </Page>
