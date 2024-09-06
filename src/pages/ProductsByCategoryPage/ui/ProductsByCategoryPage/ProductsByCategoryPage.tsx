@@ -5,11 +5,11 @@ import { Page } from '@/widgets/Page';
 import {
   ProductsByCategory,
   ProductsByCategoryPaginate,
-  ProductsByCategorySortOrder,
 } from '@/entities/Product';
 import { ProductsByCategoryCount } from '../ProductsByCategoryCount/ProductsByCategoryCount';
 import { BrandTabs } from '@/entities/Brand';
 import { ProductsByCategoryLimit } from '../ProductsByCategoryLimit/ProductsByCategoryLimit';
+import { ProductsByCategorySortOrder } from '../ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
