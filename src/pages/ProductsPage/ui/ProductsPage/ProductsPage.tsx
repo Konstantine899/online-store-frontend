@@ -4,8 +4,9 @@ import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
   Products,
-  ProductsFilters,
+  ProductsLimit,
   ProductsPaginate,
+  ProductsSortOrder,
 } from '@/entities/Product';
 import { ProductsCount } from '../ProductsCount/ProductsCount';
 
@@ -19,7 +20,10 @@ const ProductsPage = memo((props: ProductsPageProps) => {
   return (
     <Page className={classNames(cls.ProductsPage, {}, [className])}>
       <ProductsCount />
-      <ProductsFilters />
+      <div className={cls.ProductsFilters}>
+        <ProductsSortOrder />
+        <ProductsLimit />
+      </div>
       <Products />
       <ProductsPaginate />
     </Page>
