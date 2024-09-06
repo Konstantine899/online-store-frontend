@@ -24,6 +24,7 @@ export {
   ProductProvider,
   useProductContext,
 } from './lib/contexts/ProductContext';
+export { useProductsSortOrder } from './lib/hooks/useProductsSortOrder';
 
 //ui
 export { ProductsLimit } from './ui/ProductsLimit/ProductsLimit';
@@ -36,7 +37,6 @@ export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { Product } from './ui/Product/Product';
 export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
-export { ProductsSortOrder } from './ui/ProductsSortOrder/ProductsSortOrder';
 export { ProductsByCategorySortOrder } from './ui/ProductsByCategorySortOrder/ProductsByCategorySortOrder';
 export { ProductsByCategoryLimit } from './ui/ProductsByCategoryLimit/ProductsByCategoryLimit';
 export { ProductsByCategoryAndBrandSortOrder } from './ui/ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
@@ -45,7 +45,6 @@ export { ProductsByCategoryAndBrandFilters } from './ui/ProductsByCategoryAndBra
 export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBrandPaginate/ProductsByCategoryAndBrandPaginate';
 export { ProductsByCategoryFilters } from './ui/ProductsByCategoryFilters/ProductsByCategoryFilters';
 export { ProductsByCategoryPaginate } from './ui/ProductsByCategoryPaginate/ProductsByCategoryPaginate';
-export { ProductsFilters } from './ui/ProductsFilters/ProductsFilters';
 export { ProductsPaginate } from './ui/ProductsPaginate/ProductsPaginate';
 
 //slices
@@ -91,5 +90,9 @@ export {
 } from './model/selectors/selectProductsByCategoryAndBrand';
 
 // types
-export type { IProductsSchema, TProduct } from './model/types/IProductsSchema';
+export type {
+  IProductsSchema,
+  TProduct,
+  TSortOrder,
+} from './model/types/IProductsSchema';
 export type { IProduct } from './model/types/IProduct';
