@@ -5,7 +5,7 @@ import { mockRating } from '@/shared/config/storybook/mocks/mockRating';
 import { mockProduct } from '@/shared/config/storybook/mocks/mockProduct';
 import { handlers } from '@/shared/config/storybook/mocks/handlers/handlers';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from '@/entities/Product/ui/ProductSummaryCard/ProductSummaryCard.module.scss';
+import cls from './ProductSummaryCard.module.scss';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
@@ -14,7 +14,7 @@ import { Thumb, ThumbSize } from '@/shared/ui/Thumb/Thumb';
 import { RatingReducer, transformVotes } from '@/entities/Rating';
 import { TextTheme } from '@/shared/ui/Text/Text';
 import { ReducersList } from '@/shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { ProductDetailsReducer } from '@/entities/Product';
+import { ProductDetailsReducer } from '../../model/slices/ProductDetailsSlice';
 
 const meta: Meta<typeof ProductSummaryCard> = {
   title: 'entities/ProductSummaryCard',

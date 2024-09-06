@@ -94,5 +94,6 @@ export type {
   IProductsSchema,
   TProduct,
   TSortOrder,
+  TSortLimit,
 } from './model/types/IProductsSchema';
 export type { IProduct } from './model/types/IProduct';
