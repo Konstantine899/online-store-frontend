@@ -1,19 +1,25 @@
+import { memo, useEffect } from 'react';
+import { useCategory } from '@/entities/Category';
+import { useParams } from 'react-router';
+import { Quantities } from '@/entities/Quantities';
+import { useProductsByCategoryContext } from '@/entities/Product';
 
+export const ProductsByCategoryCount = memo(() => {
+  const { categoryId } = useParams();
+  const [fetchCategory, { data: category }] = useCategory();
+  const { productsByCategory, isLoading, isSuccess } =
+    useProductsByCategoryContext();
 
+  useEffect(() => {
+    fetchCategory(`${categoryId}`);
+  }, [categoryId, fetchCategory]);
 
-import { memo } from 'react';
-import cls from './ProductsByCategoryCount.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-
-
-
-interface ProductsByCategoryCountProps {
-className?:string;
-}
-
-export const ProductsByCategoryCount = memo((props: ProductsByCategoryCountProps) => {
-const { className } = props
-  return <div className={classNames(cls.ProductsByCategoryCount, {}, [className])}>$END$</div>;
+  return (
+    <Quantities
+      isSuccess={isSuccess}
+      isLoading={isLoading}
+      products={productsByCategory}
+      categoryName={category?.name}
+    />
+  );
 });
-
-ProductsByCategoryCount.displayName = `ProductsByCategoryCount`;

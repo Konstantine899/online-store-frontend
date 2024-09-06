@@ -3,11 +3,11 @@ import { memo } from 'react';
 import cls from './ProductsByCategoryPage.module.scss';
 import { Page } from '@/widgets/Page';
 import {
-  ProductsByCategoryCount,
   ProductsByCategory,
   ProductsByCategoryFilters,
   ProductsByCategoryPaginate,
 } from '@/entities/Product';
+import { ProductsByCategoryCount } from '../ProductsByCategoryCount/ProductsByCategoryCount';
 
 export interface ProductsByCategoryPageProps {
   className?: string;
