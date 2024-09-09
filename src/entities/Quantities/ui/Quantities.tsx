@@ -44,3 +44,5 @@ export const Quantities = memo((props: QuantitiesProps) => {
     );
   }
 });
+
+Quantities.displayName = `Quantities`;
