@@ -4,6 +4,7 @@ import cls from './Quantities.module.scss';
 import { IProductsSchema } from '@/entities/Product';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { getTitle } from '../lib/halpers/getTitle';
 
 interface QuantitiesProps {
   isSuccess: boolean;
@@ -31,7 +32,7 @@ export const Quantities = memo((props: QuantitiesProps) => {
     return (
       <div className={classNames(cls.Quantities, {}, [className])}>
         <Text
-          title={search ? `Результат поиска` : `${categoryName}`}
+          title={getTitle({ search, categoryName })}
           text={
             search
               ? `По запросу "${search}" найдено ${products!.count} товаров`
