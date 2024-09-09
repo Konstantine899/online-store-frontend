@@ -5,6 +5,7 @@ import { IProductsSchema } from '@/entities/Product';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { getTitle } from '../lib/halpers/getTitle';
+import { getText } from '@/entities/Quantities/lib/halpers/getText';
 
 interface QuantitiesProps {
   isSuccess: boolean;
@@ -33,11 +34,7 @@ export const Quantities = memo((props: QuantitiesProps) => {
       <div className={classNames(cls.Quantities, {}, [className])}>
         <Text
           title={getTitle({ search, categoryName })}
-          text={
-            search
-              ? `По запросу "${search}" найдено ${products!.count} товаров`
-              : `${products!.count} Товаров`
-          }
+          text={getText({ search, count: products?.count })}
           theme={TextTheme.BLACK}
           size={TextSize.M}
         />
