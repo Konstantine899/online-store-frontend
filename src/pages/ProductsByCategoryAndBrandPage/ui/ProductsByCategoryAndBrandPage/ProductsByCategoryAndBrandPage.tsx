@@ -1,15 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsByCategoryAndBrandPage.module.scss';
-import {
-  ProductsByCategoryAndBrand,
-  ProductsByCategoryAndBrandPaginate,
-} from '@/entities/Product';
+import { ProductsByCategoryAndBrand } from '@/entities/Product';
 import { Page } from '@/widgets/Page';
 import { ProductsByCategoryAndBrandCount } from '../ProductsByCategoryAndBrandCount/ProductsByCategoryAndBrandCount';
 import { BrandTabs } from '@/entities/Brand';
 import { ProductsByCategoryAndBrandSortOrder } from '../ProductsByCategoryAndBrandSortOrder/ProductsByCategoryAndBrandSortOrder';
 import { ProductsByCategoryAndBrandLimit } from '../ProductsByCategoryAndBrandLimit/ProductsByCategoryAndBrandLimit';
+import { ProductsByCategoryAndBrandPaginate } from '../ProductsByCategoryAndBrandPaginate/ProductsByCategoryAndBrandPaginate';
 
 export interface ProductsByCategoryAndBrandPageProps {
   className?: string;
