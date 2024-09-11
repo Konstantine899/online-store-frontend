@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Limit.module.scss';
 import { Select } from '@/shared/ui/Select';
-import { IProductsSchema, TSortLimit } from '@/entities/Product';
+import { TSortLimit } from '@/entities/Product';
 import {
   SelectOptions,
   SelectWidth,
@@ -17,19 +17,11 @@ interface LimitProps {
   limit: TSortLimit;
   selectOptions: SelectOptions<TSortLimit>[];
   onChange: (value: TSortLimit) => void;
-  products?: IProductsSchema;
 }
 
 export const Limit = memo((props: LimitProps) => {
-  const {
-    className,
-    isSuccess,
-    isLoading,
-    limit,
-    selectOptions,
-    onChange,
-    products,
-  } = props;
+  const { className, isSuccess, isLoading, limit, selectOptions, onChange } =
+    props;
 
   if (isLoading) {
     return (
@@ -39,7 +31,7 @@ export const Limit = memo((props: LimitProps) => {
     );
   }
 
-  if (isSuccess && products!.rows.length > 0) {
+  if (isSuccess) {
     return (
       <div className={classNames(cls.Limit, {}, [className])}>
         <Select

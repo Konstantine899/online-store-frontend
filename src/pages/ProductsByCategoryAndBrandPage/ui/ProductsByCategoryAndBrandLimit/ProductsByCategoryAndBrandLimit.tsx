@@ -56,7 +56,6 @@ export const ProductsByCategoryAndBrandLimit = memo(() => {
       limit={limit}
       selectOptions={selectOptions}
       onChange={onChange}
-      products={data}
     />
   );
 });

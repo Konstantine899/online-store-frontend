@@ -49,7 +49,6 @@ export const ProductsByCategoryLimit = memo(() => {
       limit={limit}
       selectOptions={selectOptions}
       onChange={onChange}
-      products={productsByCategory}
     />
   );
 });
