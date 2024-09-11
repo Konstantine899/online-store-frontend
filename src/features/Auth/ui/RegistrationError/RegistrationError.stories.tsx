@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RegistrationError } from './RegistrationError';
 
 const meta: Meta<typeof RegistrationError> = {
-  title: 'entities/RegistrationError',
+  title: 'features/RegistrationError',
   component: RegistrationError,
 };
 
