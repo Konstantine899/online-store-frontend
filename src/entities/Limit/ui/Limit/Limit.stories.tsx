@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Limit } from './Limit';
 import { fn } from '@storybook/test';
+import { mockProducts } from '@/shared/config/storybook/mocks/mockProducts';
 
 const meta: Meta<typeof Limit> = {
   title: 'entities/Limit',
@@ -20,6 +21,7 @@ export const Primary: Story = {
       { content: '20', value: '20' },
     ],
     onChange: fn(),
+    products: mockProducts,
   },
   render: (args) => <Limit {...args} />,
 };
