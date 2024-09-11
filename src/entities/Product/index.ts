@@ -39,7 +39,6 @@ export { ProductCardSkeleton } from './ui/ProductCardSkeleton/ProductCardSkeleto
 export { ProductsNotFound } from '@/entities/Product/ui/ProductsNotFound/ProductsNotFound';
 export { ProductSearch } from './ui/ProductSearch/ProductSearch';
 export { Product } from './ui/Product/Product';
-export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 
 //slices

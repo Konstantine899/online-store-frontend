@@ -2,11 +2,8 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ProductPage.module.scss';
 import { Page } from '@/widgets/Page';
-import {
-  Product,
-  ProductHeading,
-  ProductSpecification,
-} from '@/entities/Product';
+import { Product, ProductSpecification } from '@/entities/Product';
+import { ProductHeading } from '../ProductHeading/ProductHeading';
 
 export interface ProductDetailsPageProps {
   className?: string;

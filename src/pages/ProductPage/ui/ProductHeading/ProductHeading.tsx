@@ -1,7 +1,7 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductHeading.module.scss';
-import { useProductContext } from '../../lib/contexts/ProductContext';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useProductContext } from '@/entities/Product';
 
 interface ProductHeadingProps {
   className?: string;
