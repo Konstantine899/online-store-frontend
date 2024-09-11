@@ -15,4 +15,13 @@ export const handlerProducts = {
       return HttpResponse.json(products, { status: 200 });
     },
   ),
+
+  popularProductsSuccess: http.get(
+    '/random%20string/product/all',
+    async ({ request }) => {
+      const url = new URL(request.url);
+      const limit = url.searchParams.get('limit');
+      return HttpResponse.json(products, { status: 200 });
+    },
+  ),
 };
