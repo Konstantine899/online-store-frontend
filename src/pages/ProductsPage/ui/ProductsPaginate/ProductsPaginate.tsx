@@ -1,29 +1,24 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 import { useNavigate } from 'react-router-dom';
-import { getRouteProducts } from '@/shared/consts/router/publicRouter';
-import { useProducts } from '../../api/productsApi';
-import { useProductsContext } from '../../lib/contexts/ProductsContext';
-import { ProductsActions } from '../../model/slices/ProductsSlice';
-import { useSelector } from 'react-redux';
-import { useAddSortOrderToUrlParam } from '../../lib/hooks/useAddSortOrderToUrlParam';
-import { useAddLimitToUrlParam } from '../../lib/hooks/useAddLimitToUrlParam';
 import {
+  ProductsActions,
   selectProductsLimit,
   selectProductsSortOrder,
-} from '../../model/selectors/selectProducts';
-import { useAddCurrentPageToUrlParam } from '../../lib/hooks/useAddCurrentPageToUrlParam';
+  useAddCurrentPageToUrlParam,
+  useAddLimitToUrlParam,
+  useAddSortOrderToUrlParam,
+  useProducts,
+  useProductsContext,
+} from '@/entities/Product';
+import { useSelector } from 'react-redux';
 
-interface ProductsPaginateProps {
-  className?: string;
-}
+import { getRouteProducts } from '@/shared/consts/router/publicRouter';
+import { usePaginate } from '@/shared/lib/hooks/usePaginate';
 
-export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
-  const { className } = props;
+export const ProductsPaginate = memo(() => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [fetchProducts] = useProducts();
@@ -37,8 +32,7 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
   const { sort, addSortOrderToUrlParam } =
     useAddSortOrderToUrlParam(sortFromState);
   const { limit, addLimitToUrlParam } = useAddLimitToUrlParam(limitFromState);
-  const { page, addCurrentPageToUrlParam } =
-    useAddCurrentPageToUrlParam(currentPage);
+  const { addCurrentPageToUrlParam } = useAddCurrentPageToUrlParam(currentPage);
 
   const onPageChange = (pageNumber: number) => {
     dispatch(ProductsActions.setPage(pageNumber));
@@ -56,14 +50,13 @@ export const ProductsPaginate = memo((props: ProductsPaginateProps) => {
 
   if (isSuccess && products) {
     return (
-      <div className={classNames(cls.ProductsPaginate, {}, [className])}>
-        <Paginate
-          onPageChange={onPageChange}
-          paginationRange={paginationRange}
-          currentPage={products.metaData.currentPage}
-          lastPage={products.metaData.lastPage}
-        />
-      </div>
+      <Paginate
+        onPageChange={onPageChange}
+        paginationRange={paginationRange}
+        currentPage={products.metaData.currentPage}
+        lastPage={products.metaData.lastPage}
+        className={cls.ProductsPaginate}
+      />
     );
   }
 });

@@ -26,6 +26,10 @@ export {
 } from './lib/contexts/ProductContext';
 export { useProductsSortOrder } from './lib/hooks/useProductsSortOrder';
 export { useProductsLimit } from './lib/hooks/useProductsLimit';
+export { useAddLimitToUrlParam } from './lib/hooks/useAddLimitToUrlParam';
+export { useAddSortOrderToUrlParam } from './lib/hooks/useAddSortOrderToUrlParam';
+export { useAddCurrentPageToUrlParam } from './lib/hooks/useAddCurrentPageToUrlParam';
+export { useAddSearchToUrlParam } from './lib/hooks/useAddSearchToUrlParam';
 
 //ui
 export { Products } from './ui/Products/Products';
@@ -39,7 +43,6 @@ export { ProductHeading } from './ui/ProductHeading/ProductHeading';
 export { ProductSpecification } from './ui/ProductSpecification/ProductSpecification';
 export { ProductsByCategoryAndBrandPaginate } from './ui/ProductsByCategoryAndBrandPaginate/ProductsByCategoryAndBrandPaginate';
 export { ProductsByCategoryPaginate } from './ui/ProductsByCategoryPaginate/ProductsByCategoryPaginate';
-export { ProductsPaginate } from './ui/ProductsPaginate/ProductsPaginate';
 
 //slices
 export { ProductsActions, ProductsReducer } from './model/slices/ProductsSlice';

@@ -2,10 +2,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './ProductsPage.module.scss';
 import { Page } from '@/widgets/Page';
-import { Products, ProductsPaginate } from '@/entities/Product';
+import { Products } from '@/entities/Product';
 import { ProductsCount } from '../ProductsCount/ProductsCount';
 import { ProductsSortOrder } from '../ProductsSortOrder/ProductsSortOrder';
 import { ProductsLimit } from '../ProductsLimit/ProductsLimit';
+import { ProductsPaginate } from '../ProductsPaginate/ProductsPaginate';
 
 export interface ProductsPageProps {
   className?: string;
