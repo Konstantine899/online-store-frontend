@@ -5,7 +5,7 @@ import { IProductsSchema } from '@/entities/Product';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { getTitle } from '../lib/halpers/getTitle';
-import { getText } from '@/entities/Quantities/lib/halpers/getText';
+import { getText } from '../lib/halpers/getText';
 
 interface QuantitiesProps {
   isSuccess: boolean;
