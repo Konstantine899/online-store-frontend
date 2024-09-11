@@ -1,3 +1,5 @@
+import { transformInflections } from '../halpers/transformInflections';
+
 interface IGetText {
   search?: string;
   count?: number;
@@ -5,7 +7,17 @@ interface IGetText {
 
 export function getText({ search = '', count = 0 }: IGetText) {
   if (search?.length > 0) {
-    `По запросу "${search}" найдено ${count} товаров`;
+    `По запросу "${search}" найдено ${transformInflections({
+      count,
+      one: 'товар',
+      two: 'товара',
+      three: 'товаров',
+    })}`;
   }
-  return `${count} Товаров`;
+  return `${transformInflections({
+    count,
+    one: 'товар',
+    two: 'товара',
+    three: 'товаров',
+  })}`;
 }
