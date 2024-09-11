@@ -18,11 +18,7 @@ const ProductsByCategoryAndBrandPage = memo(
     const { className } = props;
 
     return (
-      <Page
-        className={classNames(cls.ProductsByCategoryAndBrandPage, {}, [
-          className,
-        ])}
-      >
+      <Page className={classNames('', {}, [className])}>
         <ProductsByCategoryAndBrandCount />
         <div className={cls.ProductsByCategoryAndBrandFilters}>
           <ProductsByCategoryAndBrandSortOrder />

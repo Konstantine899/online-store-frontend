@@ -134,61 +134,6 @@
     }
 }
 
-.right {
-    text-align: right;
-}
-
-.left {
-    text-align: left;
-}
-
-.center {
-    text-align: center;
-}
-
-.size_s {
-    .title {
-        font: var(--font-m);
-        font-weight: 900;
-    }
-
-    .text {
-        font: var(--font-s);
-    }
-}
-
-.size_m {
-    .title {
-        font: var(--font-l);
-        font-weight: 900;
-    }
-
-    .text {
-        font: var(--font-m);
-    }
-}
-
-.size_l {
-    .title {
-        font: var(--font-l);
-        font-weight: 900;
-    }
-
-    .text {
-        font: var(--font-l);
-    }
-}
-
-.size_xl {
-    .title {
-        font: var(--font-xl);
-        font-weight: 900;
-    }
-
-    .text {
-        font: var(--font-xl);
-    }
-}
 
 
 // Текст в одну строку

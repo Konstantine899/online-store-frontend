@@ -1,6 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './SortOrder.module.scss';
 import { Select } from '@/shared/ui/Select';
 import { IProductsSchema, TSortOrder } from '@/entities/Product';
 import {
@@ -33,7 +32,7 @@ export const SortOrder = memo((props: SortOrderProps) => {
 
   if (isLoading) {
     return (
-      <div className={classNames(cls.ProductsSortOrder, {}, [className])}>
+      <div className={classNames(``, {}, [className])}>
         <Skeleton width={250} height={34} borderRadius={'10px'} />
       </div>
     );
@@ -41,7 +40,7 @@ export const SortOrder = memo((props: SortOrderProps) => {
 
   if (isSuccess && products!.rows.length > 0) {
     return (
-      <div className={classNames(cls.SortOrder, {}, [className])}>
+      <div className={classNames(``, {}, [className])}>
         <Select<TSortOrder>
           options={selectOptions}
           label={'По'}

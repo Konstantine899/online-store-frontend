@@ -1,6 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
-import cls from './Search.module.scss';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { Input, InputTheme } from '../Input/Input';
 
@@ -30,7 +29,7 @@ export const Search = memo((props: SearchProps) => {
   return (
     <Input
       type={'text'}
-      className={classNames(cls.InputSearch, {}, [className])}
+      className={classNames(``, {}, [className])}
       value={search}
       onChange={onChangeSearch}
       theme={theme}

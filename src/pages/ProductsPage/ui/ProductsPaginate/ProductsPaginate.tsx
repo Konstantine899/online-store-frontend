@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import cls from './ProductsPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
@@ -55,7 +54,6 @@ export const ProductsPaginate = memo(() => {
         paginationRange={paginationRange}
         currentPage={products.metaData.currentPage}
         lastPage={products.metaData.lastPage}
-        className={cls.ProductsPaginate}
       />
     );
   }

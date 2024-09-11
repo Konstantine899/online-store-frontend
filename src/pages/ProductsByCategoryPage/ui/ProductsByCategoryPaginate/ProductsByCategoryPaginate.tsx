@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import cls from './ProductsByCategoryPaginate.module.scss';
 import { Paginate } from '@/entities/Paginate';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -60,7 +59,6 @@ export const ProductsByCategoryPaginate = memo(() => {
         paginationRange={paginationRange}
         currentPage={currentPage}
         lastPage={lastPage}
-        className={cls.ProductsByCategoryPaginate}
       />
     );
   }
