@@ -1,0 +1,36 @@
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.control_group {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+
+@media (min-width: 1920px) {
+  .controls {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1919px) and (min-width: 768px) {
+  .controls {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,6 +8,7 @@ import UserIcon from '@/shared/assets/icons/registration.svg';
 import LogoutIcon from '@/shared/assets/icons/logout.svg';
 import LoginIcon from '@/shared/assets/icons/login.svg';
 import CartShoppingIcon from '@/shared/assets/icons/cart.svg';
+import AdminIcon from '@/shared/assets/icons/admin.svg';
 import {
   AuthActions,
   AuthModalActions,
@@ -16,7 +17,7 @@ import {
 } from '@/features/Auth';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { selectUserRole, UserActions } from '@/entities/User';
+import {selectAdminRole, selectUserRole, UserActions } from '@/entities/User';
 import { AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import {
   getRouteCart,
@@ -34,6 +35,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   const USER = useSelector(selectUserRole);
+  const ADMIN = useSelector(selectAdminRole);
 
   const onShowLoginModal = useCallback(() => {
     dispatch(AuthModalActions.setOpenLoginModal(true));
@@ -53,7 +55,7 @@ export const Navbar = memo((props: NavbarProps) => {
     dispatch(CategoryActions.setCategoryId(0));
   };
 
-  if (USER) {
+  if (ADMIN) {
     return (
       <nav className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.Navbar_content}>
@@ -72,6 +74,14 @@ export const Navbar = memo((props: NavbarProps) => {
             <ProductSearch />
           </div>
           <div className={cls.Navbar_content_right}>
+            <AppLink
+                className={cls.logout}
+                theme={AppLinkTheme.SECONDARY}
+                to={'/admin'}
+            >
+              <Icon className={cls.AdminIcon} Svg={AdminIcon} />
+              Панель Администратора
+            </AppLink>
             <AppLink
               className={cls.logout}
               theme={AppLinkTheme.SECONDARY}
@@ -92,6 +102,48 @@ export const Navbar = memo((props: NavbarProps) => {
           </div>
         </div>
       </nav>
+    );
+  }
+
+  if (USER) {
+    return (
+        <nav className={classNames(cls.Navbar, {}, [className])}>
+          <div className={cls.Navbar_content}>
+            <div className={cls.Navbar_content_left}>
+              <CategoriesBurgerMenu />
+              <AppLink
+                  className={cls.Navbar_content_left_a}
+                  theme={AppLinkTheme.SECONDARY}
+                  to={getRouteMain()}
+                  onClick={toMainPage}
+              >
+                Магазин
+              </AppLink>
+            </div>
+            <div className={cls.Navbar_content_center}>
+              <ProductSearch />
+            </div>
+            <div className={cls.Navbar_content_right}>
+              <AppLink
+                  className={cls.logout}
+                  theme={AppLinkTheme.SECONDARY}
+                  to={getRouteMain()}
+                  onClick={onLogout}
+              >
+                <Icon className={cls.LogoutIcon} Svg={LogoutIcon} />
+                Выйти
+              </AppLink>
+              <AppLink
+                  className={cls.registration}
+                  theme={AppLinkTheme.SECONDARY}
+                  to={getRouteCart()}
+              >
+                <Icon className={cls.CartShoppingIcon} Svg={CartShoppingIcon} />
+                Корзина
+              </AppLink>
+            </div>
+          </div>
+        </nav>
     );
   }
 

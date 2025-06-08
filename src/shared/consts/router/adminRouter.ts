@@ -1,4 +1,5 @@
 export enum adminRouter {
+  ADMIN = 'admin',
   CREATE_BRAND = 'create_brand',
   UPDATE_BRAND = 'update_brand',
   REMOVE_BRAND = 'remove_brand',
@@ -29,6 +30,7 @@ export enum adminRouter {
   NOT_FOUND = 'not_found',
 }
 
+export const getAdminRoute = () => `/admin`;
 export const getAdminRouteCreateBrand = () => `/brand/create/`;
 export const getAdminRouteUpdateBrand = (id: string) => `/brand/update/${id}`;
 export const getAdminRouteRemoveBrand = (id: string) => `/brand/delete/${id}`;

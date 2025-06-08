@@ -3,6 +3,7 @@ import {
   adminRouter,
   getAdminCreateProductProperty,
   getAdminListRoles,
+  getAdminRoute,
   getAdminRouteAddUserRole,
   getAdminRouteAllOrders,
   getAdminRouteAllOrdersUser,
@@ -30,8 +31,10 @@ import {
   getAdminRouteUpdateUser,
 } from '@/shared/consts/router/adminRouter';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { AdminPanelPage } from '@/pages/AdminPanelPage';
 
 export const adminRouterConfig: Record<adminRouter, RouteProps> = {
+  [adminRouter.ADMIN]: { path: getAdminRoute(), element: <AdminPanelPage/> },
   [adminRouter.CREATE_BRAND]: { path: getAdminRouteCreateBrand() },
   [adminRouter.UPDATE_BRAND]: { path: getAdminRouteUpdateBrand(':id') },
   [adminRouter.REMOVE_BRAND]: { path: getAdminRouteRemoveBrand(':id') },
