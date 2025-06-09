@@ -8,6 +8,7 @@ import { $api } from '@/shared/api/api';
 import { ScrollReducer } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ProductsReducer } from '@/entities/Product';
+import { ManageCategoriesReducer } from '@/features/ManageCategories/model/slices/ManageCategoriesSlice';
 
 export function createReduxStore(
   initialState: StateSchema,
@@ -18,6 +19,7 @@ export function createReduxStore(
     user: UserReducer,
     auth: AuthReducer,
     authModal: AuthModalReducer,
+    createCategoryModal: ManageCategoriesReducer,
     scroll: ScrollReducer,
     products: ProductsReducer,
     [rtkApi.reducerPath]: rtkApi.reducer,

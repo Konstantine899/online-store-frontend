@@ -14,12 +14,14 @@ import { IRatingSchema } from '@/entities/Rating';
 import { ScrollSchema } from '@/entities/Scroll';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { IProduct, IProductsSchema } from '@/entities/Product';
+import { ManageCategoriesSchema } from '@/features/ManageCategories';
 
 export interface StateSchema {
   user: IUserSchema;
   scroll: ScrollSchema;
   auth: IAuthSchema;
   authModal: IAuthModalSchema;
+  createCategoryModal: ManageCategoriesSchema;
   products: IProductsSchema;
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   productsByCategory?: IProductsSchema;
